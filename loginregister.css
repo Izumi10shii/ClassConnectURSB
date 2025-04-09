@@ -1,0 +1,52 @@
+body {
+    margin: 5;
+    box-sizing: border-box;
+    padding: 0;
+    background: linear-gradient(180deg,#F8FAFC, #D9EAFD);
+    background-attachment: fixed;
+    font-family: sans-serif;
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 40px;
+}
+
+.text {
+    font-size: 7rem;
+    color: #939ba3;
+}
+
+.text1 {
+    font-size: 5rem;
+    color: #a5c9ec;
+}
+
+.text, .text1 {
+    top: calc(100vh - 50%);
+}
+
+
+.login, .register {
+    margin-top: 10px;
+    font-size: 2rem;
+    color: #ffffff;
+    font-family: sans-serif;
+    border-radius: 10px;
+    background-color: #BCCCDC;
+    border: #ecf0ff solid 2px;
+    padding: 15px;
+    transition: 0.3s ease-in-out;
+    width: 500px;
+}
+
+.login:hover, .register:hover {
+    background-color:rgb(150, 157, 165);
+    color: #eaf5ff;
+}
