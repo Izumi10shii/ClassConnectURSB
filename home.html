@@ -9,19 +9,34 @@
 </head>
 
 <body>
-    <h1>Class Connect</h1>
     <nav class="homeHeader">
-        <input type="text" placeholder="search">
+        <h1>Class Connect</h1>
+        <input class="search" type="text" placeholder="search">
         <button class="addPostBtn">Add new Post</button>
     </nav>
 
     <div class="HomeContainer">
-        <div class="Sidebar">
-            <li>Home</li>
-            <li>Explore Discussions</li>
-            <li>Whiteboard</li>
+        <div class="leftSidebar">
+            <div class="leftSideUp">
+                <li>Home</li>
+                <li>Explore</li>
+                <li>Popular</li>
+            </div>
+            <div class="leftSideDown">
+                <h4>Communities</h4>
+                <div>
+                    <div class="pfp"></div>
+                    <h4>IT5 - OOP</h4>
+
+                    <div class="pfp"></div>
+                    <h4>IT6 - DBMS</h4>
+
+                    <div class="pfp"></div>
+                    <h4>ITE 7 - AppDev</h4>
+                </div>
+            </div>
         </div>
-        
+
         <!--
             <?php
             include("postComponent.php");
@@ -30,41 +45,64 @@
             ?>
             -->
 
-                <div class="scrollContainer">
+        <div class="scrollContainer">
 
-                    <div class="post">
-                        <div class="postHeader">
-                        
-                        <div class="pfp">IMG</div>
-                        
-                        <div>Username</div>
-                        <div>Post Title</div>
-                        
+            <div class="post">
+                <div class="postHeader">
+                    <div class="pfp">IMG</div>
+                    <div class="postHeaderPoster">
+                        <div class="postHeaderCol">
+                            <p>ITE7</p>
+                            <div>username</div>
+                        </div>
+                        <p>1hr ago</p>
                     </div>
-                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti corrupti enim provident porro? Unde inventore enim doloribus reiciendis autem sunt? Nisi praesentium nam ipsum consequuntur adipisci, vitae magnam optio perspiciatis vero laborum veniam incidunt id eveniet quis dolor? Nam, quisquam.</div>
-                    <div class="interactionHeader">
-                        <button class="like">like</button>
-                        <button class="commentBTN">comment</button>
-                        <button class="share">share</button>
-                    </div>
-                    
-                    
                 </div>
+                <div> sit amet consectetur adipisicing elit. Deleniti corrupti enim provident porro?
+                    Unde inventore enim doloribus reiciendis autem sunt? Nisi praesentium nam ipsum consequuntur
+                    adipisci, vitae magnam optio perspiciatis vero laborum veniam incidunt id eveniet quis dolor? Nam,
+                    quisquam.</div>
+                <div class="interactionHeader">
+                    <button class="like">like</button>
+                    <button class="commentBTN">comment</button>
+                    <button class="share">share</button>
+                </div>
+
+
+            </div>
+            <!--
                 <div class="commentSection">
                     <h4>Add Comment</h4>
                     <div class="addComment">
-                            <textarea name="" id=""></textarea>
-                            <button class="sendCommentBTN">send</button>
+                        <textarea name="" id=""></textarea>
+                        <button class="sendCommentBTN">send</button>
                     </div>
-                    <!--
-                    include(comments)
-                    -->
-                </div> 
-                
-            </div>
-        
+                    
+                </div>
+            -->
+
         </div>
-            
+
+
+        <div class="rightSidebar">
+            <h4>Friends</h4>
+            <div>
+                <div class="pfp"></div>
+                <div>Person 1</div>
+            </div>
+            <div>
+                <div class="pfp"></div>
+                <div>Person 1</div>
+            </div>
+            <div>
+                <div class="pfp"></div>
+                <div>Person 1</div>
+            </div>
+            <button>Inbox</button>
+
+        </div>
+    </div>
+
 
 </body>
 
