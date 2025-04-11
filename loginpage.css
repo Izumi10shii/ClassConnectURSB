@@ -1,8 +1,8 @@
 body {
-    margin: 5;
+    margin: 0;
     box-sizing: border-box;
     padding: 0;
-    background: linear-gradient(180deg,#F8FAFC, #D9EAFD);
+    background: linear-gradient(180deg, #F8FAFC, #D9EAFD);
     background-attachment: fixed;
     font-family: sans-serif;
     height: 100%;
@@ -11,43 +11,96 @@ body {
 .content { 
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     text-align: center;
     flex-direction: column;
+    height: 100vh;
 }
 
 .title {
     font-size: 4rem;
     margin: 20px;
+    font-weight: bold;
 }
 
 .loginbox {
-    margin: 50px;
-}
-
-.user, .pass{
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
     width: 250px;
-    height: 35px;
+    max-width: 100%;
+    position: relative;
 }
 
-.username, .password {
-    font-size: 2rem;
-    margin: 20px;
+.label-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.label-group label {
+    font-size: 1.2rem;
+    color: #3d3d3d;
+}
+
+.user, .pass {
+    width: 100%;
+    height: 35px;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.forgot {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+
+.forgot a, .register a {
+    text-decoration: none;
+    color: #777794;
 }
 
 .submit {
-    margin-top: 10px;
-    font-size: 2rem;
+    align-self: center;
+    font-size: 1.2rem;
     color: #ffffff;
     font-family: sans-serif;
     border-radius: 10px;
-    background-color: #BCCCDC;
+    background-color: #818d99;
     border: #ecf0ff solid 2px;
-    padding: 15px;
+    padding: 10px 20px;
     transition: 0.3s ease-in-out;
+    cursor: pointer;
+    width: 250px;
 }
 
 .submit:hover {
-    background-color:rgb(150, 157, 165);
+    background-color: rgb(150, 157, 165);
     color: #eaf5ff;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.bottomtext {
+    font-size: 0.8rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }

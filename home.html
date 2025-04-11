@@ -5,39 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
     <h1>Class Connect</h1>
-    <div class="homeHeader">
+    <nav class="homeHeader">
+        <input type="text" placeholder="search">
         <button class="addPostBtn">Add new Post</button>
-    </div>
+    </nav>
 
-    <!--
-    <?php
-    include("postComponent.php");
-    include("postComponent.php");
-    include("postComponent.php");
-    ?>
-    -->
-
-    <div class="post">
-        <div class="postHeader">
-
-            <div class="pfp">IMG</div>
-
-                <div>Username</div>
-                <div>Post Title</div>
-
+    <div class="HomeContainer">
+        <div class="Sidebar">
+            <li>Home</li>
+            <li>Explore Discussions</li>
+            <li>Whiteboard</li>
         </div>
-        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti corrupti enim provident porro? Unde inventore enim doloribus reiciendis autem sunt? Nisi praesentium nam ipsum consequuntur adipisci, vitae magnam optio perspiciatis vero laborum veniam incidunt id eveniet quis dolor? Nam, quisquam.</div>
-        <div class="interactionHeader">
-            <div class="like">like</div>
-            <div class="comment">comment</div>
-            <div class="share">share</div>
+        
+        <!--
+            <?php
+            include("postComponent.php");
+            include("postComponent.php");
+            include("postComponent.php");
+            ?>
+            -->
+
+                <div class="scrollContainer">
+
+                    <div class="post">
+                        <div class="postHeader">
+                        
+                        <div class="pfp">IMG</div>
+                        
+                        <div>Username</div>
+                        <div>Post Title</div>
+                        
+                    </div>
+                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti corrupti enim provident porro? Unde inventore enim doloribus reiciendis autem sunt? Nisi praesentium nam ipsum consequuntur adipisci, vitae magnam optio perspiciatis vero laborum veniam incidunt id eveniet quis dolor? Nam, quisquam.</div>
+                    <div class="interactionHeader">
+                        <button class="like">like</button>
+                        <button class="commentBTN">comment</button>
+                        <button class="share">share</button>
+                    </div>
+                    
+                    
+                </div>
+                <div class="commentSection">
+                    <h4>Add Comment</h4>
+                    <div class="addComment">
+                            <textarea name="" id=""></textarea>
+                            <button class="sendCommentBTN">send</button>
+                    </div>
+                    <!--
+                    include(comments)
+                    -->
+                </div> 
+                
+            </div>
+        
         </div>
-    </div>
+            
+
 </body>
 
 </html>

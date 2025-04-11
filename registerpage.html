@@ -8,15 +8,54 @@
 </head>
 <body>
     <div class="content">
-        <div class="title">Welcome to CC</div>
+        <div class="title">Welcome to ClassConnect!</div>
 
-        <div class="regbox">
-            <div class="username">Username: <input type="text" class="user"></div> 
-            <div class="password">Password: <input type="password" class="pass"></div> 
-            <div class="password">Confirm Password:<input type="password" class="pass"></div> 
-        </div>
+        <form method="post" class="regbox">
+            <div class="input-row">
+                <div class="label-group">
+                    <label for="userid">Username/Student ID:</label>
+                    <input type="text" id="userid" class="user" placeholder="e.g., B2025-12345">
+                </div>
+                <div class="label-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" class="user" placeholder="e.g., john_doe">
+                </div>
+            </div>
 
-        <button class="submit">SUBMIT</button>
+            <div class="input-row">
+                <div class="label-group">
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" class="user" placeholder="e.g., John Doe">
+                </div>
+                <div class="label-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" class="pass" placeholder="********">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="label-group">
+                    <label for="program">Program:</label>
+                    <input type="text" id="program" class="user" placeholder="e.g., Information Technology">
+                </div>
+                <div class="label-group">
+                    <label for="confirmpassword">Confirm Password:</label>
+                    <input type="password" id="confirmpassword" class="pass" placeholder="********">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="label-group">
+                    <label for="yearsec">Year & Section:</label>
+                    <input type="text" id="yearsec" class="user" placeholder="e.g., 2nd Year - A">
+                </div>
+            </div>
+
+            <button type="submit" class="submit">REGISTER NEW ACCOUNT</button>
+            <div class="bottomtext">
+                <div class="login">Already a ClassConnect user? <a href="loginpage.html">Login</a> Here!</div>
+            </div>
+        </form>
     </div>
 </body>
 </html>

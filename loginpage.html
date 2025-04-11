@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login to CC</title>
+    <title>Login</title>
     <link rel="stylesheet" href="loginpage.css">
 </head>
 <body>
     <div class="content">
         <div class="title">Welcome Back!</div>
 
-        <div class="loginbox">
-            <div class="username">Username: <input type="text" class="user"></div> 
-            <div class="password">Password: <input type="password" class="pass"></div> 
-            <a href="home.html"><button class="submit">SUBMIT</button></a>
-        </div>
-
-
-
+        <form method="post" class="loginbox">
+            <div class="label-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" class="user" placeholder="B2025-12345">
+            </div> 
+            <div class="label-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" class="pass" placeholder="********">
+            </div> 
+            <div class="forgot"><a href="#">Forgot Password</a></div>
+            <div class="button-container">
+                <a href="home.html"><button type="submit" class="submit">LOGIN</button></a>
+            </div>
+            <div class="bottomtext">
+                <div class="register">New User? <a href="registerpage.html">Register</a> Now!</div>
+            </div>
+        </form>
     </div>
 </body>
 </html>
