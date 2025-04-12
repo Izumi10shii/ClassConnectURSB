@@ -6,22 +6,46 @@ body {
     background-attachment: fixed;
     font-family: sans-serif;
     height: 100%;
+    overflow-y: auto;
 }
 
-.content { 
+.frontpage {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.pic {
+    position: fixed;
+    left: calc(100vw - 55%);
+    top: calc(100vh - 80%);
+    width: 50vw;
+    height: 400px;
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    z-index: -1
+}
+
+.content {
+    margin-right: 50vw; 
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    flex-direction: column;
-    height: 100vh;
-    padding: 20px;
+    min-height: 100vh;
 }
+
 
 .title {
     font-size: 4rem;
     margin-bottom: 30px;
     font-weight: bold;
+    text-align: center;
 }
 
 .regbox {
@@ -32,21 +56,13 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
-    max-width: 900px;
-}
-
-.input-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
+    max-width: 500px;
 }
 
 .label-group {
     display: flex;
     flex-direction: column;
-    width: 48%;
+    width: 100%;
 }
 
 .label-group label {
@@ -54,6 +70,19 @@ body {
     margin-bottom: 5px;
     color: #3d3d3d;
 }
+
+select {
+    width: 100%;
+    height: 35px;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box;
+  }
+  
 
 .user, .pass {
     width: 100%;
@@ -82,6 +111,10 @@ body {
 .submit:hover {
     background-color: rgb(150, 157, 165);
     color: #eaf5ff;
+}
+
+.login {
+    text-align: center;
 }
 
 .login a{

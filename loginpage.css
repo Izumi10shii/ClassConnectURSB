@@ -8,11 +8,30 @@ body {
     height: 100%;
 }
 
-.content { 
+.frontpage {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
+    padding: 40px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.pic {
+    flex: 1;
+    height: 400px;
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+}
+
+.content { 
+    flex: 1;
+    padding-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     height: 100vh;
 }
