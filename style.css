@@ -8,7 +8,18 @@ body {
     height: 100%;
 }
 
+.frontpage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
 .content {
+    flex: 1;
+    padding-right: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,15 +29,31 @@ body {
 }
 
 .title {
-    display: flex;
-    color: #9AA6B2;
-    font-size: 6rem;
-
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .subtitle {
-    color: #9AA6B2;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+.login, .register {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.pic {
+    flex: 1;
+    height: 400px;
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
 }
 
 .enter {

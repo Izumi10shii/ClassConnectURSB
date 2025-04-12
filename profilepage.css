@@ -10,21 +10,47 @@ body {
 
 .content { 
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     flex-direction: column;
-    height: 100vh;
     padding: 20px;
 }
 
 .title {
+    display: flex;
     font-size: 4rem;
     margin-bottom: 30px;
     font-weight: bold;
 }
 
-.submit {
+.picture {
+    border-radius: 100px;
+    width: 10rem;
+    height: 10rem;
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.detail-row {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    gap: 20px;
+}
+
+.detail-row label {
+    padding: 10px;
+    font-size: 2rem;
+    font-weight: bold; 
+}
+
+.edit {
     align-self: center;
     font-size: 1.2rem;
     color: #ffffff;
@@ -38,7 +64,7 @@ body {
     width: 400px;
 }
 
-.submit:hover {
+.edit:hover {
     background-color: rgb(150, 157, 165);
     color: #eaf5ff;
 }
