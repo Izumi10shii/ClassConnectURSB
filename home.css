@@ -16,16 +16,14 @@ body {
 .homeHeader{
     background-color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     width: 100vw;
-    justify-content: space-between;
     align-items: center;
     border: 1px solid black;
-    padding: 10px;
+    gap: 40px;
 }
 .homeHeader .search{
-
     padding: 10px 20px;
     padding-right: 600px;
     border-radius: 10px;
@@ -51,7 +49,7 @@ font-size: 40px;
     background-color: white;
     color: black;
     padding: 20px;
-    height: 85vh;
+    height: 87vh;
     width: 260px;
 
     list-style-type: none;
@@ -61,6 +59,26 @@ font-size: 40px;
     justify-content: start;
     align-items: start;
     border: 1px solid black;
+}
+.leftSideUp{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 50%;
+}
+.leftSideDown{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.leftSideDown > div{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.leftSideDown > div > div{
+    display: inline;
 }
 .scrollContainer{
     display: flex;
@@ -75,13 +93,14 @@ font-size: 40px;
     align-items: start;
     flex-direction: column;
     text-align: justify;
+
     background-color: white;
     border: 1px solid black;
     padding: 20px;
     gap:20px;
     width: 90%;
-    margin: 40px;
-    height: 20%;
+    margin: 20px;
+    
     box-shadow: 0 0 2px black;
     border-radius: 15px;
 }
@@ -109,9 +128,17 @@ font-size: 40px;
     display: flex;
     
 }
+
 .interactionHeader{
     display: flex;
     gap: 20px;
+}
+.interactionHeader button{
+    border: none;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
 }
 .commentSection{
     background-color: #1e1e1e;
@@ -126,7 +153,31 @@ font-size: 40px;
 .sendCommentBTN{
     padding: 10px 40px;
 }
+.rightSidebar h2{
+
+}
 .rightSidebar{
     background-color: white;
     width: 400px;
+    border: 1px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: center;
+    gap: 20px;
+}
+.rightSidebar > div{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+.rightSidebar button{
+    padding: 10px;
+    border-radius: 15px ;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 20px;
 }
