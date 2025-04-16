@@ -1,19 +1,22 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-html{
+
+html {
     overflow-x: hidden;
 }
+
 body {
-     background-color: white;
+    background-color: white;
     color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.homeHeader{
+
+.homeHeader {
     background-color: white;
     display: flex;
     justify-content: space-around;
@@ -23,33 +26,38 @@ body {
     border: 1px solid black;
     gap: 40px;
 }
-.homeHeader .search{
+
+.homeHeader .search {
     padding: 10px 20px;
     padding-right: 600px;
     border-radius: 10px;
     border: 1px solid #C2C2C2;
 }
-.homeHeader h1{
+
+.homeHeader h1 {
     padding-left: 20px;
     font-size: 40px;
 }
-.addPostBtn{
+
+.addPostBtn {
     background-color: black;
     padding: 10px;
     color: white;
     border: 1px solid white;
-    margin: 10px 40px; 
+    margin: 10px 40px;
     font-weight: bold;
     border-radius: 10px;
 }
-.HomeContainer{
+
+.HomeContainer {
     display: flex;
 }
-.leftSidebar{
+
+.leftSidebar {
     background-color: white;
     color: black;
     padding: 20px;
-    height: 87vh;
+
     width: 260px;
 
     list-style-type: none;
@@ -60,67 +68,146 @@ body {
     align-items: start;
     border: 1px solid black;
 }
-.leftSideUp{
+
+.leftSideUp {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     height: 50%;
 }
-.leftSideDown{
+
+.leftSideDown {
     height: 50%;
     display: flex;
     flex-direction: column;
 }
-.leftSideDown > div{
+
+.leftSideDown>div {
     display: flex;
     flex-direction: column;
     margin: 20px;
 }
-.leftSideDown > div > div{
+
+.leftSideDown>div>div {
     display: inline;
 }
-.scrollContainer{
+
+.scrollContainer {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: start;
-    width: 80vw;
+    align-items: center;
 }
-.post{
+
+.communityPageInfo {
     display: flex;
-    justify-self: start;
-    align-items: start;
     flex-direction: column;
-    text-align: justify;
-    background-color: white;
-    padding: 20px;
-    gap:20px;
-    width: 90%;
-    margin: 20px;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
 }
-.post button{
+
+.communityPageInfo button {
     padding: 10px;
     border: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+
+.BGContainer {
+    width: 100%;
+    height: 200px;
+    z-index: 100;
+    background-color: gray;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.PagePfp {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 99px;
+    margin-left: 10px;
+}
+
+.communityRow {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.communityHighlights {
+    width: 90%;
+    height: 300px;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.communityHighlights button {
+    border: none;
+    padding: 10px 20px;
     background-color: black;
     color: white;
     border-radius: 20px;
 }
-.post #titleInput{
-    width: 100%;
-    padding: 5px;
-    border-radius: 20px;
-    border: 1px solid #C2C2C2;
-    height: 50px;
+
+.communityHighlightsRow {
+    display: flex;
+    gap: 20px;
 }
-.post #bodyInput{
-    width: 100%;
-    padding: 5px;
-    border-radius: 20px;
-    border: 1px solid #C2C2C2;
-    height: 300px;
+
+.communityHighlights .CHpost {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    gap: 20px;
+    width: 90%;
+    margin: 20px;
+
+    box-shadow: 0 0 2px black;
+    border-radius: 15px;
 }
-.pfp{
+
+.postRow {
+    display: flex;
+}
+
+.post {
+    display: flex;
+    justify-self: center;
+    align-items: start;
+    flex-direction: column;
+    text-align: justify;
+
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    gap: 20px;
+    width: 90%;
+    margin: 20px;
+
+    box-shadow: 0 0 2px black;
+    border-radius: 15px;
+}
+
+.pfp {
     border-radius: 100px;
     width: 40px;
     height: 40px;
@@ -129,89 +216,57 @@ body {
     display: grid;
     place-content: center;
 }
-.postHeader{
+
+.postHeader {
     display: flex;
     justify-content: start;
     align-items: center;
     gap: 20px;
 }
-.postHeader .postHeaderPoster{
+
+.postHeader .postHeaderPoster {
     display: flex;
-    
-    
-}
-.postHeader .postHeader .postHeaderCol{
-    display: flex;
-    
+
+
 }
 
-.interactionHeader{
+.postHeader .postHeader .postHeaderCol {
+    display: flex;
+
+}
+
+.interactionHeader {
     display: flex;
     gap: 20px;
-    width: 100%;
-    justify-content: end;
 }
-.interactionHeader button{
+
+.interactionHeader button {
     border: none;
     padding: 10px 20px;
     background-color: black;
     color: white;
     border-radius: 20px;
 }
-.commentSection{
-    border: 1px solid none;
+
+.commentSection {
+    background-color: #1e1e1e;
     padding: 20px;
     width: 95%;
+    border-radius: 10px;
 }
-.inputComment{
-    width: 600px;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #C2C2C2;
-}
-.commentSection > button{
-    background-color: black;
-    color: white;
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
-}
-.commentUserRow{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 20px;   
-}
-.comment{
-    margin: 20px 0px;
-    padding: 10px 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    gap: 8px;
-}
-.commentBTNRow{
+
+.addComment {
     display: flex;
     gap: 20px;
 }
-.commentBTNRow button{
-    padding: 5px 10px;
-    background-color: none;
-    border-radius: 20px;
-    border: none;
-}
-.addComment{
-    display: flex;
-    gap: 20px;
-}
-.sendCommentBTN{
+
+.sendCommentBTN {
     padding: 10px 40px;
 }
-.rightSidebar h2{
 
-}
-.rightSidebar{
+.rightSidebar h2 {}
+
+.rightSidebar {
     background-color: white;
     width: 400px;
     border: 1px solid black;
@@ -222,15 +277,17 @@ body {
     align-content: center;
     gap: 20px;
 }
-.rightSidebar > div{
+
+.rightSidebar>div {
     display: flex;
     justify-content: start;
     align-items: center;
     gap: 20px;
 }
-.rightSidebar button{
+
+.rightSidebar button {
     padding: 10px;
-    border-radius: 15px ;
+    border-radius: 15px;
     border: none;
     background-color: black;
     color: white;
