@@ -1,11 +1,64 @@
 body {
-    margin: 5;
-    box-sizing: border-box;
+    margin: 0;
     padding: 0;
-    background: linear-gradient(180deg,#F8FAFC, #D9EAFD);
-    background-attachment: fixed;
+    box-sizing: border-box;
     font-family: sans-serif;
     height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('DESIGN\ MATERIALS/CLASS CONNECT INDEX BACKGROUND.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.title, .subtitle {
+    color: white;
+    text-align: left;
+
+text-align: center;
+margin: 0 auto;
+}
+
+.page-wrapper {
+    height: 100vh;
+    background: url('DESIGN MATERIALS/CLASS CONNECT INDEX BACKGROUND.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.fade-zoom-out {
+    animation: fadeZoomOut 1s forwards;
+}
+
+@keyframes fadeZoomOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+}
+
+.custom-button {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.7s ease;
+    border-radius: 777px;
+    margin: 10px;
+}
+
+.custom-button:hover {
+    background-color: white;
+    color: black;
+    font-weight: bold;
 }
 
 .frontpage {
@@ -32,6 +85,7 @@ body {
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
+    color: white;
 }
 
 .subtitle {
@@ -39,53 +93,84 @@ body {
     margin-bottom: 40px;
     max-width: 500px;
     text-align: center;
-}
-
-.login, .register {
-    padding: 10px 20px;
-    font-size: 1rem;
-    margin-right: 10px;
-    cursor: pointer;
+    color: white;
 }
 
 .pic {
     flex: 1;
     height: 400px;
-    background-color: #ccc;
+    background-image: url('DESIGN MATERIALS/sample.png');
     background-size: cover;
     background-position: center;
     border-radius: 20px;
+    transition: background-image 0.5s ease-in-out;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.text {
-    font-size: 7rem;
-    color: #939ba3;
+.dots-container-wrapper {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 999px;
+    padding: 6px 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
 }
 
-.text1 {
-    font-size: 5rem;
-    color: #a5c9ec;
+.dots-container {
+    display: flex;
+    gap: 10px;
 }
 
-.text, .text1 {
-    top: calc(100vh - 50%);
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: opacity 0.5s ease, background-color 0.5s ease;
+    opacity: 0.5;
 }
 
-
-.login, .register {
-    margin-top: 10px;
-    font-size: 2rem;
-    color: #ffffff;
-    font-family: sans-serif;
-    border-radius: 10px;
-    background-color: #BCCCDC;
-    border: #ecf0ff solid 2px;
-    padding: 15px;
-    transition: 0.3s ease-in-out;
-    width: 500px;
+.dot.active {
+    background-color: white;
+    opacity: 1;
 }
 
-.login:hover, .register:hover {
-    background-color:rgb(150, 157, 165);
-    color: #eaf5ff;
+.prev-arrow, .next-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    z-index: 2;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.prev-arrow {
+    left: 20px;
+}
+
+.next-arrow {
+    right: 20px;
+}
+
+.prev-arrow:hover, .next-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
 }

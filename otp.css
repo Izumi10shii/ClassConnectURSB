@@ -1,18 +1,20 @@
 body {
+    height: 100vh;
     margin: 0;
-    box-sizing: border-box;
-    padding: 0;
-    background: linear-gradient(180deg, #F8FAFC, #D9EAFD);
-    background-attachment: fixed;
-    font-family: sans-serif;
-    height: 100%;
+    background: url('DESIGN MATERIALS/sample5.png') no-repeat center center fixed;
+    background-size: cover;
+    animation: fadeZoomIn 1s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .box {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .content {
@@ -50,7 +52,7 @@ body {
     color: #ffffff;
     font-family: sans-serif;
     border-radius: 10px;
-    background-color: #818d99;
+    background-color: #0051ff;
     border: #ecf0ff solid 2px;
     padding: 10px 20px;
     transition: 0.3s ease-in-out;
@@ -59,6 +61,32 @@ body {
 }
 
 .submit:hover {
-    background-color: rgb(150, 157, 165);
+    background-color: rgb(64, 153, 255);
     color: #eaf5ff;
+}
+
+@keyframes fadeZoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fade-zoom-out {
+    animation: fadeZoomOut 1s forwards;
+}
+
+@keyframes fadeZoomOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
 }
