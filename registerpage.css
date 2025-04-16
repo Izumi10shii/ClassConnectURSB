@@ -94,6 +94,22 @@ select {
     box-sizing: border-box;
 }
 
+.toggle {
+    position: relative;
+}
+
+#togglePassword, #toggleConfirmPassword {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+
+
 .submit {
     align-self: center;
     font-size: 1.2rem;

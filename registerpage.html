@@ -11,26 +11,41 @@
         <div class="content">
             <div class="title">Welcome to ClassConnect!</div>
     
-            <div class="regbox">
+            <form class="regbox">
                 <div class="label-group">
                     <label for="userid">Username/Student ID:</label>
-                    <input type="text" id="userid" class="user" placeholder="e.g., B2025-12345">
+                    <input type="text" id="userid" class="user" placeholder="e.g., B2025-12345" required>
                 </div>
+
                 <div class="label-group">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" class="user" placeholder="e.g., john_doe">
+                    <input type="text" id="username" class="user" placeholder="e.g., john_doe" required>
                 </div>
+
                 <div class="label-group">
                     <label for="fullname">Full Name:</label>
-                    <input type="text" id="fullname" class="user" placeholder="e.g., John Doe">
+                    <input type="text" id="fullname" class="user" placeholder="e.g., John Doe" required>
                 </div>
+
                 <div class="label-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" class="pass" placeholder="********">
+                    <div class="toggle">
+                        <input type="password" id="password" class="pass" placeholder="********" required>
+                        <button type="button" id="togglePassword">Show</button>
+                    </div>
                 </div>
+
+                <div class="label-group">
+                    <label for="confirmpassword">Confirm Password:</label>
+                    <div class="toggle">
+                        <input type="password" id="confirmpassword" class="pass" placeholder="********" required>
+                        <button type="button" id="toggleConfirmPassword">Show</button>
+                    </div>
+                </div>
+
                 <div class="label-group">
                     <label for="program">Program:</label>
-                    <select id="program" name="program">
+                    <select id="program" name="program" required>
                         <option value="" disabled selected>Select your program</option>
                         <option value="IT">Information Technology</option>
                         <option value="IS">Information Systems</option>
@@ -41,13 +56,10 @@
                         <option value="HRM">Human Resource Development</option>
                     </select>
                 </div>
-                <div class="label-group">
-                    <label for="confirmpassword">Confirm Password:</label>
-                    <input type="password" id="confirmpassword" class="pass" placeholder="********">
-                </div>
+
                 <div class="label-group">
                     <label for="yearsec">Year & Section:</label>
-                    <select id="yearsec" name="yearsec">
+                    <select id="yearsec" name="yearsec" required>
                         <option value="" disabled selected>Select your Year & Section</option>
                         <!-- 1st Year -->
                         <option value="1-1A">1-1A</option>
@@ -93,12 +105,32 @@
                 <div class="bottomtext">
                     <div class="login">Already a ClassConnect user? <a href="loginpage.html">Login</a> Here!</div>
                 </div>
-            </div>
+            </form>
         </div>
     
         <div class="pic"></div>
     </div>
     
-    
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordField = document.getElementById('password');
+      
+        togglePassword.addEventListener('click', () => {
+          const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordField.setAttribute('type', type);
+          
+          togglePassword.textContent = type === 'password' ? 'Show' : 'Hide';
+        });
+
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        const confirmpasswordField = document.getElementById('confirmpassword');
+      
+        toggleConfirmPassword.addEventListener('click', () => {
+          const type = confirmpasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+          confirmpasswordField.setAttribute('type', type);
+          
+          toggleConfirmPassword.textContent = type === 'password' ? 'Show' : 'Hide';
+        });
+      </script>
 </body>
 </html>

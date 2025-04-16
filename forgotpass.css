@@ -1,0 +1,133 @@
+body {
+    height: 100vh;
+    margin: 0;
+    background: url('DESIGN MATERIALS/sample5.png') no-repeat center center fixed;
+    background-size: cover;
+    animation: fadeZoomIn 1s ease-out;
+    display: flex;
+    font-family: sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.content {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 500px;
+    max-width: 100%;
+    position: relative;
+}
+
+.fgt {
+    font-size: 3rem;
+}
+
+.email {
+    border-radius: 10px;
+    font-size: 1.2rem;
+    height: 30px;
+    text-align: center;
+    width: 400px;
+    max-width: 1000px;
+    border-color: #D9EAFD;
+    color: rgb(54, 53, 53);
+}
+
+.content p {
+    text-align: center;
+}
+
+.content label {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.submit {
+    align-self: center;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-family: sans-serif;
+    border-radius: 10px;
+    background-color: #0051ff;
+    border: #ecf0ff solid 2px;
+    padding: 10px 20px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    width: 250px;
+}
+
+.submit:hover {
+    background-color: rgb(64, 153, 255);
+    color: #eaf5ff;
+}
+
+.return {
+    align-self: center;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-family: sans-serif;
+    border-radius: 10px;
+    background-color: #0051ff;
+    border: #ecf0ff solid 2px;
+    padding: 10px 20px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    width: 250px;
+    display: none;
+    margin-top: 20px;
+}
+
+.return:hover {
+    background-color: rgb(64, 153, 255);
+    color: #eaf5ff;
+}
+
+.message{
+    display: none;
+    margin-top: 20px;
+    color: green;
+    font-size: 1.2rem;
+  }
+
+
+
+@keyframes fadeZoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fade-zoom-out {
+    animation: fadeZoomOut 1s forwards;
+}
+
+@keyframes fadeZoomOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+}
