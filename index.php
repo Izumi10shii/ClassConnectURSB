@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClassConnect</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -14,8 +14,8 @@
                 <div class="title">CLASS CONNECT</div>
                 <div class="subtitle">A Web-Based System Dedicated For 
                     University of Rizal System - Binangonan Students</div>
-                <button class="custom-button" onclick="navigateWithEffect('loginpage.html')">LOGIN</button>
-                <button class="custom-button" onclick="navigateWithEffect('registerpage.html')">REGISTER</button>
+                <button class="custom-button" onclick="navigateWithEffect('php/loginpage.html')">LOGIN</button>
+                <button class="custom-button" onclick="navigateWithEffect('php/registerpage.html')">REGISTER</button>
             </div>
             
             <div class="pic" id="imageBanner">
