@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="registerpage.css">
 </head>
+
 <body>
     <div class="frontpage">
         <div class="content">
             <div class="title">Welcome to ClassConnect!</div>
-    
+
             <form class="regbox">
                 <div class="label-group">
                     <label for="userid">Username/Student ID:</label>
@@ -73,7 +75,7 @@
                         <option value="1-5A">1-5A</option>
                         <option value="1-5B">1-5B</option>
 
-  
+
                         <!-- 2nd Year -->
                         <option value="2-1A">2-1A</option>
                         <option value="2-1B">2-1B</option>
@@ -81,7 +83,7 @@
                         <option value="2-2B">2-2B</option>
                         <option value="2-3A">2-3A</option>
                         <option value="2-3B">2-3B</option>
-                      
+
                         <!-- 3rd Year -->
                         <option value="3-1A">3-1A</option>
                         <option value="3-1B">3-1B</option>
@@ -89,7 +91,7 @@
                         <option value="3-2B">3-2B</option>
                         <option value="3-3A">3-3A</option>
                         <option value="3-3B">3-3B</option>
-                      
+
                         <!-- 4th Year -->
                         <option value="4-1A">4-1A</option>
                         <option value="4-1B">4-1B</option>
@@ -99,38 +101,40 @@
                         <option value="4-3B">4-3B</option>
                     </select>
                 </div>
-    
-                <a href="otp.html"><button type="submit" class="submit">REGISTER NEW ACCOUNT</button></a>
-    
+
+                <button type="submit" class="submit" onclick="window.location.href='loginpage.html'">REGISTER NEW
+                    ACCOUNT</button>
+
                 <div class="bottomtext">
                     <div class="login">Already a ClassConnect user? <a href="loginpage.html">Login</a> Here!</div>
                 </div>
             </form>
         </div>
-    
+
         <div class="pic"></div>
     </div>
-    
+
     <script>
         const togglePassword = document.getElementById('togglePassword');
         const passwordField = document.getElementById('password');
-      
+
         togglePassword.addEventListener('click', () => {
-          const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
-          passwordField.setAttribute('type', type);
-          
-          togglePassword.textContent = type === 'password' ? 'Show' : 'Hide';
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+
+            togglePassword.textContent = type === 'password' ? 'Show' : 'Hide';
         });
 
         const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
         const confirmpasswordField = document.getElementById('confirmpassword');
-      
+
         toggleConfirmPassword.addEventListener('click', () => {
-          const type = confirmpasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
-          confirmpasswordField.setAttribute('type', type);
-          
-          toggleConfirmPassword.textContent = type === 'password' ? 'Show' : 'Hide';
+            const type = confirmpasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmpasswordField.setAttribute('type', type);
+
+            toggleConfirmPassword.textContent = type === 'password' ? 'Show' : 'Hide';
         });
-      </script>
+    </script>
 </body>
+
 </html>
