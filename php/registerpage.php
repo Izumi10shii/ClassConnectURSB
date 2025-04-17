@@ -13,26 +13,31 @@
         <div class="content">
             <div class="title">Welcome to ClassConnect!</div>
 
-            <form class="regbox">
+            <form class="regbox" method="POST" action="confirm_registration.php">
                 <div class="label-group">
-                    <label for="userid">Username/Student ID:</label>
-                    <input type="text" id="userid" class="user" placeholder="e.g., B2025-12345" required>
+                    <label for="userid">Student ID:</label>
+                    <input type="text" name="userid" id="userid" class="user" placeholder="e.g., B2025-12345" required>
                 </div>
 
                 <div class="label-group">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" class="user" placeholder="e.g., john_doe" required>
+                    <input type="text" name="username" id="username" class="user" placeholder="e.g., john_doe" required>
                 </div>
 
                 <div class="label-group">
-                    <label for="fullname">Full Name:</label>
-                    <input type="text" id="fullname" class="user" placeholder="e.g., John Doe" required>
+                    <label for="firstname">First Name:</label>
+                    <input type="text" name="firstname" id="firstname" class="user" placeholder="e.g., Chris Pea" required>
+                </div>
+
+                <div class="label-group">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" name="lastname" id="lastname" class="user" placeholder="e.g., Bacon" required>
                 </div>
 
                 <div class="label-group">
                     <label for="password">Password:</label>
                     <div class="toggle">
-                        <input type="password" id="password" class="pass" placeholder="********" required>
+                        <input type="password" name="password" id="password" class="pass" placeholder="********" required>
                         <button type="button" id="togglePassword">Show</button>
                     </div>
                 </div>
@@ -46,16 +51,21 @@
                 </div>
 
                 <div class="label-group">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email" class="user" placeholder="e.g., ursb@cc.com" required>
+                </div>
+
+                <div class="label-group">
                     <label for="program">Program:</label>
                     <select id="program" name="program" required>
                         <option value="" disabled selected>Select your program</option>
-                        <option value="IT">Information Technology</option>
-                        <option value="IS">Information Systems</option>
-                        <option value="AC">Accountancy</option>
-                        <option value="OA">Office Administration</option>
-                        <option value="MM">Marketing Management</option>
-                        <option value="FM">Financial Management</option>
-                        <option value="HRM">Human Resource Development</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Information Systems">Information Systems</option>
+                        <option value="Accountancy">Accountancy</option>
+                        <option value="Office Administration">Office Administration</option>
+                        <option value="Marketing Management">Marketing Management</option>
+                        <option value="Financial Management">Financial Management</option>
+                        <option value="Human Resource Development">Human Resource Development</option>
                     </select>
                 </div>
 
@@ -102,11 +112,13 @@
                     </select>
                 </div>
 
-                <button type="submit" class="submit" onclick="window.location.href='loginpage.html'">REGISTER NEW
+                <!--After Register - should send email with Welcome Message-->
+
+                <button type="submit" class="submit" onclick="window.location.href='loginpage.php'">REGISTER NEW
                     ACCOUNT</button>
 
                 <div class="bottomtext">
-                    <div class="login">Already a ClassConnect user? <a href="loginpage.html">Login</a> Here!</div>
+                    <div class="login">Already a ClassConnect user? <a href="loginpage.php">Login</a> Here!</div>
                 </div>
             </form>
         </div>

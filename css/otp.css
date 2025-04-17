@@ -56,9 +56,22 @@ body {
     max-width: 100px;
     border-color: #D9EAFD;
     color: rgb(54, 53, 53);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
 }
 
 .submit {
+    margin-top: 20px;
     align-self: center;
     font-size: 1.2rem;
     color: #ffffff;
@@ -76,6 +89,29 @@ body {
     background-color: rgb(64, 153, 255);
     color: #eaf5ff;
 }
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+
 
 @keyframes fadeZoomIn {
     0% {

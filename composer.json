@@ -1,0 +1,13 @@
+{
+    "name": "codespace/class-connect-ursb",
+    "description": "PHPMailer",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "authors": [
+        {
+            "name": "Izumi10shii",
+            "email": "133224338+Izumi10shii@users.noreply.github.com"
+        }
+    ]
+}

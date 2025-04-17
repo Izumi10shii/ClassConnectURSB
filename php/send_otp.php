@@ -4,7 +4,7 @@ session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 $email = $_POST['email'];
 
@@ -12,9 +12,9 @@ $otp = rand(100000, 999999);
 
 $_SESSION['otp'] = $otp;
 
-$user = $_POST['username'];
+//$user = $_POST['username'];
 $subject = "Your OTP Code for ClassConnect URSB";
-$body = "Hi $user, Your One-Time Password (OTP) for ClassConnectURSB is: <b>$otp</b>";
+$body ="Your One-Time Password (OTP) for ClassConnectURSB is: <b>$otp</b>";
 
 $mail = new PHPMailer(true);
 

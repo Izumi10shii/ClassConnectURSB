@@ -14,8 +14,8 @@
                 <div class="title">CLASS CONNECT</div>
                 <div class="subtitle">A Web-Based System Dedicated For 
                     University of Rizal System - Binangonan Students</div>
-                <button class="custom-button" onclick="navigateWithEffect('php/loginpage.html')">LOGIN</button>
-                <button class="custom-button" onclick="navigateWithEffect('php/registerpage.html')">REGISTER</button>
+                <button class="custom-button" onclick="navigateWithEffect('php/loginpage.php')">LOGIN</button>
+                <button class="custom-button" onclick="navigateWithEffect('php/registerpage.php')">REGISTER</button>
             </div>
             
             <div class="pic" id="imageBanner">

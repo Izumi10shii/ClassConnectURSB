@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +14,11 @@
     <div class="frontpage">
         <div class="content">
             <div class="title">Welcome Back!</div>
-            <form class="loginbox">
+            <form class="loginbox" method="POST" action="send_otp.php">
                 <div class="label-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" class="user" placeholder="B2025-12345" required>
+                <!--EMAIL FOR NOW SINCE NO DATABASE-->
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="user" name="email" placeholder="ursb@cc.com" required>
                 </div> 
                 <div class="label-group">
                     <label for="password">Password:</label>
@@ -24,10 +29,10 @@
                 </div>
                 <div class="forgot"><a href="forgotpass.html">Forgot Password</a></div>
                 <div class="button-container">
-                    <button type="button" class="submit" onclick="window.location.href='otp.html'">LOGIN</button>
+                    <button type="submit" class="submit">LOGIN</button>
                 </div>
                 <div class="bottomtext">
-                    <div class="register">New User? <a href="registerpage.html">Register</a> Now!</div>
+                    <div class="register">New User? <a href="registerpage.php">Register</a> Now!</div>
                 </div>
             </form>
         </div>
