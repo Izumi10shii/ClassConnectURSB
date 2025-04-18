@@ -1,12 +1,19 @@
 <?php
-session_start();
+// Check if form data is posted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirm_password'];
 
-$form_data = $_POST;
-unset($form_data['password']);
-unset($form_data['confirmpassword']);
-
-$_SESSION['form_data'] = $form_data;
-
+    // Check if the passwords match
+    if ($password !== $confirmPassword) {
+        header("Location: registerpage.php?error=password_mismatch");
+        exit();
+    }
+    else {
+        unset($_POST['confirm_password']);
+        unset($_POST['password']);
+    }
+}
 ?>
 
 <!DOCTYPE html>

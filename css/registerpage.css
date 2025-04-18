@@ -2,11 +2,20 @@ body {
     margin: 0;
     box-sizing: border-box;
     padding: 0;
-    background: linear-gradient(180deg, #F8FAFC, #D9EAFD);
-    background-attachment: fixed;
+    background: url('../bg/sample7.png') no-repeat center center fixed;
+    background-size: cover;
     font-family: sans-serif;
     height: 100%;
     overflow-y: auto;
+}
+
+.title {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .frontpage {
@@ -24,15 +33,15 @@ body {
     top: calc(100vh - 80%);
     width: 50vw;
     height: 400px;
-    background-color: #ccc;
+    background-image: url('../bg/sample6.png');
     background-size: cover;
     background-position: center;
     border-radius: 20px;
-    z-index: -1
+    z-index: -1;
 }
 
 .content {
-    margin-right: 50vw; 
+    margin-right: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,83 +49,75 @@ body {
     min-height: 100vh;
 }
 
-
-.title {
-    font-size: 4rem;
-    margin-bottom: 30px;
-    font-weight: bold;
-    text-align: center;
-}
-
 .regbox {
-    background-color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 25px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     gap: 20px;
     max-width: 500px;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .label-group {
     display: flex;
-    flex-direction: column;
-    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+   
 }
 
 .label-group label {
     font-size: 1.2rem;
     margin-bottom: 5px;
-    color: #3d3d3d;
+    color: white;
+    margin-right: 10px;
+    
 }
 
-select {
-    width: 100%;
+.user, .pass, select, #confirmPassword {
+    background: rgba(0, 1, 14, 0.2);
+    color: white;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 12px;
     height: 35px;
-    font-size: 1.1rem;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    color: #333;
-    box-sizing: border-box;
-  }
-  
+    padding: 0 10px;
+    width: 250px;
+}
 
-.user, .pass {
-    width: 100%;
-    height: 35px;
-    font-size: 1.1rem;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
+.user:focus, .pass:focus, select:focus, #confirmPassword:focus {
+    outline: none;
+    border-color: #1a3d8f;
+    box-shadow: 0 0 5px rgba(26, 61, 143, 0.8);
+}
+
+.user::placeholder, .pass::placeholder, #confirmPassword::placeholder {
+    color: #f0f0f0;
+}
+
+select option {
+    background-color: #1a3d8f;
+    color: white;
 }
 
 .toggle {
-    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 }
-
-#togglePassword, #toggleConfirmPassword {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: black;
-}
-
 
 .submit {
-    align-self: center;
+    align-self: center; 
     font-size: 1.2rem;
     color: #ffffff;
     font-family: sans-serif;
     border-radius: 10px;
-    background-color: #818d99;
+    background-color: #518ef7;
     border: #ecf0ff solid 2px;
     padding: 10px 20px;
     transition: 0.3s ease-in-out;
@@ -125,7 +126,7 @@ select {
 }
 
 .submit:hover {
-    background-color: rgb(150, 157, 165);
+    background-color: #1a3d8f;
     color: #eaf5ff;
 }
 
@@ -133,7 +134,39 @@ select {
     text-align: center;
 }
 
-.login a{
+.login a {
     text-decoration: none;
-    color: #777794;
+    color: #fbff00;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-container input {
+    width: 100%;
+    padding-right: 40px; /* Add space for the icon */
+}
+
+.input-container .toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container .toggle-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: #e3e3e3; /* Icon color */
+}
+
+.input-container .toggle-icon:hover svg {
+    fill: #ffffff; /* Change color on hover */
 }

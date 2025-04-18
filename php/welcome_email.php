@@ -4,7 +4,7 @@ session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php'; // Adjust path if needed
+require '../vendor/autoload.php';
 
 $data = $_SESSION['form_data'];
 
