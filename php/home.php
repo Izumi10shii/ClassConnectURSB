@@ -11,9 +11,9 @@
 <body>
     <nav class="homeHeader">
         <h1>Class Connect</h1>
-        <input class="search" type="text" placeholder="search">
+        <input class="search" type="text" placeholder="Search">
         <a href="addPost.php">
-            <button class="addPostBtn">Add new Post</button>
+            <button class="addPostBtn">Create Post</button>
         </a>
         <a href="userPage.php"><div class="pfp profile"></div></a>
     </nav>
@@ -32,7 +32,13 @@
 
                 <div class="popularbtn lsu">File Storage</div>
                 <div class="popularbtn lsu">Profile</div>
-                <div class="popularbtn lsu">Settinggs</div>
+
+                <div class="popularbtn lsu">
+                <a href="adminUsersList.php">
+                        Registered Users
+                    </a>
+                </div>
+                <div class="popularbtn lsu">Settings</div>
 
             </div>
             <div class="leftSideDown">

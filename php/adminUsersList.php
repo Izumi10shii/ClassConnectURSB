@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/adminUsersList.css">
 </head>
 <body>
-    USER LIST PAGE
+
     <div class="userListContainer">
     
     <div class="header">
@@ -46,8 +46,10 @@
     
     <div class="col">
         <h2>Actions</h2>
-        <button>Edit</button>
-        <button>Delete</button>
+        <div class="buttons">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
     </div>
     
 </div>

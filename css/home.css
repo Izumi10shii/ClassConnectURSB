@@ -46,9 +46,9 @@ body {
     justify-content: space-around;
     align-items: center;
     width: 100vw;
-    border: 1px solid black;
+    box-shadow: 0 0 2px black;
     gap: 40px;
-    padding: 15px 0;
+    padding:  0;
     animation: fadeSlide 0.8s ease-out;
 }
 
@@ -56,17 +56,21 @@ body {
     padding-left: 20px;
     font-size: 40px;
     color: white;
+    border: none;
 }
 
 .homeHeader .search {
+
     padding: 10px 20px;
-    padding-right: 600px;
-    border-radius: 10px;
-    border: 1px solid #C2C2C2;
+    border-radius: 100px;
+    border: none;
     color: black;
     font-size: 1rem;
-}
+    width: 800px;
 
+  
+
+}
 .homeHeader a {
     text-decoration: none;
     color: white;
@@ -79,7 +83,7 @@ body {
     border: 1px solid white;
     margin: 10px 40px;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: 0.3s ease-in-out;
 }
 
@@ -95,6 +99,7 @@ body {
 }
 
 .leftSidebar {
+    box-shadow: 0 0 2px black;
     background-color: white;
     color: black;
     padding: 20px;
@@ -106,7 +111,7 @@ body {
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    border: 1px solid black;
+    border: none;
     animation: fadeIn 1s ease;
 }
 
@@ -123,7 +128,7 @@ body {
 /* Buttons of leftSideUp*/
 .lsu {
     margin: 5px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     /*background-color: rgb(0, 0, 0);*/
     padding: 10px;
     border-radius: 10px;
@@ -131,6 +136,10 @@ body {
     color: black;
     text-align: left;
     font-weight: bold;
+}
+.lsu:hover {
+    background-color: #e6ecff;
+    color: #0036a5;
 }
 
 .lsu a {
@@ -170,22 +179,28 @@ body {
     flex-direction: column;
     text-align: justify;
     background-color: white;
-    border: 1px solid black;
+    border: none;
     padding: 20px;
     gap: 20px;
     width: 90%;
     margin: 20px;
     box-shadow: 0 0 2px black;
-    border-radius: 15px;
+    border-radius: 20px;
     animation: fadeIn 1s ease;
+}
+.scrollContainer a{    
+    text-decoration: none;
+    color: black;
+
 }
 
 .pfp {
     border-radius: 100px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid #C2C2C2;
+
     display: grid;
     place-content: center;
 }
@@ -213,7 +228,8 @@ body {
 .interactionHeader button {
     border: none;
     padding: 10px 20px;
-    background-color: black;
+    background-color: #0051ff;
+    box-shadow: 0 0 2px #0051ff;
     color: white;
     border-radius: 20px;
 }
@@ -232,33 +248,4 @@ body {
 
 .sendCommentBTN {
     padding: 10px 40px;
-}
-
-.rightSidebar {
-    background-color: white;
-    width: 400px;
-    border: 1px solid black;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-content: center;
-    gap: 20px;
-    animation: fadeIn 1s ease;
-}
-
-.rightSidebar > div {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 20px;
-}
-
-.rightSidebar button {
-    padding: 10px;
-    border-radius: 15px;
-    border: none;
-    background-color: black;
-    color: white;
-    font-size: 20px;
 }

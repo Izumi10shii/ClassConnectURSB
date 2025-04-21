@@ -1,56 +1,68 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.userListContainer {
+  display: flex;
+  flex-direction: column;
 
-.userListContainer{
-    
-    display: flex;
-    flex-direction: column;
-    
-    width: 80%;
-    padding: 20px;
+  width: 80%;
+  padding: 20px;
 }
-.header{
-    display: flex;
+.header {
+  display: flex;
 
-    justify-content: space-between;
-    margin: 20px 0;
+  justify-content: space-between;
+  margin: 20px 0;
 }
 .header h2 {
-    font-size: 40px;
+  font-size: 40px;
 }
-.userListContainer .table{
-    justify-content: space-around;
-    background-color: #F3F3F3;
-    display: flex;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 2px black;
+.userListContainer .table {
+  justify-content: start;
+  background-color: #f3f3f3;
+  display: flex;
+
+  border-radius: 20px;
+  box-shadow: 0 0 2px black;
+  padding: 0px 20px;
 }
-.addUserBTN{
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: none;
-    box-shadow: 0 0 2px black;
+.addUserBTN {
+  padding: 5px 20px;
+  border-radius: 100px;
+  border: none;
+  box-shadow: 0 0 2px black;
 }
-.col{
-    
+.col {
+  background-color: #fefefe;
+  border: 1px solid black;
 }
-.col *{
-    background-color: #ffffff;
-    padding: 10px 20px;
-    margin: 10px 0;
-    box-shadow: 0 0 2px black;
-    border: none;
-    border-radius: 100px;
+.col * {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px;
+  box-shadow: 0 0 2px black;
+  border: none;
+}
+.buttons {
+    padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+}
+.buttons button {
+  padding: 6px;
+  border-radius: 10px;
 }

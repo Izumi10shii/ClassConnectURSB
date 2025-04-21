@@ -88,6 +88,7 @@ body {
 .label-group label {
     font-size: 1.2rem;
     color: white;
+    font-weight: bold;
 }
 
 .user {
@@ -163,6 +164,7 @@ body {
     transition: 0.3s ease-in-out;
     cursor: pointer;
     width: 250px;
+    font-weight: bold;
 }
 
 .submit:hover {
@@ -210,7 +212,6 @@ body {
     padding: 10px;
     transition: 0.3s ease-in-out;
     cursor: pointer;
-    width: 100px;
 }
 
 .adminbtn:hover {

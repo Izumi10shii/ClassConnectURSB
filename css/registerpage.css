@@ -66,10 +66,10 @@ body {
 
 .label-group {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
     margin-bottom: 10px;
-   
 }
 
 .label-group label {
@@ -77,17 +77,21 @@ body {
     margin-bottom: 5px;
     color: white;
     margin-right: 10px;
-    
+    font-weight: bold;   
 }
 
-.user, .pass, select, #confirmPassword {
+.user, .pass, #confirmPassword,select, #userid, #username, #firstname, #lastname, #email, #program, #year, #sec {
     background: rgba(0, 1, 14, 0.2);
     color: white;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 12px;
     height: 35px;
     padding: 0 10px;
-    width: 250px;
+    width: 430px; /* Match the width of the button */
+
+}
+#program, #year, #sec{
+    width: 450px; /* Match the width of the button */
 }
 
 .user:focus, .pass:focus, select:focus, #confirmPassword:focus {
@@ -122,7 +126,7 @@ select option {
     padding: 10px 20px;
     transition: 0.3s ease-in-out;
     cursor: pointer;
-    width: 400px;
+    width: 450px; /* Ensure consistent width with inputs and dropdowns */
 }
 
 .submit:hover {
@@ -150,7 +154,7 @@ select option {
 }
 
 .input-container input {
-    width: 100%;
+    width: 400px; /* Match the width of the button */
     padding-right: 40px; /* Add space for the icon */
 }
 
