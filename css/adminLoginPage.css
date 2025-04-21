@@ -193,13 +193,13 @@ body {
     text-align: center;
 }
 
-.adminbtn a {
+.studbtn a {
     text-decoration: none;
     color: white;
     padding: 10px;
 }
 
-.adminbtn {
+.studbtn {
     align-self: center;
     font-size: 0.6rem;
     color: #ffffff;
@@ -210,10 +210,10 @@ body {
     padding: 10px;
     transition: 0.3s ease-in-out;
     cursor: pointer;
-    width: 100px;
+    width: 150px;
 }
 
-.adminbtn:hover {
+.studbtn:hover {
     background-color: rgb(124, 159, 255);
     color: #263155;
 }

@@ -1,16 +1,48 @@
 <?php
+session_start();
+
+require_once 'db_conn.php';
+$error = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
     $password = $_POST['password'];
-    $confirmpassword = $_POST['confirmpassword'];
+    
+    if (isset($_POST['confirmpassword'])) {
+        $confirmpassword = $_POST['confirmpassword'];
+    } else {
+        $confirmpassword = '';
+    }
 
     // Check if passwords match
     if ($password != $confirmpassword) {
-        header('Location: registerpage.php?error=password_mismatch');
-        exit();
-    }
+        $error = 'password_mismatch';
+    } else {
+        // Check if username already exists
+        $query = "SELECT * FROM student_tb WHERE username = '$username'";
+        $result = mysqli_query($conn, $query);
 
+        if (mysqli_num_rows($result) > 0) {
+            $error = 'username_taken';
+        } else {
+            // Check if email already exists
+            $email_query = "SELECT * FROM student_tb WHERE email = '$email'";
+            $email_result = mysqli_query($conn, $email_query);
+
+            if (mysqli_num_rows($email_result) > 0) {
+                $error = 'email_taken';
+            } else {
+                // No error, redirect to confirm page
+                session_start();
+                $_SESSION['form_data'] = $_POST;
+                header('Location: confirm_registration.php');
+                exit();
+            }
+        }
+    }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,13 +59,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="content">
             <div class="title">Welcome to ClassConnect!</div>
 
+            <form class="regbox" method="POST" action="">
+
             <?php
-                if (isset($_GET['error']) && $_GET['error'] == 'password_mismatch') {
-                    echo "<p style='color: red;'>Passwords do not match. Please try again.</p>";
-                    }       
+                if (!empty($error)) {
+                    if ($error == 'password_mismatch') {
+                        echo "<p class='error-message'>Passwords do not match. Please try again.</p>";
+                    } elseif ($error == 'username_taken') {
+                        echo "<p class='error-message'>Username is already taken. Please choose a different one.</p>";
+                    } elseif ($error == 'email_taken') {
+                        echo "<p class='error-message'>Email is already registered. Please use another one.</p>";
+                     }
+                }
+                unset($_SESSION['error_message']);
             ?>
 
-            <form class="regbox" method="POST" action="confirm_registration.php">
+
                 <div class="label-group">
                     <label for="userid">Student ID:</label>
                     <input type="text" name="userid" id="userid" class="user" placeholder="e.g., B2025-12345" required>
@@ -70,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="label-group">
                     <label for="confirmpassword">Confirm Password:</label>
                     <div class="input-container">
-                        <input type="password" id="confirmpassword" class="pass" placeholder="********" required>
+                        <input type="password" id="confirmpassword" name="confirmpassword" class="pass" placeholder="********" required>
                         <span class="toggle-icon" id="toggleConfirmPassword">
                             <!-- Eye icon for "Show" -->
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">

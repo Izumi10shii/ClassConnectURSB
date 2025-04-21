@@ -1,28 +1,13 @@
 <?php
-include 'db_conn.php';
+session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $userid = $_POST['userid'];
-    $username = $_POST['username'];
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $password = md5($_POST['password']);
-    $email = $_POST['email'];
-    $program = $_POST['program'];
-    $year = (int)$_POST['year'];
-    $sec = (int)$_POST['sec'];
-
-    $query = "INSERT INTO users (userid, username, firstname, lastname, password, email, program, year, sec) 
-              VALUES ('$userid', '$username', '$firstname', '$lastname', '$password', '$email', '$program', $year, $sec)";
-
-    if (mysqli_query($conn, $query)) {
-        echo "Registration successful!";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
+if (!isset($_SESSION['form_data'])) {
+    header('Location: registerpage.php');
+    exit();
 }
-?>
 
+$form_data = $_SESSION['form_data'];
+?>
 
 <!DOCTYPE html>
 <html>
@@ -37,25 +22,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="confirmbox">
             <h2>Please Confirm Your Information</h2>
             <ul>
-                <li><b>Student ID:</b> <?= htmlspecialchars($_POST['userid']) ?></li>
-                <li><b>Username:</b> <?= htmlspecialchars($_POST['username']) ?></li>
-                <li><b>Full Name:</b> <?= htmlspecialchars($_POST['firstname']) ?> <?= htmlspecialchars($_POST['lastname']) ?></li>
-                <li><b>Email:</b> <?= htmlspecialchars($_POST['email']) ?></li>
-                <li><b>Program:</b> <?= htmlspecialchars($_POST['program']) ?></li>
-                <li><b>Year & Section:</b> <?= htmlspecialchars($_POST['year']) ?> - <?= htmlspecialchars($_POST['sec']) ?></li>
+                <li><b>Student ID:</b> <?= htmlspecialchars($form_data['userid']) ?></li>
+                <li><b>Username:</b> <?= htmlspecialchars($form_data['username']) ?></li>
+                <li><b>Full Name:</b> <?= htmlspecialchars($form_data['firstname']) ?> <?= htmlspecialchars($form_data['lastname']) ?></li>
+                <li><b>Email:</b> <?= htmlspecialchars($form_data['email']) ?></li>
+                <li><b>Program:</b> <?= htmlspecialchars($form_data['program']) ?></li>
+                <li><b>Year & Section:</b> <?= htmlspecialchars($form_data['year']) ?> - <?= htmlspecialchars($form_data['sec']) ?></li>
             </ul>
 
             <!-- Form with hidden inputs to pass the data -->
             <form action="welcome_email.php" method="POST">
-                <input type="hidden" name="userid" value="<?= htmlspecialchars($_POST['userid']) ?>">
-                <input type="hidden" name="username" value="<?= htmlspecialchars($_POST['username']) ?>">
-                <input type="hidden" name="firstname" value="<?= htmlspecialchars($_POST['firstname']) ?>">
-                <input type="hidden" name="lastname" value="<?= htmlspecialchars($_POST['lastname']) ?>">
-                <input type="hidden" name="email" value="<?= htmlspecialchars($_POST['email']) ?>">
-                <input type="hidden" name="program" value="<?= htmlspecialchars($_POST['program']) ?>">
-                <input type="hidden" name="yearsec" value="<?= htmlspecialchars($_POST['yearsec']) ?>">
-
-                <button type="submit" class="submit">Confirm and Register</button>
+                <input type="hidden" name="userid" value="<?= htmlspecialchars($form_data['userid']) ?>">
+                <input type="hidden" name="username" value="<?= htmlspecialchars($form_data['username']) ?>">
+                <input type="hidden" name="firstname" value="<?= htmlspecialchars($form_data['firstname']) ?>">
+                <input type="hidden" name="lastname" value="<?= htmlspecialchars($form_data['lastname']) ?>">
+                <input type="hidden" name="email" value="<?= htmlspecialchars($form_data['email']) ?>">
+                <input type="hidden" name="program" value="<?= htmlspecialchars($form_data['program']) ?>">
+                <input type="hidden" name="year" value="<?= htmlspecialchars($form_data['year']) ?>">
+                <input type="hidden" name="sec" value="<?= htmlspecialchars($form_data['sec']) ?>">
+                
+                <div class="buttons">
+                    <a href="registerpage.php" class="edit">Go Back</a>
+                    <button type="submit" class="submit">Confirm and Register</button>
+                </div>
             </form>
         </div>
     </div>

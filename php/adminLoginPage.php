@@ -8,23 +8,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../css/loginpage.css">
+    <link rel="stylesheet" href="../css/adminLoginPage.css">
 </head>
 <body class="bg-transition">
     <div class="frontpage">
         <div class="content">
             <div class="title">Welcome Back!</div>
             <form class="loginbox" method="POST" action="send_otp.php">
+                <?php
+                    if (!empty($_SESSION['error_message'])) {
+                    if ($_SESSION['error_message'] == 'User not found!') {
+                        echo "<p class='error-message'>User not found. Please check your username.</p>";
+                    } elseif ($_SESSION['error_message'] == 'Incorrect password!') {
+                        echo "<p class='error-message'>Incorrect password. Please try again.</p>";
+                    }
+                    unset($_SESSION['error_message']);
+                    }
+                ?>
+
                 <div class="label-group">
-                <!--EMAIL FOR NOW SINCE NO DATABASE-->
-                    <div align = "center"><b>Admin Login</b></div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" class="user" name="email" placeholder="ursb@cc.com" required>
+                  <label for="username">Username:</label>
+                  <input type="text" id="username" class="user" name="username" placeholder="ursb_user" required>
                 </div> 
                 <div class="label-group">
                     <label for="password">Password:</label>
                     <div class="toggle">
-                        <input type="password" id="password" class="pass" placeholder="********" required>
+                    <input type="password" id="password" name="password" class="pass" placeholder="********" required>
                         <button type="button" id="togglePassword">
                             <!-- Default "eye" icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
@@ -42,21 +51,8 @@
                 </div>
 
 
-                <div>
-                    <a href=""> <!--Paayos nalang may redirect to home page
-                        share nalang sila ng homepage yung sidebar nalang papalitan
-                        gamit include
-                        
-                        
-                        
-                        
-                        nag add ako ng adminUsersList
-                        
-                        
-                        
--->
-                        <button><a href = "loginpage.php">Student Login</a></button>
-                    </a>
+                <div class="studLogin">
+                    <button class="studbtn"><a href = "loginpage.php">Student Login</a></button>
                 </div>
 
             </form>

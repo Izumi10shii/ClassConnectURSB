@@ -1,6 +1,6 @@
 const images = [
-    '../bg/sample.png',
-    '../bg/sample2.png'
+    'bg/sample.png',
+    'bg/sample2.png'
 ];
 
 let currentIndex = 0;

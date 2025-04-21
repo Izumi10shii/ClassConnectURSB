@@ -73,3 +73,35 @@ h2 {
     background-color: rgb(124, 159, 255);
     color: #263155;
 }
+
+.edit {
+    align-self: center;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-family: sans-serif;
+    border-radius: 10px;
+    background-color: rgb(3, 3, 44);
+    border: #ecf0ff solid 2px;
+    padding: 10px 20px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    width: 100px;
+}
+
+.edit:hover {
+    background-color: rgb(46, 58, 122);
+    color: #7e98f0;
+}
+
+.buttons a {
+    text-decoration: none;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px
+}
+
