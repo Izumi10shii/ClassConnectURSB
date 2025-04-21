@@ -17,6 +17,7 @@
             <form class="loginbox" method="POST" action="send_otp.php">
                 <div class="label-group">
                 <!--EMAIL FOR NOW SINCE NO DATABASE-->
+                    <div align = "center"><b>Admin Login</b></div>
                     <label for="email">Email:</label>
                     <input type="email" id="email" class="user" name="email" placeholder="ursb@cc.com" required>
                 </div> 
@@ -54,7 +55,7 @@
                         
                         
 -->
-                        <button><a href = "adminLoginPage.php">Admin Login</a></button>
+                        <button><a href = "loginpage.php">Student Login</a></button>
                     </a>
                 </div>
 

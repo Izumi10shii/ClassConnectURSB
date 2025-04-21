@@ -18,6 +18,7 @@
         <a href="userPage.php"><div class="pfp profile"></div></a>
     </nav>
 
+<!--Sidebar Items -->
     <div class="HomeContainer">
         <div class="leftSidebar">
             <div class="leftSideUp">
@@ -25,34 +26,29 @@
                 
                 <div class="explorebtn lsu">
                     <a href="explorePage.php">
-                        Explore
+                        Explore Discussions
                     </a>
                 </div>
 
-                <div class="popularbtn lsu">Popular</div>
+                <div class="popularbtn lsu">File Storage</div>
+                <div class="popularbtn lsu">Profile</div>
+                <div class="popularbtn lsu">Settinggs</div>
 
             </div>
             <div class="leftSideDown">
-                <h2>Communities</h2>
+
                 <div>
                     <div>
-
-                        <a href="communityPage.php">
-                            <div class="pfp"></div>
-                            <div>IT5 - OOP</div>
-                        </a>
                     </div>
 
                     <div>
 
-                        <div class="pfp"></div>
-                        <div>IT6 - DBMS</div>
+                       
                     </div>
 
                     <div>
 
-                        <div class="pfp"></div>
-                        <div>ITE 7 - AppDev</div>
+                       
                     </div>
                 </div>
             </div>
@@ -134,23 +130,7 @@
         </div>
 
 
-        <div class="rightSidebar">
-            <h2>Friends</h2>
-            <div>
-                <div class="pfp"></div>
-                <div>Person 1</div>
-            </div>
-            <div>
-                <div class="pfp"></div>
-                <div>Person 1</div>
-            </div>
-            <div>
-                <div class="pfp"></div>
-                <div>Person 1</div>
-            </div>
-            <button>Inbox</button>
-
-        </div>
+     
     </div>
 
 

@@ -1,3 +1,17 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $password = $_POST['password'];
+    $confirmpassword = $_POST['confirmpassword'];
+
+    // Check if passwords match
+    if ($password != $confirmpassword) {
+        header('Location: registerpage.php?error=password_mismatch');
+        exit();
+    }
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,45 +100,25 @@
                 </div>
 
                 <div class="label-group">
-                    <label for="yearsec">Year & Section:</label>
-                    <select id="yearsec" name="yearsec" required>
-                        <option value="" disabled selected>Select your Year & Section</option>
-                        <!-- 1st Year -->
-                        <option value="1-1A">1-1A</option>
-                        <option value="1-1B">1-1B</option>
-                        <option value="1-2A">1-2A</option>
-                        <option value="1-2B">1-2B</option>
-                        <option value="1-3A">1-3A</option>
-                        <option value="1-3B">1-3B</option>
-                        <option value="1-4A">1-4A</option>
-                        <option value="1-4B">1-4B</option>
-                        <option value="1-5A">1-5A</option>
-                        <option value="1-5B">1-5B</option>
+                    <label for="year">Year:</label>
+                    <select id="year" name="year" required>
+                        <option value="" disabled selected>Select your Year</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                    </select>
+                </div>
 
-
-                        <!-- 2nd Year -->
-                        <option value="2-1A">2-1A</option>
-                        <option value="2-1B">2-1B</option>
-                        <option value="2-2A">2-2A</option>
-                        <option value="2-2B">2-2B</option>
-                        <option value="2-3A">2-3A</option>
-                        <option value="2-3B">2-3B</option>
-
-                        <!-- 3rd Year -->
-                        <option value="3-1A">3-1A</option>
-                        <option value="3-1B">3-1B</option>
-                        <option value="3-2A">3-2A</option>
-                        <option value="3-2B">3-2B</option>
-                        <option value="3-3A">3-3A</option>
-                        <option value="3-3B">3-3B</option>
-
-                        <!-- 4th Year -->
-                        <option value="4-1A">4-1A</option>
-                        <option value="4-1B">4-1B</option>
-                        <option value="4-2A">4-2A</option>
-                        <option value="4-2B">4-2B</option>
-                        <option value="4-3A">4-3A</option>
-                        <option value="4-3B">4-3B</option>
+                <div class="label-group">
+                    <label for="year">Section:</label>
+                    <select id="sec" name="sec" required>
+                        <option value="" disabled selected>Select your Section</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                 </div>
 

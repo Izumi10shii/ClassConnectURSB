@@ -117,7 +117,7 @@ select option {
     color: #ffffff;
     font-family: sans-serif;
     border-radius: 10px;
-    background-color: #518ef7;
+    background-color: rgb(65, 65, 255);
     border: #ecf0ff solid 2px;
     padding: 10px 20px;
     transition: 0.3s ease-in-out;
@@ -126,8 +126,8 @@ select option {
 }
 
 .submit:hover {
-    background-color: #1a3d8f;
-    color: #eaf5ff;
+    background-color: rgb(124, 159, 255);
+    color: #263155;
 }
 
 .login {
@@ -137,6 +137,10 @@ select option {
 .login a {
     text-decoration: none;
     color: #fbff00;
+}
+
+.login a:hover {
+    color: #9faddd;
 }
 
 .input-container {

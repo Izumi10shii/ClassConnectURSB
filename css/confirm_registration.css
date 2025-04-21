@@ -28,7 +28,6 @@ h2 {
 .confirmbox ul {
     list-style-type: none;
     font-size: 1.3rem;
-    text-shadow:0 8px 16px rgba(0, 0, 0, 0.836) ;
     justify-content: center;
     align-content: center;
     align-items: center;
@@ -36,12 +35,11 @@ h2 {
 
 .confirmbox li {
     margin: 10px;
+    color: rgb(0, 0, 0);
 }
 
 .confirmbox {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(80px);
-    -webkit-backdrop-filter: blur(10px);
+    background: #94d1f56c;
     padding: 30px 40px;
     border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -55,7 +53,6 @@ h2 {
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: rgb(255, 255, 255);
-    text-shadow:0 8px 16px rgba(0, 0, 0, 0.2) ;
 }
 
 .submit {
@@ -74,5 +71,5 @@ h2 {
 
 .submit:hover {
     background-color: rgb(124, 159, 255);
-    color: #ffffff;
+    color: #263155;
 }

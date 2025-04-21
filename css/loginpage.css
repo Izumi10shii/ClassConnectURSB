@@ -134,9 +134,20 @@ body {
     color: white;
 }
 
-.forgot a,
-.register a {
+.forgot a {
     color: white;
+    text-decoration: none;
+}
+
+.register a {
+    color: #fbff00;
+    text-decoration: none;
+}
+
+
+.forgot a:hover,
+.register a:hover {
+    color: #9faddd;
 }
 
 
@@ -156,7 +167,7 @@ body {
 
 .submit:hover {
     background-color: rgb(124, 159, 255);
-    color: #ffffff;
+    color: #263155;
 }
 
 .button-container {
