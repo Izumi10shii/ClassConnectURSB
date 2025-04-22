@@ -8,6 +8,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: sans-serif;
 }
 
 .userListContainer {
@@ -18,14 +19,8 @@ body {
   padding: 20px;
 }
 
-.table p{
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
-
-}
 .userListContainer{
-  width: 80%;
+  width: 100%;
 }
 .header {
   display: flex;
