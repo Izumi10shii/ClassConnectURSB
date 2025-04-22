@@ -98,9 +98,10 @@ if (isset($_GET['delete_id'])) {
 }
 
 
-
+// Handle Edit User
 if (isset($_GET['edit_id'])) {
-    $edit_id = mysqli_real_escape_string($conn, $_GET['edit_id']); // Sanitize input
+    $edit_id = $_GET['edit_id'];
+
     $editQuery = "SELECT * FROM student_tb WHERE student_no = '$edit_id'";
     $editResult = mysqli_query($conn, $editQuery);
 
@@ -110,6 +111,7 @@ if (isset($_GET['edit_id'])) {
         echo "<script>alert('User not found.'); window.location.href = 'adminUsersList.php';</script>";
     }
 }
+
 
 // Fetch Users
 $query = "SELECT * FROM student_tb";
