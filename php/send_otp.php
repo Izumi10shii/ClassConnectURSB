@@ -5,7 +5,7 @@ session_start();
 include 'db_conn.php';
 
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = md5($_POST['password']);
 
 // SQL query to check if the user exists
 $sql = "SELECT email, password FROM student_tb WHERE username = '$username'";

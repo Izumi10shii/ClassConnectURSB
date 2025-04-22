@@ -31,11 +31,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (mysqli_num_rows($email_result) > 0) {
                 $error = 'email_taken';
             } else {
+                //Check if student number already exists
+                $stud_query = "SELECT * FROM student_tb WHERE student_no = '$student_no'";
+                $studno_result = mysqli_query($conn, $stud_query);
+
+                if (mysqli_num_rows($studno_result) > 0) {
+                    $error = 'studno_taken';
+                } else { 
                 // No error, redirect to confirm page
                 session_start();
                 $_SESSION['form_data'] = $_POST;
                 header('Location: confirm_registration.php');
                 exit();
+                }
             }
         }
     }
@@ -69,9 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         echo "<p class='error-message'>Username is already taken. Please choose a different one.</p>";
                     } elseif ($error == 'email_taken') {
                         echo "<p class='error-message'>Email is already registered. Please use another one.</p>";
-                     }
+                    }
+                    unset($_SESSION['error_message']);
                 }
-                unset($_SESSION['error_message']);
+                
             ?>
 
 
