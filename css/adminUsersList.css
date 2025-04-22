@@ -14,8 +14,18 @@ body {
   display: flex;
   flex-direction: column;
 
-  width: 80%;
+  width: auto;
   padding: 20px;
+}
+
+.table p{
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+
+}
+.userListContainer{
+  width: 80%;
 }
 .header {
   display: flex;
@@ -30,7 +40,6 @@ body {
   justify-content: start;
   background-color: #f3f3f3;
   display: flex;
-
   border-radius: 20px;
   box-shadow: 0 0 2px black;
   padding: 0px 20px;
@@ -65,4 +74,52 @@ body {
 .buttons button {
   padding: 6px;
   border-radius: 10px;
+}
+.actionRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+}
+.actionRow a{
+  text-decoration: none;
+  color: black;
+  color: white;
+  background-color: black;
+  border-radius: 99px;
+
+}
+.addUserContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+  background-color: #f3f3f3;
+  border-radius: 20px;
+  box-shadow: 0 0 2px black;
+  font-size: 20px;
+  font-weight: bold;
+}
+.addUserContainer label{
+  display: flex;
+  flex-direction: column;
+}
+.addUserContainer input{
+  width: 300px;
+  padding: 10px;
+  border-radius: 99px;
+  border: none;
+  box-shadow: 0 0 2px black;
+} 
+.submitNewUser{
+  background-color: black;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border-radius: 99px;
+  border: none;
 }
