@@ -13,9 +13,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_user'])) {
     $year = $_POST['year'];
     $section = $_POST['section'];
 
-    $addQuery = "INSERT INTO student_tb (student_no, username, fname, lname, password, email, program, year, section, created_at) 
-                 VALUES ('$student_no', '$username', '$fname', '$lname', '$password', '$email', '$program', '$year', '$section', NOW())";
-    mysqli_query($conn, $addQuery);
+    // Check if username already exists
+    $query = "SELECT * FROM student_tb WHERE username = '$username'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        $error = 'username_taken';
+    } else {
+        // Check if email already exists
+        $email_query = "SELECT * FROM student_tb WHERE email = '$email'";
+        $email_result = mysqli_query($conn, $email_query);
+
+        if (mysqli_num_rows($email_result) > 0) {
+            $error = 'email_taken';
+        } else {
+            
+            $stud_query = "SELECT * FROM student_tb WHERE student_no = '$student_no'";
+            $studno_result = mysqli_query($conn, $stud_query);
+
+            if (mysqli_num_rows($studno_result) > 0) {
+                $error = 'studno_taken';
+            }
+            else {          
+                $addQuery = "INSERT INTO student_tb (student_no, username, fname, lname, password, email, program, year, section, created_at) 
+                VALUES ('$student_no', '$username', '$fname', '$lname', '$password', '$email', '$program', '$year', '$section', NOW())";
+
+                mysqli_query($conn, $addQuery);
+            }
+        }
+    }
 }
 
 // Handle Delete User
@@ -108,6 +134,23 @@ Add User Popup
 
     <form action="" method="post" class="addUserContainer">
         <h2>Add New User</h2>
+
+        <?php
+        if (!empty($error)) {
+            if ($error == 'password_mismatch') {
+                echo "<p class='error-message'>Passwords do not match. Please try again.</p>";
+            } elseif ($error == 'username_taken') {
+                echo "<p class='error-message'>Username is already taken. Please choose a different one.</p>";
+            } elseif ($error == 'email_taken') {
+                echo "<p class='error-message'>Email is already registered. Please use another one.</p>";
+            } elseif ($error == 'studno_taken') {
+                echo "<p class='error-message'>Student No is already registered. Please use another one.</p>";
+            }
+
+        }
+        unset($_SESSION['error_message']);
+        ?>
+
         <label for="">Student No
             <input id="student_no" name="student_no" type="text" placeholder="Student No" required>
         </label>
