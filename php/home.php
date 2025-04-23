@@ -1,3 +1,6 @@
+<?php
+include("db_conn.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,6 +58,11 @@
 
         <!-- Posts Section -->
         <div class="scrollContainer">
+
+            <?php
+                include("postComponent.php");
+            ?>
+
             <a href="postPage.php">
                 <div class="post">
                     <div class="postHeader">

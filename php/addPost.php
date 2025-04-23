@@ -1,3 +1,10 @@
+<?php
+include("db_conn.php");
+//session_start(); to keep user logged in
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,17 +58,55 @@
         </div>
 
         <div class="scrollContainer">
-            <div class="post">
+
+
+        <?php
+        //stores post to db
+        // $user = $_SESSION['username'];
+        
+
+
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_post'])){
+
+    $title = $_POST['titleInput'] ?? '';
+    $description = $_POST['bodyInput'] ?? '';
+    $user = "test"; //session
+    
+    if (!empty($title) && !empty($description)) {
+        $newPost = "INSERT INTO post_tb(user_id, title, description) VALUES('$user', '$title', '$description')";
+
+        if (mysqli_query($conn, $newPost)) {
+            // Success
+            echo "<script>console.log('Post added successfully');</script>";
+        } else {
+            // Log the error for debugging
+            error_log("Database Error: " . mysqli_error($conn));
+        }
+
+    }
+
+   
+}
+
+        ?>
+        
+        
+        
+        
+        <div class="post">
                 <h1>Create Post</h1>
                 <button>Select Community</button>
 
-                <input type="text" name="" id="titleInput" placeholder="Title">
-                <textarea id="bodyInput" placeholder="Body"></textarea>
+                <form action="" method="post">
+                    <input type="text" name="titleInput" id="titleInput" placeholder="Title">
+                    <textarea id="bodyInput" name="bodyInput" placeholder="Body"></textarea>
+                    <input type="submit" name="add_post" class="postBTN" value="Post">
+                </form>
+
 
 
                 <div class="interactionHeader">
                     <button class="saveDraftBTN">Save Draft</button>
-                    <button class="postBTN">Post</button>
                 </div>
             </div>
         </div>
