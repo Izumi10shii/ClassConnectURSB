@@ -1,13 +1,16 @@
 {
-    "name": "codespace/class-connect-ursb",
-    "description": "PHPMailer",
-    "require": {
-        "phpmailer/phpmailer": "^6.9"
+    "name": "infin/class-connect-ursb",
+    "autoload": {
+        "psr-4": {
+            "Infin\\ClassConnectUrsb\\": "src/"
+        }
     },
     "authors": [
         {
-            "name": "Izumi10shii",
-            "email": "133224338+Izumi10shii@users.noreply.github.com"
+            "name": "Izumi10shii"
         }
-    ]
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
 }

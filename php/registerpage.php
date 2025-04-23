@@ -6,6 +6,8 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $email = $_POST['email'];
+    $student_no = $_POST['userid'];
     
     if (isset($_POST['confirmpassword'])) {
         $confirmpassword = $_POST['confirmpassword'];
@@ -77,10 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         echo "<p class='error-message'>Username is already taken. Please choose a different one.</p>";
                     } elseif ($error == 'email_taken') {
                         echo "<p class='error-message'>Email is already registered. Please use another one.</p>";
+                    } elseif ($error == 'studno_taken') {
+                        echo "<p class='error-message'>Student Number: $student_no already has an Account.</p>";
                     }
-                    unset($_SESSION['error_message']);
                 }
-                
+                unset($_SESSION['error_message']);
             ?>
 
 

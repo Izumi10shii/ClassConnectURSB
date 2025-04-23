@@ -199,7 +199,7 @@ $result = mysqli_query($conn, $query);
             } elseif ($error == 'email_taken') {
                 echo "<p class='error-message'>Email is already registered. Please use another one.</p>";
             } elseif ($error == 'studno_taken') {
-                echo "<p class='error-message'>Student No is already registered. Please use another one.</p>";
+                echo "<p class='error-message'>Student Number: $student_no already has an Account.</p>";
             }
             unset($_SESSION['error_message']);
         }
