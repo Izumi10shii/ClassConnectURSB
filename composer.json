@@ -1,13 +1,13 @@
 {
-    "name": "infin/class-connect-ursb",
+    "name": "pookiewookie/class-connect-ursb",
     "autoload": {
         "psr-4": {
-            "Infin\\ClassConnectUrsb\\": "src/"
+            "Pookiewookie\\ClassConnectUrsb\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Izumi10shii"
+            "name": "tnek1"
         }
     ],
     "require": {
