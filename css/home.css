@@ -4,6 +4,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -15,6 +16,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -90,13 +92,12 @@ body {
 }
 
 .addPostBtn:hover {
-  background: linear-gradient(
-    45deg,
-    #fffb00,
-    #dd2a7b,
-    #8134af,
-    #515bd4
-  ); /* Instagram rainbow */
+  background: linear-gradient(45deg,
+      #fffb00,
+      #dd2a7b,
+      #8134af,
+      #515bd4);
+  /* Instagram rainbow */
   color: white;
   transform: scale(1.05);
   border: 1px solid white;
@@ -111,14 +112,12 @@ body {
   animation: fadeIn 1s ease;
 }
 
-/* Sidebar */
-/* Sidebar */
 .leftSidebar {
-  position: sticky; /* Keeps it fixed while scrolling */
+  position: sticky;
   top: 0;
   align-self: flex-start;
-  height: 100vh; /* Full viewport height */
-  overflow-y: auto; /* Allow inner scrolling if content grows */
+  height: 100vh;
+  overflow-y: auto;
   background: url("../bg/sample7.png") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
@@ -134,28 +133,25 @@ body {
   animation: fadeIn 1s ease;
 }
 
-/* Sidebar Buttons */
 .lsu {
   margin: 20px;
   font-size: 1.1rem;
   padding: 10px;
   border-radius: 10px;
   width: 80%;
-  color: white; /* <-- white text */
+  color: white;
   text-align: left;
   font-weight: bold;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.1
-  ); /* More transparent for frosted look */
-  backdrop-filter: blur(6px); /* <-- Frosted glass effect */
-  -webkit-backdrop-filter: blur(6px); /* Safari support */
+  background-color: rgba(255,
+      255,
+      255,
+      0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
   opacity: 0.85;
-  border: 1px solid #ffffff; /* <-- Pure white border */
+  border: 1px solid #ffffff;
 }
 
 .lsu:hover {
@@ -181,11 +177,10 @@ body {
 }
 
 .post {
-  background: linear-gradient(
-    to bottom,
-    #eaf3ff,
-    #ffffff
-  ); /* light blue to white */
+  background: linear-gradient(to bottom,
+      #eaf3ff,
+      #ffffff);
+  /* light blue to white */
   padding: 20px;
   border-radius: 20px;
   width: 95%;
@@ -193,7 +188,8 @@ body {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.6s ease;
 }
-a{
+
+a {
   width: 95%;
 }
 
@@ -202,7 +198,7 @@ a{
   margin: 15px 0;
 }
 
-.post > div {
+.post>div {
   font-size: 1rem;
   line-height: 1.6;
   margin-top: 10px;
@@ -260,16 +256,19 @@ a{
   display: flex;
   gap: 15px;
 }
+
 .interactionHeader button {
   padding: 10px 20px;
   background-color: #0051ff;
   color: white;
   border: none;
-  border-radius: 20px; /* ⬅️ Slightly rounded */
+  border-radius: 20px;
+  /* ⬅️ Slightly rounded */
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 81, 255, 0.3); /* Subtle glow */
+  box-shadow: 0 2px 5px rgba(0, 81, 255, 0.3);
+  /* Subtle glow */
 }
 
 .interactionHeader button:hover {
@@ -299,13 +298,16 @@ a{
 .sendCommentBTN {
   padding: 10px 40px;
 }
+
 @keyframes rainbowMove {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }

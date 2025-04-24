@@ -25,12 +25,14 @@ include("db_conn.php");
         </a>
 
     </nav>
+    
 
     <!-- Sidebar Items -->
     <div class="HomeContainer">
         <div class="leftSidebar">
             <div class="leftSideUp">
                 <div class="homebtn lsu">Home</div>
+                <div class="popularbtn lsu">Profile</div>
 
                 <div class="explorebtn lsu">
                     <a href="explorePage.php">
@@ -39,7 +41,6 @@ include("db_conn.php");
                 </div>
 
                 <div class="popularbtn lsu">File Storage</div>
-                <div class="popularbtn lsu">Profile</div>
 
                 <div class="popularbtn lsu">
                     <a href="adminUsersList.php">

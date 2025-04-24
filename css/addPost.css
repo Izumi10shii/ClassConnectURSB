@@ -1,31 +1,33 @@
 @keyframes fadeSlide {
     from {
-      opacity: 0;
-      transform: translateY(-20px);
+        opacity: 0;
+        transform: translateY(-20px);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     from {
-      opacity: 0;
-      transform: translateY(10px);
+        opacity: 0;
+        transform: translateY(10px);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-  * {
+}
+
+* {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: all 0.3s ease;
-  }
+}
 
 html {
     overflow-x: hidden;
@@ -39,6 +41,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 #bodyInput {
     width: 100%;
     padding: 10px;
@@ -72,23 +75,23 @@ body {
     padding-left: 20px;
     font-size: 40px;
     color: white;
-  }
-  
-  .homeHeader .search {
+}
+
+.homeHeader .search {
     padding: 10px 20px;
     border-radius: 50px;
     border: none;
     font-size: 1rem;
     width: 60vw;
     max-width: 800px;
-  }
-  
-  .homeHeader a {
+}
+
+.homeHeader a {
     text-decoration: none;
     color: white;
-  }
-  
-  .addPostBtn {
+}
+
+.addPostBtn {
     background-color: white;
     color: #0051ff;
     padding: 10px 20px;
@@ -96,9 +99,9 @@ body {
     border-radius: 20px;
     border: 1px solid white;
     transition: 0.3s ease;
-  }
-  
-  .addPostBtn:hover {
+}
+
+.addPostBtn:hover {
     background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
     color: white;
     transform: scale(1.05);
@@ -107,20 +110,19 @@ body {
     animation: rainbowMove 3s linear infinite;
 }
 
-  
-  .HomeContainer {
+.HomeContainer {
     display: flex;
     width: 100%;
     animation: fadeIn 1s ease;
-  }
+}
 
-  .leftSidebar {
+.leftSidebar {
     position: sticky;
     top: 0;
     align-self: flex-start;
     height: 100vh;
     overflow-y: auto;
-    background: url('../bg/sample7.png') no-repeat center center;
+    background: url("../bg/sample7.png") no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     backdrop-filter: blur(10px);
@@ -135,12 +137,39 @@ body {
     animation: fadeIn 1s ease;
 }
 
-.leftSideUp {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    height: 50%;
+.lsu {
+    margin: 20px;
+    font-size: 1.1rem;
+    padding: 10px;
+    border-radius: 10px;
+    width: 80%;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+    background-color: rgba(255,
+            255,
+            255,
+            0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.85;
+    border: 1px solid #ffffff;
+}
+
+.lsu:hover {
+    background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
+    color: white;
+    transform: scale(1.03);
+    animation: rainbowMove 3s linear infinite;
+    background-size: 200% 200%;
+    border: 1px solid white;
+}
+
+.lsu a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .leftSideDown {
@@ -179,14 +208,17 @@ body {
     width: 90%;
     margin: 20px;
 }
-.post form{
+
+.post form {
     width: 100%;
 }
-.post form input{
+
+.post form input {
     margin: 20px 0;
 }
 
-.post button, .postBTN {
+.post button,
+.postBTN {
     padding: 10px;
     border: none;
     background-color: black;
@@ -339,6 +371,7 @@ body {
     color: white;
     font-size: 20px;
 }
+
 button {
     background-color: #0051ff;
     color: white;
@@ -348,16 +381,16 @@ button {
     border: none;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
     background-size: 200% 200%;
     color: white;
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     animation: rainbowMove 3s linear infinite;
-  }
+}
 
 .communitiesBox {
     background-color: rgba(255, 255, 255, 0.3);
@@ -401,79 +434,6 @@ button {
     color: #fffb00;
 }
 
-.leftSidebar {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    background: url('../bg/sample7.png') no-repeat center center;
-    background-size: cover;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.leftSidebar {
-    overflow: hidden;
-}
-
-.leftSideUp {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.leftSideUp li {
-    color: white;
-    padding: 15px 20px;
-    width: 100%;
-    transition: all 0.3s ease;
-    border-radius: 10px;
-    text-align: left;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.leftSideUp li:hover {
-    background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
-    background-size: 200% 200%;
-    animation: rainbowMove 3s linear infinite;
-    color: white;
-    transform: scale(1.05);
-    padding: 15px 20px;
-    border-radius: 10px;
-}
-
-.leftSideUp {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 15px;
-}
-
-.leftSideUp li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.leftSideUp li {
-    font-size: 1.2rem;
-}
-
-.leftSideUp li .icon {
-    width: 24px;
-    height: 24px;
-}
-
 .pfp {
     width: 50px;
     height: 50px;
@@ -485,7 +445,15 @@ button {
 }
 
 @keyframes rainbowMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
