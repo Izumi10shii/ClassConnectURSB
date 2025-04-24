@@ -65,7 +65,7 @@ include("db_conn.php");
 
         if ($result && mysqli_num_rows($result) > 0) {
           while ($row = mysqli_fetch_assoc($result)) {
-            $user_id = $row['username'];
+            $username = $row['username'];
             $title = $row['title'];
             $description = $row['description'];
             //echo "<p>Debug: Post found - Title: $title, User ID: $user_id</p>"; // Debug output
@@ -78,12 +78,12 @@ include("db_conn.php");
       }
 
       if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_desc'])) {
-          $user_id = $_GET['user_id'] ?? null;
+        $username = $_GET['user_id'] ?? null;
           $post_id = $_GET['post_id'] ?? null;
           $comment_desc = $_POST['comment_desc'];
 
-          if ($user_id && $post_id && $comment_desc) {
-              $addComment = "INSERT INTO comment_tb(user_id, post_id, comment_desc) VALUES ('$user_id', '$post_id', '$comment_desc')";
+          if ($username && $post_id && $comment_desc) {
+              $addComment = "INSERT INTO comment_tb(username, post_id, comment_desc) VALUES ('$username', '$post_id', '$comment_desc')";
               mysqli_query($conn, $addComment);
           }
       }
@@ -96,13 +96,13 @@ include("db_conn.php");
       ?>
 
       <div class="post">
-        <?php if (isset($user_id) && isset($title) && isset($description)): ?>
+        <?php if (isset($username) && isset($title) && isset($description)): ?>
           <div class="postHeader">
             <div class="pfp"></div>
             <div class="postHeaderPoster">
               <div class="postHeaderCol">
                 <p>ITE7</p>
-                <div><?php echo htmlspecialchars($user_id); ?></div>
+                <div><?php echo htmlspecialchars($username); ?></div>
               </div>
               <p>1hr ago</p>
             </div>
@@ -121,7 +121,7 @@ include("db_conn.php");
       </div>
 
       <div class="commentSection">
-      <form action="?post_id=<?php echo $post_id; ?>&user_id=<?php echo $user_id; ?>" method="POST" class="commentForm">
+      <form action="?post_id=<?php echo $post_id; ?>&user_id=<?php echo $username; ?>" method="POST" class="commentForm">
         <input class="inputComment" name="comment_desc" type="text" placeholder="Add Comment" required />
         <button class="cancelBTN" type="button">Cancel</button>
         <input class="addComment" type="submit" value="Comment">
