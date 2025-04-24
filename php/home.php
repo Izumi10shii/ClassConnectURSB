@@ -46,6 +46,13 @@ include("db_conn.php");
                         Registered Users
                     </a>
                 </div>
+                
+                <div class="popularbtn lsu">
+                    <a href="adminPostsList.php">
+                        Post Management 
+                    </a>
+                </div>
+
                 <div class="popularbtn lsu">Settings</div>
             </div>
             <div class="leftSideDown">
