@@ -25,40 +25,41 @@ include("db_conn.php");
     if ($result && mysqli_num_rows($result) > 0) {
 
         while ($row = mysqli_fetch_assoc($result)) {
+            $post_id = $row['post_id'];
             $user_id = $row['user_id'];
             $title = $row['title'];
             $description =  $row['description'];
-        
-    
     ?>
-    <div class="post">
-        <div class="postHeader">
-            <div class="pfp">
-                <img src="../bg/sample8.png" alt="Profile Picture">
-            </div>
-            <div class="postHeaderPoster">
-                <div class="postHeaderCol">
-                    <p>ITE7</p>
-                    <div><strong><?php echo htmlspecialchars($user_id); ?></strong></div>
-                </div>
-                <p>1hr ago</p>
-            </div>
-        </div>
-        <h2><?php echo htmlspecialchars($title); ?></h2>
-        <div>
-            <p><?php echo htmlspecialchars($description); ?></p>
-        </div>
-        <div class="interactionHeader">
-            <button class="like">like</button>
-            <button class="commentBTN">comment</button>
-            <button class="share">share</button>
-        </div>
-    </div>
 
-    <?php 
+        <a href="/ClassConnectURSB/php/postPage.php?post_id=<?php echo $post_id; ?>"> <!-- Pass post_id in the URL -->
+            <div class="post">
+                <div class="postHeader">
+                    <div class="pfp">
+                        <img src="../bg/sample8.png" alt="Profile Picture">
+                    </div>
+                    <div class="postHeaderPoster">
+                        <div class="postHeaderCol">
+                            <p>ITE7</p>
+                            <div><strong><?php echo htmlspecialchars($user_id); ?></strong></div>
+                        </div>
+                        <p>1hr ago</p>
+                    </div>
+                </div>
+                <h2><?php echo htmlspecialchars($title); ?></h2>
+                <div>
+                    <p><?php echo htmlspecialchars($description); ?></p>
+                </div>
+                <div class="interactionHeader">
+                    <button class="like">like</button>
+                    <button class="commentBTN">comment</button>
+                    <button class="share">share</button>
+                </div>
+            </div>
+        </a>
+    <?php
         }
-    }else{
-        echo"<p>NO posts available.<p>";
+    } else {
+        echo "<p>No posts available.</p>";
     }
     ?>
 
