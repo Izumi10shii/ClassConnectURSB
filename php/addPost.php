@@ -1,6 +1,7 @@
 <?php
 include("db_conn.php");
-//session_start(); to keep user logged in
+
+session_start();
 
 ?>
 
@@ -77,7 +78,7 @@ include("db_conn.php");
             $user = $_SESSION['username'];
 
             if (!empty($title) && !empty($description)) {
-                $newPost = "INSERT INTO post_tb(user_id, title, description) VALUES('$user', '$title', '$description')";
+                $newPost = "INSERT INTO post_tb(username, title, description) VALUES('$user', '$title', '$description')";
 
                 if (mysqli_query($conn, $newPost)) {
                     // Success

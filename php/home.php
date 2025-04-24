@@ -1,5 +1,7 @@
 <?php
 include("db_conn.php");
+session_start();
+$user = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +15,9 @@ include("db_conn.php");
 
 <body>
     <nav class="homeHeader">
-        <a href="#"><h1>Class Connect</h1></a>
+        <a href="#">
+            <h1>Class Connect</h1>
+        </a>
         <input class="search" type="text" placeholder="Search">
         <a href="addPost.php">
             <button class="addPostBtn">Create Post</button>
@@ -25,7 +29,7 @@ include("db_conn.php");
         </a>
 
     </nav>
-    
+
 
     <!-- Sidebar Items -->
     <div class="HomeContainer">
@@ -47,10 +51,10 @@ include("db_conn.php");
                         Registered Users
                     </a>
                 </div>
-                
+
                 <div class="popularbtn lsu">
                     <a href="adminPostsList.php">
-                        Post Management 
+                        Post Management
                     </a>
                 </div>
 

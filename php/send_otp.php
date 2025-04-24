@@ -15,8 +15,10 @@ if (mysqli_num_rows($result) == 0) {
     exit();
 }
 
+
 $user = mysqli_fetch_assoc($result);
 $email = $user['email'];
+$_SESSION['username'] = $username;
 
 if ($user['password'] != $password) {
     $_SESSION['error_message'] = 'Incorrect password!';

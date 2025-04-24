@@ -65,7 +65,7 @@ include("db_conn.php");
 
         if ($result && mysqli_num_rows($result) > 0) {
           while ($row = mysqli_fetch_assoc($result)) {
-            $user_id = $row['user_id'];
+            $user_id = $row['username'];
             $title = $row['title'];
             $description = $row['description'];
             //echo "<p>Debug: Post found - Title: $title, User ID: $user_id</p>"; // Debug output

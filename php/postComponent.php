@@ -26,7 +26,7 @@ include("db_conn.php");
 
         while ($row = mysqli_fetch_assoc($result)) {
             $post_id = $row['post_id'];
-            $user_id = $row['user_id'];
+            $user_id = $row['username'];
             $title = $row['title'];
             $description =  $row['description'];
     ?>
