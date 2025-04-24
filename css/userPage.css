@@ -1,392 +1,417 @@
 /* Animations */
 @keyframes fadeSlide {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Smooth transitions */
-  * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: all 0.3s ease;
-  }
-html{
-    overflow-x: hidden;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth transitions */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+
+html {
+  overflow-x: hidden;
+}
+
 body {
-     background-color: white;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
 .homeHeader {
-    background: linear-gradient(to right, #002766, #0051ff);
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 80px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    gap: 40px;
-    padding: 0 20px;
-    animation: fadeSlide 0.8s ease-out;
-    position: relative;
-    z-index: 10;
+  background: linear-gradient(to right, #002766, #0051ff);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 40px;
+  padding: 0 20px;
+  animation: fadeSlide 0.8s ease-out;
+  position: relative;
+  z-index: 10;
 }
+
 .homeHeader h1 {
-    padding-left: 20px;
-    font-size: 40px;
-    color: white;
-  }
-  
-  .homeHeader .search {
-    padding: 10px 20px;
-    border-radius: 50px;
-    border: none;
-    font-size: 1rem;
-    width: 60vw;
-    max-width: 800px;
-  }
-  
-  .homeHeader a {
-    text-decoration: none;
-    color: white;
-  }
-  .addPostBtn {
-    background-color: white;
-    color: #0051ff;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 20px;
-    border: 1px solid white;
-    transition: 0.3s ease;
-  }
-  
-  .addPostBtn:hover {
-    background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4); /* Instagram rainbow */
-    color: white;
-    transform: scale(1.05);
-    border: 1px solid white;
-    background-size: 200% 200%;
-    animation: rainbowMove 3s linear infinite;
+  padding-left: 20px;
+  font-size: 40px;
+  color: white;
+}
+
+.homeHeader .search {
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1rem;
+  width: 60vw;
+  max-width: 800px;
+}
+
+.homeHeader a {
+  text-decoration: none;
+  color: white;
+}
+
+.addPostBtn {
+  background-color: white;
+  color: #0051ff;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1px solid white;
+  transition: 0.3s ease;
+}
+
+.addPostBtn:hover {
+  background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
+  /* Instagram rainbow */
+  color: white;
+  transform: scale(1.05);
+  border: 1px solid white;
+  background-size: 200% 200%;
+  animation: rainbowMove 3s linear infinite;
 }
 
 .HomeContainer {
-    display: flex;
-    width: 100%;
-    animation: fadeIn 1s ease;
-  }
-
-  .leftSidebar {
-    position: sticky;
-    top: 0;
-    align-self: flex-start;
-    height: 100vh;
-    overflow-y: auto;
-    background: url('../bg/sample7.png') no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-
-    padding: 40px;
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    animation: fadeIn 1s ease;
+  display: flex;
+  width: 100%;
+  animation: fadeIn 1s ease;
 }
+
+.leftSidebar {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+  overflow-y: auto;
+  background: url('../bg/sample7.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+
+  padding: 40px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  animation: fadeIn 1s ease;
+}
+
 .leftSidebar li {
-    list-style-type: none;          
-    color: white;                    
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 10px;
-    width: 80%;
-    text-align: left;
-    margin: 15px 0;                  
-    position: relative;
-    overflow: hidden;
-    z-index: 0;
-    cursor: pointer;
-  }
-  
-.lsu {
-    margin: 20px;
-    font-size: 1.1rem;
-    padding: 10px;
-    border-radius: 10px;
-    width: 80%;
-    color: white; /* <-- white text */
-    text-align: left;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.1); /* More transparent for frosted look */
-    backdrop-filter: blur(6px); /* <-- Frosted glass effect */
-    -webkit-backdrop-filter: blur(6px); /* Safari support */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0.85;
-    border: 1px solid #ffffff; /* <-- Pure white border */
-  }
+  list-style-type: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+  text-align: left;
+  margin: 15px 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  cursor: pointer;
+}
 
-  .leftSideUp {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;        
-    align-items: center;
-    height: 40%;                    
-    flex-grow: 1;
-  }
-  
-.leftSideDown{
-    height: 50%;
-    display: flex;
-    flex-direction: column;
+.lsu {
+  margin: 20px;
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+  color: white;
+  /* <-- white text */
+  text-align: left;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.1);
+  /* More transparent for frosted look */
+  backdrop-filter: blur(6px);
+  /* <-- Frosted glass effect */
+  -webkit-backdrop-filter: blur(6px);
+  /* Safari support */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.85;
+  border: 1px solid #ffffff;
+  /* <-- Pure white border */
 }
-.leftSideDown > div{
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
+
+.leftSideUp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+  flex-grow: 1;
 }
-.leftSideDown > div > div{
-    display: inline;
+
+.leftSideDown {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.leftSideDown>div {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.leftSideDown>div>div {
+  display: inline;
 }
 
 
 .PagePfp {
-    width: 100px;
-    height: 100px;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 99px;
-    margin-left: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 99px;
+  margin-left: 10px;
 }
 
 .communityRow {
-    display: flex;
-    width: 100%;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
 }
 
 .interests {
-    width: 90%;
-    height: 100px;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 20px;
-    margin: 20px;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    padding: 10px;
-    font-size: 20px;
+  width: 90%;
+  height: 100px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  padding: 10px;
+  font-size: 20px;
 }
 
 .userRow {
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding-left: 60px;
-    gap: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 60px;
+  gap: 20px;
 }
 
 .userRow button {
-    border: none;
-    padding: 10px 20px;
-    background-color: black;
-    color: white;
-    border-radius: 20px;
+  border: none;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
 }
 
 .post {
-    display: flex;
-    justify-self: center;
-    align-items: start;
-    flex-direction: column;
-    text-align: justify;
+  display: flex;
+  justify-self: center;
+  align-items: start;
+  flex-direction: column;
+  text-align: justify;
 
-    background-color: white;
-    border: 1px solid black;
-    padding: 20px;
-    gap: 20px;
-    width: 90%;
-    margin: 20px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px;
+  gap: 20px;
+  width: 90%;
+  margin: 20px;
 
-    box-shadow: 0 0 2px black;
-    border-radius: 15px;
+  box-shadow: 0 0 2px black;
+  border-radius: 15px;
 }
 
 .pfp {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-image: url('../bg/sample10.png'); /* Adjust the path if needed */
-    background-size: cover;
-    background-position: center;
-  }
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: url('../bg/sample10.png');
+  /* Adjust the path if needed */
+  background-size: cover;
+  background-position: center;
+}
+
 .postHeader {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
 }
 
 .postHeader .postHeaderPoster {
-    display: flex;
+  display: flex;
 
 
 }
 
 .postHeader .postHeader .postHeaderCol {
-    display: flex;
+  display: flex;
 
 }
 
 .interactionHeader {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .interactionHeader button {
-    border: none;
-    padding: 10px 20px;
-    background-color: black;
-    color: white;
-    border-radius: 20px;
+  border: none;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
 }
 
 .commentSection {
-    background-color: #1e1e1e;
-    padding: 20px;
-    width: 95%;
-    border-radius: 10px;
+  background-color: #1e1e1e;
+  padding: 20px;
+  width: 95%;
+  border-radius: 10px;
 }
 
 .addComment {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .sendCommentBTN {
-    padding: 10px 40px;
+  padding: 10px 40px;
 }
 
 .rightSidebar h2 {}
 
 .rightSidebar {
-    background-color: white;
-    width: 400px;
-    border: 1px solid black;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-content: center;
-    gap: 20px;
+  background-color: white;
+  width: 400px;
+  border: 1px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-content: center;
+  gap: 20px;
 }
 
 .rightSidebar>div {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
 }
 
 .rightSidebar button {
-    padding: 10px;
-    border-radius: 15px;
-    border: none;
-    background-color: black;
-    color: white;
-    font-size: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 20px;
 }
+
 button:hover {
-    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); /* Instagram gradient */
-    background-size: 200% 200%;
-    animation: rainbowMove 3s linear infinite;
-    color: white;
-    transform: scale(1.05);
-  }
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  /* Instagram gradient */
+  background-size: 200% 200%;
+  animation: rainbowMove 3s linear infinite;
+  color: white;
+  transform: scale(1.05);
+}
+
 /* Custom Follow/Chat Button Styling */
 .actionBtn {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.5s ease, transform 0.3s ease;
-  }
-  
-  .actionBtn:hover {
-    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); /* Instagram gradient */
-    background-size: 200% 200%;
-    animation: rainbowMove 3s linear infinite;
-    transform: scale(1.05);
-    color: white;
-  }
-  .leftSidebar li {
-    position: relative;
-    overflow: hidden;
-    z-index: 0;
-  }
-  
-  /* Pseudo-element for hover effect */
-  .leftSidebar li::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-    background-size: 200% 200%;
-    animation: none;
-    z-index: -1;
-    transition: width 0.4s ease;
-    border-radius: 10px;
-  }
-  
-  /* Expand with Instagram gradient on hover */
-  .leftSidebar li:hover::before {
-    width: 250px; /* Stretches right within sidebar */
-    animation: rainbowMove 3s linear infinite;
-  }
-  
-  /* Optional: color text white on hover */
-  .leftSidebar li:hover {
-    color: white;
-    transform: scale(1.02);
-  }
-  /* Apply rainbow animation on hover to all buttons without altering base style */
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.5s ease, transform 0.3s ease;
+}
+
+.actionBtn:hover {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  /* Instagram gradient */
+  background-size: 200% 200%;
+  animation: rainbowMove 3s linear infinite;
+  transform: scale(1.05);
+  color: white;
+}
+
+.leftSidebar li {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Pseudo-element for hover effect */
+.leftSidebar li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background-size: 200% 200%;
+  animation: none;
+  z-index: -1;
+  transition: width 0.4s ease;
+  border-radius: 10px;
+}
+
+/* Expand with Instagram gradient on hover */
+.leftSidebar li:hover::before {
+  width: 250px;
+  /* Stretches right within sidebar */
+  animation: rainbowMove 3s linear infinite;
+}
+
+/* Optional: color text white on hover */
+.leftSidebar li:hover {
+  color: white;
+  transform: scale(1.02);
+}
+
+/* Apply rainbow animation on hover to all buttons without altering base style */
 button:hover,
 .leftSidebar li:hover,
 .lsu:hover {
@@ -404,10 +429,17 @@ button,
   transition: background 0.4s ease, transform 0.3s ease, color 0.3s ease;
 }
 
-  /* Optional: rainbow animation movement */
-  @keyframes rainbowMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* Optional: rainbow animation movement */
+@keyframes rainbowMove {
+  0% {
+    background-position: 0% 50%;
   }
-  
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

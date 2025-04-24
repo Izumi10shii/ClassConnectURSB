@@ -78,6 +78,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_post'])){
         if (mysqli_query($conn, $newPost)) {
             // Success
             echo "<script>console.log('Post added successfully');</script>";
+            header('Location: home.php');
         } else {
             // Log the error for debugging
             error_log("Database Error: " . mysqli_error($conn));

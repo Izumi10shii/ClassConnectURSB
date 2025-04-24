@@ -63,6 +63,7 @@
                     <div class="PagePfp">
 
                     </div>
+
                     <h1>username</h1>
                     <button class="actionBtn">Follow</button>
                     <button class="actionBtn">Chat</button>
@@ -79,7 +80,7 @@
                 <button>Comments</button>
             </div>
 
-
+<!--
             <div class="post">
                 <div class="postHeader">
                     <div class="pfp"></div>
@@ -97,13 +98,15 @@
                     bad at all.
                     Still figuring out the best way to handle state, but it’s clicking slowly.
                     If anyone’s got clean Flutter repos or go-to tutorials, I’m all ears.</div>
+
+                    --
                 <div class="interactionHeader">
                     <button class="like">like</button>
                     <button class="commentBTN">comment</button>
                     <button class="share">share</button>
                 </div>
-
-            </div>
+-->
+        </div>
             <!--
                 <div class="commentSection">
                     <h4>Add Comment</h4>
@@ -113,10 +116,10 @@
                     </div>
                     
                 </div>
-            -->
+           
 
         </div>
-
+ -->
 
         <div class="rightSidebar">
             <h2>username</h2>
