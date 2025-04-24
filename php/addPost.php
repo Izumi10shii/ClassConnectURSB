@@ -17,7 +17,9 @@ include("db_conn.php");
 
 <body>
 <nav class="homeHeader">
-<a href="home.php"><h1>Class Connect</h1></a>
+<a href="home.php">
+  <h1>Class<span style="opacity: 0;">.</span>Connect</h1>
+</a>
     <input class="search" type="text" placeholder="Search">
     <button class="addPostBtn">Add new Post</button>
     <a href="userPage.html">
