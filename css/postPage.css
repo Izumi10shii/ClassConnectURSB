@@ -140,9 +140,6 @@ body {
     border: 1px solid #ffffff; /* <-- Pure white border */
   }
 
-
-
-
 .leftSideUp{
     display: flex;
     flex-direction: column;
@@ -163,6 +160,12 @@ body {
 .leftSideDown > div > div{
     display: inline;
 }
+
+
+
+
+
+
 .scrollContainer{
     display: flex;
     flex-direction: column;
