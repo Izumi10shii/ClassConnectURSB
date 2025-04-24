@@ -31,7 +31,7 @@ include("db_conn.php");
             $description =  $row['description'];
     ?>
 
-        <a href="/ClassConnectURSB/php/postPage.php?post_id=<?php echo $post_id; ?><?php echo $user_id ?>"> <!-- Pass post_id in the URL -->
+        <a href="/ClassConnectURSB/php/postPage.php?post_id=<?php echo ($post_id); ?>& user_id=<?php echo ($user_id); ?>"> <!-- Pass post_id in the URL -->
             <div class="post">
                 <div class="postHeader">
                     <div class="pfp">

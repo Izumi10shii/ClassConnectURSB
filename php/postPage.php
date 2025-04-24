@@ -76,6 +76,23 @@ include("db_conn.php");
       } else {
         //echo "<p>Debug: Invalid or missing post ID.</p>"; // Debug output
       }
+
+      if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_desc'])) {
+          $user_id = $_GET['user_id'] ?? null;
+          $post_id = $_GET['post_id'] ?? null;
+          $comment_desc = $_POST['comment_desc'];
+
+          if ($user_id && $post_id && $comment_desc) {
+              $addComment = "INSERT INTO comment_tb(user_id, post_id, comment_desc) VALUES ('$user_id', '$post_id', '$comment_desc')";
+              mysqli_query($conn, $addComment);
+          }
+      }
+
+      // Fetch comments for the post
+      if (isset($post_id)) {
+          $getComments = "SELECT * FROM comment_tb WHERE post_id = $post_id";
+          $commentsResult = mysqli_query($conn, $getComments);
+      }
       ?>
 
       <div class="post">
@@ -104,36 +121,30 @@ include("db_conn.php");
       </div>
 
       <div class="commentSection">
-
-<?php
-$user_id = $_GET['user_id'] ?? null; 
-$comment_desc = $_POST['comment_desc'] ?? null;
-$addComment = "INSERT INTO comment_tb(user_id, post_id, comment_desc) VALUES ('$user_id', '$post_id', 'Sample comment text...')";
-//get the post id connect that to the comment tb
-
-
-?>
-      <form action="php/addComment.php" method="POST" class="commentForm">
-
-        <input class="inputComment" type="text" placeholder="Add Comment" />
-        <button>Cancel</button>
-        <input class="addComment" type="submit" value="Comment" >
+      <form action="?post_id=<?php echo $post_id; ?>&user_id=<?php echo $user_id; ?>" method="POST" class="commentForm">
+        <input class="inputComment" name="comment_desc" type="text" placeholder="Add Comment" required />
+        <button type="button">Cancel</button>
+        <input class="addComment" type="submit" value="Comment">
       </form>
 
-        <div class="comment">
-          <div class="commentUserRow">
-            <div class="pfp"></div>
-            <div><?php echo htmlspecialchars($user_id)?></div>
-            <div>1hr ago</div>
+      <?php if (isset($commentsResult) && mysqli_num_rows($commentsResult) > 0): ?>
+        <?php while ($comment = mysqli_fetch_assoc($commentsResult)): ?>
+          <div class="comment">
+            <div class="commentUserRow">
+              <div class="pfp"></div>
+              <div><?php echo htmlspecialchars($comment['user_id']); ?></div>
+            </div>
+            <div><?php echo htmlspecialchars($comment['comment_desc']); ?></div>
+            <div class="commentBTNRow">
+              <button class="like">like</button>
+              <button class="commentBTN">comment</button>
+            </div>
           </div>
-          <div><?php echo htmlspecialchars($comment_desc)?></div>
-          <div class="commentBTNRow">
-            <button class="like">like</button>
-            <button class="commentBTN">comment</button>
-          </div>
-        </div>
-
-      </div>
+        <?php endwhile; ?>
+      <?php else: ?>
+        <p>No comments available for this post.</p>
+      <?php endif; ?>
+    </div>
     </div>
 <!--
     <div class="rightSidebar">
