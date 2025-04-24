@@ -14,7 +14,7 @@ include("db_conn.php");
 
 <body>
   <nav class="homeHeader">
-    <h1>Class Connect</h1>
+  <a href="home.php"><h1>Class Connect</h1></a>
     <input class="search" type="text" placeholder="Search" />
     <button class="addPostBtn">Add new Post</button>
     <a href="userPage.html">
@@ -114,16 +114,16 @@ include("db_conn.php");
         <?php endif; ?>
        
         <div class="interactionHeader">
-          <button class="like">like</button>
-          <button class="commentBTN">comment</button>
-          <button class="share">share</button>
+          <button class="like">Like</button>
+          <button class="commentBTN">Comment</button>
+          <button class="share">Share</button>
         </div>
       </div>
 
       <div class="commentSection">
       <form action="?post_id=<?php echo $post_id; ?>&user_id=<?php echo $user_id; ?>" method="POST" class="commentForm">
         <input class="inputComment" name="comment_desc" type="text" placeholder="Add Comment" required />
-        <button type="button">Cancel</button>
+        <button class="cancelBTN" type="button">Cancel</button>
         <input class="addComment" type="submit" value="Comment">
       </form>
 
@@ -136,8 +136,8 @@ include("db_conn.php");
             </div>
             <div><?php echo htmlspecialchars($comment['comment_desc']); ?></div>
             <div class="commentBTNRow">
-              <button class="like">like</button>
-              <button class="commentBTN">comment</button>
+              <button class="like">Like</button>
+              <button class="commentBTN">Comment</button>
             </div>
           </div>
         <?php endwhile; ?>

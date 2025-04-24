@@ -32,8 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['otp'])) {
         <div class="content">
             <div class="otp">One-Time-Password</div>
             <p class="subtitle">Please enter the OTP sent to your email</p>
-
-            <!-- Show the OTP message here -->
+            
             <?php if (!empty($otpMessage)) echo $otpMessage; ?>
 
             <form method="POST">

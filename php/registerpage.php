@@ -41,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $error = 'studno_taken';
                 } else { 
                 // No error, redirect to confirm page
-                session_start();
                 $_SESSION['form_data'] = $_POST;
                 header('Location: confirm_registration.php');
                 exit();
@@ -49,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     }
+
+    
 }
 ?>
 

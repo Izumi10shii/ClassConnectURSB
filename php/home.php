@@ -13,7 +13,7 @@ include("db_conn.php");
 
 <body>
     <nav class="homeHeader">
-        <h1>Class Connect</h1>
+        <a href="#"><h1>Class Connect</h1></a>
         <input class="search" type="text" placeholder="Search">
         <a href="addPost.php">
             <button class="addPostBtn">Create Post</button>

@@ -240,6 +240,7 @@ body {
     border-radius: 20px;
     border: none;
 }
+
 .commentUserRow{
     display: flex;
     justify-content: start;
@@ -272,6 +273,15 @@ body {
 .sendCommentBTN{
     padding: 10px 40px;
 }
+
+.cancelBTN {
+  border: none;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+}
+
 .rightSidebar h2{
 
 }
@@ -305,6 +315,7 @@ body {
 button:hover,
 .addPostBtn:hover,
 .commentBTN:hover,
+.cancelBTN:hover,
 .like:hover,
 .share:hover,
 .lsu:hover,
@@ -321,6 +332,7 @@ button:hover,
 button,
 .addPostBtn,
 .commentBTN,
+.cancelBTN,
 .like,
 .share,
 .lsu,

@@ -30,7 +30,6 @@ $form_data = $_SESSION['form_data'];
                 <li><b>Year & Section:</b> <?= htmlspecialchars($form_data['year']) ?> - <?= htmlspecialchars($form_data['sec']) ?></li>
             </ul>
 
-            <!-- Form with hidden inputs to pass the data -->
             <form action="welcome_email.php" method="POST">
                 <input type="hidden" name="userid" value="<?= htmlspecialchars($form_data['userid']) ?>">
                 <input type="hidden" name="username" value="<?= htmlspecialchars($form_data['username']) ?>">
@@ -40,6 +39,7 @@ $form_data = $_SESSION['form_data'];
                 <input type="hidden" name="program" value="<?= htmlspecialchars($form_data['program']) ?>">
                 <input type="hidden" name="year" value="<?= htmlspecialchars($form_data['year']) ?>">
                 <input type="hidden" name="sec" value="<?= htmlspecialchars($form_data['sec']) ?>">
+                <input type="hidden" name="password" value="<?= htmlspecialchars($form_data['password']) ?>">
                 
                 <div class="buttons">
                     <a href="registerpage.php" class="edit">Go Back</a>

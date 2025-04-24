@@ -1,17 +1,14 @@
 <?php
 session_start();
 
-// Include the database connection file
 include 'db_conn.php';
 
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 
-// SQL query to check if the user exists
 $sql = "SELECT email, password FROM student_tb WHERE username = '$username'";
 $result = mysqli_query($conn, $sql);
 
-// If the user does not exist
 if (mysqli_num_rows($result) == 0) {
     $_SESSION['error_message'] = 'User not found!';
     header("Location: loginpage.php");
