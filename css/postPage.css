@@ -233,7 +233,7 @@ body {
     border-radius: 20px;
     border: 1px solid #C2C2C2;
 }
-.commentSection > button{
+.commentSection > button, .addComment{
     background-color: black;
     color: white;
     padding: 10px;

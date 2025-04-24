@@ -104,17 +104,29 @@ include("db_conn.php");
       </div>
 
       <div class="commentSection">
+
+<?php
+$user_id = $_GET['user_id'] ?? null; 
+$comment_desc = $_POST['comment_desc'] ?? null;
+$addComment = "INSERT INTO comment_tb(user_id, post_id, comment_desc) VALUES ('$user_id', '$post_id', 'Sample comment text...')";
+//get the post id connect that to the comment tb
+
+
+?>
+      <form action="php/addComment.php" method="POST" class="commentForm">
+
         <input class="inputComment" type="text" placeholder="Add Comment" />
         <button>Cancel</button>
-        <button>Comment</button>
+        <input class="addComment" type="submit" value="Comment" >
+      </form>
 
         <div class="comment">
           <div class="commentUserRow">
             <div class="pfp"></div>
-            <div>Username</div>
+            <div><?php echo htmlspecialchars($user_id)?></div>
             <div>1hr ago</div>
           </div>
-          <div>Sample comment text...</div>
+          <div><?php echo htmlspecialchars($comment_desc)?></div>
           <div class="commentBTNRow">
             <button class="like">like</button>
             <button class="commentBTN">comment</button>
