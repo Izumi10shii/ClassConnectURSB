@@ -5,18 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../css/userPage.css">
+    <link rel="stylesheet" href="../css/userPage.css?=v2">
 </head>
 
 <body>
-    <nav class="homeHeader">
-        <h1>Class Connect</h1>
-        <input class="search" type="text" placeholder="search">
-        <button class="addPostBtn">Add new Post</button>
-        <a href="userPage.html">
-            <div class="pfp profile"></div>
-        </a>
-    </nav>
+<nav class="homeHeader">
+    <h1>Class Connect</h1>
+    <input class="search" type="text" placeholder="Search" />
+    <button class="addPostBtn">Add new Post</button>
+    <a href="userPage.html"><div class="pfp profile"></div></a>
+  </nav>
 
     <div class="HomeContainer">
         <div class="leftSidebar">
@@ -65,9 +63,10 @@
                     <div class="PagePfp">
 
                     </div>
-                    <h1>userame</h1>
-                    <button>Follow</button>
-                    <button>Chat</button>
+                    <h1>username</h1>
+                    <button class="actionBtn">Follow</button>
+                    <button class="actionBtn">Chat</button>
+
                 </div>
 
                 <div class="interests">
@@ -83,7 +82,7 @@
 
             <div class="post">
                 <div class="postHeader">
-                    <div class="pfp">IMG</div>
+                    <div class="pfp"></div>
                     <div class="postHeaderPoster">
                         <div class="postHeaderCol">
                             <p>ITE7</p>
