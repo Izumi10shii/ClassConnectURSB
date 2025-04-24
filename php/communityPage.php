@@ -5,17 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../css/communityPage.css">
+    <link rel="stylesheet" href="../css/communityPage.css?=v2">
 </head>
 
 <body>
-    <nav class="homeHeader">
+<nav class="homeHeader">
         <h1>Class Connect</h1>
-        <input class="search" type="text" placeholder="search">
-        <button class="addPostBtn">Add new Post</button>
-        <a href="profilepage.html">
-            <div class="pfp profile"></div>
+        <input class="search" type="text" placeholder="Search">
+        <a href="addPost.php">
+            <button class="addPostBtn">Create Post</button>
         </a>
+        <a href="userPage.php">
+  <div class="pfp profile">
+    <img src="../bg/sample10.png" alt="Profile Picture">
+  </div>
+</a>
+
     </nav>
 
     <div class="HomeContainer">
