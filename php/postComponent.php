@@ -27,7 +27,18 @@ session_start();
             $description = $row['description'];
             $created_at = $row['created_at'];
             $comments_count = $row['comments_count'];
-            $like_count = $row['likes_count']; // Use the likes_count field directly
+            $like_count = $row['likes_count'];
+
+            // Fetch images and files for the post
+            $getFiles = "SELECT file_url FROM post_files_tb WHERE post_id = $post_id";
+            $filesResult = mysqli_query($conn, $getFiles);
+            $files = []; // Reset the files array for each post
+
+            if ($filesResult && mysqli_num_rows($filesResult) > 0) {
+                while ($fileRow = mysqli_fetch_assoc($filesResult)) {
+                    $files[] = $fileRow['file_url'];
+                }
+            }
 
             // Check if this user already liked it
             $currentUser = $_SESSION['username'];
@@ -45,13 +56,29 @@ session_start();
                         <div class="postHeaderCol">
                             <div><strong><?php echo htmlspecialchars($username); ?></strong></div>
                         </div>
-                        <div><?php echo htmlspecialchars($created_at); ?></div>
+                        <div class="datetime"><?php echo htmlspecialchars($created_at); ?></div>
                     </div>
                 </div>
                 <h2><?php echo htmlspecialchars($title); ?></h2>
                 <div>
                     <p><?php echo htmlspecialchars($description); ?></p>
                 </div>
+
+                <!-- Display all files -->
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+                    <?php foreach ($files as $file): ?>
+                        <?php
+                        $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
+                        if (strtolower($fileExtension) === 'pdf'): ?>
+                            <!-- Display PDF -->
+                            <embed src="<?php echo $file; ?>" type="application/pdf" style="width: 200px; height: 200px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                        <?php else: ?>
+                            <!-- Display Image -->
+                            <img src="<?php echo $file; ?>" alt="Post File" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+
                 <div class="interactionHeader">
                     <!-- Form to handle like/unlike -->
                     <form method="POST" action="like_post.php" style="display: inline;">
@@ -60,9 +87,9 @@ session_start();
                             <?php echo $userLiked ? "👎 Unlike" : "👍 Like"; ?>
                         </button>
                     </form>
-                    <span><?php echo "Likes :" .$like_count; ?></span>
-                    <button class="commentBTN" onclick="event.stopPropagation();">comment</button>
-                    <span><?php echo  "Comments: " . $comments_count; ?></span>
+                    <span><?php echo "Likes: " . $like_count; ?></span>
+                    <button class="commentBTN">comment</button>
+                    <span><?php echo "Comments: " . $comments_count; ?></span>
                     <button class="share" onclick="event.stopPropagation();">share</button>
                 </div>
             </div>

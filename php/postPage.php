@@ -76,9 +76,20 @@ session_start();
             $username = $row['username'];
             $title = $row['title'];
             $description = $row['description'];
+            $created_at = $row['created_at'];
             $like_count = $row['likes_count']; // Use the likes_count field directly
             $comments_count = $row['comments_count']; // Use the comments_count field directly
       
+            // Fetch images for the post
+            $getImages = "SELECT file_url FROM post_files_tb WHERE post_id = $post_id";
+            $imagesResult = mysqli_query($conn, $getImages);
+            $images = [];
+            if ($imagesResult && mysqli_num_rows($imagesResult) > 0) {
+              while ($imageRow = mysqli_fetch_assoc($imagesResult)) {
+                $images[] = $imageRow['file_url'];
+              }
+            }
+
             // Check if this user already liked it
             $currentUser = $_SESSION['username'];
             $checkLike = mysqli_query($conn, "SELECT * FROM post_likes_tb WHERE post_id = $post_id AND username = '$currentUser'");
@@ -115,14 +126,30 @@ session_start();
             <div class="pfp"></div>
             <div class="postHeaderPoster">
               <div class="postHeaderCol">
-                <p>ITE7</p>
-                <div><?php echo htmlspecialchars($username); ?></div>
+                <div><strong><?php echo htmlspecialchars($username); ?></strong></div>
+                <div><?php echo htmlspecialchars($created_at); ?></div>
               </div>
-              <p>1hr ago</p>
             </div>
           </div>
           <h2><?php echo htmlspecialchars($title); ?></h2>
           <div><?php echo htmlspecialchars($description); ?></div>
+
+          <!-- Display images -->
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+            <?php foreach ($images as $file): ?>
+              <?php
+              $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
+              if (strtolower($fileExtension) === 'pdf'): ?>
+                <!-- Display PDF -->
+                <embed src="<?php echo $file; ?>" type="application/pdf"
+                  style="width: 400px; height: 400px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              <?php else: ?>
+                <!-- Display Image -->
+                <img src="<?php echo $file; ?>" alt="Post File"
+                  style="width: 400px; height: 400px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </div>
         <?php else: ?>
           <p>Post details are not available.</p>
         <?php endif; ?>
@@ -135,9 +162,9 @@ session_start();
               <?php echo $userLiked ? "👎 Unlike" : "👍 Like"; ?>
             </button>
           </form>
-          <span><?php echo "Likes :" .$like_count; ?></span>
+          <span><?php echo "Likes :" . $like_count; ?></span>
           <button class="commentBTN" onclick="event.stopPropagation();">Comment</button>
-          <span><?php echo  "Comments: " . $comments_count; ?></span>
+          <span><?php echo "Comments: " . $comments_count; ?></span>
           <button class="share" onclick="event.stopPropagation();">share</button>
         </div>
       </div>
