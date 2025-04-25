@@ -1,7 +1,5 @@
 <?php
 include("db_conn.php");
-session_start();
-$user = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +70,7 @@ $user = $_SESSION['username'];
         <!-- Posts Section -->
         <div class="scrollContainer">
             <?php
-            include("postComponent.php"); // Use postComponent.php exclusively
+            include("postComponent.php");
             ?>
         </div>
     </div>
