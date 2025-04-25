@@ -37,7 +37,7 @@ $result = mysqli_query($conn, $query);
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>
                 <td><?= $row['post_id'] ?></td>
-                <td><?= $row['user_id'] ?></td>
+                <td><?= $row['username'] ?></td>
                 <td><?= htmlspecialchars($row['title']) ?></td>
                 <td><?= nl2br(htmlspecialchars($row['description'])) ?></td>
                 <td>

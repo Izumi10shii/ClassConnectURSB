@@ -7,10 +7,11 @@
     },
     "authors": [
         {
-            "name": "tnek1"
+            "name": "tnek1",
+            "email": "tnek1769@gmail.com"
         }
     ],
     "require": {
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.10"
     }
 }

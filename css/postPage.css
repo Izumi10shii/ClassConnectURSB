@@ -1,34 +1,15 @@
-/* Animations */
-@keyframes fadeSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Keyframes for rainbow hover animation */
+@keyframes rainbowMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Smooth transitions */
+/* Smooth transitions and resets */
 * {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: all 0.3s ease;
 }
 
 html {
@@ -55,7 +36,6 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   gap: 40px;
   padding: 0 20px;
-  animation: fadeSlide 0.8s ease-out;
   position: relative;
   z-index: 10;
 }
@@ -87,26 +67,11 @@ body {
   font-weight: bold;
   border-radius: 20px;
   border: 1px solid white;
-  transition: 0.3s ease;
 }
-
-.addPostBtn:hover {
-  background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
-  /* Instagram rainbow */
-  color: white;
-  transform: scale(1.05);
-  border: 1px solid white;
-  background-size: 200% 200%;
-  animation: rainbowMove 3s linear infinite;
-}
-
-
-
 
 .HomeContainer {
   display: flex;
   width: 100%;
-  animation: fadeIn 1s ease;
 }
 
 .leftSidebar {
@@ -121,13 +86,11 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-
   padding: 35px;
   width: 220px;
   display: flex;
   flex-direction: column;
   justify-content: start;
-  animation: fadeIn 1s ease;
 }
 
 .lsu {
@@ -137,20 +100,14 @@ body {
   border-radius: 10px;
   width: 80%;
   color: white;
-  /* <-- white text */
   text-align: left;
   font-weight: bold;
   background-color: rgba(255, 255, 255, 0.1);
-  /* More transparent for frosted look */
   backdrop-filter: blur(6px);
-  /* <-- Frosted glass effect */
   -webkit-backdrop-filter: blur(6px);
-  /* Safari support */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
   opacity: 0.85;
   border: 1px solid #ffffff;
-  /* <-- Pure white border */
 }
 
 .leftSideUp {
@@ -167,27 +124,21 @@ body {
   flex-direction: column;
 }
 
-.leftSideDown>div {
+.leftSideDown > div {
   display: flex;
   flex-direction: column;
   margin: 20px;
 }
 
-.leftSideDown>div>div {
+.leftSideDown > div > div {
   display: inline;
 }
-
-
-
-
-
 
 .scrollContainer {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-
 }
 
 .post {
@@ -196,7 +147,6 @@ body {
   align-items: start;
   flex-direction: column;
   text-align: justify;
-
   background-color: white;
   padding: 20px;
   gap: 20px;
@@ -209,7 +159,6 @@ body {
   height: 40px;
   border-radius: 50%;
   background-image: url('../bg/sample10.png');
-  /* Adjust the path if needed */
   background-size: cover;
   background-position: center;
 }
@@ -223,19 +172,16 @@ body {
 
 .postHeader .postHeaderPoster {
   display: flex;
-
-
 }
 
 .postHeader .postHeader .postHeaderCol {
   display: flex;
-
 }
 
 .postHeaderCol div:last-child {
-    font-size: 0.9rem;
-    color: gray;
-    margin-top: 2px;
+  font-size: 0.9rem;
+  color: gray;
+  margin-top: 2px;
 }
 
 .interactionHeader {
@@ -246,7 +192,7 @@ body {
 .interactionHeader button {
   border: none;
   padding: 10px 20px;
-  background-color: black;
+  background-color: #0051ff;
   color: white;
   border-radius: 20px;
 }
@@ -264,9 +210,9 @@ body {
   border: 1px solid #C2C2C2;
 }
 
-.commentSection>button,
+.commentSection > button,
 .addComment {
-  background-color: black;
+  background-color: #0051ff;
   color: white;
   padding: 10px;
   border-radius: 20px;
@@ -297,7 +243,6 @@ body {
 
 .commentBTNRow button {
   padding: 5px 10px;
-  background-color: none;
   border-radius: 20px;
   border: none;
 }
@@ -314,7 +259,7 @@ body {
 .cancelBTN {
   border: none;
   padding: 10px 20px;
-  background-color: black;
+  background-color: #0051ff;
   color: white;
   border-radius: 20px;
 }
@@ -331,7 +276,7 @@ body {
   gap: 20px;
 }
 
-.rightSidebar>div {
+.rightSidebar > div {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -347,8 +292,9 @@ body {
   font-size: 20px;
 }
 
-/* Animated Instagram-style effect on hover only */
-button:hover,
+/* 🌈 Strict rainbow hover ONLY on these elements */
+.interactionHeader button:hover,
+.addComment:hover,
 .addPostBtn:hover,
 .commentBTN:hover,
 .cancelBTN:hover,
@@ -364,18 +310,7 @@ button:hover,
   animation: rainbowMove 3s linear infinite;
 }
 
-/* Keep base button styles as-is */
-button,
-.addPostBtn,
-.commentBTN,
-.cancelBTN,
-.like,
-.share,
-.lsu,
-.rightSidebar button {
-  transition: all 0.3s ease;
-}
-
+/* Optional reusable rainbow button class */
 .rainbowBtn {
   background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
   color: white;
@@ -384,28 +319,10 @@ button,
   font-weight: bold;
   border-radius: 20px;
   cursor: pointer;
-  transition: transform 0.3s ease;
   background-size: 200% 200%;
-  animation: rainbowMove 3s linear infinite;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .rainbowBtn:hover {
   transform: scale(1.05);
 }
-
-
-@keyframes rainbowMove {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-

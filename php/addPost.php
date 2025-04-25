@@ -123,10 +123,10 @@ session_start();
                         onchange="updateFileLabel()">
 
                     <!-- Label with inline styles for the custom file upload button -->
-                    <label for="fileInput"
-                        style="background-color:rgb(0, 0, 0); color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease;">
-                        Choose Files
-                    </label>
+                    <label for="fileInput" class="chooseFiles">
+    Choose Files
+</label>
+
 
                     <!-- File name text -->
                     <span id="file-upload-text" style="font-size: 16px; color: #555; margin-left: 10px;">No files
@@ -140,6 +140,7 @@ session_start();
                 <button onclick="window.location.href='home.php'" class="cancelPostBTN">Cancel Post</button>
             </div>
         </div>
+      
 
         <script>
             function updateFileLabel() {
