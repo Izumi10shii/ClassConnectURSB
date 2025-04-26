@@ -85,14 +85,17 @@ if (session_status() == PHP_SESSION_NONE) {
                     <!-- Form to handle like/unlike -->
                     <form method="POST" action="like_post.php" style="display: inline;">
                         <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+
                         <button type="submit" class="like-btn">
                             <img src="<?php echo $userLiked ? '../icons/dislike.svg' : '../icons/like.svg'; ?>"
                                 alt="<?php echo $userLiked ? 'Unlike' : 'Like'; ?>">
+                                <span><?php echo $like_count; ?></span>
+
                         </button>
                     </form>
-                    <span><?php echo "Likes: " . $like_count; ?></span>
-                    <button class="commentBTN"><img src="../icons/comment.svg" alt=""></button>
-                    <span><?php echo "Comments: " . $comments_count; ?></span>
+                    <button class="commentBTN"><img src="../icons/comment.svg" alt="">
+                    <span><?php echo $comments_count; ?></span>
+                </button>
                 </div>
             </div>
 

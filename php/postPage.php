@@ -186,11 +186,14 @@ session_start();
             <button type="submit" class="like-btn">
               <img src="<?php echo $userLiked ? '../icons/dislike.svg' : '../icons/like.svg'; ?>"
                 alt="<?php echo $userLiked ? 'Unlike' : 'Like'; ?>">
+
+                <span><?php echo $like_count; ?></span>
             </button>
+
           </form>
-          <span><?php echo "Likes :" . $like_count; ?></span>
-          <button class="commentBTN" onclick="event.stopPropagation();"><img src="../icons/comment.svg" alt=""></button>
-          <span><?php echo "Comments: " . $comments_count; ?></span>
+          <button class="commentBTN" onclick="event.stopPropagation();"><img src="../icons/comment.svg" alt="">
+          <span><?php echo $comments_count; ?></span>
+        </button>
           <button class="share" onclick="copyURL(event)">
             <img src="../icons/savelink.svg" alt="">
           </button>
