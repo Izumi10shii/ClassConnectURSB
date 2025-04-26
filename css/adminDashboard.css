@@ -56,6 +56,7 @@
   }
   /* Main Container */
   .HomeContainer {
+    
     display: flex;
     width: 100%;
     animation: fadeIn 1s ease;
@@ -131,18 +132,23 @@
     background-color: #f4f4f4;
     height: 100vh;
     overflow-y: auto;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1 {
   text-align: center;
-  font-size: 4rem;
+  font-size: 2rem;
   justify-content: center;
   align-items: center;
   color: #002766;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   justify-content: center;
   align-items: center;
   text-align: center;
