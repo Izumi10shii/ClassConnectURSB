@@ -19,10 +19,10 @@
     </nav>
 
     <div class="HomeContainer">
-        <div class="leftSidebar">
+    <div class="leftSidebar">
             <div class="leftSideUp">
-                <div class="homebtn lsu">Home</div>
-                <div class="popularbtn lsu">Profile</div>
+                <div class="homebtn lsu"><a href="home.php">Home</a></div>
+                <div class="savedpost lsu">Saved Posts</div>
 
                 <div class="explorebtn lsu">
                     <a href="explorePage.php">
@@ -33,25 +33,12 @@
                 <div class="popularbtn lsu">File Storage</div>
 
                 <div class="popularbtn lsu">
-                    <a href="adminUsersList.php">
-                        Registered Users
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">
-                    <a href="adminPostsList.php">
-                        Post Management
+                    <a href="adminDashboard.php">
+                        Admin Dashboard
                     </a>
                 </div>
 
                 <div class="popularbtn lsu">Settings</div>
-            </div>
-            <div class="leftSideDown">
-                <div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
             </div>
         </div>
 

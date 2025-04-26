@@ -60,16 +60,16 @@
 
                 // Include different PHP files based on the page parameter
                 if ($page == 'user_management') {
-                    include('adminUsersList.php'); // This will load the user management page
+                    include('adminUsersList.php');
                 } elseif ($page == 'post_management') {
-                    include('adminPostsList.php'); // This will load the post management page
+                    include('adminPostsList.php');
                 } elseif ($page == 'reports_management') {
-                    include('adminReportsList.php'); // This will load the reports management page
+                    include('adminReportsList.php');
                 } else {
-                    echo '<p>Welcome to the Admin Dashboard</p>';
+                    echo '<h1>Welcome to the Admin Dashboard</h1>';
                 }
             } else {
-                include('adminUsersList.php');
+                echo '<h1>Welcome to the Admin Dashboard</h1><br><h2>Select a section from the sidebar.</h2>';
             }
             ?>
         </div>

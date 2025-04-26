@@ -34,7 +34,7 @@ include("db_conn.php");
         <div class="leftSidebar">
             <div class="leftSideUp">
                 <div class="homebtn lsu">Home</div>
-                <div class="popularbtn lsu">Profile</div>
+                <div class="savedpost lsu">Saved Posts</div>
 
                 <div class="explorebtn lsu">
                     <a href="explorePage.php">

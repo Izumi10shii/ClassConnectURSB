@@ -19,7 +19,6 @@ session_start();
       <h1>Class Connect</h1>
     </a>
     <input class="search" type="text" placeholder="Search" />
-    <button class="addPostBtn">Add new Post</button>
     <a href="userPage.php">
       <div class="pfp profile"></div>
     </a>
@@ -29,7 +28,7 @@ session_start();
     <div class="leftSidebar">
       <div class="leftSideUp">
         <div class="homebtn lsu"><a href="home.php">Home</a></div>
-        <div class="popularbtn lsu">Profile</div>
+        <div class="savedpost lsu">Saved Posts</div>
 
         <div class="explorebtn lsu">
           <a href="explorePage.php">
@@ -48,7 +47,7 @@ session_start();
         <div class="popularbtn lsu">Settings</div>
       </div>
     </div>
-    
+
     <div class="scrollContainer">
       <?php
       $post_id = $_GET['post_id'] ?? null; // Get post_id from URL parameter
@@ -77,6 +76,11 @@ session_start();
                 $images[] = $imageRow['file_url'];
               }
             }
+
+            // Check if this user already bookmarked it
+            $currentUser = $_SESSION['username'];
+            $checkBookmark = mysqli_query($conn, "SELECT * FROM bookmarks_tb WHERE post_id = $post_id AND username = '$currentUser'");
+            $userBookmarked = mysqli_num_rows($checkBookmark) > 0;
 
             // Check if this user already liked it
             $currentUser = $_SESSION['username'];
@@ -128,9 +132,10 @@ session_start();
 
               <!-- Bookmark Button (submit form) -->
               <form method="POST" action="bookmark_post.php" style="display: inline;">
-                <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
+                <input type="hidden" name="post_id" value="<?= $post_id ?>">
                 <button type="submit" class="bookmark-btn">
-                  <img src="../icons/bookmark.svg" alt="Bookmark">
+                  <img id="bookmarkIcon"
+                    src="<?= $userBookmarked ? '../icons/bookmarkadd.svg' : '../icons/bookmark.svg' ?>" alt="Bookmark">
                 </button>
               </form>
 
@@ -186,14 +191,16 @@ session_start();
           <span><?php echo "Likes :" . $like_count; ?></span>
           <button class="commentBTN" onclick="event.stopPropagation();"><img src="../icons/comment.svg" alt=""></button>
           <span><?php echo "Comments: " . $comments_count; ?></span>
-          <button class="share" onclick="event.stopPropagation();"><img src="../icons/savelink.svg" alt=""></button>
+          <button class="share" onclick="copyURL(event)">
+            <img src="../icons/savelink.svg" alt="">
+          </button>
         </div>
       </div>
 
       <div class="commentSection">
         <form action="?post_id=<?php echo $post_id; ?>" method="POST" class="commentForm">
           <input class="inputComment" name="comment_desc" type="text" placeholder="Add Comment" required />
-          <button class="addComment" type="submit"><img src="../icons/comment.svg" alt=""></button>
+          <button class="addComment" type="submit"><img src="../icons/comment.svg" alt="Copy Post URL"></button>
         </form>
 
         <?php if (isset($commentsResult) && mysqli_num_rows($commentsResult) > 0): ?>
@@ -230,6 +237,24 @@ session_start();
       if (modal) {
         modal.style.display = 'none';
       }
+    }
+
+    function copyURL(event) {
+      event.stopPropagation();
+
+      const urlToCopy = window.location.href;
+
+      navigator.clipboard.writeText(urlToCopy)
+        .then(() => {
+          alert('Link copied to clipboard! 📋'); // Optional: show message
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+        });
+    }
+
+    function changeBookmarkIcon() {
+      document.getElementById('bookmarkIcon').src = '../icons/bookmarkadd.svg';
     }
   </script>
 

@@ -93,7 +93,6 @@ if (session_status() == PHP_SESSION_NONE) {
                     <span><?php echo "Likes: " . $like_count; ?></span>
                     <button class="commentBTN"><img src="../icons/comment.svg" alt=""></button>
                     <span><?php echo "Comments: " . $comments_count; ?></span>
-                    <button class="share" onclick="event.stopPropagation();"><img src="../icons/savelink.svg" alt=""></button>
                 </div>
             </div>
 

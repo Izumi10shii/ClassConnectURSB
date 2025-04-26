@@ -132,3 +132,19 @@
     height: 100vh;
     overflow-y: auto;
 }
+
+h1 {
+  text-align: center;
+  font-size: 4rem;
+  justify-content: center;
+  align-items: center;
+  color: #002766;
+}
+
+h2 {
+  font-size: 3rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #002766;
+}
