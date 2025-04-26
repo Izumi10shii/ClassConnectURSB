@@ -1,0 +1,54 @@
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background-color: #eee;
+}
+
+/* Button styling */
+.review-btn,
+.delete-btn {
+    color: white;
+    background-color: red;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.review-btn {
+    background-color: #28a745; /* Green for "Mark as Reviewed" */
+}
+
+.review-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}

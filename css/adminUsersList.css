@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow: auto;
 }
 body {
   display: flex;
@@ -9,6 +10,9 @@ body {
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .userListContainer {
@@ -40,10 +44,17 @@ body {
   padding: 0px 20px;
 }
 .addUserBTN {
-  padding: 5px 20px;
-  border-radius: 100px;
+  padding: 10px 20px;
+  border-radius: 5px;
   border: none;
-  box-shadow: 0 0 2px black;
+  background-color: #0051ff;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.addUserBTN:hover {
+  background-color: #003bb5;
 }
 .col {
   background-color: #fefefe;
@@ -80,11 +91,17 @@ body {
 }
 .actionRow a{
   text-decoration: none;
-  color: black;
   color: white;
-  background-color: black;
-  border-radius: 99px;
-
+  background-color: red;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.actionRow a.editBTN {
+  background-color: #28a745; /* Green for Edit */
+}
+.actionRow a:hover {
+  opacity: 0.8;
 }
 .addUserContainer{
   display: none; /* Initially hidden */
@@ -129,12 +146,14 @@ body {
   border-radius: 5px;
 }
 
+/* Table container */
 .table-container {
-  width: 100%;
+  width: 90%; /* Reduced width */
   overflow-x: auto;
   margin-top: 20px;
 }
 
+/* User table */
 .user-table {
   width: 100%;
   border-collapse: collapse;
@@ -143,10 +162,11 @@ body {
   box-shadow: 0 0 2px black;
   border-radius: 10px;
   overflow: hidden;
+  font-size: 14px; /* Reduced font size */
 }
 
 .user-table th, .user-table td {
-  padding: 15px;
+  padding: 10px; /* Reduced padding */
   border: 1px solid #ddd;
 }
 
@@ -154,25 +174,28 @@ body {
   background-color: #f3f3f3;
   font-weight: bold;
   text-align: center;
+  font-size: 14px; /* Reduced font size */
 }
 
 .user-table td {
   text-align: center;
+  font-size: 13px; /* Reduced font size */
 }
 
+/* Action buttons */
 .actionRow {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 5px; /* Reduced gap */
 }
 
 .actionRow a {
   text-decoration: none;
   color: white;
   background-color: black;
-  padding: 5px 10px;
+  padding: 5px 8px; /* Reduced padding */
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 12px; /* Reduced font size */
 }
 
 .actionRow a:hover {
@@ -245,4 +268,22 @@ body {
 
 .cancelBTN:hover {
     background-color: #d32f2f;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background-color: #eee;
 }

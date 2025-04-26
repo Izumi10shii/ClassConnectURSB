@@ -55,9 +55,9 @@
             </div>
         </div>
 
-        <!--
+        <!-- Fix
             <?php
-            include("postComponent.php");
+            //include("postComponent.php");
             ?>
             -->
 

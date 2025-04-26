@@ -4,9 +4,9 @@ include 'db_conn.php';
 if (isset($_GET['delete_id']) && !empty($_GET['delete_id'])) {
     $delete_id = mysqli_real_escape_string($conn, $_GET['delete_id']);
     $delete_query = "DELETE FROM post_tb WHERE post_id = $delete_id";
-    
+
     if (mysqli_query($conn, $delete_query)) {
-        header("Location: adminPostsList.php");
+        header("Location: adminDashboard.php");
         exit();
     } else {
         echo "Error deleting post: " . mysqli_error($conn);
@@ -20,10 +20,12 @@ $result = mysqli_query($conn, $query);
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Admin - Manage Posts</title>
     <link rel="stylesheet" href="../css/adminPostsList.css">
 </head>
+
 <body>
     <h2>All Posts</h2>
     <table>
@@ -32,6 +34,7 @@ $result = mysqli_query($conn, $query);
             <th>User ID</th>
             <th>Title</th>
             <th>Description</th>
+            <th>Media</th>
             <th>Action</th>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -40,17 +43,44 @@ $result = mysqli_query($conn, $query);
                 <td><?= $row['username'] ?></td>
                 <td><?= htmlspecialchars($row['title']) ?></td>
                 <td><?= nl2br(htmlspecialchars($row['description'])) ?></td>
+
+                <?php            // Fetch images and files for the post
+                    $getFiles = "SELECT file_url FROM post_files_tb WHERE post_id = $row[post_id]";
+                    $filesResult = mysqli_query($conn, $getFiles);
+                    $files = []; // Reset the files array for each post
+                
+                    if ($filesResult && mysqli_num_rows($filesResult) > 0) {
+                        while ($fileRow = mysqli_fetch_assoc($filesResult)) {
+                            $files[] = $fileRow['file_url'];
+                        }
+                    }
+                    ?>
+
+                <td class="files">
+                    <?php foreach ($files as $file): ?>
+                        <?php
+                        $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
+                        if (strtolower($fileExtension) === 'pdf'): ?>
+                            <!-- Display PDF -->
+                            <embed class="docs" src="<?php echo $file; ?>" type="application/pdf" style="width: 20px; height: 20px; overflow: hidden;">
+                        <?php else: ?>
+                            <!-- Display Image -->
+                            <img class="imgs" src="<?php echo $file; ?>" alt="Post File" style="width: 50px; height: 50px; overflow: hidden;">
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                        </td>
+
                 <td>
-                    <a href="adminPostsList.php?delete_id=<?= $row['post_id'] ?>" 
-                       class="delete-btn" 
-                       onclick="return confirm('Are you sure you want to delete this post?');">
-                       Delete
+                    <a href="adminPostsList.php?delete_id=<?= $row['post_id'] ?>" class="delete-btn"
+                        onclick="return confirm('Are you sure you want to delete this post?');">
+                        Delete
                     </a>
                 </td>
             </tr>
         <?php } ?>
     </table>
 </body>
+
 </html>
 
 <?php

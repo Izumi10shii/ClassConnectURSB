@@ -45,25 +45,12 @@ include("db_conn.php");
                 <div class="popularbtn lsu">File Storage</div>
 
                 <div class="popularbtn lsu">
-                    <a href="adminUsersList.php">
-                        Registered Users
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">
-                    <a href="adminPostsList.php">
-                        Post Management
+                    <a href="adminDashboard.php">
+                        Admin Dashboard
                     </a>
                 </div>
 
                 <div class="popularbtn lsu">Settings</div>
-            </div>
-            <div class="leftSideDown">
-                <div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
             </div>
         </div>
 

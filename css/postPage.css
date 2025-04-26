@@ -349,7 +349,7 @@ body {
 }
 
 .report-btn {
-  background-color: red;
+  background-color: rgb(255, 143, 143);
   color: white;
   border: none;
   padding: 5px 10px;
@@ -365,3 +365,80 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.postActions img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s;
+}
+
+.postActions button:hover img {
+  transform: scale(1.2);
+}
+
+/* Fullscreen dark background for the report modal */
+.report-modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Dark transparent background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.report-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 90%;
+  overflow-y: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Textarea inside the modal */
+.report-modal-content textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 15px;
+  padding: 10px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+
+/* Submit and Cancel buttons inside the modal */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-buttons button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+
+.modal-buttons button[type="button"] {
+  background-color: #dc3545;
+  color: white;
+}
+

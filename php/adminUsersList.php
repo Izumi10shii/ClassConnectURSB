@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user'])) {
                         WHERE student_no = '$student_no'";
 
         if (mysqli_query($conn, $updateQuery)) {
-            echo "<script>alert('User updated successfully!'); window.location.href = 'adminUsersList.php';</script>";
+            echo "<script>alert('User updated successfully!'); window.location.href = 'adminDashboard.php';</script>";
             exit;
         } else {
             echo "<script>alert('Error updating user: " . mysqli_error($conn) . "');</script>";
@@ -108,7 +108,7 @@ if (isset($_GET['edit_id'])) {
     if ($editResult && mysqli_num_rows($editResult) > 0) {
         $editData = mysqli_fetch_assoc($editResult);
     } else {
-        echo "<script>alert('User not found.'); window.location.href = 'adminUsersList.php';</script>";
+        echo "<script>alert('User not found.'); window.location.href = 'adminDashboard.php';</script>";
     }
 }
 
@@ -284,7 +284,7 @@ $result = mysqli_query($conn, $query);
         <input id="edit_section" name="section" type="text" value="<?php echo isset($editData['section']) ? $editData['section'] : ''; ?>" required>
 
         <button type="submit" name="edit_user" class="confirmBtn">Save Changes</button>
-        <a href="adminUsersList.php" class="cancelBtn">Cancel</a>
+        <a href="adminDashboard.php" class="cancelBtn">Cancel</a>
     </form>
 
     <!-- Confirmation Popup -->
@@ -342,7 +342,7 @@ $result = mysqli_query($conn, $query);
 
         function closeSuccessPopup() {
             document.getElementById('successPopup').style.display = 'none';
-            window.location.href = 'adminUsersList.php'; 
+            window.location.href = 'adminDashboard.php'; 
         }
 
     </script>

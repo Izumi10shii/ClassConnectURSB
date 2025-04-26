@@ -20,7 +20,7 @@ session_start();
     </a>
     <input class="search" type="text" placeholder="Search" />
     <button class="addPostBtn">Add new Post</button>
-    <a href="userPage.html">
+    <a href="userPage.php">
       <div class="pfp profile"></div>
     </a>
   </nav>
@@ -28,7 +28,7 @@ session_start();
   <div class="HomeContainer">
     <div class="leftSidebar">
       <div class="leftSideUp">
-        <div class="homebtn lsu">Home</div>
+        <div class="homebtn lsu"><a href="home.php">Home</a></div>
         <div class="popularbtn lsu">Profile</div>
 
         <div class="explorebtn lsu">
@@ -40,27 +40,15 @@ session_start();
         <div class="popularbtn lsu">File Storage</div>
 
         <div class="popularbtn lsu">
-          <a href="adminUsersList.php">
-            Registered Users
-          </a>
-        </div>
-
-        <div class="popularbtn lsu">
-          <a href="adminPostsList.php">
-            Post Management
+          <a href="adminDashboard.php">
+            Admin Dashboard
           </a>
         </div>
 
         <div class="popularbtn lsu">Settings</div>
       </div>
-      <div class="leftSideDown">
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
     </div>
+    
     <div class="scrollContainer">
       <?php
       $post_id = $_GET['post_id'] ?? null; // Get post_id from URL parameter
@@ -133,9 +121,35 @@ session_start();
 
             <!-- Report and Bookmark Buttons -->
             <div class="postActions">
-              <button class="report-btn"><img src="../icons/flag.svg" alt=""></button>
-              <button class="bookmark-btn"><img src="../icons/bookmark.svg" alt=""></button>
+              <!-- Report Button -->
+              <button onclick="showReportForm(<?php echo $post_id; ?>)" class="report-btn">
+                <img src="../icons/flag.svg" alt="Report">
+              </button>
+
+              <!-- Bookmark Button (submit form) -->
+              <form method="POST" action="bookmark_post.php" style="display: inline;">
+                <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
+                <button type="submit" class="bookmark-btn">
+                  <img src="../icons/bookmark.svg" alt="Bookmark">
+                </button>
+              </form>
+
             </div>
+
+            <!-- Hidden Report Form -->
+            <div id="reportModal-<?php echo $post_id; ?>" class="report-modal">
+              <div class="report-modal-content">
+                <form action="reportPost.php" method="POST">
+                  <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                  <textarea class="reason" name="reason" placeholder="Write your reason..." required></textarea>
+                  <div class="modal-buttons">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="hideReportForm(<?php echo $post_id; ?>)">Cancel</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
           </div>
           <h2><?php echo htmlspecialchars($title); ?></h2>
           <div><?php echo htmlspecialchars($description); ?></div>
@@ -202,6 +216,24 @@ session_start();
       </div>
     </div>
   </div>
+
+  <script>
+    function showReportForm(postId) {
+      const modal = document.getElementById('reportModal-' + postId);
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+    }
+
+    function hideReportForm(postId) {
+      const modal = document.getElementById('reportModal-' + postId);
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+
+
 </body>
 
 </html>
