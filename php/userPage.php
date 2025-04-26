@@ -9,48 +9,54 @@
 </head>
 
 <body>
-<nav class="homeHeader">
-    <h1>Class Connect</h1>
-    <input class="search" type="text" placeholder="Search" />
-    <button class="addPostBtn">Add new Post</button>
-    <a href="userPage.html"><div class="pfp profile"></div></a>
-  </nav>
+    <nav class="homeHeader">
+        <h1>Class Connect</h1>
+        <input class="search" type="text" placeholder="Search" />
+        <button class="addPostBtn">Add new Post</button>
+        <a href="userPage.html">
+            <div class="pfp profile"></div>
+        </a>
+    </nav>
 
     <div class="HomeContainer">
         <div class="leftSidebar">
             <div class="leftSideUp">
-                <li>Home</li>
-                <li>Explore</li>
-                <li>Popular</li>
+                <div class="homebtn lsu">Home</div>
+                <div class="popularbtn lsu">Profile</div>
+
+                <div class="explorebtn lsu">
+                    <a href="explorePage.php">
+                        Explore Discussions
+                    </a>
+                </div>
+
+                <div class="popularbtn lsu">File Storage</div>
+
+                <div class="popularbtn lsu">
+                    <a href="adminUsersList.php">
+                        Registered Users
+                    </a>
+                </div>
+
+                <div class="popularbtn lsu">
+                    <a href="adminPostsList.php">
+                        Post Management
+                    </a>
+                </div>
+
+                <div class="popularbtn lsu">Settings</div>
             </div>
             <div class="leftSideDown">
-                <h2>Communities</h2>
                 <div>
-                    <div>
-
-                        <div class="pfp"></div>
-                        <div>IT5 - OOP</div>
-                    </div>
-
-                    <div>
-
-                        <div class="pfp"></div>
-                        <div>IT6 - DBMS</div>
-                    </div>
-
-                    <div>
-
-                        <div class="pfp"></div>
-                        <div>ITE 7 - AppDev</div>
-                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
             </div>
         </div>
 
         <!--
             <?php
-            include("postComponent.php");
-            include("postComponent.php");
             include("postComponent.php");
             ?>
             -->
@@ -80,7 +86,7 @@
                 <button>Comments</button>
             </div>
 
-<!--
+            <!--
             <div class="post">
                 <div class="postHeader">
                     <div class="pfp"></div>
@@ -107,7 +113,7 @@
                 </div>
 -->
         </div>
-            <!--
+        <!--
                 <div class="commentSection">
                     <h4>Add Comment</h4>
                     <div class="addComment">

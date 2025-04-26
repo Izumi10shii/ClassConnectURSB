@@ -1,8 +1,16 @@
 /* Keyframes for rainbow hover animation */
 @keyframes rainbowMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Smooth transitions and resets */
@@ -124,13 +132,13 @@ body {
   flex-direction: column;
 }
 
-.leftSideDown > div {
+.leftSideDown>div {
   display: flex;
   flex-direction: column;
   margin: 20px;
 }
 
-.leftSideDown > div > div {
+.leftSideDown>div>div {
   display: inline;
 }
 
@@ -197,6 +205,12 @@ body {
   border-radius: 20px;
 }
 
+.commentForm {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
 .commentSection {
   border: 1px solid none;
   padding: 20px;
@@ -210,7 +224,7 @@ body {
   border: 1px solid #C2C2C2;
 }
 
-.commentSection > button,
+.commentSection>button,
 .addComment {
   background-color: #0051ff;
   color: white;
@@ -276,7 +290,7 @@ body {
   gap: 20px;
 }
 
-.rightSidebar > div {
+.rightSidebar>div {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -325,4 +339,29 @@ body {
 
 .rainbowBtn:hover {
   transform: scale(1.05);
+}
+
+.postActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 200px;
+}
+
+.report-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bookmark-btn {
+  background-color: #0051ff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }

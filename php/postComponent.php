@@ -33,7 +33,7 @@ session_start();
             $getFiles = "SELECT file_url FROM post_files_tb WHERE post_id = $post_id";
             $filesResult = mysqli_query($conn, $getFiles);
             $files = []; // Reset the files array for each post
-
+    
             if ($filesResult && mysqli_num_rows($filesResult) > 0) {
                 while ($fileRow = mysqli_fetch_assoc($filesResult)) {
                     $files[] = $fileRow['file_url'];
@@ -65,16 +65,16 @@ session_start();
                 </div>
 
                 <!-- Display all files -->
-                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+                <div class="files">
                     <?php foreach ($files as $file): ?>
                         <?php
                         $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
                         if (strtolower($fileExtension) === 'pdf'): ?>
                             <!-- Display PDF -->
-                            <embed src="<?php echo $file; ?>" type="application/pdf" style="width: 200px; height: 200px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                            <embed class="docs" src="<?php echo $file; ?>" type="application/pdf">
                         <?php else: ?>
                             <!-- Display Image -->
-                            <img src="<?php echo $file; ?>" alt="Post File" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                            <img class="imgs" src="<?php echo $file; ?>" alt="Post File">
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
@@ -84,13 +84,14 @@ session_start();
                     <form method="POST" action="like_post.php" style="display: inline;">
                         <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
                         <button type="submit" class="like-btn">
-                            <?php echo $userLiked ? "👎 Unlike" : "👍 Like"; ?>
+                            <img src="<?php echo $userLiked ? '../icons/dislike.svg' : '../icons/like.svg'; ?>"
+                                alt="<?php echo $userLiked ? 'Unlike' : 'Like'; ?>">
                         </button>
                     </form>
                     <span><?php echo "Likes: " . $like_count; ?></span>
-                    <button class="commentBTN">comment</button>
+                    <button class="commentBTN"><img src="../icons/comment.svg" alt=""></button>
                     <span><?php echo "Comments: " . $comments_count; ?></span>
-                    <button class="share" onclick="event.stopPropagation();">share</button>
+                    <button class="share" onclick="event.stopPropagation();"><img src="../icons/savelink.svg" alt=""></button>
                 </div>
             </div>
 

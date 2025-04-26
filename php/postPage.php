@@ -10,7 +10,7 @@ session_start();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Post Page</title>
-  <link rel="stylesheet" href="../css/postPage.css?v=2" />
+  <link rel="stylesheet" href="../css/postPage.css" />
 </head>
 
 <body>
@@ -130,6 +130,12 @@ session_start();
                 <div><?php echo htmlspecialchars($created_at); ?></div>
               </div>
             </div>
+
+            <!-- Report and Bookmark Buttons -->
+            <div class="postActions">
+              <button class="report-btn"><img src="../icons/flag.svg" alt=""></button>
+              <button class="bookmark-btn"><img src="../icons/bookmark.svg" alt=""></button>
+            </div>
           </div>
           <h2><?php echo htmlspecialchars($title); ?></h2>
           <div><?php echo htmlspecialchars($description); ?></div>
@@ -159,21 +165,21 @@ session_start();
           <form method="POST" action="like_post.php" style="display: inline;">
             <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
             <button type="submit" class="like-btn">
-              <?php echo $userLiked ? "👎 Unlike" : "👍 Like"; ?>
+              <img src="<?php echo $userLiked ? '../icons/dislike.svg' : '../icons/like.svg'; ?>"
+                alt="<?php echo $userLiked ? 'Unlike' : 'Like'; ?>">
             </button>
           </form>
           <span><?php echo "Likes :" . $like_count; ?></span>
-          <button class="commentBTN" onclick="event.stopPropagation();">Comment</button>
+          <button class="commentBTN" onclick="event.stopPropagation();"><img src="../icons/comment.svg" alt=""></button>
           <span><?php echo "Comments: " . $comments_count; ?></span>
-          <button class="share" onclick="event.stopPropagation();">share</button>
+          <button class="share" onclick="event.stopPropagation();"><img src="../icons/savelink.svg" alt=""></button>
         </div>
       </div>
 
       <div class="commentSection">
         <form action="?post_id=<?php echo $post_id; ?>" method="POST" class="commentForm">
           <input class="inputComment" name="comment_desc" type="text" placeholder="Add Comment" required />
-          <button class="cancelBTN" type="button">Cancel</button>
-          <input class="addComment" type="submit" value="Comment">
+          <button class="addComment" type="submit"><img src="../icons/comment.svg" alt=""></button>
         </form>
 
         <?php if (isset($commentsResult) && mysqli_num_rows($commentsResult) > 0): ?>
