@@ -80,39 +80,41 @@ $result = mysqli_query($conn, $query);
         <?php } ?>
     </table>
     <div class="postComments">
-        <h2>
-
-            All Posts
-        </h2>
-
-
+        <h2>All Comments</h2>
         <table>
             <tr>
                 <th>Post ID</th>
-            
-            </tr>
-            <tr>
-                <th>Comment ID</th>
+                <th>Username</th>
                 <th>Comment Description</th>
-                <th>Comment Likes</th>
-                <th>Comment Dislikes</th>
-                <th>Replies</th>
+                <th>Created At</th>
                 <th>Action</th>
             </tr>
+            <?php
+            $commentsQuery = "SELECT post_id, username, comment_desc, created_at, comment_id FROM comment_tb ORDER BY created_at DESC";
+            $commentsResult = mysqli_query($conn, $commentsQuery);
 
-            <tr> <!--First Data-->
-                <td>1</td>
-                <td>Lorem Ipsum</td>
-                <td>300</td>
-                <td>100</td>
-                <td>20</td>
-                <td>Delete</td>
-            </tr>
-
+            if ($commentsResult && mysqli_num_rows($commentsResult) > 0):
+                while ($comment = mysqli_fetch_assoc($commentsResult)): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($comment['post_id']); ?></td>
+                        <td><?= htmlspecialchars($comment['username']); ?></td>
+                        <td><?= htmlspecialchars($comment['comment_desc']); ?></td>
+                        <td><?= htmlspecialchars($comment['created_at']); ?></td>
+                        <td>
+                            <a href="deleteComment.php?comment_id=<?= $comment['comment_id']; ?>" class="delete-btn"
+                               onclick="return confirm('Are you sure you want to delete this comment?');">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                <?php endwhile;
+            else: ?>
+                <tr>
+                    <td colspan="5">No comments available.</td>
+                </tr>
+            <?php endif; ?>
         </table>
     </div>
-
-
 </body>
 
 </html>

@@ -56,12 +56,12 @@ $result = mysqli_query($conn, $query);
                             <td><?php echo htmlspecialchars($row['reported_at']); ?></td>
                             <td>
                                 <!-- Button to mark as reviewed -->
-                                <form method="POST" action="reviewReport.php" style="display: inline;">
+                                <form method="POST" action="reviewReport.php" style="display: inline;" onsubmit="location.href='adminDashboard.php';">
                                     <input type="hidden" name="report_id" value="<?php echo $row['report_id']; ?>">
                                     <button type="submit" class="review-btn">Mark as Reviewed</button>
                                 </form>
                                 <!-- Button to delete the report -->
-                                <form method="POST" action="deleteReport.php" style="display: inline;">
+                                <form method="POST" action="deleteReport.php" style="display: inline;" onsubmit="location.href='adminDashboard.php';">
                                     <input type="hidden" name="report_id" value="<?php echo $row['report_id']; ?>">
                                     <button type="submit" class="delete-btn">Delete</button>
                                 </form>

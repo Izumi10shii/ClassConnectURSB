@@ -169,24 +169,43 @@ session_start();
             <button type="submit" class="like-btn">
               <img src="<?php echo $userLiked ? '../icons/dislike.svg' : '../icons/like.svg'; ?>"
                 alt="<?php echo $userLiked ? 'Unlike' : 'Like'; ?>">
-
               <span><?php echo $like_count; ?></span>
             </button>
-
           </form>
-          <button class="commentBTN" onclick="event.stopPropagation();"><img src="../icons/comment.svg" alt="">
+          <button class="commentBTN">
+            <img src="../icons/comment.svg" alt="">
             <span><?php echo $comments_count; ?></span>
           </button>
           <button class="share" onclick="copyURL(event)">
             <img src="../icons/savelink.svg" alt="">
           </button>
         </div>
+
+        <!-- Report Modal -->
+        <div id="reportModal-<?php echo $post_id; ?>" class="reportModal">
+          <div class="reportModalContent">
+            <h2>Report Post</h2>
+            <form method="POST" action="reportPost.php">
+              <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+              <label for="reason">Reason:</label>
+              <input type="text" id="reason" name="reason" placeholder="Enter your reason..." required>
+
+              <div class="reportModalButtons">
+                <button type="submit" class="submitReport">Submit</button>
+                <button type="button" onclick="hideReportForm(<?php echo $post_id; ?>)"
+                  class="cancelReport">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
 
       <div class="commentSection">
         <form action="?post_id=<?php echo $post_id; ?>" method="POST" class="commentForm">
-          <input class="inputComment" name="comment_desc" type="text" placeholder="Add Comment" required />
-          <button class="addComment" type="submit"><img src="../icons/comment.svg" alt="Copy Post URL"></button>
+          <input class="inputComment" name="comment_desc" type="text" placeholder="Add a comment..." required />
+          <button class="addComment" type="submit">
+            <img src="../icons/comment.svg" alt="Send Comment">
+          </button>
         </form>
 
         <?php if (isset($commentsResult) && mysqli_num_rows($commentsResult) > 0): ?>
@@ -194,17 +213,17 @@ session_start();
             <div class="comment">
               <div class="commentUserRow">
                 <div class="pfp"></div>
-                <div><?php echo htmlspecialchars($comment['username']); ?></div>
+                <div><strong><?php echo htmlspecialchars($comment['username']); ?></strong></div>
               </div>
-              <div><?php echo htmlspecialchars($comment['comment_desc']); ?></div>
-              <div class="commentBTNRow">
+              <div class="commentText"><?php echo htmlspecialchars($comment['comment_desc']); ?></div>
+              <div class="commentActions">
                 <button class="like">Like</button>
-                <button class="commentBTN">Comment</button>
+                <button class="reply">Reply</button>
               </div>
             </div>
           <?php endwhile; ?>
         <?php else: ?>
-          <p>No comments available for this post.</p>
+          <p class="noComments">No comments yet. Be the first to comment!</p>
         <?php endif; ?>
       </div>
     </div>
