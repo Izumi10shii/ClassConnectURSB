@@ -28,7 +28,9 @@ session_start();
     <div class="leftSidebar">
       <div class="leftSideUp">
         <div class="homebtn lsu"><a href="home.php">Home</a></div>
-        <div class="savedpost lsu">Saved Posts</div>
+        <div class="savedpost lsu">
+          <a href="saved_posts.php">Saved Posts</a>
+        </div>
 
         <div class="explorebtn lsu">
           <a href="explorePage.php">
@@ -187,13 +189,13 @@ session_start();
               <img src="<?php echo $userLiked ? '../icons/dislike.svg' : '../icons/like.svg'; ?>"
                 alt="<?php echo $userLiked ? 'Unlike' : 'Like'; ?>">
 
-                <span><?php echo $like_count; ?></span>
+              <span><?php echo $like_count; ?></span>
             </button>
 
           </form>
           <button class="commentBTN" onclick="event.stopPropagation();"><img src="../icons/comment.svg" alt="">
-          <span><?php echo $comments_count; ?></span>
-        </button>
+            <span><?php echo $comments_count; ?></span>
+          </button>
           <button class="share" onclick="copyURL(event)">
             <img src="../icons/savelink.svg" alt="">
           </button>

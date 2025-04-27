@@ -33,8 +33,12 @@ include("db_conn.php");
     <div class="HomeContainer">
         <div class="leftSidebar">
             <div class="leftSideUp">
-                <div class="homebtn lsu">Home</div>
-                <div class="savedpost lsu">Saved Posts</div>
+                <div class="homebtn lsu">
+                    <a href="home.php">Home</a>
+                </div>
+                <div class="savedpost lsu">
+                    <a href="saved_posts.php">Saved Posts</a>
+                </div>
 
                 <div class="explorebtn lsu">
                     <a href="explorePage.php">
