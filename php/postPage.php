@@ -117,46 +117,27 @@ session_start();
       <div class="post">
         <?php if (isset($username) && isset($title) && isset($description)): ?>
           <div class="postHeader">
-            <div class="pfp"></div>
-            <div class="postHeaderPoster">
-              <div class="postHeaderCol">
-                <div><strong><?php echo htmlspecialchars($username); ?></strong></div>
-                <div><?php echo htmlspecialchars($created_at); ?></div>
+            <div class="postHeaderRow">
+              <div class="pfp"></div>
+              <div class="postHeaderPoster">
+                <div class="postHeaderCol">
+                  <div><strong><?php echo htmlspecialchars($username); ?></strong></div>
+                  <div><?php echo htmlspecialchars($created_at); ?></div>
+                </div>
               </div>
-            </div>
-
-            <!-- Report and Bookmark Buttons -->
-            <div class="postActions">
-              <!-- Report Button -->
-              <button onclick="showReportForm(<?php echo $post_id; ?>)" class="report-btn">
-                <img src="../icons/flag.svg" alt="Report">
-              </button>
-
-              <!-- Bookmark Button (submit form) -->
-              <form method="POST" action="bookmark_post.php" style="display: inline;">
-                <input type="hidden" name="post_id" value="<?= $post_id ?>">
-                <button type="submit" class="bookmark-btn">
-                  <img id="bookmarkIcon"
-                    src="<?= $userBookmarked ? '../icons/bookmarkadd.svg' : '../icons/bookmark.svg' ?>" alt="Bookmark">
+              <div class="postActions">
+                <button onclick="showReportForm(<?php echo $post_id; ?>)" class="report-btn">
+                  <img src="../icons/flag.svg" alt="Report">
                 </button>
-              </form>
-
-            </div>
-
-            <!-- Hidden Report Form -->
-            <div id="reportModal-<?php echo $post_id; ?>" class="report-modal">
-              <div class="report-modal-content">
-                <form action="reportPost.php" method="POST">
-                  <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-                  <textarea class="reason" name="reason" placeholder="Write your reason..." required></textarea>
-                  <div class="modal-buttons">
-                    <button type="submit">Submit</button>
-                    <button type="button" onclick="hideReportForm(<?php echo $post_id; ?>)">Cancel</button>
-                  </div>
+                <form method="POST" action="bookmark_post.php" style="display: inline;">
+                  <input type="hidden" name="post_id" value="<?= $post_id ?>">
+                  <button type="submit" class="bookmark-btn">
+                    <img id="bookmarkIcon"
+                      src="<?= $userBookmarked ? '../icons/bookmarkadd.svg' : '../icons/bookmark.svg' ?>" alt="Bookmark">
+                  </button>
                 </form>
               </div>
             </div>
-
           </div>
           <h2><?php echo htmlspecialchars($title); ?></h2>
           <div><?php echo htmlspecialchars($description); ?></div>

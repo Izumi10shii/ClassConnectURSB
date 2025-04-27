@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../css/userPage.css?=v2">
+    <link rel="stylesheet" href="../css/userPage.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     </nav>
 
     <div class="HomeContainer">
-    <div class="leftSidebar">
+        <div class="leftSidebar">
             <div class="leftSideUp">
                 <div class="homebtn lsu"><a href="home.php">Home</a></div>
                 <div class="savedpost lsu">Saved Posts</div>
@@ -42,29 +42,41 @@
             </div>
         </div>
 
-        <!-- Fix
-            <?php
-            //include("postComponent.php");
-            ?>
-            -->
 
         <div class="scrollContainer">
 
             <div class="communityPageInfo">
                 <div class="communityRow">
+                    <div class="goLeft">
+                        <div class="PagePfp"></div>
+                        <h1>John Doe</h1>
+                    </div>
+                    <div class="goRight">
+                        <button class="actionBtn">Follow</button>
+                        <button class="actionBtn">Chat</button>
+                    </div>
+                </div>
 
-                    <div class="PagePfp">
-
+                <div class="profileDetails">
+                    <div class="followersRow">
+                        <p>2k Followers</p>
+                        <p>100 Posts</p>
+                        <p>1k Comments</p>
                     </div>
 
-                    <h1>username</h1>
-                    <button class="actionBtn">Follow</button>
-                    <button class="actionBtn">Chat</button>
-
+                    <div class="profileInfo">
+                        <h3>Profile</h3>
+                        <p>BSIT 2-1A</p>
+                        <p>dummy@email.com</p>
+                        <p>BSIT 2-1A</p>
+                    </div>
                 </div>
 
                 <div class="interests">
-                    Interests
+                    <h3>Interests</h3>
+                    <li>ITEM1</li>
+                    <li>ITEM2</li>
+                    <li>ITEM3</li>
                 </div>
             </div>
 
@@ -72,60 +84,7 @@
                 <button>Posts</button>
                 <button>Comments</button>
             </div>
-
-            <!--
-            <div class="post">
-                <div class="postHeader">
-                    <div class="pfp"></div>
-                    <div class="postHeaderPoster">
-                        <div class="postHeaderCol">
-                            <p>ITE7</p>
-                            <div>username</div>
-                        </div>
-                        <p>1hr ago</p>
-                    </div>
-                </div>
-                <h2>Trying out Flutter lately — pretty solid so far.</h2>
-                <div>Getting used to how everything's a widget, but the layout system actually makes a lot of sense once
-                    you mess with it a bit. Built a small UI just to test stuff like navigation and basic theming. Not
-                    bad at all.
-                    Still figuring out the best way to handle state, but it’s clicking slowly.
-                    If anyone’s got clean Flutter repos or go-to tutorials, I’m all ears.</div>
-
-                    --
-                <div class="interactionHeader">
-                    <button class="like">like</button>
-                    <button class="commentBTN">comment</button>
-                    <button class="share">share</button>
-                </div>
--->
         </div>
-        <!--
-                <div class="commentSection">
-                    <h4>Add Comment</h4>
-                    <div class="addComment">
-                        <textarea name="" id=""></textarea>
-                        <button class="sendCommentBTN">send</button>
-                    </div>
-                    
-                </div>
-           
-
-        </div>
- -->
-
-        <div class="rightSidebar">
-            <h2>username</h2>
-            <p>2k Followers</p>
-            <p>100 Posts</p>
-            <p>1k Posts</p>
-
-            <br>
-            <h2>Profile</h2>
-            <p>John Doe</p>
-            <p>BSIT 2-1A</p>
-        </div>
-    </div>
 
 
 </body>

@@ -45,16 +45,16 @@ $result = mysqli_query($conn, $query);
                 <td><?= nl2br(htmlspecialchars($row['description'])) ?></td>
 
                 <?php            // Fetch images and files for the post
-                    $getFiles = "SELECT file_url FROM post_files_tb WHERE post_id = $row[post_id]";
-                    $filesResult = mysqli_query($conn, $getFiles);
-                    $files = []; // Reset the files array for each post
-                
-                    if ($filesResult && mysqli_num_rows($filesResult) > 0) {
-                        while ($fileRow = mysqli_fetch_assoc($filesResult)) {
-                            $files[] = $fileRow['file_url'];
-                        }
+                $getFiles = "SELECT file_url FROM post_files_tb WHERE post_id = $row[post_id]";
+                $filesResult = mysqli_query($conn, $getFiles);
+                $files = []; // Reset the files array for each post
+
+                if ($filesResult && mysqli_num_rows($filesResult) > 0) {
+                    while ($fileRow = mysqli_fetch_assoc($filesResult)) {
+                        $files[] = $fileRow['file_url'];
                     }
-                    ?>
+                }
+                ?>
 
                 <td class="files">
                     <?php foreach ($files as $file): ?>
@@ -68,7 +68,7 @@ $result = mysqli_query($conn, $query);
                             <img class="imgs" src="<?php echo $file; ?>" alt="Post File" style="width: 50px; height: 50px; overflow: hidden;">
                         <?php endif; ?>
                     <?php endforeach; ?>
-                        </td>
+                </td>
 
                 <td>
                     <a href="adminPostsList.php?delete_id=<?= $row['post_id'] ?>" class="delete-btn"
@@ -79,6 +79,40 @@ $result = mysqli_query($conn, $query);
             </tr>
         <?php } ?>
     </table>
+    <div class="postComments">
+        <h2>
+
+            All Posts
+        </h2>
+
+
+        <table>
+            <tr>
+                <th>Post ID</th>
+            
+            </tr>
+            <tr>
+                <th>Comment ID</th>
+                <th>Comment Description</th>
+                <th>Comment Likes</th>
+                <th>Comment Dislikes</th>
+                <th>Replies</th>
+                <th>Action</th>
+            </tr>
+
+            <tr> <!--First Data-->
+                <td>1</td>
+                <td>Lorem Ipsum</td>
+                <td>300</td>
+                <td>100</td>
+                <td>20</td>
+                <td>Delete</td>
+            </tr>
+
+        </table>
+    </div>
+
+
 </body>
 
 </html>

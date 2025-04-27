@@ -162,154 +162,47 @@ body {
   margin: 20px;
 }
 
-.pfp {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-image: url('../bg/sample10.png');
-  background-size: cover;
-  background-position: center;
-}
-
 .postHeader {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align all content to the left */
+    gap: 10px;
+    width: 100%;
 }
 
-.postHeader .postHeaderPoster {
-  display: flex;
+.postHeaderRow {
+    display: flex;
+    justify-content: space-between; /* Space between profile picture and buttons */
+    align-items: center;
+    width: 100%;
 }
 
-.postHeader .postHeader .postHeaderCol {
-  display: flex;
+.pfp {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-right: 10px;
 }
 
-.postHeaderCol div:last-child {
-  font-size: 0.9rem;
-  color: gray;
-  margin-top: 2px;
+.postHeaderPoster {
+    flex-grow: 1; /* Allow the poster info to take up remaining space */
 }
 
-.interactionHeader {
-  display: flex;
-  gap: 20px;
+.postActions {
+    display: flex;
+    gap: 10px;
 }
 
-.interactionHeader button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  padding: 10px 20px;
-  background-color: #0051ff;
-  color: white;
-  border-radius: 20px;
-  font-weight: bold;
-  gap: 10px;
-  cursor: pointer;
+.postActions button {
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-.commentForm {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-}
-
-.commentSection {
-  border: 1px solid none;
-  padding: 20px;
-  width: 95%;
-}
-
-.inputComment {
-  width: 600px;
-  padding: 10px;
-  border-radius: 20px;
-  border: 1px solid #C2C2C2;
-}
-
-.commentSection>button,
-.addComment {
-  background-color: #0051ff;
-  color: white;
-  padding: 10px;
-  border-radius: 20px;
-  border: none;
-}
-
-.commentUserRow {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 20px;
-}
-
-.comment {
-  margin: 20px 0px;
-  padding: 10px 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  gap: 8px;
-}
-
-.commentBTNRow {
-  display: flex;
-  gap: 20px;
-}
-
-.commentBTNRow button {
-  padding: 5px 10px;
-  border-radius: 20px;
-  border: none;
-}
-
-.addComment {
-  display: flex;
-  gap: 20px;
-}
-
-.sendCommentBTN {
-  padding: 10px 40px;
-}
-
-.cancelBTN {
-  border: none;
-  padding: 10px 20px;
-  background-color: #0051ff;
-  color: white;
-  border-radius: 20px;
-}
-
-.rightSidebar {
-  background-color: white;
-  width: 400px;
-  border: 1px solid black;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-content: center;
-  gap: 20px;
-}
-
-.rightSidebar>div {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 20px;
-}
-
-.rightSidebar button {
-  padding: 10px;
-  border-radius: 15px;
-  border: none;
-  background-color: black;
-  color: white;
-  font-size: 20px;
+.postActions img {
+    width: 20px;
+    height: 20px;
 }
 
 /* 🌈 Strict rainbow hover ONLY on these elements */
