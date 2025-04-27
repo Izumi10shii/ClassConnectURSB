@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="../css/explorePage.css?v=2">
+    <title>Explore</title>
+    <link rel="stylesheet" href="../css/explorePage.css">
 </head>
 
 <body>
@@ -23,35 +23,35 @@
     <div class="HomeContainer">
         <div class="leftSidebar">
             <div class="leftSideUp">
-                <li>Home</li>
-                <li>Explore</li>
-                <li>Popular</li>
-            </div>
-            <div class="leftSideDown">
-                <h2>Communities</h2>
-                <div>
-                    <div>
-                        <a href="communityPage.html">
-                            <div class="pfp"></div>
-                            <div>IT5 - OOP</div>
-                        </a>
-                    </div>
-                    <div>
-                        <div class="pfp"></div>
-                        <div>IT6 - DBMS</div>
-                    </div>
-                    <div>
-                        <div class="pfp"></div>
-                        <div>ITE 7 - AppDev</div>
-                    </div>
+                <div class="homebtn lsu">
+                    <a href="home.php">Home</a>
                 </div>
+                <div class="savedpost lsu">
+                    <a href="saved_posts.php">Saved Posts</a>
+                </div>
+                <div class="explorebtn lsu">
+                    <a href="explorePage.php">Explore Discussions</a>
+                </div>
+                <div class="popularbtn lsu">File Storage</div>
+                <div class="popularbtn lsu">
+                    <a href="adminDashboard.php">Admin Dashboard</a>
+                </div>
+                <div class="popularbtn lsu">Settings</div>
             </div>
         </div>
 
         <div class="scrollContainer">
             <div class="post">
                 <h1>Explore Communities</h1>
-                <h2>CCS Communities</h2>
+<?php
+?>
+
+
+
+
+
+
+<h2>CCS Communities</h2>
 
                 <div class="commsContainer">
                     <div class="commsCard">

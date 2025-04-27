@@ -146,8 +146,38 @@ body {
 .scrollContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
+  justify-content: center;
   width: 100%;
+}
+.collegeDepartment{
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-self: start;
+}
+.exploreContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 90%;
+  padding: 20px;
+  margin: 20px;
+  animation: fadeIn 1s ease;
+  background: white;
+  box-shadow: 0 0 2px black;
+  border-radius: 20px;
+  gap: 10px;
+}
+.exploreContainer select{
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  width: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 2px black;
 }
 
 .post {

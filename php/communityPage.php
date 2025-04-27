@@ -26,31 +26,12 @@
     <div class="HomeContainer">
         <div class="leftSidebar">
             <div class="leftSideUp">
-                <li>Home</li>
-                <li>Explore</li>
-                <li>Popular</li>
-            </div>
-            <div class="leftSideDown">
-                <h2>Communities</h2>
-                <div>
-                    <div>
-
-                        <div class="pfp"></div>
-                        <div>IT5 - OOP</div>
-                    </div>
-
-                    <div>
-
-                        <div class="pfp"></div>
-                        <div>IT6 - DBMS</div>
-                    </div>
-
-                    <div>
-
-                        <div class="pfp"></div>
-                        <div>ITE 7 - AppDev</div>
-                    </div>
-                </div>
+                <div class="homebtn lsu"><a href="home.php">Home</a></div>
+                <div class="savedpost lsu"><a href="saved_posts.php">Saved Posts</a></div>
+                <div class="explorebtn lsu"><a href="explorePage.php">Explore Discussions</a></div>
+                <div class="popularbtn lsu">File Storage</div>
+                <div class="popularbtn lsu"><a href="adminDashboard.php">Admin Dashboard</a></div>
+                <div class="popularbtn lsu">Settings</div>
             </div>
         </div>
 

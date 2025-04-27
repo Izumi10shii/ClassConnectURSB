@@ -29,6 +29,7 @@ include("db_conn.php");
     </nav>
 
 
+
     <!-- Sidebar Items -->
     <div class="HomeContainer">
         <div class="leftSidebar">
@@ -40,11 +41,7 @@ include("db_conn.php");
                     <a href="saved_posts.php">Saved Posts</a>
                 </div>
 
-                <div class="explorebtn lsu">
-                    <a href="explorePage.php">
-                        Explore Discussions
-                    </a>
-                </div>
+       
 
                 <div class="popularbtn lsu">File Storage</div>
 
@@ -60,6 +57,38 @@ include("db_conn.php");
 
         <!-- Posts Section -->
         <div class="scrollContainer">
+
+        <div class="exploreContainer">
+            <h2>Select Discussions</h2>
+            <h3>College Departments</h3>
+            <div class="collegeDepartment">
+
+                <label for="">
+                    <input type="checkbox" id="CCS" name="CCS" value="CCS">
+                    CCS
+                </label>
+                <label for="">
+                    <input type="checkbox" id="FM" name="FM" value="FM">
+                    COB
+                </label>
+                <label for="">
+                    <input type="checkbox" id="COA" name="COA" value="COA">
+                    COA
+                </label>
+
+                </label>       
+            </div>
+            <label for="dropdown">
+                <h3>CCS Discussions</h3>
+            </label>
+            <select name="CCSdropdown" id="CCSdropdown">
+                <option value="">ITE 7</option>
+                <option value="">ITE 5</option>
+                <option value="">Software Engineering</option>
+            </select>
+            
+        </div>
+
             <?php
             include("postComponent.php");
             ?>
