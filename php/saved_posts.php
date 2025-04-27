@@ -34,7 +34,7 @@ $result = mysqli_query($conn, $bookmarkQuery);
 </head>
 
 <body>
-
+    <!-- Navbar -->
     <nav class="homeHeader">
         <a href="#">
             <h1>Class Connect</h1>
@@ -48,40 +48,32 @@ $result = mysqli_query($conn, $bookmarkQuery);
                 <img src="../bg/sample10.png" alt="Profile Picture">
             </div>
         </a>
-
     </nav>
 
-
-    <!-- Sidebar Items -->
+    <!-- Main Container -->
     <div class="HomeContainer">
+        <!-- Sidebar -->
         <div class="leftSidebar">
-            <div class="leftSideUp">
-                <div class="homebtn lsu">
-                    <a href="home.php">Home</a>
-                </div>
-                <div class="savedpost lsu">
-                    <a href="saved_posts.php">Saved Posts</a>
-                </div>
-
-                <div class="explorebtn lsu">
-                    <a href="explorePage.php">
-                        Explore Discussions
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">File Storage</div>
-
-                <div class="popularbtn lsu">
-                    <a href="adminDashboard.php">
-                        Admin Dashboard
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">Settings</div>
+            <div class="homebtn lsu">
+                <a href="home.php">Home</a>
             </div>
+            <div class="savedpost lsu">
+                <a href="saved_posts.php">Saved Posts</a>
+            </div>
+            <div class="explorebtn lsu">
+                <a href="explorePage.php">Explore Discussions</a>
+            </div>
+            <div class="popularbtn lsu">
+                <a href="file_storage.php">File Storage</a>
+            </div>
+            <div class="popularbtn lsu">
+                <a href="adminDashboard.php">Admin Dashboard</a>
+            </div>
+            <div class="popularbtn lsu">Settings</div>
         </div>
 
-        <div>
+        <!-- Content -->
+        <div class="content">
             <h2>Saved Posts</h2>
 
             <?php if ($result && mysqli_num_rows($result) > 0): ?>
@@ -118,27 +110,26 @@ $result = mysqli_query($conn, $bookmarkQuery);
                             style="background-color: red; color: white; border: none; padding: 5px 10px; margin-top:10px; cursor:pointer;">
                             Unsave
                         </button>
-
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
                 <p>No saved posts yet 😢</p>
             <?php endif; ?>
         </div>
+    </div>
 
-        <!-- Modal -->
-        <div id="unsaveModal" class="modal">
-            <div class="modal-content">
-                <h3>Are you sure you want to unsave this post?</h3>
-                <form method="POST">
-                    <input type="hidden" id="confirm_unsave_post_id" name="confirm_unsave_post_id" value="">
-                    <button type="submit"
-                        style="padding: 5px 10px; background: red; color: white; border: none; margin-top:10px;">Yes,
-                        Unsave</button>
-                    <button type="button" onclick="closeModal()"
-                        style="padding: 5px 10px; background: gray; color: white; border: none; margin-top:10px;">Cancel</button>
-                </form>
-            </div>
+    <!-- Modal -->
+    <div id="unsaveModal" class="modal">
+        <div class="modal-content">
+            <h3>Are you sure you want to unsave this post?</h3>
+            <form method="POST">
+                <input type="hidden" id="confirm_unsave_post_id" name="confirm_unsave_post_id" value="">
+                <button type="submit"
+                    style="padding: 5px 10px; background: red; color: white; border: none; margin-top:10px;">Yes,
+                    Unsave</button>
+                <button type="button" onclick="closeModal()"
+                    style="padding: 5px 10px; background: gray; color: white; border: none; margin-top:10px;">Cancel</button>
+            </form>
         </div>
     </div>
 
@@ -152,7 +143,6 @@ $result = mysqli_query($conn, $bookmarkQuery);
             document.getElementById('unsaveModal').style.display = 'none';
         }
     </script>
-
 </body>
 
 </html>

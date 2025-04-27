@@ -90,7 +90,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             <img src="<?php echo $userLiked ? '../icons/dislike.svg' : '../icons/like.svg'; ?>"
                                 alt="<?php echo $userLiked ? 'Unlike' : 'Like'; ?>">
                                 <span><?php echo $like_count; ?></span>
-
+                            
                         </button>
                     </form>
                     <button class="commentBTN"><img src="../icons/comment.svg" alt="">

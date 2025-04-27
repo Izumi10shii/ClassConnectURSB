@@ -43,7 +43,7 @@ include("db_conn.php");
 
        
 
-                <div class="popularbtn lsu">File Storage</div>
+                <div class="popularbtn lsu"><a href="file_storage.php">File Storage</a></div>
 
                 <div class="popularbtn lsu">
                     <a href="adminDashboard.php">

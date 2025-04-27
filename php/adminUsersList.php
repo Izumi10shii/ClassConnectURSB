@@ -284,7 +284,7 @@ $result = mysqli_query($conn, $query);
         <input id="edit_section" name="section" type="text" value="<?php echo isset($editData['section']) ? $editData['section'] : ''; ?>" required>
 
         <button type="submit" name="edit_user" class="confirmBtn">Save Changes</button>
-        <a href="adminDashboard.php" class="cancelBtn">Cancel</a>
+        <a href="adminDashboard.php?page=user_management" class="cancelBtn">Cancel</a>
     </form>
 
     <!-- Confirmation Popup -->
