@@ -7,6 +7,7 @@
     <title>Document</title>
 
     <style>
+        
         .leftSidebar {
             position: sticky;
             top: 0;
@@ -19,7 +20,6 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-
             padding: 20px;
             width: 300px;
             display: flex;
