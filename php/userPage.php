@@ -9,38 +9,12 @@
 </head>
 
 <body>
-    <nav class="homeHeader">
-        <h1>Class Connect</h1>
-        <input class="search" type="text" placeholder="Search" />
-        <button class="addPostBtn">Add new Post</button>
-        <a href="userPage.html">
-            <div class="pfp profile"></div>
-        </a>
-    </nav>
 
+    <?php
+    include("nav.php");
+    include("userSidebar.php");
+    ?>
     <div class="HomeContainer">
-        <div class="leftSidebar">
-            <div class="leftSideUp">
-                <div class="homebtn lsu"><a href="home.php">Home</a></div>
-                <div class="savedpost lsu">Saved Posts</div>
-
-                <div class="explorebtn lsu">
-                    <a href="explorePage.php">
-                        Explore Discussions
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">File Storage</div>
-
-                <div class="popularbtn lsu">
-                    <a href="adminDashboard.php">
-                        Admin Dashboard
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">Settings</div>
-            </div>
-        </div>
 
 
         <div class="scrollContainer">

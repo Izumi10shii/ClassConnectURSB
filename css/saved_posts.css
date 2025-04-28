@@ -60,65 +60,16 @@ body {
 /* Main container */
 .HomeContainer {
   display: flex;
+  width: 100%;
   margin-top: 80px; /* Push content below the navbar */
   height: calc(100vh - 80px); /* Adjust height to fit below the navbar */
-}
-
-/* Sidebar styling */
-.leftSidebar {
-  position: fixed;
-  top: 80px; /* Below the navbar */
-  left: 0;
-  height: calc(100vh - 80px); /* Full height minus navbar */
-  width: 280px;
-  background: url("../bg/sample7.png") no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-}
-
-.lsu {
-  margin: 20px 0;
-  font-size: 1.1rem;
-  padding: 10px;
-  border-radius: 10px;
-  color: white;
-  text-align: left;
-  font-weight: bold;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-  opacity: 0.85;
-  border: 1px solid #ffffff;
-}
-
-.lsu:hover {
-  background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
-  color: white;
-  transform: scale(1.03);
-  animation: rainbowMove 3s linear infinite;
-  background-size: 200% 200%;
-  border: 1px solid white;
-}
-
-.lsu a {
-  text-decoration: none;
-  color: inherit;
 }
 
 /* Content styling */
 .content {
   margin-left: 300px; /* Push content to the right of the sidebar */
   padding: 20px;
-  width: calc(100% - 300px); /* Adjust width to fit next to the sidebar */
+  width: 95%; /* Adjust width to fit next to the sidebar */
 }
 
 .addPostBtn {
@@ -159,6 +110,7 @@ h2 {
   border-radius: 12px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
+  margin: 0 40px;
 }
 
 .post:hover {

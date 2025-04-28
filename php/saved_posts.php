@@ -34,43 +34,16 @@ $result = mysqli_query($conn, $bookmarkQuery);
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="homeHeader">
-        <a href="#">
-            <h1>Class Connect</h1>
-        </a>
-        <input class="search" type="text" placeholder="Search">
-        <a href="addPost.php">
-            <button class="addPostBtn">Create Post</button>
-        </a>
-        <a href="userPage.php">
-            <div class="pfp profile">
-                <img src="../bg/sample10.png" alt="Profile Picture">
-            </div>
-        </a>
-    </nav>
 
-    <!-- Main Container -->
+    <?php
+    include("nav.php");
+    include("userSidebar.php");
+    ?>
     <div class="HomeContainer">
-        <!-- Sidebar -->
-        <div class="leftSidebar">
-            <div class="homebtn lsu">
-                <a href="home.php">Home</a>
-            </div>
-            <div class="savedpost lsu">
-                <a href="saved_posts.php">Saved Posts</a>
-            </div>
-            <div class="explorebtn lsu">
-                <a href="explorePage.php">Explore Discussions</a>
-            </div>
-            <div class="popularbtn lsu">
-                <a href="file_storage.php">File Storage</a>
-            </div>
-            <div class="popularbtn lsu">
-                <a href="adminDashboard.php">Admin Dashboard</a>
-            </div>
-            <div class="popularbtn lsu">Settings</div>
-        </div>
+
+
+        <!-- Main Container -->
+
 
         <!-- Content -->
         <div class="content">

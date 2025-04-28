@@ -9,47 +9,13 @@
 </head>
 
 <body>
-    <nav class="homeHeader">
-        <a href="#">
-            <h1>Class Connect</h1>
-        </a>
-        <h1>ADMIN DASHBOARD</h1>
-    </nav>
-
+    
+    <?php
+    include("nav.php");
+    include("adminSidebar.php");
+    ?>
     <!-- Sidebar Items -->
     <div class="HomeContainer">
-        <div class="leftSidebar">
-            <div class="leftSideUp">
-                <div class="homebtn lsu"><a href="home.php">Home</a></div>
-
-                <div class="explorebtn lsu">
-                    <a href="adminDashboard.php?page=user_management">
-                        User Management
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">
-                    <a href="adminDashboard.php?page=post_management">
-                        Post Management
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">
-                    <a href="adminDashboard.php?page=reports_management">
-                        Reports Management
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">Settings</div>
-            </div>
-            <div class="leftSideDown">
-                <div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-        </div>
 
         <!-- Dynamic Content Section -->
         <div class="contentSection">

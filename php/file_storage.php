@@ -53,37 +53,13 @@ $result = mysqli_query($conn, $query);
 
 <body>
     <!-- Navbar -->
-    <nav class="homeHeader">
-        <a href="#">
-            <h1>Class Connect</h1>
-        </a>
-        <input class="search" type="text" placeholder="Search">
-        <a href="userPage.php">
-            <div class="pfp profile"></div>
-        </a>
-    </nav>
-
-    <!-- Main Container -->
+    <?php
+    include("nav.php");
+    include("userSidebar.php");
+    ?>
     <div class="HomeContainer">
-        <!-- Sidebar -->
-        <div class="leftSidebar">
-            <div class="homebtn lsu">
-                <a href="home.php">Home</a>
-            </div>
-            <div class="savedpost lsu">
-                <a href="saved_posts.php">Saved Posts</a>
-            </div>
-            <div class="explorebtn lsu">
-                <a href="explorePage.php">Explore Discussions</a>
-            </div>
-            <div class="popularbtn lsu">
-                <a href="file_storage.php">File Storage</a>
-            </div>
-            <div class="popularbtn lsu">
-                <a href="adminDashboard.php">Admin Dashboard</a>
-            </div>
-            <div class="popularbtn lsu">Settings</div>
-        </div>
+
+        <!-- Main Container -->
 
         <!-- Content -->
         <div class="content">
@@ -109,8 +85,8 @@ $result = mysqli_query($conn, $query);
                     <ul>
                         <?php while ($row = mysqli_fetch_assoc($result)): ?>
                             <li>
-                                <strong><?php echo htmlspecialchars($row['file_name']); ?></strong> 
-                                (<?php echo htmlspecialchars($row['topic']); ?>) - 
+                                <strong><?php echo htmlspecialchars($row['file_name']); ?></strong>
+                                (<?php echo htmlspecialchars($row['topic']); ?>) -
                                 <a href="../uploads/<?php echo htmlspecialchars($row['file_path']); ?>" target="_blank">Download</a>
                                 <small>Uploaded by: <?php echo htmlspecialchars($row['username']); ?> on <?php echo htmlspecialchars($row['uploaded_at']); ?></small>
                             </li>
