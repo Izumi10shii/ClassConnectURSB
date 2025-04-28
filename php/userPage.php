@@ -1,10 +1,32 @@
 <?php
 include("db_conn.php");
 session_start();
-//temp
 
-$username = "Rodsef";
+// Assuming the username is stored in session (ensure you set it during login)
+$username = "Rodsef"; // You can replace this with the session variable
+
+// Handle Profile Update (if form is submitted)
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $program = mysqli_real_escape_string($conn, $_POST['program']);
+    $year = mysqli_real_escape_string($conn, $_POST['year']);
+    $section = mysqli_real_escape_string($conn, $_POST['section']);
+
+    // SQL query to update profile
+    $updateQuery = "UPDATE student_tb 
+                    SET fname='$fname', lname='$lname', email='$email', program='$program', year='$year', section='$section'
+                    WHERE username='$username'";
+
+    if (mysqli_query($conn, $updateQuery)) {
+        $message = "Profile updated successfully!";
+    } else {
+        $message = "Error updating profile: " . mysqli_error($conn);
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,21 +38,16 @@ $username = "Rodsef";
 </head>
 
 <body>
-
     <?php
     include("nav.php");
     include("userSidebar.php");
-    ?>
-    <div class="HomeContainer">
 
-<?php
-//Retrive from studendb
+    // Fetch current user details from the database
+    $getUser = "SELECT * FROM student_tb WHERE username = '$username'";
+    $result = mysqli_query($conn, $getUser);
 
-$getUser = "SELECT * FROM student_tb WHERE username = '$username'";
-$result = mysqli_query($conn, $getUser);
-
-if ($result && mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
         $student_no = $row['student_no'];
         $fname = $row['fname'];
         $lname = $row['lname'];
@@ -38,52 +55,39 @@ if ($result && mysqli_num_rows($result) > 0) {
         $program = $row['program'];
         $year = $row['year'];
         $section = $row['section'];
-   
+    } else {
+        echo "No user found.";
+        exit;
+    }
+    ?>
 
-?>
+    <div class="HomeContainer">
         <div class="scrollContainer">
-
             <div class="communityPageInfo">
                 <div class="communityRow">
                     <div class="goLeft">
                         <div class="PagePfp"></div>
-                        <h1><?php echo $username?></h1>
+                        <h1><?php echo $username ?></h1>
                     </div>
                     <div class="goRight">
-                        <button>Edit Profile</button>
+                        <button id="editProfileBtn">Edit Profile</button>
                     </div>
                 </div>
 
                 <div class="profileDetails">
                     <div class="profileInfo">
                         <h3>Profile</h3>
-                        <li><?php echo $student_no?></li>
-                        <li><?php echo ("$fname $lname")?></li>
-                        <li><?php echo $email?></li>
+                        <li><?php echo $student_no ?></li>
+                        <li><?php echo ("$fname $lname") ?></li>
+                        <li><?php echo $email ?></li>
                         <li><?php echo $program ?></li>
-                        <li><?php echo ("$year-$section")?></li>
-
+                        <li><?php echo ("$year-$section") ?></li>
                     </div>
                     <div class="followersRow">
                         <p>100 Posts</p>
                         <p>1k Comments</p>
                     </div>
                 </div>
-                <?php
-                 }
-                } else {
-                    echo "No user found.";
-                }
-                ?>
-
-                <!--
-                <div class="interests">
-                    <h3>Interests</h3>
-                    <li>ITEM1</li>
-                    <li>ITEM2</li>
-                    <li>ITEM3</li>
-                </div>
--->
             </div>
 
             <div class="userRow">
@@ -92,16 +96,66 @@ if ($result && mysqli_num_rows($result) > 0) {
             </div>
 
             <div>
-
-            <?php
-            
-            ?>
-            <!--POST OR COMMENTS DISPLAY-->
-
+                <?php
+                $getPosts = "SELECT * FROM post_tb WHERE username = '$username'";
+                $result = mysqli_query($conn, $getPosts);
+                ?>
             </div>
         </div>
 
+        <!-- Edit Profile Modal -->
+        <div id="editProfileModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="editProfileForm" method="POST" action="">
+                    <label for="fname">First Name:</label>
+                    <input type="text" id="fname" name="fname" value="<?php echo $fname; ?>" required>
 
+                    <label for="lname">Last Name:</label>
+                    <input type="text" id="lname" name="lname" value="<?php echo $lname; ?>" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="<?php echo $email; ?>" required>
+
+                    <label for="program">Program:</label>
+                    <input type="text" id="program" name="program" value="<?php echo $program; ?>" required>
+
+                    <label for="year">Year:</label>
+                    <input type="text" id="year" name="year" value="<?php echo $year; ?>" required>
+
+                    <label for="section">Section:</label>
+                    <input type="text" id="section" name="section" value="<?php echo $section; ?>" required>
+
+                    <button type="submit">Save Changes</button>
+                </form>
+                <?php if (isset($message)) echo "<p>$message</p>"; ?>
+            </div>
+        </div>
+
+        <script>
+            // Get modal elements
+            var modal = document.getElementById("editProfileModal");
+            var btn = document.getElementById("editProfileBtn");
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the "Edit Profile" button, open the modal
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks "x" (close), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+    </div>
 </body>
 
 </html>
