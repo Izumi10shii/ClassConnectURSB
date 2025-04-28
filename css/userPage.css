@@ -111,6 +111,9 @@ a {
     width: 100%;
     padding-left: 20px; /* Add padding for alignment */
 }
+.post, .displayUserContent{
+  width: 100%;
+}
 
 .communityRow {
     display: flex;

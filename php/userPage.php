@@ -83,24 +83,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <li><?php echo $program ?></li>
                         <li><?php echo ("$year-$section") ?></li>
                     </div>
-                    <div class="followersRow">
-                        <p>100 Posts</p>
-                        <p>1k Comments</p>
-                    </div>
+                   
+                </div>
+                <div class="userRow">
+                    <button>Posts 100</button>
+                    <button>Comments 100</button>
+                </div>
+                <div class="displayUserContent">
+
+                    <?php
+                    $getPosts = "SELECT * FROM post_tb WHERE username = '$username'";
+                    $result = mysqli_query($conn, $getPosts);
+
+                    include("postComponent.php");
+                    ?>
                 </div>
             </div>
 
-            <div class="userRow">
-                <button>Posts</button>
-                <button>Comments</button>
-            </div>
 
-            <div>
-                <?php
-                $getPosts = "SELECT * FROM post_tb WHERE username = '$username'";
-                $result = mysqli_query($conn, $getPosts);
-                ?>
-            </div>
+
+
         </div>
 
         <!-- Edit Profile Modal -->
