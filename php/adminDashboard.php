@@ -9,12 +9,12 @@
 </head>
 
 <body>
+    <!-- Sidebar Items -->
     
     <?php
     include("nav.php");
     include("adminSidebar.php");
     ?>
-    <!-- Sidebar Items -->
     <div class="HomeContainer">
 
         <!-- Dynamic Content Section -->

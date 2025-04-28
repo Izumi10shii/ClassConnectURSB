@@ -97,7 +97,7 @@ session_start();
         ?>
 
         <div class="post">
-            <h1>Create Post</h1>
+            <h1>Create New Post</h1>
 
             <form action="" method="post" enctype="multipart/form-data">
                 <input type="text" name="titleInput" id="titleInput" placeholder="Title">
@@ -123,9 +123,7 @@ session_start();
                 <input type="submit" name="add_post" class="postBTN" value="Post">
             </form>
 
-            <div class="interactionHeader">
-                <button onclick="window.location.href='home.php'" class="cancelPostBTN">Cancel Post</button>
-            </div>
+           
         </div>
 
 

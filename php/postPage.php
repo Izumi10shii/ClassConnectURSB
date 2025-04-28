@@ -113,7 +113,6 @@ session_start();
         $commentsResult = mysqli_query($conn, $getComments);
       }
       ?>
-
       <div class="post">
         <?php if (isset($username) && isset($title) && isset($description)): ?>
           <div class="postHeader">
