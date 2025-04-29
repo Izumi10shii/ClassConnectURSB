@@ -53,16 +53,13 @@ $result = mysqli_query($conn, $query);
 
 <body>
     <!-- Navbar -->
-    <?php
-    include("nav.php");
-    include("userSidebar.php");
-    ?>
+    <?php    include("nav.php");?>
     <div class="HomeContainer">
+    <?php        include("userSidebar.php");?>
+                <div class="content">
+            <!-- Main Container -->
 
-        <!-- Main Container -->
-
-        <!-- Content -->
-        <div class="content">
+            <!-- Content -->
             <!-- Upload Form -->
             <div id="uploadForm" class="upload-form">
                 <h2>Upload Learning Material</h2>

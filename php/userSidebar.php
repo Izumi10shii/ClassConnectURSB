@@ -12,7 +12,7 @@
             position: sticky;
             top: 0;
             align-self: flex-start;
-            height: 100vh;
+            min-height: 100vh;
             overflow-y: auto;
             background: url("../bg/sample7.png") no-repeat center center;
             background-size: cover;
@@ -57,7 +57,8 @@
 
         .lsu a {
             text-decoration: none;
-            color: inherit;
+            color: white;
+
         }
     </style>
 </head>
@@ -65,19 +66,28 @@
 <body>
     <div class="leftSidebar">
         <div class="leftSideUp">
+            <a href="home.php">
             <div class="homebtn lsu">
-                <a href="home.php">Home</a>
-            </div>
-            <div class="savedpost lsu">
-                <a href="saved_posts.php">Saved Posts</a>
-            </div>
-            <div class="popularbtn lsu"><a href="file_storage.php">File Storage</a></div>
+                Home
 
-            <div class="popularbtn lsu">
-                <a href="adminDashboard.php">
-                    Admin Dashboard
-                </a>
             </div>
+        </a>
+        <a href="saved_posts.php">
+            <div class="savedpost lsu">
+                    Saved Posts
+                </div>
+            </a>
+            <a href="file_storage.php">
+            <div class="popularbtn lsu">
+                    File Storage
+                </div>
+            </a>
+
+            <a href="adminDashboard.php">
+            <div class="popularbtn lsu">
+                    Admin Dashboard
+                </div>
+            </a>
             <a href="userPage.php">
 
                 <div class="popularbtn lsu">Profile</div>

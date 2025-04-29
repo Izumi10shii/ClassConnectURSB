@@ -27,21 +27,19 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   transition: all 0.3s ease;
 }
 
 html {
   overflow-x: hidden;
+  height: 100%;
 }
 
 body {
   background-color: white;
   color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
 }
 
 a {
@@ -70,15 +68,15 @@ a {
 }
 
 .HomeContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    height: 100vh; /* Make the container fit the screen height */
-    animation: fadeIn 1s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh; /* Make the container fit the screen height */
+  min-height: 100vh; /* Make the container fit the screen height */
+  animation: fadeIn 1s ease;
 }
-
 
 .PagePfp {
   width: 100px;
@@ -91,82 +89,83 @@ a {
 
 .scrollContainer {
   margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center horizontally */
-    justify-content: flex-start; /* Align to the top vertically */
-    gap: 20px;
-    width: calc(100% - 320px); /* Adjust width to fit next to the sidebar */
-    overflow-y: auto;
-    max-height: 100vh; /* Make the scroll container fit the screen height */
-    margin: 0;
-    padding: 20px;
+  display: flex;
+  align-items: center; /* Center horizontally */
+  justify-content: flex-start; /* Align to the top vertically */
+  gap: 20px;
+  width: calc(100% - 320px); /* Adjust width to fit next to the sidebar */
+  overflow-y: auto;
+  max-height: 100vh; /* Make the scroll container fit the screen height */
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
 }
 
 .communityPageInfo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align all content to the left */
-    gap: 20px;
-    width: 100%;
-    padding-left: 20px; /* Add padding for alignment */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align all content to the left */
+  gap: 20px;
+  width: 100%;
+  padding-left: 20px; /* Add padding for alignment */
 }
-.post, .displayUserContent{
+.post,
+.displayUserContent {
   width: 100%;
 }
 
 .communityRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    gap: 20px;
-  }
-.communityRow button{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+.communityRow button {
   border: none;
   padding: 10px 20px;
   background-color: #0051ff;
   color: white;
   border-radius: 20px;
 }
-  .communityRow h1{
+.communityRow h1 {
   margin-left: 20px;
 }
 .goLeft {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .goRight {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-right: 100px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 100px;
 }
 
 .profileDetails {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align all content to the left */
-    gap: 10px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align all content to the left */
+  gap: 10px;
+  width: 100%;
 }
 
 .followersRow {
-    display: flex;
-    justify-content: flex-start; /* Align to the left */
-    gap: 20px; /* Add spacing between items */
-    text-align: left;
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  gap: 20px; /* Add spacing between items */
+  text-align: left;
 }
 
 .followersRow p {
-    margin: 0;
-    font-weight: bold;
+  margin: 0;
+  font-weight: bold;
 }
 
 .profileInfo {
-    text-align: left; /* Align text to the left */
+  text-align: left; /* Align text to the left */
   margin-top: 20px;
   padding: 20px;
   border: none;
@@ -174,22 +173,22 @@ a {
   width: 100%;
   border-radius: 20px;
   list-style-type: none;
-  }
+}
 
 .interests {
   list-style-type: none;
-    width: 90%;
-    background-color: white;
-    border: 1px solid #fcfcfc;
-    box-shadow: 0 0 2px black;
-    border-radius: 20px;
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: start; /* Align content to the left */
-    align-items: start;
-    padding: 10px;
-    gap: 20px;
+  width: 90%;
+  background-color: white;
+  border: 1px solid #fcfcfc;
+  box-shadow: 0 0 2px black;
+  border-radius: 20px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start; /* Align content to the left */
+  align-items: start;
+  padding: 10px;
+  gap: 20px;
 }
 
 .userRow {
@@ -231,21 +230,21 @@ a {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-image: url('../bg/sample10.png');
+  background-image: url("../bg/sample10.png");
   /* Adjust the path if needed */
   background-size: cover;
   background-position: center;
 }
 .scrollContainer {
   overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: calc(100% - 320px); /* Adjust width to fit next to the sidebar */
-    overflow-y: auto;
-    max-height: 100vh; /* Make the scroll container fit the screen height */
-    margin: 0;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: calc(100% - 320px); /* Adjust width to fit next to the sidebar */
+  overflow-y: auto;
+  max-height: 100vh; /* Make the scroll container fit the screen height */
+  margin: 0;
+  padding: 20px;
 }
 .postHeader {
   display: flex;
@@ -256,13 +255,10 @@ a {
 
 .postHeader .postHeaderPoster {
   display: flex;
-
-
 }
 
 .postHeader .postHeader .postHeaderCol {
   display: flex;
-
 }
 
 .interactionHeader {
@@ -294,7 +290,8 @@ a {
   padding: 10px 40px;
 }
 
-.rightSidebar h2 {}
+.rightSidebar h2 {
+}
 
 .rightSidebar {
   background-color: white;
@@ -308,7 +305,7 @@ a {
   gap: 20px;
 }
 
-.rightSidebar>div {
+.rightSidebar > div {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -325,7 +322,14 @@ a {
 }
 
 button:hover {
-  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background: linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
   /* Instagram gradient */
   background-size: 200% 200%;
   animation: rainbowMove 3s linear infinite;
@@ -346,7 +350,14 @@ button:hover {
 }
 
 .actionBtn:hover {
-  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background: linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
   /* Instagram gradient */
   background-size: 200% 200%;
   animation: rainbowMove 3s linear infinite;
@@ -368,7 +379,14 @@ button:hover {
   left: 0;
   height: 100%;
   width: 0;
-  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background: linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
   background-size: 200% 200%;
   animation: none;
   z-index: -1;
@@ -393,7 +411,14 @@ button:hover {
 button:hover,
 .leftSidebar li:hover,
 .lsu:hover {
-  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background: linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
   background-size: 200% 200%;
   animation: rainbowMove 3s linear infinite;
   color: white;
@@ -477,7 +502,7 @@ form input {
 }
 
 form button {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
   border: none;

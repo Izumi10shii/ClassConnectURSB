@@ -40,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <?php
     include("nav.php");
-    include("userSidebar.php");
 
     // Fetch current user details from the database
     $getUser = "SELECT * FROM student_tb WHERE username = '$username'";
@@ -61,8 +60,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     ?>
 
-    <div class="HomeContainer">
-        <div class="scrollContainer">
+    <div class="scrollContainer ">
+        <?php include("userSidebar.php"); ?>
+        <div class="HomeContainer">
             <div class="communityPageInfo">
                 <div class="communityRow">
                     <div class="goLeft">
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <li><?php echo $program ?></li>
                         <li><?php echo ("$year-$section") ?></li>
                     </div>
-                   
+
                 </div>
                 <div class="userRow">
                     <button>Posts 100</button>

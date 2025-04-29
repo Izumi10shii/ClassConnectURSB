@@ -67,7 +67,6 @@ body {
 
 /* Content styling */
 .content {
-  margin-left: 300px; /* Push content to the right of the sidebar */
   padding: 20px;
   width: 95%; /* Adjust width to fit next to the sidebar */
 }

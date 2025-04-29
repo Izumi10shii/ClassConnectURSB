@@ -9,19 +9,26 @@ include("db_conn.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../css/home.css">
+    
 </head>
 
 <body>
     <?php
     include("nav.php");
-    include("userSidebar.php");
+    //include("userSidebar.php");
     ?>
 
 
-    <div class="HomeContainer">
-        <!-- Posts Section -->
-        <div class="scrollContainer">
+<div class="scrollContainer">
+
+<?php
+    include("userSidebar.php");
+?>
+            <div class="HomeContainer">
+            
             <div class="exploreContainer">
+
+                <!-- Posts Section -->
                 <div class="collegeDepartment">
                 </div>
                 <label for="dropdown">

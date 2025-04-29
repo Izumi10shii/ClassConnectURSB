@@ -18,7 +18,7 @@
       background: linear-gradient(to right, #002766, #0051ff);
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       width: 100%;
       height: 80px;
       padding: 20px 20px;
@@ -37,7 +37,7 @@
     .search {
       width: 100%;
       margin-right: 10%;
-      padding: 10px 20px;
+      padding: 10px 50px;
       border-radius: 30px;
       border: none;
       font-size: 1rem;

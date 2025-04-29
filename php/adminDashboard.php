@@ -10,15 +10,17 @@
 
 <body>
     <!-- Sidebar Items -->
-    
+
     <?php
     include("nav.php");
-    include("adminSidebar.php");
     ?>
-    <div class="HomeContainer">
 
-        <!-- Dynamic Content Section -->
+    <div class="HomeContainer">
+        <?php
+        include("adminSidebar.php");
+        ?>
         <div class="contentSection">
+            <!-- Dynamic Content Section -->
             <?php
             // Check the URL parameter to load content dynamically
             if (isset($_GET['page'])) {

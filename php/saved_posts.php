@@ -35,16 +35,13 @@ $result = mysqli_query($conn, $bookmarkQuery);
 
 <body>
 
-    <?php
-    include("nav.php");
-    include("userSidebar.php");
-    ?>
+    <?php include("nav.php");    ?>
     <div class="HomeContainer">
-
+        <?php include("userSidebar.php"); ?>
 
         <!-- Main Container -->
-
-
+        
+        
         <!-- Content -->
         <div class="content">
             <h2>Saved Posts</h2>
