@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['otp'])) {
+    header("Location: home.php");
+    exit;
+}
+
 $otpMessage = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['otp'])) {

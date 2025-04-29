@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +12,10 @@
     <title>Document</title>
 
     <style>
-        
+        a {
+            text-decoration: none;
+        }
+
         .leftSidebar {
             position: sticky;
             top: 0;
@@ -67,27 +75,30 @@
     <div class="leftSidebar">
         <div class="leftSideUp">
             <a href="home.php">
-            <div class="homebtn lsu">
-                Home
+                <div class="homebtn lsu">
+                    Home
 
-            </div>
-        </a>
-        <a href="saved_posts.php">
-            <div class="savedpost lsu">
+                </div>
+            </a>
+            <a href="saved_posts.php">
+                <div class="savedpost lsu">
                     Saved Posts
                 </div>
             </a>
             <a href="file_storage.php">
-            <div class="popularbtn lsu">
+                <div class="popularbtn lsu">
                     File Storage
                 </div>
             </a>
 
-            <a href="adminDashboard.php">
-            <div class="popularbtn lsu">
-                    Admin Dashboard
-                </div>
-            </a>
+            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
+                <a href="adminDashboard.php">
+                    <div class="popularbtn lsu">
+                        Admin Dashboard
+                    </div>
+                </a>
+            <?php endif; ?>
+
             <a href="userPage.php">
 
                 <div class="popularbtn lsu">Profile</div>

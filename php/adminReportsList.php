@@ -2,14 +2,6 @@
 include("db_conn.php");
 session_start();
 
-/*
-// Check if the user is an admin
-if ($_SESSION['role'] !== 'admin') {
-    header('Location: home.php'); // Redirect to home if not an admin
-    exit;
-}
-    */
-
 // Fetch all reports from the database
 $query = "SELECT r.report_id, r.post_id, r.reason, r.status, r.reported_at, p.title, p.username AS poster
           FROM post_reports_tb r

@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        a {
+            text-decoration: none;
+        }
+
         .leftSidebar {
             position: sticky;
             top: 0;
@@ -20,7 +24,7 @@
             box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
 
             padding: 20px;
-            width: 300px;
+            width: 345px;
             display: flex;
             flex-direction: column;
             justify-content: start;
@@ -32,7 +36,7 @@
             font-size: 1.1rem;
             padding: 10px;
             border-radius: 10px;
-            width: 80%;
+            width: 82%;
             color: white;
             text-align: left;
             font-weight: bold;
@@ -67,14 +71,14 @@
 <body>
     <div class="leftSidebar">
         <div class="leftSideUp">
-            <a href="adminUsersList.php">
 
-                <a href="home.php">
+
+            <a href="home.php">
                 <div class="homebtn lsu">
                     Home
                 </div>
-                </a>
             </a>
+
 
             <div class="explorebtn lsu">
                 <a href="adminDashboard.php?page=user_management">

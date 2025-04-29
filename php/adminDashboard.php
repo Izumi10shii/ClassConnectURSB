@@ -9,11 +9,17 @@
 </head>
 
 <body>
-    <!-- Sidebar Items -->
 
-    <?php
-    include("nav.php");
-    ?>
+
+    <nav class="homeHeader">
+        <a href="home.php" class="logo">Class Connect</a>
+
+        <div class="actions">
+            <a href="userPage.php">
+                <div class="pfp"></div>
+            </a>
+        </div>
+    </nav>
 
     <div class="HomeContainer">
         <?php

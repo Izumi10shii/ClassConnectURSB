@@ -35,37 +35,37 @@ body {
 
 .homeHeader {
   background: linear-gradient(to right, #002766, #0051ff);
-  color: white;
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
-  height: 80px;
+  height: 40px;
+  padding: 20px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  gap: 40px;
-  padding: 0 20px;
-  position: relative;
-  z-index: 10;
+  gap: 20px;
 }
 
-.homeHeader h1 {
+.logo {
   padding-left: 20px;
-  font-size: 40px;
-  color: white;
-}
-
-.homeHeader .search {
-  padding: 10px 20px;
-  border-radius: 50px;
-  border: none;
-  font-size: 1rem;
-  width: 60vw;
-  max-width: 800px;
-}
-
-.homeHeader a {
   text-decoration: none;
   color: white;
+  font-size: 32px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.actions {
+  padding-right: 10px;
+}
+
+.pfp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: url('../bg/sample10.png');
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
 }
 
 .addPostBtn {
@@ -86,19 +86,20 @@ body {
   position: sticky;
   top: 0;
   align-self: flex-start;
-  height: 100vh;
+  min-height: 100vh;
   overflow-y: auto;
-  background: url('../bg/sample7.png') no-repeat center center;
+  background: url("../bg/sample7.png") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-  padding: 35px;
-  width: 220px;
+  padding: 20px;
+  width: 260px;
   display: flex;
   flex-direction: column;
   justify-content: start;
+  animation: fadeIn 1s ease;
 }
 
 .lsu {
@@ -106,7 +107,7 @@ body {
   font-size: 1.1rem;
   padding: 10px;
   border-radius: 10px;
-  width: 80%;
+  width: 81%;
   color: white;
   text-align: left;
   font-weight: bold;
@@ -114,42 +115,34 @@ body {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
   opacity: 0.85;
   border: 1px solid #ffffff;
 }
 
-.leftSideUp {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  height: 50%;
+.lsu:hover {
+  background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
+  color: white;
+  transform: scale(1.03);
+  animation: rainbowMove 3s linear infinite;
+  background-size: 200% 200%;
+  border: 1px solid white;
 }
 
-.leftSideDown {
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-}
+.lsu a {
+  text-decoration: none;
+  color: white;
 
-.leftSideDown>div {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-}
-
-.leftSideDown>div>div {
-  display: inline;
 }
 
 .scrollContainer {
-  width: 70%;
+  margin: 20px 50px 50px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content:center;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
+  align-content: center;
+  width: 60%;
 }
 /* Reset default button styles */
 button {
@@ -192,8 +185,9 @@ button img {
   background-color: white;
   padding: 20px;
   gap: 20px;
-  width: 95%;
-  margin: 20px;
+  width: 100%;
+  margin-left: 50px;
+
 }
 
 .postHeader {
@@ -229,7 +223,7 @@ button img {
 }
 
 .postActions button {
-    background: blue;
+    background: none;
     border: none;
     cursor: pointer;
 }
@@ -458,8 +452,8 @@ a{
 .addComment {
   background-color: #0051ff;
   border: none;
-  border-radius: 99px;
-  padding: 10px 15px;
+  border-radius: 50%;
+  padding: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -497,17 +491,12 @@ a{
   gap: 10px;
 }
 
-.commentActions button,.commentActions .like, .commentActions.reply{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #0051ff;
+.commentActions button {
+  background: none;
   border: none;
-  color: white;
-  padding: 5px 10px;
+  color: #0051ff;
   cursor: pointer;
   font-size: 0.9rem;
-  border-radius: 20px;
 }
 
 .commentActions button:hover {

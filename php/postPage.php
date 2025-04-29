@@ -1,6 +1,8 @@
 <?php
 include("db_conn.php");
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 ?>
 
 <!DOCTYPE html>
@@ -10,43 +12,53 @@ session_start();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Post Page</title>
-  <link rel="stylesheet" href="../css/postPage.css"/>
+  <link rel="stylesheet" href="../css/postPage.css" />
 </head>
 
 <body>
   <nav class="homeHeader">
-    <a href="home.php">
-      <h1>Class Connect</h1>
-    </a>
-    <input class="search" type="text" placeholder="Search" />
-    <a href="userPage.php">
-      <div class="pfp profile"></div>
-    </a>
+    <a href="home.php" class="logo">Class Connect</a>
+
+    <div class="actions">
+      <a href="userPage.php">
+        <div class="pfp"></div>
+      </a>
+    </div>
   </nav>
 
   <div class="HomeContainer">
+
     <div class="leftSidebar">
       <div class="leftSideUp">
-        <div class="homebtn lsu"><a href="home.php">Home</a></div>
-        <div class="savedpost lsu">
-          <a href="saved_posts.php">Saved Posts</a>
-        </div>
+        <a href="home.php">
+          <div class="homebtn lsu">
+            Home
 
-        <div class="explorebtn lsu">
-          <a href="explorePage.php">
-            Explore Discussions
-          </a>
-        </div>
+          </div>
+        </a>
+        <a href="saved_posts.php">
+          <div class="savedpost lsu">
+            Saved Posts
+          </div>
+        </a>
+        <a href="file_storage.php">
+          <div class="popularbtn lsu">
+            File Storage
+          </div>
+        </a>
 
-        <div class="popularbtn lsu">File Storage</div>
-
-        <div class="popularbtn lsu">
+        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
           <a href="adminDashboard.php">
-            Admin Dashboard
+            <div class="popularbtn lsu">
+              Admin Dashboard
+            </div>
           </a>
-        </div>
+        <?php endif; ?>
 
-        <div class="popularbtn lsu">Settings</div>
+        <a href="userPage.php">
+
+          <div class="popularbtn lsu">Profile</div>
+        </a>
       </div>
     </div>
 
@@ -105,6 +117,9 @@ session_start();
             mysqli_query($conn, $updateCommentsCount);
           }
         }
+
+        header("Location: postPage.php?post_id=$post_id");
+        exit();
       }
 
       // Fetch comments for the post
@@ -113,6 +128,7 @@ session_start();
         $commentsResult = mysqli_query($conn, $getComments);
       }
       ?>
+
       <div class="post">
         <?php if (isset($username) && isset($title) && isset($description)): ?>
           <div class="postHeader">

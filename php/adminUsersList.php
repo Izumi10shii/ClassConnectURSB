@@ -27,14 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_user'])) {
         if (mysqli_num_rows($email_result) > 0) {
             $error = 'email_taken';
         } else {
-            
+
             $stud_query = "SELECT * FROM student_tb WHERE student_no = '$student_no'";
             $studno_result = mysqli_query($conn, $stud_query);
 
             if (mysqli_num_rows($studno_result) > 0) {
                 $error = 'studno_taken';
-            }
-            else {          
+            } else {
                 $addQuery = "INSERT INTO student_tb (student_no, username, fname, lname, password, email, program, year, section, created_at) 
                 VALUES ('$student_no', '$username', '$fname', '$lname', '$password', '$email', '$program', '$year', '$section', NOW())";
 
@@ -58,24 +57,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user'])) {
     $checkUsername = mysqli_query($conn, "SELECT * FROM student_tb WHERE username = '$username' AND student_no != '$student_no'");
     if (mysqli_num_rows($checkUsername) > 0) {
         $error = 'username_taken';
-    }
-
-    elseif (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM student_tb WHERE email = '$email' AND student_no != '$student_no'")) > 0) {
+    } elseif (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM student_tb WHERE email = '$email' AND student_no != '$student_no'")) > 0) {
         $error = 'email_taken';
-    }
-
-    elseif (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM student_tb WHERE student_no = '$student_no' AND student_no != '$student_no'")) > 0) {
+    } elseif (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM student_tb WHERE student_no = '$student_no' AND student_no != '$student_no'")) > 0) {
         $error = 'studno_taken';
-    }
-
-    else {
+    } else {
         $updateQuery = "UPDATE student_tb 
                         SET username = '$username', fname = '$fname', lname = '$lname', email = '$email', 
                             program = '$program', year = '$year', section = '$section' 
                         WHERE student_no = '$student_no'";
 
         if (mysqli_query($conn, $updateQuery)) {
-            echo "<script>alert('User updated successfully!'); window.location.href = 'adminDashboard.php';</script>";
+            header("Location: adminDashboard.php?page=user_management");
             exit;
         } else {
             echo "<script>alert('Error updating user: " . mysqli_error($conn) . "');</script>";
@@ -86,12 +79,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user'])) {
 
 // Handle Delete User
 if (isset($_GET['delete_id'])) {
-    $delete_id = $_GET['delete_id']; 
+    $delete_id = $_GET['delete_id'];
 
     $deleteQuery = "DELETE FROM student_tb WHERE student_no = '$delete_id'";
 
     if (mysqli_query($conn, $deleteQuery)) {
-        echo "<script>window.onload = function() { showSuccessPopup(); };</script>";
+        header("Location: adminDashboard.php?page=user_management");
     } else {
         echo "<script>alert('Error deleting user: " . mysqli_error($conn) . "');</script>";
     }
@@ -167,11 +160,10 @@ $result = mysqli_query($conn, $query);
                                 <td><?php echo $row['created_at']; ?></td>
                                 <td>
                                     <div class="actionRow">
-                                        <a href="javascript:void(0);" 
-                                           class="deleteBTN" 
-                                           id="deleteBTN"
-                                           onclick="confirmDeletion('<?php echo $row['student_no']; ?>');">Delete</a>
-                                        <a href="adminUsersList.php?edit_id=<?php echo $row['student_no']; ?>" class="editBTN">Edit</a>
+                                        <a href="javascript:void(0);" class="deleteBTN" id="deleteBTN"
+                                            onclick="confirmDeletion('<?php echo $row['student_no']; ?>');">Delete</a>
+                                        <a href="adminUsersList.php?edit_id=<?php echo $row['student_no']; ?>"
+                                            class="editBTN">Edit</a>
                                     </div>
                                 </td>
                             </tr>
@@ -241,47 +233,93 @@ $result = mysqli_query($conn, $query);
             <input id="section" name="section" type="text" placeholder="Section" required>
         </label>
 
+
+        <label for="program">Program:</label>
+        <select id="program" name="program" required>
+            <option value="" disabled selected>Select your program</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Information Systems">Information Systems</option>
+            <option value="Accountancy">Accountancy</option>
+            <option value="Office Administration">Office Administration</option>
+            <option value="Marketing Management">Marketing Management</option>
+            <option value="Financial Management">Financial Management</option>
+            <option value="Human Resource Development">Human Resource Development</option>
+        </select>
+
+
+
+        <label for="year">Year:</label>
+        <select id="year" name="year" required>
+            <option value="" disabled selected>Select your Year</option>
+            <option value="1">First Year</option>
+            <option value="2">Second Year</option>
+            <option value="3">Third Year</option>
+            <option value="4">Fourth Year</option>
+        </select>
+
+
+
+        <label for="year">Section:</label>
+        <select id="sec" name="sec" required>
+            <option value="" disabled selected>Select your Section</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+
         <button class="submitNewUser" type="submit" name="add_user" class="submitBTN">Add New User</button>
     </form>
 
     <!-- Edit User Form -->
-    <form id="editUserForm" action="" method="post" class="editUserContainer" style="display: <?php echo isset($editData) ? 'flex' : 'none'; ?>;">
+    <form id="editUserForm" action="" method="post" class="editUserContainer"
+        style="display: <?php echo isset($editData) ? 'flex' : 'none'; ?>;">
         <h2>Edit User</h2>
-        
+
         <?php
         if (!empty($error)) {
-                if ($error == 'username_taken') {
-                    echo "<p class='error-message'>Username is already taken. Please choose a different one.</p>";
-                } elseif ($error == 'email_taken') {
-                    echo "<p class='error-message'>Email is already registered. Please use another one.</p>";
-                } elseif ($error == 'studno_taken') {
-                    echo "<p class='error-message'>Student No is already registered. Please use another one.</p>";
-                }
+            if ($error == 'username_taken') {
+                echo "<p class='error-message'>Username is already taken. Please choose a different one.</p>";
+            } elseif ($error == 'email_taken') {
+                echo "<p class='error-message'>Email is already registered. Please use another one.</p>";
+            } elseif ($error == 'studno_taken') {
+                echo "<p class='error-message'>Student No is already registered. Please use another one.</p>";
             }
+        }
         ?>
 
-        <input type="hidden" id="edit_student_no" name="student_no" value="<?php echo isset($editData['student_no']) ? $editData['student_no'] : ''; ?>">
+        <input type="hidden" id="edit_student_no" name="student_no"
+            value="<?php echo isset($editData['student_no']) ? $editData['student_no'] : ''; ?>">
 
         <label for="edit_username">Username</label>
-        <input id="edit_username" name="username" type="text" value="<?php echo isset($editData['username']) ? $editData['username'] : ''; ?>" required>
+        <input id="edit_username" name="username" type="text"
+            value="<?php echo isset($editData['username']) ? $editData['username'] : ''; ?>" required>
 
         <label for="edit_fname">First Name</label>
-        <input id="edit_fname" name="fname" type="text" value="<?php echo isset($editData['fname']) ? $editData['fname'] : ''; ?>" required>
+        <input id="edit_fname" name="fname" type="text"
+            value="<?php echo isset($editData['fname']) ? $editData['fname'] : ''; ?>" required>
 
         <label for="edit_lname">Last Name</label>
-        <input id="edit_lname" name="lname" type="text" value="<?php echo isset($editData['lname']) ? $editData['lname'] : ''; ?>" required>
+        <input id="edit_lname" name="lname" type="text"
+            value="<?php echo isset($editData['lname']) ? $editData['lname'] : ''; ?>" required>
 
         <label for="edit_email">Email</label>
-        <input id="edit_email" name="email" type="email" value="<?php echo isset($editData['email']) ? $editData['email'] : ''; ?>" required>
+        <input id="edit_email" name="email" type="email"
+            value="<?php echo isset($editData['email']) ? $editData['email'] : ''; ?>" required>
 
         <label for="edit_program">Program</label>
-        <input id="edit_program" name="program" type="text" value="<?php echo isset($editData['program']) ? $editData['program'] : ''; ?>" required>
+        <input id="edit_program" name="program" type="text"
+            value="<?php echo isset($editData['program']) ? $editData['program'] : ''; ?>" required>
 
         <label for="edit_year">Year</label>
-        <input id="edit_year" name="year" type="text" value="<?php echo isset($editData['year']) ? $editData['year'] : ''; ?>" required>
+        <input id="edit_year" name="year" type="text"
+            value="<?php echo isset($editData['year']) ? $editData['year'] : ''; ?>" required>
 
         <label for="edit_section">Section</label>
-        <input id="edit_section" name="section" type="text" value="<?php echo isset($editData['section']) ? $editData['section'] : ''; ?>" required>
+        <input id="edit_section" name="section" type="text"
+            value="<?php echo isset($editData['section']) ? $editData['section'] : ''; ?>" required>
 
         <button type="submit" name="edit_user" class="confirmBtn">Save Changes</button>
         <a href="adminDashboard.php?page=user_management" class="cancelBtn">Cancel</a>
@@ -289,23 +327,23 @@ $result = mysqli_query($conn, $query);
 
     <!-- Confirmation Popup -->
     <div id="confirmPopup" class="popup" style="display: none;">
-    <div class="popup-content">
-        <p>Are you sure you want to delete this user?</p>
-        <div style="margin-top: 20px;">
-            <button onclick="proceedDeletion()" class="confirmBtn">Yes</button>
-            <button onclick="closeConfirmPopup()" class="cancelBtn">No</button>
+        <div class="popup-content">
+            <p>Are you sure you want to delete this user?</p>
+            <div style="margin-top: 20px;">
+                <button onclick="proceedDeletion()" class="confirmBtn">Yes</button>
+                <button onclick="closeConfirmPopup()" class="cancelBtn">No</button>
+            </div>
         </div>
-    </div>
     </div>
 
     <!-- Success Popup -->
     <div id="successPopup" class="popup" style="display: none;">
-    <div class="popup-content">
-        <p>User deleted successfully.</p>
-        <div style="margin-top: 20px;">
-        <button onclick="closeSuccessPopup()" class="confirmBtn">OK</button>
+        <div class="popup-content">
+            <p>User deleted successfully.</p>
+            <div style="margin-top: 20px;">
+                <button onclick="closeSuccessPopup()" class="confirmBtn">OK</button>
+            </div>
         </div>
-    </div>
     </div>
 
     <script>
@@ -334,7 +372,7 @@ $result = mysqli_query($conn, $query);
             if (studentToDelete) {
                 window.location.href = 'adminUsersList.php?delete_id=' + studentToDelete;
             }
-        }   
+        }
 
         function showSuccessPopup() {
             document.getElementById('successPopup').style.display = 'flex';
@@ -342,7 +380,7 @@ $result = mysqli_query($conn, $query);
 
         function closeSuccessPopup() {
             document.getElementById('successPopup').style.display = 'none';
-            window.location.href = 'adminDashboard.php'; 
+            window.location.href = 'adminDashboard.php';
         }
 
     </script>
