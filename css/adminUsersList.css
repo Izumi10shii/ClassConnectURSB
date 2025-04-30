@@ -219,7 +219,16 @@ body {
     gap: 10px;
 }
 
-.cancelBTN {
+.editUserBTN {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancelBtn {
     background-color: #f44336;
     color: white;
     border: none;
@@ -228,7 +237,7 @@ body {
     cursor: pointer;
 }
 
-.confirmBTN button {
+.confirmBtn {
     background-color: #4CAF50;
     color: white;
     border: none;

@@ -253,7 +253,7 @@ $result = mysqli_query($conn, $query);
         </div>
 
 
-        <div style="margin-top: 20px; display: flex; justify-content: center;">
+        <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
             <button type="submit" name="add_user" class="confirmBtn">Add New User</button><br>
             <a href="javascript:void(0);" onclick="closeAddUserForm()" class="cancelBtn">Cancel</a>
         </div>
@@ -334,7 +334,7 @@ $result = mysqli_query($conn, $query);
 
 
 
-        <div style="margin-top: 20px; display: flex; justify-content: center;">
+        <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
             <button type="submit" name="edit_user" class="confirmBtn">Save Changes</button>
             <a href="adminDashboard.php?page=user_management" class="cancelBtn">Cancel</a>
         </div>
