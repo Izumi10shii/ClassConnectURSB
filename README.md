@@ -7,4 +7,4 @@ Project Team: <br>
 - Ramirez, Rodsef <br>
 - Tan, Kent David <br>
 - Sales, Harvey <br>
-- Mariano, Sean Dylan
+- Mariano, Sean Dylan <br>
