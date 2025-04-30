@@ -16,51 +16,11 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 
 <body>
-  <nav class="homeHeader">
-    <a href="home.php" class="logo">Class Connect</a>
-
-    <div class="actions">
-      <a href="userPage.php">
-        <div class="pfp"></div>
-      </a>
-    </div>
-  </nav>
+  <?php include("nav1.php"); ?>
 
   <div class="HomeContainer">
 
-    <div class="leftSidebar">
-      <div class="leftSideUp">
-        <a href="home.php">
-          <div class="homebtn lsu">
-            Home
-
-          </div>
-        </a>
-        <a href="saved_posts.php">
-          <div class="savedpost lsu">
-            Saved Posts
-          </div>
-        </a>
-        <a href="file_storage.php">
-          <div class="popularbtn lsu">
-            File Storage
-          </div>
-        </a>
-
-        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
-          <a href="adminDashboard.php">
-            <div class="popularbtn lsu">
-              Admin Dashboard
-            </div>
-          </a>
-        <?php endif; ?>
-
-        <a href="userPage.php">
-
-          <div class="popularbtn lsu">Profile</div>
-        </a>
-      </div>
-    </div>
+    <?php include("userSidebar.php"); ?>
 
     <div class="scrollContainer">
       <?php
@@ -133,7 +93,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <?php if (isset($username) && isset($title) && isset($description)): ?>
           <div class="postHeader">
             <div class="postHeaderRow">
-              <div class="pfp"></div>
+              <div class="pfpic"></div>
               <div class="postHeaderPoster">
                 <div class="postHeaderCol">
                   <div><strong><?php echo htmlspecialchars($username); ?></strong></div>

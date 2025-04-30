@@ -1,7 +1,9 @@
 <?php
 include("db_conn.php");
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,42 +17,13 @@ session_start();
 </head>
 
 <body>
-    <nav class="homeHeader">
-        <a href="home.php">
-            <h1>Class<span style="opacity: 0;">.</span>Connect</h1>
-        </a>
-        <input class="search" type="text" placeholder="Search">
-        <a href="userPage.html">
-            <!-- Profile picture -->
-            <div class="pfp profile"></div>
-        </a>
-    </nav>
+
+    <?php include("nav1.php"); ?>
 
     <div class="HomeContainer">
-        <div class="leftSidebar">
-            <div class="leftSideUp">
-                <div class="homebtn lsu"><a href="home.php">Home</a></div>
-                <div class="popularbtn lsu">Profile</div>
-
-                <div class="explorebtn lsu">
-                    <a href="explorePage.php">
-                        Explore Discussions
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">File Storage</div>
-
-                <div class="popularbtn lsu">
-                    <a href="adminDashboard.php">
-                        Admin Dashboard
-                    </a>
-                </div>
-
-                <div class="popularbtn lsu">Settings</div>
-            </div>
-        </div>
 
         <?php
+
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_post'])) {
             $title = $_POST['titleInput'] ?? '';
@@ -85,8 +58,7 @@ session_start();
                             }
                         }
                     }
-
-                    // Redirect after successful post creation
+                    
                     header('Location: home.php');
                     exit();
                 } else {
@@ -94,6 +66,7 @@ session_start();
                 }
             }
         }
+        include("userSidebar.php");
         ?>
 
         <div class="post">
@@ -123,7 +96,7 @@ session_start();
                 <input type="submit" name="add_post" class="postBTN" value="Post">
             </form>
 
-           
+
         </div>
 
 

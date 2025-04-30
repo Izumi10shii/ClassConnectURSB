@@ -296,16 +296,14 @@ $result = mysqli_query($conn, $query);
                 <input id="edit_lname" name="lname" type="text"
                     value="<?php echo isset($editData['lname']) ? $editData['lname'] : ''; ?>" required>
 
-                <label for="edit_section">Section</label>
-                <select id="edit_section" name="section" required>
-                    <option value="">Select your Section</option>
-                    <?php
-                    $sections = [1, 2, 3, 4, 5];
-                    foreach ($sections as $section) {
-                        $selected = (isset($editData['section']) && $editData['section'] == $section) ? 'selected' : '';
-                        echo "<option value=\"$section\" $selected>$section</option>";
-                    }
-                    ?>
+                <label for="year">Section:</label>
+                <select id="section" name="section" required>
+                    <option value="" disabled>Select your Section</option>
+                    <option value="1" <?= $section == '1' ? 'selected' : '' ?>>1</option>
+                    <option value="2" <?= $section == '2' ? 'selected' : '' ?>>2</option>
+                    <option value="3" <?= $section == '3' ? 'selected' : '' ?>>3</option>
+                    <option value="4" <?= $section == '4' ? 'selected' : '' ?>>4</option>
+                    <option value="5" <?= $section == '5' ? 'selected' : '' ?>>5</option>
                 </select>
 
             </div>
@@ -323,16 +321,13 @@ $result = mysqli_query($conn, $query);
                 <input id="edit_program" name="program" type="text"
                     value="<?php echo isset($editData['program']) ? $editData['program'] : ''; ?>" required>
 
-                <label for="edit_year">Year</label>
-                <select id="edit_year" name="year" required>
-                    <option value="">Select your Year</option>
-                    <?php
-                    $years = [1 => 'First Year', 2 => 'Second Year', 3 => 'Third Year', 4 => 'Fourth Year'];
-                    foreach ($years as $value => $label) {
-                        $selected = (isset($editData['year']) && $editData['year'] == $value) ? 'selected' : '';
-                        echo "<option value=\"$value\" $selected>$label</option>";
-                    }
-                    ?>
+                <label for="year">Year:</label>
+                <select id="year" name="year" required>
+                    <option value="" disabled>Select your Year</option>
+                    <option value="1" <?= $year == '1' ? 'selected' : '' ?>>First Year</option>
+                    <option value="2" <?= $year == '2' ? 'selected' : '' ?>>Second Year</option>
+                    <option value="3" <?= $year == '3' ? 'selected' : '' ?>>Third Year</option>
+                    <option value="4" <?= $year == '4' ? 'selected' : '' ?>>Fourth Year</option>
                 </select>
             </div>
         </div>

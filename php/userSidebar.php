@@ -33,7 +33,6 @@ if (session_status() === PHP_SESSION_NONE) {
             display: flex;
             flex-direction: column;
             justify-content: start;
-            animation: fadeIn 1s ease;
         }
 
         .lsu {

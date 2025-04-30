@@ -53,13 +53,12 @@ $result = mysqli_query($conn, $query);
 
 <body>
     <!-- Navbar -->
-    <?php    include("nav.php");?>
+    <?php include("nav.php"); ?>
+    
     <div class="HomeContainer">
-    <?php        include("userSidebar.php");?>
-                <div class="content">
-            <!-- Main Container -->
+        <?php include("userSidebar.php"); ?>
+        <div class="content">
 
-            <!-- Content -->
             <!-- Upload Form -->
             <div id="uploadForm" class="upload-form">
                 <h2>Upload Learning Material</h2>
@@ -84,8 +83,10 @@ $result = mysqli_query($conn, $query);
                             <li>
                                 <strong><?php echo htmlspecialchars($row['file_name']); ?></strong>
                                 (<?php echo htmlspecialchars($row['topic']); ?>) -
-                                <a href="../uploads/<?php echo htmlspecialchars($row['file_path']); ?>" target="_blank">Download</a>
-                                <small>Uploaded by: <?php echo htmlspecialchars($row['username']); ?> on <?php echo htmlspecialchars($row['uploaded_at']); ?></small>
+                                <a href="../uploads/<?php echo htmlspecialchars($row['file_path']); ?>"
+                                    target="_blank">Download</a>
+                                <small>Uploaded by: <?php echo htmlspecialchars($row['username']); ?> on
+                                    <?php echo htmlspecialchars($row['uploaded_at']); ?></small>
                             </li>
                         <?php endwhile; ?>
                     </ul>

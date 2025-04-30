@@ -1,4 +1,3 @@
-/* General Styles */
 * {
   margin: 0;
   padding: 0;
@@ -19,19 +18,110 @@ body {
   min-height: 100vh;
 }
 
+/* Custom Nav since nav.php doesn't reflect */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.homeHeader {
+  background: linear-gradient(to right, #002766, #0051ff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  padding: 20px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+}
+
+.logo {
+  text-decoration: none;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.search {
+  width: 110.2%;
+  margin-right: 9.4%;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.addPostBtn {
+  background-color: white;
+  color: #0051ff;
+  padding: 8px 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1px solid white;
+  text-decoration: none;
+  transition: 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.addPostBtn:hover {
+  background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
+  color: white;
+  transform: scale(1.05);
+  border: 1px solid white;
+  background-size: 200% 200%;
+  animation: rainbowMove 3s linear infinite;
+}
+
+.pfp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-image: url('../bg/sample10.png');
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+@keyframes rainbowMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Main Container */
-.HomeContainer {
+.scrollContainer {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  justify-content: flex-start;
-  flex: 1;
-  width: 80%;
-  animation: fadeIn 1s ease;
-  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  margin: 20px;
+  margin-left: 50px;
 }
+
 /* Posts Section */
-.scrollContainer {
+.HomeContainer {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -83,31 +173,12 @@ a {
   margin: 15px 0;
 }
 
-.post > div {
+.post>div {
   font-size: 1rem;
   line-height: 1.6;
   margin-top: 10px;
 }
 
-@media (max-width: 768px) {
-  .HomeContainer {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .post {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .post h2 {
-    font-size: 1.2rem;
-  }
-
-  .exploreContainer select {
-    width: 100%;
-  }
-}
 
 .scrollContainer a {
   text-decoration: none;

@@ -1,6 +1,5 @@
 <?php
 include("db_conn.php");
-session_start();
 
 // Fetch all reports from the database
 $query = "SELECT r.report_id, r.post_id, r.reason, r.status, r.reported_at, p.title, p.username AS poster

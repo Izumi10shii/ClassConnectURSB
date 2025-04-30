@@ -10,16 +10,7 @@
 
 <body>
 
-
-    <nav class="homeHeader">
-        <a href="home.php" class="logo">Class Connect</a>
-
-        <div class="actions">
-            <a href="userPage.php">
-                <div class="pfp"></div>
-            </a>
-        </div>
-    </nav>
+    <?php include("nav1.php"); ?>
 
     <div class="HomeContainer">
         <?php
@@ -39,6 +30,8 @@
                     include('adminPostsList.php');
                 } elseif ($page == 'reports_management') {
                     include('adminReportsList.php');
+                } elseif ($page == 'backup_restore') {
+                    include('db_backup_restore.php');
                 } else {
                     echo '<h1>Welcome to the Admin Dashboard</h1>';
                 }

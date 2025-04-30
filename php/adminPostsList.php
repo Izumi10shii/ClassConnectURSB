@@ -6,7 +6,7 @@ if (isset($_GET['delete_id']) && !empty($_GET['delete_id'])) {
     $delete_query = "DELETE FROM post_tb WHERE post_id = $delete_id";
 
     if (mysqli_query($conn, $delete_query)) {
-        header("Location: adminDashboard.php");
+        header("Location: adminDashboard.php?page=post_management");
         exit();
     } else {
         echo "Error deleting post: " . mysqli_error($conn);

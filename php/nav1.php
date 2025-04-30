@@ -34,44 +34,12 @@
       white-space: nowrap;
     }
 
-    .search {
-      width: 40%;
-      margin-right: -8%;
-      padding: 10px 20px;
-      border-radius: 30px;
-      border: none;
-      font-size: 1rem;
-      outline: none;
-    }
 
     .actions {
       display: flex;
       align-items: center;
       gap: 20px;
     }
-
-    .addPostBtn {
-      background-color: white;
-      color: #0051ff;
-      padding: 8px 20px;
-      font-weight: bold;
-      border-radius: 20px;
-      border: 1px solid white;
-      text-decoration: none;
-      transition: 0.3s ease;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .addPostBtn:hover {
-      background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
-      color: white;
-      transform: scale(1.05);
-      border: 1px solid white;
-      background-size: 200% 200%;
-      animation: rainbowMove 3s linear infinite;
-    }
-
     .pfp {
       width: 50px;
       height: 50px;
@@ -95,10 +63,8 @@
     <a href="home.php" class="logo">Class Connect</a>
 
 
-    <input class="search" type="text" placeholder="Search...">
 
     <div class="actions">
-      <a href="addPost.php" class="addPostBtn">Create Post</a>
       <a href="userPage.php">
         <div class="pfp"></div>
       </a>

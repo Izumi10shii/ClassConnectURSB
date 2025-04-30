@@ -16,12 +16,6 @@ if (mysqli_num_rows($result) == 0) {
 
 $user = mysqli_fetch_assoc($result);
 
-// Set session values
-$email = $user['email'];
-$_SESSION['username'] = $username;
-$_SESSION['student_no'] = $user['student_no'];
-$_SESSION['otp_enabled'] = $user['otp_enabled'];
-$_SESSION['is_admin'] = $user['is_admin'];
 
 // Check password
 if ($user['password'] != $password) {
@@ -29,6 +23,13 @@ if ($user['password'] != $password) {
     header("Location: loginpage.php");
     exit();
 }
+
+// Set session values
+$email = $user['email'];
+$_SESSION['username'] = $username;
+$_SESSION['student_no'] = $user['student_no'];
+$_SESSION['otp_enabled'] = $user['otp_enabled'];
+$_SESSION['is_admin'] = $user['is_admin'];
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

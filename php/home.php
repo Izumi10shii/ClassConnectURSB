@@ -2,6 +2,11 @@
 include("db_conn.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+
+    if (!isset($_SESSION['student_no'])) {
+        header("Location: login.php");
+        exit;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -12,26 +17,34 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../css/home.css">
-    
+
 </head>
 
 <body>
-    <?php
-    include("nav.php");
-    //include("userSidebar.php");
-    ?>
+    <nav class="homeHeader">
+        <a href="home.php" class="logo">Class Connect</a>
 
 
-<div class="scrollContainer">
+        <input class="search" type="text" placeholder="Search...">
 
-<?php
-    include("userSidebar.php");
-?>
-            <div class="HomeContainer">
-            
+        <div class="actions">
+            <a href="addPost.php" class="addPostBtn">Create Post</a>
+            <a href="userPage.php">
+                <div class="pfp"></div>
+            </a>
+        </div>
+    </nav>
+
+    <div class="HomeContainer">
+
+        <?php
+        include("userSidebar.php");
+        ?>
+        <div class="scrollContainer">
+
             <div class="exploreContainer">
 
-                <!-- Posts Section -->
+
                 <div class="collegeDepartment">
                 </div>
                 <label for="dropdown">

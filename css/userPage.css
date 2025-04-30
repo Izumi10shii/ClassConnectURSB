@@ -1,45 +1,13 @@
-/* Animations */
-@keyframes fadeSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Smooth transitions */
 * {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  transition: all 0.3s ease;
-}
 
-html {
-  overflow-x: hidden;
-  height: 100%;
 }
 
 body {
   background-color: white;
   color: black;
-  height: 100%;
 }
 
 a {
@@ -69,13 +37,9 @@ a {
 
 .HomeContainer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh; /* Make the container fit the screen height */
-  min-height: 100vh; /* Make the container fit the screen height */
-  animation: fadeIn 1s ease;
 }
 
 .PagePfp {
@@ -88,27 +52,20 @@ a {
 }
 
 .scrollContainer {
-  margin-left: auto;
-  display: flex;
-  align-items: center; /* Center horizontally */
-  justify-content: flex-start;
-  gap: 20px;
-  width: calc(100% - 320px);
-  overflow-y: auto;
-  max-height: 100vh;
-  margin: 0;
   padding: 20px;
-  min-height: 100vh;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
 }
 
 .communityPageInfo {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align all content to the left */
-  gap: 20px;
+  align-items: flex-start;
   width: 100%;
-  padding-left: 20px; /* Add padding for alignment */
+  padding-left: 20px;
 }
+
 .post,
 .displayUserContent {
   width: 100%;
@@ -116,11 +73,11 @@ a {
 
 .communityRow {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
   gap: 20px;
 }
+
 .communityRow button {
   border: none;
   padding: 10px 20px;
@@ -128,9 +85,11 @@ a {
   color: white;
   border-radius: 20px;
 }
+
 .communityRow h1 {
   margin-left: 20px;
 }
+
 .goLeft {
   display: flex;
   align-items: center;
@@ -147,15 +106,18 @@ a {
 .profileDetails {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align all content to the left */
+  align-items: flex-start;
+  /* Align all content to the left */
   gap: 10px;
   width: 100%;
 }
 
 .followersRow {
   display: flex;
-  justify-content: flex-start; /* Align to the left */
-  gap: 20px; /* Add spacing between items */
+  justify-content: flex-start;
+  /* Align to the left */
+  gap: 20px;
+  /* Add spacing between items */
   text-align: left;
 }
 
@@ -165,14 +127,23 @@ a {
 }
 
 .profileInfo {
-  text-align: left; /* Align text to the left */
+  text-align: left;
+  /* Align text to the left */
   margin-top: 20px;
   padding: 20px;
   border: none;
   box-shadow: 0 0 2px black;
-  width: 100%;
   border-radius: 20px;
   list-style-type: none;
+  width: inherit;
+}
+
+.profileInfo li {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-style: italic;
 }
 
 .interests {
@@ -185,7 +156,8 @@ a {
   margin: 20px 0;
   display: flex;
   flex-direction: column;
-  justify-content: start; /* Align content to the left */
+  justify-content: start;
+  /* Align content to the left */
   align-items: start;
   padding: 10px;
   gap: 20px;
@@ -198,6 +170,7 @@ a {
   align-items: center;
   padding-left: 20px;
   gap: 20px;
+  padding-top: 30px;
 }
 
 .userRow button {
@@ -208,44 +181,7 @@ a {
   border-radius: 20px;
 }
 
-.post {
-  display: flex;
-  justify-self: center;
-  align-items: start;
-  flex-direction: column;
-  text-align: justify;
 
-  background-color: white;
-  border: 1px solid black;
-  padding: 20px;
-  gap: 20px;
-  width: 90%;
-  margin: 20px;
-
-  box-shadow: 0 0 2px black;
-  border-radius: 15px;
-}
-
-.pfp {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-image: url("../bg/sample10.png");
-  /* Adjust the path if needed */
-  background-size: cover;
-  background-position: center;
-}
-.scrollContainer {
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: calc(100% - 320px); /* Adjust width to fit next to the sidebar */
-  overflow-y: auto;
-  max-height: 100vh; /* Make the scroll container fit the screen height */
-  margin: 0;
-  padding: 20px;
-}
 .postHeader {
   display: flex;
   justify-content: start;
@@ -291,14 +227,12 @@ a {
 }
 
 button:hover {
-  background: linear-gradient(
-    45deg,
-    #feda75,
-    #fa7e1e,
-    #d62976,
-    #962fbf,
-    #4f5bd5
-  );
+  background: linear-gradient(45deg,
+      #feda75,
+      #fa7e1e,
+      #d62976,
+      #962fbf,
+      #4f5bd5);
   /* Instagram gradient */
   background-size: 200% 200%;
   animation: rainbowMove 3s linear infinite;
@@ -319,14 +253,12 @@ button:hover {
 }
 
 .actionBtn:hover {
-  background: linear-gradient(
-    45deg,
-    #feda75,
-    #fa7e1e,
-    #d62976,
-    #962fbf,
-    #4f5bd5
-  );
+  background: linear-gradient(45deg,
+      #feda75,
+      #fa7e1e,
+      #d62976,
+      #962fbf,
+      #4f5bd5);
   /* Instagram gradient */
   background-size: 200% 200%;
   animation: rainbowMove 3s linear infinite;
@@ -337,14 +269,12 @@ button:hover {
 
 /* Apply rainbow animation on hover to all buttons without altering base style */
 button:hover {
-  background: linear-gradient(
-    45deg,
-    #feda75,
-    #fa7e1e,
-    #d62976,
-    #962fbf,
-    #4f5bd5
-  );
+  background: linear-gradient(45deg,
+      #feda75,
+      #fa7e1e,
+      #d62976,
+      #962fbf,
+      #4f5bd5);
   background-size: 200% 200%;
   animation: rainbowMove 3s linear infinite;
   color: white;
@@ -425,6 +355,16 @@ form input {
   box-sizing: border-box;
 }
 
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
 form button {
   background-color: #007bff;
   color: #fff;
@@ -448,4 +388,203 @@ p {
 p.error {
   color: #dc3545;
   font-weight: bold;
+}
+
+
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 50px;
+  margin-top: 20px;
+}
+
+.otpSettingCard form {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 20px;
+  background-color: #d7eefd;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+  gap: 20px;
+  height: 100px;
+}
+
+.logoutCard form {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 20px;
+  background-color: #d7eefd;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+  gap: 20px;
+  flex-direction: row;
+  height: 100px;
+}
+
+.toggle-button {
+  display: flex;
+  align-items: center;
+}
+
+.update_otp_setting {
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+/* Hide the checkbox */
+.toggle-button input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The Slider Button */
+.toggle-button .slider {
+  justify-content: center;
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+  background-color: #ccc;
+  border-radius: 25px;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+
+/* The Inner Circle */
+.toggle-button .slider:before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background-color: white;
+  transition: transform 0.3s;
+}
+
+/* Checked state styles */
+.toggle-button input:checked+.slider {
+  background-color: #4CAF50;
+}
+
+.toggle-button input:checked+.slider:before {
+  transform: translateX(25px);
+}
+
+/* Log out */
+
+#logOutModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#logOutModal .modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+/* Close Button */
+#logOutModal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#logOutModal .close:hover,
+#logOutModal .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Adjust modal buttons */
+#logOutModal button {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+/* Optional: Add hover effect to buttons */
+#logOutModal button:hover {
+  background-color: #ddd;
+}
+
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Buttons */
+#confirmLogout,
+#cancelLogout {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#cancelLogout {
+  background-color: #f44336;
+}
+
+.form-flex {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.form-column label,
+.form-column input,
+.form-column select {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
 }

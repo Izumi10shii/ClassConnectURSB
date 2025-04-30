@@ -14,8 +14,9 @@
             position: sticky;
             top: 0;
             align-self: flex-start;
-            height: 100vh;
-            overflow-y: auto;
+            height: 1000px;
+            min-height: 100vh;
+
             background: url("../bg/sample7.png") no-repeat center center;
             background-size: cover;
             background-attachment: fixed;
@@ -24,11 +25,11 @@
             box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
 
             padding: 20px;
-            width: 345px;
+            width: 300px;
             display: flex;
             flex-direction: column;
             justify-content: start;
-            animation: fadeIn 1s ease;
+
         }
 
         .lsu {
@@ -36,7 +37,7 @@
             font-size: 1.1rem;
             padding: 10px;
             border-radius: 10px;
-            width: 82%;
+            width: 90%;
             color: white;
             text-align: left;
             font-weight: bold;
@@ -80,25 +81,27 @@
             </a>
 
 
-            <div class="explorebtn lsu">
-                <a href="adminDashboard.php?page=user_management">
-                    User Management
-                </a>
-            </div>
 
-            <div class="popularbtn lsu">
-                <a href="adminDashboard.php?page=post_management">
-                    Post Management
-                </a>
-            </div>
+            <a href="adminDashboard.php?page=user_management">
+                <div class="explorebtn lsu"> User Management</div>
+            </a>
 
-            <div class="popularbtn lsu">
-                <a href="adminDashboard.php?page=reports_management">
-                    Reports Management
-                </a>
-            </div>
 
-            <div class="popularbtn lsu">Settings</div>
+
+            <a href="adminDashboard.php?page=post_management">
+                <div class="popularbtn lsu">Post Management </div>
+            </a>
+
+
+
+            <a href="adminDashboard.php?page=reports_management">
+                <div class="popularbtn lsu"> Reports Management </div>
+            </a>
+
+            <a href="adminDashboard.php?page=backup_restore">
+                <div class="popularbtn lsu">Settings</div>
+            </a>
+
         </div>
     </div>
 </body>
