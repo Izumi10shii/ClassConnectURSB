@@ -481,7 +481,7 @@ p.error {
 
 /* Checked state styles */
 .toggle-button input:checked+.slider {
-  background-color: #4CAF50;
+  background-color: #0090d8;
 }
 
 .toggle-button input:checked+.slider:before {
@@ -561,16 +561,26 @@ p.error {
 #cancelLogout {
   padding: 10px 20px;
   font-size: 14px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(255, 255, 255);
   border: none;
   cursor: pointer;
   border-radius: 5px;
   margin-top: 10px;
 }
 
+
+#confirmLogout 
+{
+  color: #0090d8;
+}
+#confirmLogout:hover
+{
+  color: rgb(255, 255, 255);
+}
+
 #cancelLogout {
-  background-color: #f44336;
+  background-color: #0090d8;
 }
 
 .form-flex {

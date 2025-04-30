@@ -35,7 +35,7 @@ $result = mysqli_query($conn, $bookmarkQuery);
 
 <body>
 
-    <?php include("nav.php"); ?>
+    <?php include("nav1.php"); ?>
 
     <div class="HomeContainer">
         <?php include("userSidebar.php"); ?>
