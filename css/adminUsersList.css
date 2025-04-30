@@ -103,38 +103,6 @@ body {
 .actionRow a:hover {
   opacity: 0.8;
 }
-.addUserContainer{
-  display: none; /* Initially hidden */
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 40px;
-  background-color: #f3f3f3;
-  border-radius: 20px;
-  box-shadow: 0 0 2px black;
-  font-size: 20px;
-  font-weight: bold;
-}
-.addUserContainer label{
-  display: flex;
-  flex-direction: column;
-}
-.addUserContainer input{
-  width: 300px;
-  padding: 10px;
-  border-radius: 99px;
-  border: none;
-  box-shadow: 0 0 2px black;
-} 
-.submitNewUser{
-  background-color: black;
-  color: white;
-  padding: 10px;
-  width: 100%;
-  border-radius: 99px;
-  border: none;
-}
 
 .error-message {
   color: red;
@@ -223,22 +191,19 @@ body {
   width: 400px;
 }
 
-.confirmBtn, .cancelBtn {
-  padding: 10px 20px;
-  margin: 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.confirmBtn {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.cancelBtn {
-  background-color: #f44336;
-  color: white;
+.addUserContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .editUserContainer {
@@ -265,8 +230,71 @@ body {
     cursor: pointer;
 }
 
+.confirmBTN button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .cancelBTN:hover {
     background-color: #d32f2f;
+}
+
+#addUserForm1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#editUserForm1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  width: calc(50% - 10px);  /* Each form row takes up 50% of the space */
+  flex-direction: column;
+}
+
+.form-row label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-row input,
+.form-row select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+      width: 100%; /* Stacks the form rows on smaller screens */
+  }
+}
+
+
+select, input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 14px;
+    display: flex;
 }
 
 /* Table styling */

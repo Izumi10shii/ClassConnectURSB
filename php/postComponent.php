@@ -98,7 +98,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
                 <!-- Comment Button -->
                 <button class="commentBTN">
-                    <img src="../icons/comment.svg" alt="Comment">
+                    <img class="cmnt" src="../icons/comment.svg" alt="Comment">
                     <span><?php echo $comments_count; ?></span>
                 </button>
             </div>

@@ -91,11 +91,11 @@ a {
   margin-left: auto;
   display: flex;
   align-items: center; /* Center horizontally */
-  justify-content: flex-start; /* Align to the top vertically */
+  justify-content: flex-start;
   gap: 20px;
-  width: calc(100% - 320px); /* Adjust width to fit next to the sidebar */
+  width: calc(100% - 320px);
   overflow-y: auto;
-  max-height: 100vh; /* Make the scroll container fit the screen height */
+  max-height: 100vh;
   margin: 0;
   padding: 20px;
   min-height: 100vh;
@@ -290,37 +290,6 @@ a {
   padding: 10px 40px;
 }
 
-.rightSidebar h2 {
-}
-
-.rightSidebar {
-  background-color: white;
-  width: 400px;
-  border: 1px solid black;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-content: center;
-  gap: 20px;
-}
-
-.rightSidebar > div {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 20px;
-}
-
-.rightSidebar button {
-  padding: 10px;
-  border-radius: 15px;
-  border: none;
-  background-color: black;
-  color: white;
-  font-size: 20px;
-}
-
 button:hover {
   background: linear-gradient(
     45deg,
@@ -365,52 +334,9 @@ button:hover {
   color: white;
 }
 
-.leftSidebar li {
-  position: relative;
-  overflow: hidden;
-  z-index: 0;
-}
-
-/* Pseudo-element for hover effect */
-.leftSidebar li::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  background: linear-gradient(
-    45deg,
-    #feda75,
-    #fa7e1e,
-    #d62976,
-    #962fbf,
-    #4f5bd5
-  );
-  background-size: 200% 200%;
-  animation: none;
-  z-index: -1;
-  transition: width 0.4s ease;
-  border-radius: 10px;
-}
-
-/* Expand with Instagram gradient on hover */
-.leftSidebar li:hover::before {
-  width: 250px;
-  /* Stretches right within sidebar */
-  animation: rainbowMove 3s linear infinite;
-}
-
-/* Optional: color text white on hover */
-.leftSidebar li:hover {
-  color: white;
-  transform: scale(1.02);
-}
 
 /* Apply rainbow animation on hover to all buttons without altering base style */
-button:hover,
-.leftSidebar li:hover,
-.lsu:hover {
+button:hover {
   background: linear-gradient(
     45deg,
     #feda75,
@@ -426,9 +352,7 @@ button:hover,
 }
 
 /* Maintain base style on non-hover */
-button,
-.leftSidebar li,
-.lsu {
+button {
   transition: background 0.4s ease, transform 0.3s ease, color 0.3s ease;
 }
 

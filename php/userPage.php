@@ -2,8 +2,7 @@
 include("db_conn.php");
 session_start();
 
-// Assuming the username is stored in session (ensure you set it during login)
-$username = "Rodsef"; // You can replace this with the session variable
+$username = (isset($_SESSION["username"])) ? $_SESSION["username"] : "";
 
 // Handle Profile Update (if form is submitted)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -60,9 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     ?>
 
-    <div class="scrollContainer ">
-        <?php include("userSidebar.php"); ?>
-        <div class="HomeContainer">
+
+    <div class="HomeContainer">
+
+        <div class="scrollContainer">
             <div class="communityPageInfo">
                 <div class="communityRow">
                     <div class="goLeft">
@@ -86,8 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 </div>
                 <div class="userRow">
-                    <button>Posts 100</button>
-                    <button>Comments 100</button>
+                    <button>Posts</button>
+                    <!--<button>Comments</button>-->
                 </div>
                 <div class="displayUserContent">
 
@@ -122,15 +122,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="program">Program:</label>
                     <input type="text" id="program" name="program" value="<?php echo $program; ?>" required>
 
-                    <label for="year">Year:</label>
-                    <input type="text" id="year" name="year" value="<?php echo $year; ?>" required>
+                    <label for="program">Program:</label>
+                    <select id="program" name="program" required>
+                        <option value="" disabled selected>Select your program</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Information Systems">Information Systems</option>
+                        <option value="Accountancy">Accountancy</option>
+                        <option value="Office Administration">Office Administration</option>
+                        <option value="Marketing Management">Marketing Management</option>
+                        <option value="Financial Management">Financial Management</option>
+                        <option value="Human Resource Development">Human Resource Development</option>
+                    </select>
 
-                    <label for="section">Section:</label>
-                    <input type="text" id="section" name="section" value="<?php echo $section; ?>" required>
+
+
+                    <label for="year">Year:</label>
+                    <select id="year" name="year" required>
+                        <option value="" disabled selected>Select your Year</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                    </select><br>
 
                     <button type="submit">Save Changes</button>
                 </form>
-                <?php if (isset($message)) echo "<p>$message</p>"; ?>
+                <?php if (isset($message))
+                    echo "<p>$message</p>"; ?>
             </div>
         </div>
 
@@ -141,17 +159,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             var span = document.getElementsByClassName("close")[0];
 
             // When the user clicks the "Edit Profile" button, open the modal
-            btn.onclick = function() {
+            btn.onclick = function () {
                 modal.style.display = "block";
             }
 
             // When the user clicks "x" (close), close the modal
-            span.onclick = function() {
+            span.onclick = function () {
                 modal.style.display = "none";
             }
 
             // When the user clicks anywhere outside the modal, close it
-            window.onclick = function(event) {
+            window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }

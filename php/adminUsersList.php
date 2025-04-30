@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user'])) {
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email = $_POST['email'];
+    $password = md5($_POST['password']);
     $program = $_POST['program'];
     $year = $_POST['year'];
     $section = $_POST['section'];
@@ -59,8 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user'])) {
         $error = 'username_taken';
     } elseif (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM student_tb WHERE email = '$email' AND student_no != '$student_no'")) > 0) {
         $error = 'email_taken';
-    } elseif (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM student_tb WHERE student_no = '$student_no' AND student_no != '$student_no'")) > 0) {
-        $error = 'studno_taken';
     } else {
         $updateQuery = "UPDATE student_tb 
                         SET username = '$username', fname = '$fname', lname = '$lname', email = '$email', 
@@ -128,7 +127,7 @@ $result = mysqli_query($conn, $query);
         <div class="header">
 
             <h2>Registered users</h2>
-            <button id="addUserBTN" class="addUserBTN">Add</button>
+            <button type="button" class="addUserBTN" onclick="showAddUserForm()">Add</button>
         </div>
 
         <div class="table-container">
@@ -162,8 +161,9 @@ $result = mysqli_query($conn, $query);
                                     <div class="actionRow">
                                         <a href="javascript:void(0);" class="deleteBTN" id="deleteBTN"
                                             onclick="confirmDeletion('<?php echo $row['student_no']; ?>');">Delete</a>
-                                        <a href="adminUsersList.php?edit_id=<?php echo $row['student_no']; ?>"
-                                            class="editBTN">Edit</a>
+                                        <button type="button" class="editUserBTN"
+                                            onclick="showEditUserForm(<?php echo $edit_id; ?>)">Edit</button>
+
                                     </div>
                                 </td>
                             </tr>
@@ -178,7 +178,7 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 
-    <!-- ADD USER -->
+    <!-- Add User Form -->
     <form id="addUserForm" action="" method="post" class="addUserContainer" style="display: none;">
         <h2>Add New User</h2>
 
@@ -193,88 +193,77 @@ $result = mysqli_query($conn, $query);
             } elseif ($error == 'studno_taken') {
                 echo "<p class='error-message'>Student Number: $student_no already has an Account.</p>";
             }
-            unset($_SESSION['error_message']);
         }
-
         ?>
 
-        <label for="">Student No
-            <input id="student_no" name="student_no" type="text" placeholder="Student No" required>
-        </label>
+        <div id="addUserForm1">
+            <div class="form-row">
+                <label for="add_student_no">Student No</label>
+                <input id="add_student_no" name="student_no" type="text" placeholder="Student No" required>
 
-        <label for="">Username
-            <input id="username" name="username" type="text" placeholder="Username" required>
-        </label>
+                <label for="add_username">Username</label>
+                <input id="add_username" name="username" type="text" placeholder="Username" required>
 
-        <label for="">First Name
-            <input id="fname" name="fname" type="text" placeholder="First Name" required>
-        </label>
+                <label for="add_fname">First Name</label>
+                <input id="add_fname" name="fname" type="text" placeholder="First Name" required>
 
-        <label for="">Last Name
-            <input id="lname" name="lname" type="text" placeholder="Last Name" required>
-        </label>
+                <label for="add_lname">Last Name</label>
+                <input id="add_lname" name="lname" type="text" placeholder="Last Name" required>
 
-        <label for="">Email
-            <input id="email" name="email" type="email" placeholder="Email" required>
-        </label>
+            </div>
 
-        <label for="">Password
-            <input id="password" name="password" type="text" placeholder="Password" required>
-        </label>
-        <label for="">Program
-            <input id="program" name="program" type="text" placeholder="Program" required>
-        </label>
+            <div class="form-row">
+                <label for="add_email">Email</label>
+                <input id="add_email" name="email" type="email" placeholder="Email" required>
 
-        <label for="">Year
-            <input id="year" name="year" type="text" placeholder="Year" required>
-        </label>
+                <label for="add_password">Password</label>
+                <input id="add_password" name="password" type="text" placeholder="Password" required>
 
-        <label for="">Section
-            <input id="section" name="section" type="text" placeholder="Section" required>
-        </label>
+                <label for="add_program">Program</label>
+                <select id="add_program" name="program" required>
+                    <option value="" disabled selected>Select your program</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Information Systems">Information Systems</option>
+                    <option value="Accountancy">Accountancy</option>
+                    <option value="Office Administration">Office Administration</option>
+                    <option value="Marketing Management">Marketing Management</option>
+                    <option value="Financial Management">Financial Management</option>
+                    <option value="Human Resource Development">Human Resource Development</option>
+                </select>
 
+                <label for="add_year">Year</label>
+                <select id="add_year" name="year" required>
+                    <option value="" disabled selected>Select your Year</option>
+                    <option value="1">First Year</option>
+                    <option value="2">Second Year</option>
+                    <option value="3">Third Year</option>
+                    <option value="4">Fourth Year</option>
+                </select>
 
-        <label for="program">Program:</label>
-        <select id="program" name="program" required>
-            <option value="" disabled selected>Select your program</option>
-            <option value="Information Technology">Information Technology</option>
-            <option value="Information Systems">Information Systems</option>
-            <option value="Accountancy">Accountancy</option>
-            <option value="Office Administration">Office Administration</option>
-            <option value="Marketing Management">Marketing Management</option>
-            <option value="Financial Management">Financial Management</option>
-            <option value="Human Resource Development">Human Resource Development</option>
-        </select>
-
-
-
-        <label for="year">Year:</label>
-        <select id="year" name="year" required>
-            <option value="" disabled selected>Select your Year</option>
-            <option value="1">First Year</option>
-            <option value="2">Second Year</option>
-            <option value="3">Third Year</option>
-            <option value="4">Fourth Year</option>
-        </select>
+                <label for="add_section">Section</label>
+                <select id="add_section" name="section" required>
+                    <option value="" disabled selected>Select your Section</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
 
 
-
-        <label for="year">Section:</label>
-        <select id="sec" name="sec" required>
-            <option value="" disabled selected>Select your Section</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-
-
-        <button class="submitNewUser" type="submit" name="add_user" class="submitBTN">Add New User</button>
+        <div style="margin-top: 20px; display: flex; justify-content: center;">
+            <button type="submit" name="add_user" class="confirmBtn">Add New User</button><br>
+            <a href="javascript:void(0);" onclick="closeAddUserForm()" class="cancelBtn">Cancel</a>
+        </div>
     </form>
 
+
+
+
     <!-- Edit User Form -->
-    <form id="editUserForm" action="" method="post" class="editUserContainer"
+    <form id="editUserForm" action="" method="post" class="addUserContainer"
         style="display: <?php echo isset($editData) ? 'flex' : 'none'; ?>;">
         <h2>Edit User</h2>
 
@@ -290,39 +279,71 @@ $result = mysqli_query($conn, $query);
         }
         ?>
 
-        <input type="hidden" id="edit_student_no" name="student_no"
-            value="<?php echo isset($editData['student_no']) ? $editData['student_no'] : ''; ?>">
+        <div id="editUserForm1">
+            <div class="form-row">
+                <input type="hidden" id="edit_student_no" name="student_no"
+                    value="<?php echo isset($editData['student_no']) ? $editData['student_no'] : ''; ?>">
 
-        <label for="edit_username">Username</label>
-        <input id="edit_username" name="username" type="text"
-            value="<?php echo isset($editData['username']) ? $editData['username'] : ''; ?>" required>
+                <label for="edit_username">Username</label>
+                <input id="edit_username" name="username" type="text"
+                    value="<?php echo isset($editData['username']) ? $editData['username'] : ''; ?>" required>
 
-        <label for="edit_fname">First Name</label>
-        <input id="edit_fname" name="fname" type="text"
-            value="<?php echo isset($editData['fname']) ? $editData['fname'] : ''; ?>" required>
+                <label for="edit_fname">First Name</label>
+                <input id="edit_fname" name="fname" type="text"
+                    value="<?php echo isset($editData['fname']) ? $editData['fname'] : ''; ?>" required>
 
-        <label for="edit_lname">Last Name</label>
-        <input id="edit_lname" name="lname" type="text"
-            value="<?php echo isset($editData['lname']) ? $editData['lname'] : ''; ?>" required>
+                <label for="edit_lname">Last Name</label>
+                <input id="edit_lname" name="lname" type="text"
+                    value="<?php echo isset($editData['lname']) ? $editData['lname'] : ''; ?>" required>
 
-        <label for="edit_email">Email</label>
-        <input id="edit_email" name="email" type="email"
-            value="<?php echo isset($editData['email']) ? $editData['email'] : ''; ?>" required>
+                <label for="edit_section">Section</label>
+                <select id="edit_section" name="section" required>
+                    <option value="">Select your Section</option>
+                    <?php
+                    $sections = [1, 2, 3, 4, 5];
+                    foreach ($sections as $section) {
+                        $selected = (isset($editData['section']) && $editData['section'] == $section) ? 'selected' : '';
+                        echo "<option value=\"$section\" $selected>$section</option>";
+                    }
+                    ?>
+                </select>
 
-        <label for="edit_program">Program</label>
-        <input id="edit_program" name="program" type="text"
-            value="<?php echo isset($editData['program']) ? $editData['program'] : ''; ?>" required>
+            </div>
 
-        <label for="edit_year">Year</label>
-        <input id="edit_year" name="year" type="text"
-            value="<?php echo isset($editData['year']) ? $editData['year'] : ''; ?>" required>
+            <div class="form-row">
+                <label for="edit_email">Email</label>
+                <input id="edit_email" name="email" type="email"
+                    value="<?php echo isset($editData['email']) ? $editData['email'] : ''; ?>" required>
 
-        <label for="edit_section">Section</label>
-        <input id="edit_section" name="section" type="text"
-            value="<?php echo isset($editData['section']) ? $editData['section'] : ''; ?>" required>
+                <label for="edit_password">Password</label>
+                <input id="edit_password" name="password" type="text"
+                    value="<?php echo isset($editData['password']) ? $editData['password'] : ''; ?>" required>
 
-        <button type="submit" name="edit_user" class="confirmBtn">Save Changes</button>
-        <a href="adminDashboard.php?page=user_management" class="cancelBtn">Cancel</a>
+                <label for="edit_program">Program</label>
+                <input id="edit_program" name="program" type="text"
+                    value="<?php echo isset($editData['program']) ? $editData['program'] : ''; ?>" required>
+
+                <label for="edit_year">Year</label>
+                <select id="edit_year" name="year" required>
+                    <option value="">Select your Year</option>
+                    <?php
+                    $years = [1 => 'First Year', 2 => 'Second Year', 3 => 'Third Year', 4 => 'Fourth Year'];
+                    foreach ($years as $value => $label) {
+                        $selected = (isset($editData['year']) && $editData['year'] == $value) ? 'selected' : '';
+                        echo "<option value=\"$value\" $selected>$label</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+
+
+
+        <div style="margin-top: 20px; display: flex; justify-content: center;">
+            <button type="submit" name="edit_user" class="confirmBtn">Save Changes</button>
+            <a href="adminDashboard.php?page=user_management" class="cancelBtn">Cancel</a>
+        </div>
+
     </form>
 
     <!-- Confirmation Popup -->
@@ -347,15 +368,6 @@ $result = mysqli_query($conn, $query);
     </div>
 
     <script>
-        document.getElementById('addUserBTN').addEventListener('click', function () {
-            const form = document.getElementById('addUserForm');
-            if (form.style.display === 'none' || form.style.display === '') {
-                form.style.display = 'flex'; // Show the form
-            } else {
-                form.style.display = 'none'; // Hide the form
-            }
-        });
-
         let studentToDelete = null;
 
         function confirmDeletion(studentNo) {
@@ -383,7 +395,26 @@ $result = mysqli_query($conn, $query);
             window.location.href = 'adminDashboard.php';
         }
 
+        function showAddUserForm() {
+            document.getElementById("addUserForm").style.display = "block";
+        }
+
+        function closeAddUserForm() {
+            document.getElementById("addUserForm").style.display = "none";
+        }
+
+        function showEditUserForm() {
+            document.getElementById("editUserForm").style.display = "block";
+        }
+
+        function closeEditUserForm() {
+            document.getElementById("editUserForm").style.display = "none";
+        }
+
+
+
     </script>
+
 </body>
 
 </html>
