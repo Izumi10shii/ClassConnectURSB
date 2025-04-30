@@ -22,7 +22,7 @@ if (session_status() === PHP_SESSION_NONE) {
             align-self: flex-start;
             min-height: 100vh;
             overflow-y: auto;
-            background: url("../bg/sample7.png") no-repeat center center;
+            background: linear-gradient(to right, #002766, #0051ff);
             background-size: cover;
             background-attachment: fixed;
             backdrop-filter: blur(10px);
