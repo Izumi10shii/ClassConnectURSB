@@ -88,12 +88,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_desc'])) {
         $commentsResult = mysqli_query($conn, $getComments);
       }
 
-      //check pfp
-      $sqlpfp = "SELECT profile_pic FROM student_tb WHERE student_no = '$student_no'";
+      // Fetch the profile picture for the poster (author of the post)
+      $sqlpfp = "SELECT profile_pic FROM student_tb WHERE username = '$username'"; // Use the poster's username
       $resultpfp = mysqli_query($conn, $sqlpfp);
       $rowpfp = mysqli_fetch_assoc($resultpfp);
 
+      // Use the poster's profile picture or a default if not available
       $profile_picture = !empty($rowpfp['profile_pic']) ? $rowpfp['profile_pic'] : '../bg/sample10.png';
+
 
 
       ?>
