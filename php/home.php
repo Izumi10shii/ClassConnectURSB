@@ -30,7 +30,17 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="actions">
             <a href="addPost.php" class="addPostBtn">Create Post</a>
             <a href="userPage.php">
-                <div class="pfp"></div>
+                <div class="pfp">
+                    <?php
+                    $student_no = $_SESSION['student_no'];
+                    $sql = "SELECT profile_pic FROM student_tb WHERE student_no = '$student_no'";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result);
+
+                    $profile_picture = !empty($row['profile_pic']) ? $row['profile_pic'] : '../bg/sample10.png';
+                    ?>
+                    <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" class="profile-img">
+                </div>
             </a>
         </div>
     </nav>

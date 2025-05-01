@@ -90,7 +90,7 @@ if (isset($_GET['delete_id'])) {
 }
 
 
-// Handle Edit User
+// Handle Edit User Data
 if (isset($_GET['edit_id'])) {
     $edit_id = $_GET['edit_id'];
 
@@ -162,7 +162,16 @@ $result = mysqli_query($conn, $query);
                                         <a href="javascript:void(0);" class="deleteBTN" id="deleteBTN"
                                             onclick="confirmDeletion('<?php echo $row['student_no']; ?>');">Delete</a>
                                         <button type="button" class="editUserBTN"
-                                            onclick="showEditUserForm(<?php echo $edit_id; ?>)">Edit</button>
+                                            data-student_no="<?php echo $row['student_no']; ?>"
+                                            data-username="<?php echo $row['username']; ?>"
+                                            data-fname="<?php echo $row['fname']; ?>" data-lname="<?php echo $row['lname']; ?>"
+                                            data-email="<?php echo $row['email']; ?>"
+                                            data-password="<?php echo $row['password']; ?>"
+                                            data-program="<?php echo $row['program']; ?>"
+                                            data-year="<?php echo $row['year']; ?>"
+                                            data-section="<?php echo $row['section']; ?>">
+                                            Edit
+                                        </button>
 
                                     </div>
                                 </td>
@@ -180,7 +189,7 @@ $result = mysqli_query($conn, $query);
 
     <!-- Add User Form -->
     <form id="addUserForm" action="" method="post" class="addUserContainer" style="display: none;">
-        <h2>Add New User</h2>
+        <h2 class="EditUser">Add New User</h2>
 
         <?php
         if (!empty($error)) {
@@ -263,9 +272,9 @@ $result = mysqli_query($conn, $query);
 
 
     <!-- Edit User Form -->
-    <form id="editUserForm" action="" method="post" class="addUserContainer"
+    <form id="editUserForm" action="" method="post" class="addUserContainer1"
         style="display: <?php echo isset($editData) ? 'flex' : 'none'; ?>;">
-        <h2>Edit User</h2>
+        <h2 class="EditUser">Edit User</h2>
 
         <?php
         if (!empty($error)) {
@@ -296,14 +305,13 @@ $result = mysqli_query($conn, $query);
                 <input id="edit_lname" name="lname" type="text"
                     value="<?php echo isset($editData['lname']) ? $editData['lname'] : ''; ?>" required>
 
-                <label for="year">Section:</label>
-                <select id="section" name="section" required>
-                    <option value="" disabled>Select your Section</option>
-                    <option value="1" <?= $section == '1' ? 'selected' : '' ?>>1</option>
-                    <option value="2" <?= $section == '2' ? 'selected' : '' ?>>2</option>
-                    <option value="3" <?= $section == '3' ? 'selected' : '' ?>>3</option>
-                    <option value="4" <?= $section == '4' ? 'selected' : '' ?>>4</option>
-                    <option value="5" <?= $section == '5' ? 'selected' : '' ?>>5</option>
+                <label for="year">Year:</label>
+                <select id="year" name="year" required>
+                    <option value="" disabled>Select your Year</option>
+                    <option value="1">First Year</option>
+                    <option value="2">Second Year</option>
+                    <option value="3">Third Year</option>
+                    <option value="4">Fourth Year</option>
                 </select>
 
             </div>
@@ -321,13 +329,14 @@ $result = mysqli_query($conn, $query);
                 <input id="edit_program" name="program" type="text"
                     value="<?php echo isset($editData['program']) ? $editData['program'] : ''; ?>" required>
 
-                <label for="year">Year:</label>
-                <select id="year" name="year" required>
-                    <option value="" disabled>Select your Year</option>
-                    <option value="1" <?= $year == '1' ? 'selected' : '' ?>>First Year</option>
-                    <option value="2" <?= $year == '2' ? 'selected' : '' ?>>Second Year</option>
-                    <option value="3" <?= $year == '3' ? 'selected' : '' ?>>Third Year</option>
-                    <option value="4" <?= $year == '4' ? 'selected' : '' ?>>Fourth Year</option>
+                <label for="section">Section:</label>
+                <select id="section" name="section" required>
+                    <option value="" disabled>Select your Section</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
             </div>
         </div>
@@ -398,16 +407,25 @@ $result = mysqli_query($conn, $query);
             document.getElementById("addUserForm").style.display = "none";
         }
 
-        function showEditUserForm() {
-            document.getElementById("editUserForm").style.display = "block";
-        }
+        document.querySelectorAll('.editUserBTN').forEach(button => {
+            button.addEventListener('click', function () {
+                // Show the modal
+                document.getElementById('editUserForm').style.display = 'flex';
 
-        function closeEditUserForm() {
-            document.getElementById("editUserForm").style.display = "none";
-        }
+                // Set form values using dataset
+                document.getElementById('edit_student_no').value = this.dataset.student_no;
+                document.getElementById('edit_username').value = this.dataset.username;
+                document.getElementById('edit_fname').value = this.dataset.fname;
+                document.getElementById('edit_lname').value = this.dataset.lname;
+                document.getElementById('edit_email').value = this.dataset.email;
+                document.getElementById('edit_password').value = this.dataset.password;
+                document.getElementById('edit_program').value = this.dataset.program;
 
-
-
+                // Set year and section dropdowns
+                document.getElementById('year').value = this.dataset.year;
+                document.getElementById('section').value = this.dataset.section;
+            });
+        });
     </script>
 
 </body>

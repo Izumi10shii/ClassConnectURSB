@@ -21,7 +21,7 @@
 
 
 body {
-  background-color: white;
+  background-color: #121212;
   color: black;
   display: flex;
   flex-direction: column;
@@ -33,6 +33,7 @@ body {
 .HomeContainer {
   display: flex;
   width: 100%;
+
 }
 
 .scrollContainer {
@@ -44,6 +45,7 @@ body {
   align-items: center;
   align-content: center;
   width: 68%;
+  background-color: #121212;
 }
 /* Reset default button styles */
 button {
@@ -83,11 +85,13 @@ button img {
   align-items: start;
   flex-direction: column;
   text-align: justify;
-  background-color: white;
+  background-color: #1c1b24;
   padding: 20px;
   gap: 20px;
-  width: 100%;
+  width: 110%;
   margin-right: 50px;
+  border-radius: 20px;
+  color: white;
 
 }
 
@@ -298,14 +302,14 @@ a{
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
-  background-color: #0051ff;
+  background-color: #272735;
   color: white;
   border: none;
   border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 81, 255, 0.3);
+  box-shadow: 0 2px 5px #27273586;
 }
 
 .interactionHeader button:hover {
@@ -329,11 +333,17 @@ a{
 
 .commentSection {
   margin-top: 20px;
-  width: 100%;
-  background-color: #f9f9f9;
+  width: 110%;
+  background-color: #1c1b24;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 50px;
+  color: white;
+}
+
+.commentSection input {
+  color: white;
 }
 
 .commentForm {
@@ -345,13 +355,14 @@ a{
 .inputComment {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #3c3c52;
   border-radius: 20px;
   font-size: 1rem;
+  background-color: #272735;
 }
 
 .addComment {
-  background-color: #0051ff;
+  background-color: #272735;
   border: none;
   border-radius: 50%;
   padding: 10px;
@@ -368,28 +379,31 @@ a{
 
 .comment {
   margin-bottom: 15px;
-  padding: 10px;
-  background-color: white;
+  padding: 20px;
+  background-color: #272735;
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: white;
 }
 
 .commentUserRow {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .commentText {
   margin-bottom: 10px;
   font-size: 0.95rem;
   line-height: 1.4;
+  margin-left: 5px;
 }
 
 .commentActions {
   display: flex;
   gap: 10px;
+  margin-left: 5px;
 }
 
 .commentActions button {

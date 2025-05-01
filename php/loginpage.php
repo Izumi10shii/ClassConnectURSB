@@ -50,11 +50,6 @@
                     <div class="register">New User? <a href="registerpage.php">Register</a> Now!</div>
                 </div>
 
-
-                <div class="adminLogin">
-                    <button class="adminbtn"><a href = "adminLoginPage.php">Admin Login</a></button>
-                </div>
-
             </form>
         </div>
         <div class="pic"></div>

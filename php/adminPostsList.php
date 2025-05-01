@@ -113,6 +113,7 @@ $result = mysqli_query($conn, $query);
                     <td colspan="5">No comments available.</td>
                 </tr>
             <?php endif; ?>
+            <br>
         </table>
     </div>
 </body>

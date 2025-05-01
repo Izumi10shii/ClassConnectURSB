@@ -1,8 +1,25 @@
 <?php
+session_start();
 include("db_conn.php");
-if (session_status() === PHP_SESSION_NONE) {
-  session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_desc'])) {
+  $username = $_SESSION['username'] ?? null; // Use session username
+  $post_id = isset($_GET['post_id']) && is_numeric($_GET['post_id']) ? intval($_GET['post_id']) : null;
+  $comment_desc = mysqli_real_escape_string($conn, $_POST['comment_desc']);
+
+  if ($username && $post_id && $comment_desc) {
+    $addComment = "INSERT INTO comment_tb(username, post_id, comment_desc) VALUES ('$username', '$post_id', '$comment_desc')";
+    if (mysqli_query($conn, $addComment)) {
+      // Increment the comments_count in post_tb
+      $updateCommentsCount = "UPDATE post_tb SET comments_count = comments_count + 1 WHERE post_id = $post_id";
+      mysqli_query($conn, $updateCommentsCount);
+    }
+  }
+
+  header("Location: postPage.php?post_id=$post_id");
+  exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -64,36 +81,30 @@ if (session_status() === PHP_SESSION_NONE) {
         }
       }
 
-      if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_desc'])) {
-        $username = $_SESSION['username'] ?? null; // Use session username
-        $post_id = $_GET['post_id'] ?? null;
-        $comment_desc = $_POST['comment_desc'];
-
-        if ($username && $post_id && $comment_desc) {
-          $addComment = "INSERT INTO comment_tb(username, post_id, comment_desc) VALUES ('$username', '$post_id', '$comment_desc')";
-          if (mysqli_query($conn, $addComment)) {
-            // Increment the comments_count in post_tb
-            $updateCommentsCount = "UPDATE post_tb SET comments_count = comments_count + 1 WHERE post_id = $post_id";
-            mysqli_query($conn, $updateCommentsCount);
-          }
-        }
-
-        header("Location: postPage.php?post_id=$post_id");
-        exit();
-      }
-
       // Fetch comments for the post
       if (isset($post_id)) {
-        $getComments = "SELECT * FROM comment_tb WHERE post_id = $post_id ORDER BY created_at DESC";
+        $getComments = "SELECT c.*, s.profile_pic FROM comment_tb c JOIN student_tb s ON c.username = s.username WHERE c.post_id = $post_id ORDER BY c.created_at DESC";
+
         $commentsResult = mysqli_query($conn, $getComments);
       }
+
+      //check pfp
+      $sqlpfp = "SELECT profile_pic FROM student_tb WHERE student_no = '$student_no'";
+      $resultpfp = mysqli_query($conn, $sqlpfp);
+      $rowpfp = mysqli_fetch_assoc($resultpfp);
+
+      $profile_picture = !empty($rowpfp['profile_pic']) ? $rowpfp['profile_pic'] : '../bg/sample10.png';
+
+
       ?>
 
       <div class="post">
         <?php if (isset($username) && isset($title) && isset($description)): ?>
           <div class="postHeader">
             <div class="postHeaderRow">
-              <div class="pfpic"></div>
+              <div class="pfpic">
+                <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" class="profile-img">
+              </div>
               <div class="postHeaderPoster">
                 <div class="postHeaderCol">
                   <div><strong><?php echo htmlspecialchars($username); ?></strong></div>
@@ -187,7 +198,10 @@ if (session_status() === PHP_SESSION_NONE) {
           <?php while ($comment = mysqli_fetch_assoc($commentsResult)): ?>
             <div class="comment">
               <div class="commentUserRow">
-                <div class="pfp"></div>
+                <div class="pfp">
+                  <img src="<?php echo !empty($comment['profile_pic']) ? $comment['profile_pic'] : '../bg/sample10.png'; ?>"
+                    class="profile-img" alt="Profile Picture">
+                </div>
                 <div><strong><?php echo htmlspecialchars($comment['username']); ?></strong></div>
               </div>
               <div class="commentText"><?php echo htmlspecialchars($comment['comment_desc']); ?></div>

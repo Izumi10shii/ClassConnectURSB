@@ -12,24 +12,22 @@
 
         .leftSidebar {
             position: sticky;
+            height: 1500px; /* Temporary Fix */
             top: 0;
             align-self: flex-start;
-            height: 1000px;
             min-height: 100vh;
-
-            background: url("../bg/sample7.png") no-repeat center center;
+            overflow-y: auto;
+            background-color: #1c1b24;
             background-size: cover;
             background-attachment: fixed;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-
             padding: 20px;
             width: 300px;
             display: flex;
             flex-direction: column;
             justify-content: start;
-
         }
 
         .lsu {
@@ -99,7 +97,7 @@
             </a>
 
             <a href="adminDashboard.php?page=backup_restore">
-                <div class="popularbtn lsu">Settings</div>
+                <div class="popularbtn lsu">Backup and Restore</div>
             </a>
 
         </div>

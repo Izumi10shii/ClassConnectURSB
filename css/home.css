@@ -10,7 +10,7 @@ html {
 
 body {
   background-color: #f5f8ff;
-  color: black;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +28,7 @@ body {
 }
 
 .homeHeader {
-  background: linear-gradient(to right, #002766, #0051ff);
+  background: linear-gradient(to right, #14131a, #282633);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,6 +55,8 @@ body {
   border: none;
   font-size: 1rem;
   outline: none;
+  color: white;
+  background-color: #272735;
 }
 
 .actions {
@@ -65,7 +67,7 @@ body {
 
 .addPostBtn {
   background-color: white;
-  color: #0051ff;
+  color: #272735;
   padding: 8px 20px;
   font-weight: bold;
   border-radius: 20px;
@@ -93,6 +95,14 @@ body {
   background-size: cover;
   background-position: center;
   cursor: pointer;
+}
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
 }
 
 @keyframes rainbowMove {
@@ -126,6 +136,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  background-color: #121212;
 }
 
 .exploreContainer {
@@ -137,7 +148,7 @@ body {
   padding: 20px;
   margin: 20px;
   animation: fadeIn 1s ease;
-  background: white;
+  background-color: #1c1b24;
   box-shadow: 0 0 2px black;
   border-radius: 20px;
   gap: 10px;
@@ -151,16 +162,18 @@ body {
   width: 50%;
   margin-bottom: 20px;
   box-shadow: 0 0 2px black;
+  color: white;
+  background-color: #272735;
 }
 
 .post {
-  background: linear-gradient(to bottom, #eaf3ff, #ffffff);
+  background-color: #1c1b24;
   padding: 20px;
   border-radius: 20px;
   width: 95%;
   margin: 30px 30px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e0e0e0;
+  border: 1px solid #0d0b0f;
   animation: fadeIn 0.6s ease;
 }
 
@@ -250,14 +263,14 @@ a {
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
-  background-color: #0051ff;
+  background-color: #272735;
   color: white;
   border: none;
   border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 81, 255, 0.3);
+  box-shadow: 0 2px 5px #2727357e;
 }
 
 .interactionHeader button:hover {

@@ -7,27 +7,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $topic = mysqli_real_escape_string($conn, $_POST['topic']);
     $username = $_SESSION['username'] ?? 'Anonymous';
 
-    if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
-        $targetDir = "../uploads/";
+    if (isset($_FILES['file']) && $_FILES['file']['error'] === 0) {
+        $targetDir = "../uploads/file_storage/";
         $fileName = basename($_FILES["file"]["name"]);
         $targetFilePath = $targetDir . $fileName;
 
+        // Check if file exists, and append timestamp if it does
+        if (file_exists($targetFilePath)) {
+            $fileName = pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME) . "_" . time() . "." . pathinfo($fileName, PATHINFO_EXTENSION);
+            $targetFilePath = $targetDir . $fileName;
+        }
+
         $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-        $allowedTypes = array('pdf', 'doc', 'docx', 'ppt', 'pptx', 'jpg', 'png', 'zip', 'rar', 'txt');
+        $fileSize = $_FILES["file"]["size"]; // in bytes
+
+        $allowedTypes = ['pdf', 'doc', 'docx', 'ppt', 'pptx', 'jpg', 'png', 'zip', 'rar', 'txt'];
+
+        $maxImageSize = 10 * 1024 * 1024;  // 10MB for images
+        $maxOtherSize = 20 * 1024 * 1024;  // 20MB for other files
 
         if (in_array($fileType, $allowedTypes)) {
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
-                $insert = "INSERT INTO file_storage_tb (username, file_name, topic, file_path, uploaded_at) 
-                           VALUES ('$username', '$file_name', '$topic', '$fileName', NOW())";
-                if (mysqli_query($conn, $insert)) {
-                    $msg = "Material uploaded successfully!";
-                    header("Location: file_storage.php");
-                    exit;
+            // Check file size based on file type
+            if (
+                (in_array($fileType, ['jpg', 'png']) && $fileSize <= $maxImageSize) ||
+                (!in_array($fileType, ['jpg', 'png']) && $fileSize <= $maxOtherSize)
+            ) {
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
+                    // Insert file details into the database
+                    $insert = "INSERT INTO file_storage_tb (username, file_name, topic, file_path, uploaded_at) 
+                               VALUES ('$username', '$file_name', '$topic', '$fileName', NOW())";
+                    if (mysqli_query($conn, $insert)) {
+                        header("Location: file_storage.php");
+                        exit;
+                    } else {
+                        $msg = "Failed to save into database!";
+                    }
                 } else {
-                    $msg = "Failed to save into database!";
+                    $msg = "Failed to upload file!";
                 }
             } else {
-                $msg = "Failed to upload file!";
+                // Error for file size validation
+                $msg = in_array($fileType, ['jpg', 'png'])
+                    ? "Image files must be less than 10MB."
+                    : "Files must be less than 20MB.";
             }
         } else {
             $msg = "Only these file types are allowed: " . implode(", ", $allowedTypes);
@@ -36,10 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg = "Please select a valid file to upload.";
     }
 }
-
-// Fetch uploaded files
-$query = "SELECT * FROM file_storage_tb ORDER BY uploaded_at DESC";
-$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +72,7 @@ $result = mysqli_query($conn, $query);
 <body>
     <!-- Navbar -->
     <?php include("nav.php"); ?>
-    
+
     <div class="HomeContainer">
         <?php include("userSidebar.php"); ?>
         <div class="content">
@@ -77,7 +95,10 @@ $result = mysqli_query($conn, $query);
             <!-- Display Uploaded Files -->
             <div class="file-list">
                 <h2>Uploaded Files</h2>
-                <?php if ($result && mysqli_num_rows($result) > 0): ?>
+                <?php
+                $query = "SELECT * FROM file_storage_tb ORDER BY uploaded_at DESC";
+                $result = mysqli_query($conn, $query);
+                if ($result && mysqli_num_rows($result) > 0): ?>
                     <ul>
                         <?php while ($row = mysqli_fetch_assoc($result)): ?>
                             <li>
@@ -93,7 +114,10 @@ $result = mysqli_query($conn, $query);
                 <?php else: ?>
                     <p>No files uploaded yet.</p>
                 <?php endif; ?>
+                
             </div>
+
+
         </div>
     </div>
 </body>

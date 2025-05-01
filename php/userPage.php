@@ -1,60 +1,59 @@
 <?php
+session_start();
 include("db_conn.php");
 
-session_start();
-if (empty($_SESSION['student_no'])) {
+if (!isset($_SESSION['student_no'])) {
     header("Location: loginpage.php");
     exit();
 }
 
 $student_no = $_SESSION['student_no'];
+$message = "";
 
-// Logout functionality
-if (isset($_POST['logout'])) {
-    // Destroy the session
+// Handle logout FIRST
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     session_unset();
     session_destroy();
-
-    // Redirect to the login page
     header("Location: loginpage.php");
     exit();
 }
 
-
-// Fetch OTP setting from the database
-$otpQuery = "SELECT otp_enabled FROM student_tb WHERE student_no = '$student_no'";
-$otpResult = mysqli_query($conn, $otpQuery);
-$otpEnabled = mysqli_fetch_assoc($otpResult)['otp_enabled'];
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['update_otp_setting'])) {
-        $otpEnabled = isset($_POST['otp_enabled']) ? 1 : 0;
-        $updateOtpQuery = "UPDATE student_tb SET otp_enabled = '$otpEnabled' WHERE student_no = '$student_no'";
-        if (mysqli_query($conn, $updateOtpQuery)) {
-            $message = "OTP settings updated successfully.";
-        } else {
-            $message = "Error updating OTP settings: " . mysqli_error($conn);
-        }
+// Handle OTP toggle
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_otp_setting'])) {
+    $otpEnabled = isset($_POST['otp_enabled']) ? 1 : 0;
+    $updateOtpQuery = "UPDATE student_tb SET otp_enabled = '$otpEnabled' WHERE student_no = '$student_no'";
+    if (mysqli_query($conn, $updateOtpQuery)) {
+        $message = "OTP settings updated successfully.";
     } else {
-        $username = mysqli_real_escape_string($conn, $_POST['username']);
-        $fname = mysqli_real_escape_string($conn, $_POST['fname']);
-        $lname = mysqli_real_escape_string($conn, $_POST['lname']);
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $program = mysqli_real_escape_string($conn, $_POST['program']);
-        $year = mysqli_real_escape_string($conn, $_POST['year']);
-        $section = mysqli_real_escape_string($conn, $_POST['section']);
-
-        // Update query
-        $updateQuery = "UPDATE student_tb 
-                        SET username='$username', fname='$fname', lname='$lname', email='$email', program='$program', year='$year', section='$section'
-                        WHERE student_no='$student_no'";
-
-        if (mysqli_query($conn, $updateQuery)) {
-        } else {
-            $message = "Error updating profile: " . mysqli_error($conn);
-        }
+        $message = "Error updating OTP settings: " . mysqli_error($conn);
     }
 }
+
+// Handle profile update
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $program = mysqli_real_escape_string($conn, $_POST['program']);
+    $year = mysqli_real_escape_string($conn, $_POST['year']);
+    $section = mysqli_real_escape_string($conn, $_POST['section']);
+
+    $updateQuery = "UPDATE student_tb 
+                    SET username='$username', fname='$fname', lname='$lname', email='$email', program='$program', year='$year', section='$section'
+                    WHERE student_no='$student_no'";
+
+    if (mysqli_query($conn, $updateQuery)) {
+        $message = "Profile updated successfully.";
+    } else {
+        $message = "Error updating profile: " . mysqli_error($conn);
+    }
+}
+
+// Fetch user data
+$sql = "SELECT * FROM student_tb WHERE student_no = '$student_no'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>User Page</title>
     <link rel="stylesheet" href="../css/userPage.css">
 </head>
 
@@ -94,9 +93,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Edit Profile Modal -->
     <div id="editProfileModal" class="modal" style="display: none;">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="editClose">&times;</span>
 
-            <form id="editProfileForm" method="POST" action="">
+            <form id="editProfileForm" class="editform" method="POST" action="">
                 <div class="form-flex">
                     <!-- Column 1 -->
                     <div class="form-column">
@@ -154,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
-                <button type="submit" style="margin-top: 15px;">Save Changes</button>
+                <button type="submit" name="update_profile" style="margin-top: 15px;">Save Changes</button>
             </form>
         </div>
     </div>
@@ -169,7 +168,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 
+    <div id="uploadProfilePicModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Upload Profile Picture</h2>
 
+            <form action="upload_profile.php" method="POST" enctype="multipart/form-data">
+                <label for="profile_pic">Choose a Profile Picture:</label>
+                <input type="file" name="profile_pic" id="profile_pic" required>
+                <button type="submit" name="upload">Upload</button>
+            </form>
+
+            <?php if (isset($_GET['upload_message'])): ?>
+                <div id="uploadMessage" style="color: red; margin-top: 10px; margin-bottom: 10px;">
+                    <?php echo htmlspecialchars($_GET['upload_message']); ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
 
     <div class="HomeContainer">
         <?php include("userSidebar.php"); ?>
@@ -178,11 +194,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="communityPageInfo">
                 <div class="communityRow">
                     <div class="goLeft">
-                        <div class="PagePfp"></div>
+                        <?php
+                        $student_no = $_SESSION['student_no'];
+                        $sql = "SELECT profile_pic FROM student_tb WHERE student_no = '$student_no'";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_assoc($result);
+
+                        $profile_picture = !empty($row['profile_pic']) ? $row['profile_pic'] : '../bg/sample10.png';
+                        ?>
+                        <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" class="profile-imgs">
+
                         <h1><?php echo $username ?></h1>
                     </div>
                     <div class="goRight">
                         <button id="editProfileBtn">Edit Profile</button>
+                        <button id="openModal">Upload Profile Picture</button>
                     </div>
                 </div>
                 <div class="profileDetails">
@@ -212,8 +238,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <div class="logoutCard">
                             <form id="logoutForm" method="POST">
-                                <label>Logout</label>
-                                <button type="button" id="logoutBtnNew">Logout</button>
+                                <label class="toggle-button">Logout</label>
+                                <button type="submit" id="logoutBtnNew" name="logout">Logout</button>
                             </form>
                         </div>
 
@@ -241,27 +267,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <script>
-        // Get modal elements for Edit Profile and Logout
-        var editProfileModal = document.getElementById("editProfileModal");
-        var editProfileBtn = document.getElementById("editProfileBtn");
-        var span = document.getElementsByClassName("close")[0];
+        // Function to handle modal opening and closing
+        function handleModal(modalId, openButtonId, closeButtonClass) {
+            const modal = document.getElementById(modalId);
+            const btn = document.getElementById(openButtonId);
+            const span = document.getElementsByClassName(closeButtonClass)[0];
 
-        // When the user clicks the "Edit Profile" button, open the modal
-        editProfileBtn.onclick = function () {
-            editProfileModal.style.display = "block";
-        }
+            // Open the modal when the button is clicked
+            btn.onclick = function () {
+                modal.style.display = 'block';
+            }
 
-        // When the user clicks "x" (close), close the modal
-        span.onclick = function () {
-            editProfileModal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside the modal, close it
-        window.onclick = function (event) {
-            if (event.target == editProfileModal) {
-                editProfileModal.style.display = "none";
+            // Close the modal when the user clicks on the (x) button
+            span.onclick = function () {
+                modal.style.display = 'none';
             }
         }
+
+        // Call this function for the profile picture modal
+        handleModal('uploadProfilePicModal', 'openModal', 'close');
+
+        // Call this function for the edit profile modal
+        handleModal('editProfileModal', 'editProfileBtn', 'editClose');
 
         // Get modal elements for Logout confirmation (Renamed modal to logOutModal)
         var logOutModal = document.getElementById("logOutModal"); // Updated modal name
@@ -284,14 +311,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             document.getElementById("logoutForm").submit(); // Submit the form to logout
         }
 
-        // Close the modal if the user clicks outside of it
+        // Close the modal if the user clicks anywhere outside of it
         window.onclick = function (event) {
+            // Close the profile picture modal if clicked outside
+            if (event.target == document.getElementById('uploadProfilePicModal')) {
+                document.getElementById('uploadProfilePicModal').style.display = 'none';
+            }
+
+            // Close the edit profile modal if clicked outside
+            if (event.target == document.getElementById('editProfileModal')) {
+                document.getElementById('editProfileModal').style.display = 'none';
+            }
+
+            // Close the logout modal if clicked outside
             if (event.target == logOutModal) {
-                logOutModal.style.display = "none";
+                logOutModal.style.display = 'none';
             }
         }
-
-
     </script>
     </div>
 </body>

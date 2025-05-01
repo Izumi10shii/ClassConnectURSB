@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  background-color: #f5f8ff;
+  background-color: #121212;
   color: black;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ body {
 }
 
 .contentSection {
-  background-color: #f4f4f4;
+  background-color: #121212;
   height: 100vh;
   width: 75%;
   display: flex;
@@ -40,7 +40,7 @@ h1 {
   font-size: 2rem;
   justify-content: center;
   align-items: center;
-  color: #002766;
+  color: white;
 }
 
 h2 {
@@ -48,5 +48,5 @@ h2 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #002766;
+  color: white;
 }

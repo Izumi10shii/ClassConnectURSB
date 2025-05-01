@@ -1,6 +1,9 @@
 <?php
 include("db_conn.php");
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 
 $username = $_SESSION['username'] ?? null;
 
@@ -76,7 +79,7 @@ $result = mysqli_query($conn, $bookmarkQuery);
 
                         <!-- UNSAVE button (trigger modal) -->
                         <button onclick="openModal(<?php echo $post['post_id']; ?>)"
-                            style="background-color: red; color: white; border: none; padding: 5px 10px; margin-top:10px; cursor:pointer;">
+                            style="background-color: red; color: white; border: none; padding: 5px 10px; margin-top:10px; cursor:pointer; margin-left: 20px;">
                             Unsave
                         </button>
                     </div>

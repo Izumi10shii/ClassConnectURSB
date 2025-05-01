@@ -1,6 +1,6 @@
 /* General body styling */
 body {
-  background: #f5f5f5;
+  background: #121212;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
@@ -8,15 +8,15 @@ body {
   flex-direction: column;
   height: 100vh;
 }
+
 .HomeContainer {
   display: flex;
-  height: 100vh;
-  align-items: center;
   justify-content: flex-start;
   flex: 1;
   width: 100%;
   animation: fadeIn 1s ease;
 }
+
 /* Content area */
 .content {
   padding: 20px;
@@ -36,7 +36,7 @@ body {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  background: white;
+  background: #1c1b24;
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -47,7 +47,7 @@ body {
 
 .upload-form h2 {
   margin-bottom: 20px;
-  color: #333;
+  color: white;
 }
 
 .upload-form input[type="text"],
@@ -56,14 +56,16 @@ body {
   padding: 10px;
   margin: 10px 0;
   border-radius: 10px;
+  background-color: #272735;
   border: 1px solid #ccc;
+  color: white;
 }
 
 .upload-form button {
   margin-top: 15px;
   width: 100%;
   padding: 10px;
-  background-color: #1a73e8;
+  background-color: #272735;
   color: white;
   border: none;
   border-radius: 10px;
@@ -81,19 +83,20 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: white;
+  background: #1c1b24;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  color: white;
 }
 
 .file-list h2 {
   margin-bottom: 15px;
   font-size: 24px;
-  color: #333;
+  color: white;
 }
 
 .file-list ul {
@@ -104,7 +107,7 @@ body {
 .file-list li {
   margin-bottom: 10px;
   font-size: 16px;
-  color: #555;
+  color: white;
 }
 
 .file-list a {

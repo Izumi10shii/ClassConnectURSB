@@ -45,7 +45,7 @@ body {
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
-  background-color: #0051ff;
+  background-color: #1c1b24;
   color: white;
   cursor: pointer;
   font-size: 14px;
@@ -124,19 +124,20 @@ body {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  background-color: #fefefe;
+  background-color: #1c1b24;
   box-shadow: 0 0 2px black;
   border-radius: 10px;
   overflow: hidden;
   font-size: 14px;
+  color: white;
 }
 
 .user-table th, .user-table td {
-  border: 1px solid #ddd;
+  border: 1px solid #08080a;
 }
 
 .user-table th {
-  background-color: #f3f3f3;
+  background-color: #1c1b24;
   font-weight: bold;
   text-align: center;
   font-size: 14px; /* Reduced font size */
@@ -157,7 +158,7 @@ body {
 .actionRow a {
   text-decoration: none;
   color: white;
-  background-color: black;
+  background-color: red;
   padding: 5px 8px; /* Reduced padding */
   border-radius: 5px;
   font-size: 12px; /* Reduced font size */
@@ -204,19 +205,25 @@ body {
   gap: 10px;
 }
 
-.editUserContainer {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.addUserContainer1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px
+}
+
+.EditUser {
+  color: black;
+  margin-bottom: 20px;
 }
 
 .editUserBTN {
@@ -264,8 +271,9 @@ body {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-between;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .form-row {

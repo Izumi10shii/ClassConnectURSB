@@ -1,3 +1,20 @@
+<?php
+ob_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+include("db_conn.php");
+
+if (!isset($_SESSION['student_no'])) {
+  header("Location: loginpage.php");
+  exit();
+}
+
+$student_no = $_SESSION['student_no'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +32,7 @@
     }
 
     .homeHeader {
-      background: linear-gradient(to right, #002766, #0051ff);
+      background: linear-gradient(to right, #14131a, #282633);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -24,6 +41,7 @@
       padding: 20px 20px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       gap: 20px;
+      overflow: hidden;
     }
 
     .logo {
@@ -40,20 +58,27 @@
       align-items: center;
       gap: 20px;
     }
-    .pfp {
+
+    .profile-img {
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background-image: url('../bg/sample10.png');
-      background-size: cover;
-      background-position: center;
-      cursor: pointer;
+      object-fit: cover;
+      border: 2px solid #ccc;
     }
 
     @keyframes rainbowMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
   </style>
 </head>
@@ -66,7 +91,16 @@
 
     <div class="actions">
       <a href="userPage.php">
-        <div class="pfp"></div>
+        <div class="pfp">
+          <?php
+          $sqlpfp = "SELECT profile_pic FROM student_tb WHERE student_no = '$student_no'";
+          $resultpfp = mysqli_query($conn, $sqlpfp);
+          $rowpfp = mysqli_fetch_assoc($resultpfp);
+
+          $profile_picture = !empty($rowpfp['profile_pic']) ? $rowpfp['profile_pic'] : '../bg/sample10.png';
+          ?>
+          <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" class="profile-img">
+        </div>
       </a>
     </div>
   </nav>

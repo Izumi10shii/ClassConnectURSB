@@ -15,7 +15,7 @@
     }
 
     .homeHeader {
-      background: linear-gradient(to right, #002766, #0051ff);
+      background: linear-gradient(to right, #14131a, #282633);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -42,6 +42,8 @@
       border: none;
       font-size: 1rem;
       outline: none;
+      color: #1c1b24;
+      background-color: #272735;
     }
 
     .actions {
@@ -52,7 +54,7 @@
 
     .addPostBtn {
       background-color: white;
-      color: #0051ff;
+      color: #1c1b24;
       padding: 8px 20px;
       font-weight: bold;
       border-radius: 20px;
@@ -72,22 +74,29 @@
       animation: rainbowMove 3s linear infinite;
     }
 
-    .pfp {
+    .profile-img {
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background-image: url('../bg/sample10.png');
-      background-size: cover;
-      background-position: center;
-      cursor: pointer;
+      object-fit: cover;
+      border: 2px solid #ccc;
     }
 
     @keyframes rainbowMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
   </style>
+  
 </head>
 
 <body>
@@ -100,7 +109,17 @@
     <div class="actions">
       <a href="addPost.php" class="addPostBtn">Create Post</a>
       <a href="userPage.php">
-        <div class="pfp"></div>
+        <div class="pfp">
+          <?php
+          $student_no = $_SESSION['student_no'];
+          $sql = "SELECT profile_pic FROM student_tb WHERE student_no = '$student_no'";
+          $result = mysqli_query($conn, $sql);
+          $row = mysqli_fetch_assoc($result);
+
+          $profile_picture = !empty($row['profile_pic']) ? $row['profile_pic'] : '../bg/sample10.png';
+          ?>
+          <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" class="profile-img">
+        </div>
       </a>
     </div>
   </nav>

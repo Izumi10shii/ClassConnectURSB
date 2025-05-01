@@ -33,7 +33,6 @@
                 } elseif ($page == 'backup_restore') {
                     include('db_backup_restore.php');
                 } else {
-                    echo '<h1>Welcome to the Admin Dashboard</h1>';
                 }
             } else {
                 echo '<h1>Welcome to the Admin Dashboard</h1><br><h2>Select a section from the sidebar.</h2>';

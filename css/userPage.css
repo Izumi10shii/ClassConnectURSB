@@ -2,12 +2,12 @@
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
+  color: white;
 }
 
 body {
-  background-color: white;
-  color: black;
+  background-color: #121212;
+  color: white;
 }
 
 a {
@@ -17,7 +17,7 @@ a {
 
 .addPostBtn {
   background-color: white;
-  color: #0051ff;
+  color: #1c1b24;
   padding: 10px 20px;
   font-weight: bold;
   border-radius: 20px;
@@ -40,15 +40,23 @@ a {
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: #121212;
 }
 
-.PagePfp {
+.profile-img {
   width: 100px;
   height: 100px;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 99px;
-  margin-left: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.profile-imgs {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
 }
 
 .scrollContainer {
@@ -56,6 +64,7 @@ a {
   width: 70%;
   justify-content: center;
   align-items: center;
+  
 }
 
 .communityPageInfo {
@@ -81,7 +90,7 @@ a {
 .communityRow button {
   border: none;
   padding: 10px 20px;
-  background-color: #0051ff;
+  background-color: #272735;
   color: white;
   border-radius: 20px;
 }
@@ -136,6 +145,7 @@ a {
   border-radius: 20px;
   list-style-type: none;
   width: inherit;
+  background-color: #1c1b24;
 }
 
 .profileInfo li {
@@ -176,7 +186,7 @@ a {
 .userRow button {
   border: none;
   padding: 10px 20px;
-  background-color: #0051ff;
+  background-color: #272735;
   color: white;
   border-radius: 20px;
 }
@@ -207,7 +217,7 @@ a {
 .interactionHeader button {
   border: none;
   padding: 10px 20px;
-  background-color: black;
+  background-color: #272735;
   color: white;
   border-radius: 20px;
 }
@@ -315,10 +325,11 @@ button {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
+  padding: 0;
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: #1c1b24;
   margin: 15% auto;
   padding: 20px;
   border-radius: 8px;
@@ -326,16 +337,17 @@ button {
   max-width: 600px;
 }
 
-.close {
+.close, .editClose {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
-  cursor: pointer;
 }
 
 .close:hover,
-.close:focus {
+.close:focus,
+.editClose:hover,
+.editClose:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -356,6 +368,7 @@ form input {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  color: #1c1b24;
 }
 
 form select {
@@ -366,33 +379,23 @@ form select {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  color: #1c1b24;
 }
 
 form button {
-  background-color: #007bff;
+  background-color: #272735;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
+
 }
 
 form button:hover {
   background-color: #0056b3;
 }
-
-/* Success/Error Message */
-p {
-  color: #28a745;
-  font-weight: bold;
-}
-
-p.error {
-  color: #dc3545;
-  font-weight: bold;
-}
-
 
 .options {
   display: flex;
@@ -411,12 +414,13 @@ p.error {
   font-size: 1.6rem;
   text-align: center;
   margin-top: 20px;
-  background-color: #d7eefd;
+  background-color: #1c1b24;
   padding: 15px;
   border-radius: 10px;
   width: 100%;
   gap: 20px;
   height: 100px;
+  color: white;
 }
 
 .logoutCard form {
@@ -427,23 +431,26 @@ p.error {
   font-size: 1.6rem;
   text-align: center;
   margin-top: 20px;
-  background-color: #d7eefd;
+  background-color: #1c1b24;
   padding: 15px;
   border-radius: 10px;
   width: 100%;
   gap: 20px;
   flex-direction: row;
   height: 100px;
+  color: white;
 }
 
 .toggle-button {
   display: flex;
   align-items: center;
+  color: white;
 }
 
 .update_otp_setting {
   padding: 8px 15px;
   font-size: 14px;
+  color: white;
 }
 
 /* Hide the checkbox */
