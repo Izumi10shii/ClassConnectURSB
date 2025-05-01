@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <li>
                                 <strong><?php echo htmlspecialchars($row['file_name']); ?></strong>
                                 (<?php echo htmlspecialchars($row['topic']); ?>) -
-                                <a href="../uploads/<?php echo htmlspecialchars($row['file_path']); ?>"
+                                <a href="../uploads/file_storage/<?php echo htmlspecialchars($row['file_path']); ?>"
                                     target="_blank">Download</a>
                                 <small>Uploaded by: <?php echo htmlspecialchars($row['username']); ?> on
                                     <?php echo htmlspecialchars($row['uploaded_at']); ?></small>
