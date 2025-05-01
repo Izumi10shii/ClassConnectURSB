@@ -290,8 +290,8 @@ $result = mysqli_query($conn, $query);
 
         <div id="editUserForm1">
             <div class="form-row">
-                <label for="edit_student_no">Student Number</label>
-                <input type="text" id="edit_student_no" name="student_no"
+               <!-- <label for="edit_student_no">Student Number</label> NOT SURE -->
+                <input type="hidden" id="edit_student_no" name="student_no"
                     value="<?php echo isset($editData['student_no']) ? $editData['student_no'] : ''; ?>">
 
                 <label for="edit_username">Username</label>

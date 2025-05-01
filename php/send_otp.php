@@ -26,6 +26,7 @@ if ($user['password'] != $password) {
 
 // Set session values
 $email = $user['email'];
+$_SESSION['account_id'] = $account_id;
 $_SESSION['username'] = $username;
 $_SESSION['student_no'] = $user['student_no'];
 $_SESSION['otp_enabled'] = $user['otp_enabled'];
