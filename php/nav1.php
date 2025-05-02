@@ -85,7 +85,9 @@ $student_no = $_SESSION['student_no'];
 
 <body>
   <nav class="homeHeader">
-    <a href="home.php" class="logo">Class Connect</a>
+    <a href="home.php" class="logo";>
+    <img src="http://localhost/ClassConnectURSB/icons/cc_logo.png" alt="Class Connect Logo"  style="height: 200px; margin-top: 20px; margin-left: -50px;">
+</a>
 
 
 

@@ -40,7 +40,7 @@ if (session_status() === PHP_SESSION_NONE) {
             font-size: 1.1rem;
             padding: 10px;
             border-radius: 10px;
-            width: 120%;
+            width: 93%;
             color: white;
             text-align: left;
             font-weight: bold;
@@ -87,6 +87,8 @@ if (session_status() === PHP_SESSION_NONE) {
 <body>
 <div class="leftSidebar">
     <div class="leftSideUp">
+    <div style="color: white; font-weight: bold; font-size: 38px; margin-bottom: 30px; ">Class Connect</div>
+
         <div class="sticky-buttons">
             <a href="home.php">
                 <div class="homebtn lsu">
@@ -112,16 +114,36 @@ if (session_status() === PHP_SESSION_NONE) {
                     <img src="http://localhost/ClassConnectURSB/icons/profile.png" alt="Profile">
                 </div>
             </a>
-        </div>
-
-        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
+            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
             <a href="adminDashboard.php">
                 <div class="popularbtn lsu">
                     Admin Dashboard
+                    <img src="http://localhost/ClassConnectURSB/icons/admin_dashboard.png" alt="Profile">
                 </div>
             </a>
         <?php endif; ?>
+        </div>
+
+   
     </div>
+
+    <div style="margin-top: 610px; padding: 0px 0 0 0;">
+    <div style="display: flex; flex-direction: column; font-style: italic; font-size: 0.95rem;">
+    <a href="https://www.facebook.com" style="color: white; margin-bottom: 5px; display: flex; align-items: center; gap: 6px;">
+        <img src="http://localhost/ClassConnectURSB/icons/facebook.png" alt="Facebook" style="width: 16px; height: 16px;">
+        CC Facebook Page
+    </a>
+    <a href="https://mail.google.com" style="color: white; margin-bottom: 5px; display: flex; align-items: center; gap: 6px;">
+        <img src="http://localhost/ClassConnectURSB/icons/gmail.png" alt="Gmail" style="width: 16px; height: 16px;">
+        CC Gmail
+    </a>
+    <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" style="color: white; display: flex; align-items: center; gap: 6px;">
+        <img src="http://localhost/ClassConnectURSB/icons/youtube.png" alt="YouTube" style="width: 16px; height: 16px;">
+        CC Development Team
+    </a>
+    </div>
+</div>
+
 </div>
 
 </body>
