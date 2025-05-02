@@ -2,7 +2,7 @@
 session_start();
 include("db_conn.php");
 
-if (isset($_GET['comment_id']) && isset($_SESSION['username']) && isset($_GET['post_id'])) {
+if (isset($_GET['comment_id']) && isset($_SESSION['account_id']) && isset($_GET['post_id'])) {
     $comment_id = intval($_GET['comment_id']);
     $post_id = intval($_GET['post_id']);
     $username = mysqli_real_escape_string($conn, $_SESSION['username']); // sanitize input
