@@ -40,7 +40,7 @@ if (session_status() === PHP_SESSION_NONE) {
             font-size: 1.1rem;
             padding: 10px;
             border-radius: 10px;
-            width: 90%;
+            width: 120%;
             color: white;
             text-align: left;
             font-weight: bold;
@@ -51,6 +51,10 @@ if (session_status() === PHP_SESSION_NONE) {
             transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
             opacity: 0.85;
             border: 1px solid #ffffff;
+            display: flex;
+            justify-content: space-between; /* Added this for right-side image */
+            align-items: center; /* Ensure vertical alignment */
+            padding-right: 10px; /* Space between text and image */
         }
 
         .lsu:hover {
@@ -65,45 +69,60 @@ if (session_status() === PHP_SESSION_NONE) {
         .lsu a {
             text-decoration: none;
             color: white;
+        }
 
+        .lsu img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .sticky-buttons {
+            position: fixed;
+            top: 200px;
+            z-index: 20;
         }
     </style>
 </head>
 
 <body>
-    <div class="leftSidebar">
-        <div class="leftSideUp">
+<div class="leftSidebar">
+    <div class="leftSideUp">
+        <div class="sticky-buttons">
             <a href="home.php">
                 <div class="homebtn lsu">
                     Home
-
+                    <img src="http://localhost/ClassConnectURSB/icons/home.png" alt="Home">
                 </div>
             </a>
             <a href="saved_posts.php">
                 <div class="savedpost lsu">
                     Saved Posts
+                    <img src="http://localhost/ClassConnectURSB/icons/saved_post.png" alt="Saved Posts">
                 </div>
             </a>
             <a href="file_storage.php">
                 <div class="popularbtn lsu">
                     File Storage
+                    <img src="http://localhost/ClassConnectURSB/icons/file_storage.png" alt="File Storage">
                 </div>
             </a>
-
-            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
-                <a href="adminDashboard.php">
-                    <div class="popularbtn lsu">
-                        Admin Dashboard
-                    </div>
-                </a>
-            <?php endif; ?>
-
             <a href="userPage.php">
-
-                <div class="popularbtn lsu">Profile</div>
+                <div class="popularbtn lsu">
+                    Profile
+                    <img src="http://localhost/ClassConnectURSB/icons/profile.png" alt="Profile">
+                </div>
             </a>
         </div>
+
+        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
+            <a href="adminDashboard.php">
+                <div class="popularbtn lsu">
+                    Admin Dashboard
+                </div>
+            </a>
+        <?php endif; ?>
     </div>
+</div>
 
 </body>
 
