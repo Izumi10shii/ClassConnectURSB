@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['profile_pic'])) {
     }
 
     // Update the profile picture in the database
-    $updateQuery = "UPDATE student_tb SET profile_pic = '$target_file' WHERE student_no = '$student_no'";
+    $updateQuery = "UPDATE student_tb SET profile_pic = '$target_file' WHERE account_id = '$account_id'";
     if (mysqli_query($conn, $updateQuery)) {
         $success = urlencode("Profile picture updated successfully!");
         header("Location: userPage.php?upload_message=$success");

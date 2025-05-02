@@ -28,11 +28,11 @@ if (session_status() === PHP_SESSION_NONE) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_post'])) {
             $title = $_POST['titleInput'] ?? '';
             $description = $_POST['bodyInput'] ?? '';
-            $user = $_SESSION['username'];
+            $account_id = $_SESSION['account_id'];
 
             if (!empty($title) && !empty($description)) {
                 // Insert the post into the post_tb table
-                $newPost = "INSERT INTO post_tb(username, title, description) VALUES('$user', '$title', '$description')";
+                $newPost = "INSERT INTO post_tb(account_id, title, description) VALUES($account_id, '$title', '$description')";
 
                 if (mysqli_query($conn, $newPost)) {
                     $post_id = mysqli_insert_id($conn); // Get the ID of the newly inserted post

@@ -12,6 +12,7 @@ if (!isset($_SESSION['student_no'])) {
 }
 
 $student_no = $_SESSION['student_no'];
+$account_id = $_SESSION['account_id'];
 ?>
 
 
@@ -85,9 +86,10 @@ $student_no = $_SESSION['student_no'];
 
 <body>
   <nav class="homeHeader">
-    <a href="home.php" class="logo";>
-    <img src="http://localhost/ClassConnectURSB/icons/cc_logo.png" alt="Class Connect Logo"  style="height: 200px; margin-top: 20px; margin-left: -50px;">
-</a>
+    <a href="home.php" class="logo" ;>
+      <img src="http://localhost/ClassConnectURSB/icons/cc_logo.png" alt="Class Connect Logo"
+        style="height: 200px; margin-top: 20px; margin-left: -50px;">
+    </a>
 
 
 
@@ -95,7 +97,7 @@ $student_no = $_SESSION['student_no'];
       <a href="userPage.php">
         <div class="pfp">
           <?php
-          $sqlpfp = "SELECT profile_pic FROM student_tb WHERE student_no = '$student_no'";
+          $sqlpfp = "SELECT profile_pic FROM student_tb WHERE account_id = '$account_id'";
           $resultpfp = mysqli_query($conn, $sqlpfp);
           $rowpfp = mysqli_fetch_assoc($resultpfp);
 

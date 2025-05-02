@@ -36,6 +36,17 @@ body {
 
 }
 
+.leftSidebar {
+  position: sticky;
+  top: 0;
+  width: 350px;
+  height: 100vh;
+  background-color: #1c1b24;
+  color: white;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
 .scrollContainer {
   margin-top: 30px;
   padding-left: 130px;
@@ -393,25 +404,41 @@ a{
   margin-bottom: 10px;
 }
 
+.commentUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.deletemycomment {
+  margin-left: 50px;
+}
+
+
 .commentText {
   margin-bottom: 10px;
   font-size: 0.95rem;
   line-height: 1.4;
-  margin-left: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #1d1d2796;
 }
 
 .commentActions {
   display: flex;
-  gap: 10px;
+
+
   margin-left: 5px;
 }
 
 .commentActions button {
-  background: none;
+  background: #13131a;
+  padding: 10px;
+  border-radius: 30%;
   border: none;
-  color: #0051ff;
+  color: white;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .commentActions button:hover {
@@ -460,4 +487,83 @@ a{
   background-color: #e60000; /* Darker red on hover */
   transform: scale(1.05);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Comment Replies */
+
+.replybox {
+  margin: 20px;
+  background-color: #38384d;
+  width: 80%;
+  height: 200px;
+  padding: 5px;
+  color: white;
+  border-radius: 8px;
+}
+
+.reply-icon1, .like-icon1 {
+  width: 20px;
+  height: 20px;
+}
+
+.reply-btn1:hover, .replybtn1:hover, .like-btn1:hover, .likebtn1:hover, .replybtn:hover {
+  background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
+  background-size: 300% 300%;
+  animation: rainbowMove 3s linear infinite;
+  color: white;
+  transform: scale(1.05);
+  opacity: 0.9;
+  border-radius: 20px;
+  border: none;
+}
+
+.reply-btn1, .replybtn1, .replybtn {
+  background-color: #1a1a24;
+  border: none;
+  margin-left: 20px;
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-reply {
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  background-color: #1111182a;
+  border-radius: 8px;
+  width: 90%;
+  color: white;
+  margin-left: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reply-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.reply-username {
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+}
+
+.reply-text {
+  font-size: 14px;
+  color: white;
+  line-height: 1.5;
+  margin-top: 5px;
+}
+
+.no-replies {
+  font-style: italic;
+  color: white;
 }

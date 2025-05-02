@@ -2,10 +2,19 @@
 include("db_conn.php");
 
 // Fetch all reports from the database
-$query = "SELECT r.report_id, r.post_id, r.reason, r.status, r.reported_at, p.title, p.username AS poster
-          FROM post_reports_tb r
-          INNER JOIN post_tb p ON r.post_id = p.post_id
-          ORDER BY r.reported_at DESC";
+$query = "SELECT 
+  r.report_id, 
+  r.post_id, 
+  r.reason, 
+  r.status, 
+  r.reported_at, 
+  p.title, 
+  s.username AS poster
+FROM post_reports_tb r
+INNER JOIN post_tb p ON r.post_id = p.post_id
+INNER JOIN student_tb s ON p.account_id = s.account_id
+ORDER BY r.reported_at DESC
+";
 
 $result = mysqli_query($conn, $query);
 ?>

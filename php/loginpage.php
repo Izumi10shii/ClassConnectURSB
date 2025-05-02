@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../css/loginpage.css">
+    <link rel="icon" href="../icons/cc_logo.png" type="image/x-icon">
 </head>
 <body class="bg-transition">
     <div class="frontpage">

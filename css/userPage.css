@@ -62,8 +62,9 @@ a {
 .scrollContainer {
   padding: 20px;
   width: 70%;
-  justify-content: center;
-  align-items: center;
+  display:flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   
 }
 
@@ -441,58 +442,58 @@ form button:hover {
   color: white;
 }
 
-.toggle-button {
-  display: flex;
-  align-items: center;
-  color: white;
-}
-
 .update_otp_setting {
   padding: 8px 15px;
   font-size: 14px;
   color: white;
 }
 
-/* Hide the checkbox */
-.toggle-button input {
+.enable  {
+  color: white;
+  font-size: 1rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  margin-right: 10px;
+}
+
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The Slider Button */
-.toggle-button .slider {
-  justify-content: center;
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 25px;
-  background-color: #ccc;
-  border-radius: 25px;
-  transition: background-color 0.3s;
-  margin-right: 10px;
-}
-
-/* The Inner Circle */
-.toggle-button .slider:before {
-  content: '';
+.slider {
   position: absolute;
-  top: 3px;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px; width: 20px;
   left: 3px;
-  width: 19px;
-  height: 19px;
-  border-radius: 50%;
+  bottom: 3px;
   background-color: white;
-  transition: transform 0.3s;
+  transition: .4s;
+  border-radius: 50%;
 }
 
-/* Checked state styles */
-.toggle-button input:checked+.slider {
-  background-color: #0090d8;
+input:checked + .slider {
+  background-color: #3a3a4e;
 }
 
-.toggle-button input:checked+.slider:before {
-  transform: translateX(25px);
+input:checked + .slider:before {
+  transform: translateX(24px);
 }
 
 /* Log out */

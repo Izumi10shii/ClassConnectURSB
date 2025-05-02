@@ -19,6 +19,10 @@ if (isset($_GET['comment_id']) && is_numeric($_GET['comment_id'])) {
             // Step 3: Decrement the comments_count in the post_tb table
             $updateCountQuery = "UPDATE post_tb SET comments_count = comments_count - 1 WHERE post_id = $post_id";
             if (mysqli_query($conn, $updateCountQuery)) {
+                // Reset the AUTO_INCREMENT value for comment_tb
+                $resetAutoIncrementQuery = "ALTER TABLE comment_tb AUTO_INCREMENT = 1";
+                mysqli_query($conn, $resetAutoIncrementQuery);
+                
                 // Redirect back to the post management page
                 header("Location: adminDashboard.php?page=post_management");
                 exit();

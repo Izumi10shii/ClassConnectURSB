@@ -21,7 +21,6 @@ if (session_status() === PHP_SESSION_NONE) {
             top: 0;
             align-self: flex-start;
             min-height: 100vh;
-            overflow-y: auto;
             background-color: #1c1b24;
             background-size: cover;
             background-attachment: fixed;
@@ -52,9 +51,12 @@ if (session_status() === PHP_SESSION_NONE) {
             opacity: 0.85;
             border: 1px solid #ffffff;
             display: flex;
-            justify-content: space-between; /* Added this for right-side image */
-            align-items: center; /* Ensure vertical alignment */
-            padding-right: 10px; /* Space between text and image */
+            justify-content: space-between;
+            /* Added this for right-side image */
+            align-items: center;
+            /* Ensure vertical alignment */
+            padding-right: 10px;
+            /* Space between text and image */
         }
 
         .lsu:hover {
@@ -81,70 +83,97 @@ if (session_status() === PHP_SESSION_NONE) {
             top: 200px;
             z-index: 20;
         }
+
+        .iconss {
+            width: 35px;
+            height: 35px;
+        }
+
+        .iconlink {
+            margin: 465px auto;
+            padding: 0px 0 0 0;
+
+        }
+
+        .iconcont {
+            display: flex;
+            flex-direction: row;
+            font-style: italic;
+            font-size: 0.95rem;
+            gap: 40px;
+        }
+
+        .titleCC {
+            color: white;
+            font-weight: bold;
+            font-size: 38px;
+            margin-bottom: 30px;
+            top: 0;
+            justify-self: start;
+            text-align: center;
+            margin-left: 7.5px;
+        }
     </style>
 </head>
 
 <body>
-<div class="leftSidebar">
-    <div class="leftSideUp">
-    <div style="color: white; font-weight: bold; font-size: 38px; margin-bottom: 30px; ">Class Connect</div>
+    <div class="leftSidebar">
+        <div class="leftSideUp">
+            <div class="titleCC">Class Connect</div>
 
-        <div class="sticky-buttons">
-            <a href="home.php">
-                <div class="homebtn lsu">
-                    Home
-                    <img src="http://localhost/ClassConnectURSB/icons/home.png" alt="Home">
-                </div>
-            </a>
-            <a href="saved_posts.php">
-                <div class="savedpost lsu">
-                    Saved Posts
-                    <img src="http://localhost/ClassConnectURSB/icons/saved_post.png" alt="Saved Posts">
-                </div>
-            </a>
-            <a href="file_storage.php">
-                <div class="popularbtn lsu">
-                    File Storage
-                    <img src="http://localhost/ClassConnectURSB/icons/file_storage.png" alt="File Storage">
-                </div>
-            </a>
-            <a href="userPage.php">
-                <div class="popularbtn lsu">
-                    Profile
-                    <img src="http://localhost/ClassConnectURSB/icons/profile.png" alt="Profile">
-                </div>
-            </a>
-            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
-            <a href="adminDashboard.php">
-                <div class="popularbtn lsu">
-                    Admin Dashboard
-                    <img src="http://localhost/ClassConnectURSB/icons/admin_dashboard.png" alt="Profile">
-                </div>
-            </a>
-        <?php endif; ?>
+            <div class="sticky-buttons">
+                <a href="home.php">
+                    <div class="homebtn lsu">
+                        Home
+                        <img src="http://localhost/ClassConnectURSB/icons/home.png" alt="Home">
+                    </div>
+                </a>
+                <a href="saved_posts.php">
+                    <div class="savedpost lsu">
+                        Saved Posts
+                        <img src="http://localhost/ClassConnectURSB/icons/saved_post.png" alt="Saved Posts">
+                    </div>
+                </a>
+                <a href="file_storage.php">
+                    <div class="popularbtn lsu">
+                        File Storage
+                        <img src="http://localhost/ClassConnectURSB/icons/file_storage.png" alt="File Storage">
+                    </div>
+                </a>
+                <a href="userPage.php">
+                    <div class="popularbtn lsu">
+                        Profile
+                        <img src="http://localhost/ClassConnectURSB/icons/profile.png" alt="Profile">
+                    </div>
+                </a>
+                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
+                    <a href="adminDashboard.php">
+                        <div class="popularbtn lsu">
+                            Admin Dashboard
+                            <img src="http://localhost/ClassConnectURSB/icons/admin_dashboard.png" alt="Profile">
+                        </div>
+                    </a>
+                <?php endif; ?>
+            </div>
+
+
         </div>
 
-   
-    </div>
+        <div class="iconlink">
+            <div class="iconcont">
+                <a href="https://www.facebook.com">
+                    <img class="iconss" src="http://localhost/ClassConnectURSB/icons/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&to=ursbclassconnect@gmail.com" target="_blank">
+                    <img class="iconss" src="http://localhost/ClassConnectURSB/icons/gmail.png" alt="Gmail">
+                </a>
+                <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">
+                    <img class="iconss" src="http://localhost/ClassConnectURSB/icons/youtube.png" alt="YouTube">
+                </a>
+            </div>
+        </div>
 
-    <div style="margin-top: 610px; padding: 0px 0 0 0;">
-    <div style="display: flex; flex-direction: column; font-style: italic; font-size: 0.95rem;">
-    <a href="https://www.facebook.com" style="color: white; margin-bottom: 5px; display: flex; align-items: center; gap: 6px;">
-        <img src="http://localhost/ClassConnectURSB/icons/facebook.png" alt="Facebook" style="width: 16px; height: 16px;">
-        CC Facebook Page
-    </a>
-    <a href="https://mail.google.com" style="color: white; margin-bottom: 5px; display: flex; align-items: center; gap: 6px;">
-        <img src="http://localhost/ClassConnectURSB/icons/gmail.png" alt="Gmail" style="width: 16px; height: 16px;">
-        CC Gmail
-    </a>
-    <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" style="color: white; display: flex; align-items: center; gap: 6px;">
-        <img src="http://localhost/ClassConnectURSB/icons/youtube.png" alt="YouTube" style="width: 16px; height: 16px;">
-        CC Development Team
-    </a>
     </div>
-</div>
-
-</div>
 
 </body>
 

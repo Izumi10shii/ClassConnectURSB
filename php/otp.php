@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['otp'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP</title>
     <link rel="stylesheet" href="../css/otp.css">
+    <link rel="icon" href="../icons/cc_logo.png" type="image/x-icon">
 </head>
 <body>
     <div class="box" id="otpPage">

@@ -14,7 +14,11 @@ if (isset($_GET['delete_id']) && !empty($_GET['delete_id'])) {
 }
 
 // Fetch posts
-$query = "SELECT * FROM post_tb ORDER BY post_id DESC";
+$query = "SELECT p.*, s.username, s.profile_pic
+FROM post_tb p
+JOIN student_tb s ON p.account_id = s.account_id
+ORDER BY p.post_id DESC
+";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -90,7 +94,11 @@ $result = mysqli_query($conn, $query);
                 <th>Action</th>
             </tr>
             <?php
-            $commentsQuery = "SELECT post_id, username, comment_desc, created_at, comment_id FROM comment_tb ORDER BY created_at DESC";
+            $commentsQuery = "SELECT c.comment_id, c.post_id, c.comment_desc, c.created_at, s.username, s.profile_pic
+FROM comment_tb c
+JOIN student_tb s ON c.account_id = s.account_id
+ORDER BY c.created_at DESC
+";
             $commentsResult = mysqli_query($conn, $commentsQuery);
 
             if ($commentsResult && mysqli_num_rows($commentsResult) > 0):

@@ -8,6 +8,7 @@ if (!isset($_SESSION['student_no'])) {
 }
 
 $student_no = $_SESSION['student_no'];
+$account_id = $_SESSION['account_id'];
 $message = "";
 
 // Handle logout FIRST
@@ -18,16 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     exit();
 }
 
-// Handle OTP toggle
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_otp_setting'])) {
-    $otpEnabled = isset($_POST['otp_enabled']) ? 1 : 0;
-    $updateOtpQuery = "UPDATE student_tb SET otp_enabled = '$otpEnabled' WHERE student_no = '$student_no'";
-    if (mysqli_query($conn, $updateOtpQuery)) {
-        $message = "OTP settings updated successfully.";
-    } else {
-        $message = "Error updating OTP settings: " . mysqli_error($conn);
-    }
+if (isset($_POST['update_otp_setting'])) {
+    $otp_enabled = isset($_POST['otp_enabled']) ? 1 : 0;
+
+    $update_sql = "UPDATE student_tb SET otp_enabled = $otp_enabled WHERE account_id = $account_id";
+    mysqli_query($conn, $update_sql);
 }
+
+// Fetch current OTP setting
+$sql = "SELECT otp_enabled FROM student_tb WHERE account_id = $account_id";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$otp_enabled = $row ? $row['otp_enabled'] : 0;
+
+
 
 // Handle profile update
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
@@ -41,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
 
     $updateQuery = "UPDATE student_tb 
                     SET username='$username', fname='$fname', lname='$lname', email='$email', program='$program', year='$year', section='$section'
-                    WHERE student_no='$student_no'";
+                    WHERE account_id='$account_id'";
 
     if (mysqli_query($conn, $updateQuery)) {
         $message = "Profile updated successfully.";
@@ -51,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
 }
 
 // Fetch user data
-$sql = "SELECT * FROM student_tb WHERE student_no = '$student_no'";
+$sql = "SELECT * FROM student_tb WHERE account_id = '$account_id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -71,7 +76,7 @@ $row = mysqli_fetch_assoc($result);
     include("nav.php");
 
     // Fetch current user details from the database
-    $getUser = "SELECT * FROM student_tb WHERE student_no = '$student_no'";
+    $getUser = "SELECT * FROM student_tb WHERE account_id = '$account_id'";
     $result = mysqli_query($conn, $getUser);
 
     if ($result && mysqli_num_rows($result) > 0) {
@@ -100,8 +105,8 @@ $row = mysqli_fetch_assoc($result);
                     <!-- Column 1 -->
                     <div class="form-column">
                         <label for="student_no">Student Number:</label>
-                        <input type="text" id="student_no" name="student_no" value="<?php echo $student_no; ?>"
-                            disabled>
+                        <input type="text" id="student_no" name="student_no" value="<?php echo $student_no; ?>" disabled
+                            style="color: gray;">
 
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" value="<?php echo $username; ?>" required>
@@ -195,8 +200,8 @@ $row = mysqli_fetch_assoc($result);
                 <div class="communityRow">
                     <div class="goLeft">
                         <?php
-                        $student_no = $_SESSION['student_no'];
-                        $sql = "SELECT profile_pic FROM student_tb WHERE student_no = '$student_no'";
+                        $account_id = $_SESSION['account_id'];
+                        $sql = "SELECT profile_pic FROM student_tb WHERE account_id = '$account_id'";
                         $result = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_assoc($result);
 
@@ -226,19 +231,22 @@ $row = mysqli_fetch_assoc($result);
                     <div class="options">
                         <!-- OTP Toggle Setting -->
                         <div class="otpSettingCard">
+                            <!-- OTP Toggle Form -->
                             <form method="POST">
-                                <label class="toggle-button">
-                                    <input type="checkbox" name="otp_enabled" <?= isset($row['otp_enabled']) && $row['otp_enabled'] == 1 ? 'checked' : '' ?>>
+                                <label class="switch">
+                                    <input type="checkbox" name="otp_enabled" <?php echo ($otp_enabled == 1) ? 'checked' : ''; ?>>
                                     <span class="slider"></span>
-                                    Enable OTP on login
                                 </label>
+                                <span class="enable">Toggle OTP</span>
+
                                 <button type="submit" name="update_otp_setting">Save</button>
                             </form>
                         </div>
 
+
                         <div class="logoutCard">
                             <form id="logoutForm" method="POST">
-                                <label class="toggle-button">Logout</label>
+                                <label class="enable">Logout</label>
                                 <button type="submit" id="logoutBtnNew" name="logout">Logout</button>
                             </form>
                         </div>
@@ -254,7 +262,7 @@ $row = mysqli_fetch_assoc($result);
                 <div class="displayUserContent">
 
                     <?php
-                    $getPosts = "SELECT * FROM post_tb WHERE username = '$username'";
+                    $getPosts = "SELECT * FROM post_tb WHERE account_id = '$account_id'";
                     $result = mysqli_query($conn, $getPosts);
 
                     include("postComponent.php");

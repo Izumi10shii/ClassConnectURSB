@@ -31,6 +31,10 @@ if (isset($_POST['post_id'])) {
     // Delete the post itself from the post_tb
     $deletePostQuery = "DELETE FROM post_tb WHERE post_id = $post_id";
     if (mysqli_query($conn, $deletePostQuery)) {
+        // Reset the AUTO_INCREMENT value for post_tb
+        $resetAutoIncrementQuery = "ALTER TABLE post_tb AUTO_INCREMENT = 1";
+        mysqli_query($conn, $resetAutoIncrementQuery);
+        
         // Redirect to a page that shows the remaining posts or a confirmation page
         header("Location: home.php"); // For example, redirect to the homepage
         exit();

@@ -65,7 +65,7 @@ $backups = glob("../backups/*.sql");
             <option value="<?= htmlspecialchars($file) ?>"><?= basename($file) ?></option>
         <?php endforeach; ?>
     </select><br><br>
-    <button type="submit" name="restore">♻ Restore Database</button>
+    <button class="restore" type="submit" name="restore">♻ Restore Database</button>
 </form>
 
 <?php if ($message): ?>

@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $file_name = mysqli_real_escape_string($conn, $_POST['filename']);
     $topic = mysqli_real_escape_string($conn, $_POST['topic']);
     $username = $_SESSION['username'] ?? 'Anonymous';
+    $account_id = $_SESSION['account_id'];
 
     if (isset($_FILES['file']) && $_FILES['file']['error'] === 0) {
         $targetDir = "../uploads/file_storage/";
@@ -34,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ) {
                 if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
                     // Insert file details into the database
-                    $insert = "INSERT INTO file_storage_tb (username, file_name, topic, file_path, uploaded_at) 
-                               VALUES ('$username', '$file_name', '$topic', '$fileName', NOW())";
+                    $insert = "INSERT INTO file_storage_tb (account_id, file_name, topic, file_path, uploaded_at) 
+                               VALUES ('$account_id', '$file_name', '$topic', '$fileName', NOW())";
                     if (mysqli_query($conn, $insert)) {
                         header("Location: file_storage.php");
                         exit;
@@ -67,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Upload Material</title>
     <link rel="stylesheet" href="../css/file_storage.css">
+    <link rel="icon" href="../icons/cc_logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -74,7 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include("nav.php"); ?>
 
     <div class="HomeContainer">
-        <?php include("userSidebar.php"); ?>
+        <div class="leftsidebar">
+            <?php include("userSidebar.php"); ?>
+        </div>
+
         <div class="content">
 
             <!-- Upload Form -->
@@ -96,7 +101,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="file-list">
                 <h2>Uploaded Files</h2>
                 <?php
-                $query = "SELECT * FROM file_storage_tb ORDER BY uploaded_at DESC";
+                $query = "
+                SELECT f.*, s.username, s.profile_pic
+                FROM file_storage_tb f
+                JOIN student_tb s ON f.account_id = s.account_id
+                ORDER BY f.uploaded_at DESC
+              ";
                 $result = mysqli_query($conn, $query);
                 if ($result && mysqli_num_rows($result) > 0): ?>
                     <ul>
@@ -114,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php else: ?>
                     <p>No files uploaded yet.</p>
                 <?php endif; ?>
-                
+
             </div>
 
 

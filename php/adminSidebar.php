@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>  a {
+    <style>
+        a {
             text-decoration: none;
         }
 
@@ -13,6 +14,7 @@
             position: sticky;
             top: 0;
             align-self: flex-start;
+            height: 1000px; /* Temp */
             min-height: 100vh;
             overflow-y: auto;
             background-color: #1c1b24;
@@ -45,9 +47,12 @@
             opacity: 0.85;
             border: 1px solid #ffffff;
             display: flex;
-            justify-content: space-between; /* Added this for right-side image */
-            align-items: center; /* Ensure vertical alignment */
-            padding-right: 10px; /* Space between text and image */
+            justify-content: space-between;
+            /* Added this for right-side image */
+            align-items: center;
+            /* Ensure vertical alignment */
+            padding-right: 10px;
+            /* Space between text and image */
         }
 
         .lsu:hover {
@@ -72,22 +77,53 @@
         .sticky-buttons {
             position: fixed;
             top: 200px;
-            z-index: 20px   ;
-        }  
+            z-index: 20px;
+        }
+
         .leftSideUp {
-            margin-top:120px; 
+            margin-top: 100px;
+        }
+
+        .titleCC {
+            color: white;
+            font-weight: bold;
+            font-size: 38px;
+            margin-bottom: 30px;
+            top: 0;
+            justify-self: start;
+            text-align: center;
+        }
+
+        .iconlink {
+            padding: 0px 0 0 0;
+            margin: 20px auto;
+        }
+
+        .iconcont {
+            display: flex;
+            gap: 40px;
+            flex-direction: row;
+            font-style: italic;
+            font-size: 3rem;
+            justify-content: center;
+        }
+
+        .iconss {
+            width: 35px;
+            height: 35px;
         }
     </style>
 </head>
 
 <body>
     <div class="leftSidebar">
+        <div class="titleCC">Class Connect</div>
         <div class="leftSideUp">
 
 
             <a href="home.php">
-            <div style="color: white; font-weight: bold; font-size: 38px; margin-bottom: 30px; ">Class Connect</div>
-            <div class="homebtn lsu">
+
+                <div class="homebtn lsu">
                     Home
                     <img src="http://localhost/ClassConnectURSB/icons/home.png" alt="Home">
                 </div>
@@ -97,47 +133,48 @@
 
             <a href="adminDashboard.php?page=user_management">
                 <div class="explorebtn lsu"> User Management
-                <img src="http://localhost/ClassConnectURSB/icons/user_management.png" alt="Home">
+                    <img src="http://localhost/ClassConnectURSB/icons/user_management.png" alt="Home">
                 </div>
             </a>
 
 
 
             <a href="adminDashboard.php?page=post_management">
-                <div class="popularbtn lsu">Post Management 
-                <img src="http://localhost/ClassConnectURSB/icons/post_management.png" alt="Home">
+                <div class="popularbtn lsu">Post Management
+                    <img src="http://localhost/ClassConnectURSB/icons/post_management.png" alt="Home">
                 </div>
             </a>
 
 
 
             <a href="adminDashboard.php?page=reports_management">
-                <div class="popularbtn lsu"> Reports Management 
-                <img src="http://localhost/ClassConnectURSB/icons/reports_management.png" alt="Home">
+                <div class="popularbtn lsu"> Reports Management
+                    <img src="http://localhost/ClassConnectURSB/icons/reports_management.png" alt="Home">
                 </div>
             </a>
 
             <a href="adminDashboard.php?page=backup_restore">
                 <div class="popularbtn lsu">Backup and Restore
-                <img src="http://localhost/ClassConnectURSB/icons/backup_n_restore.png" alt="Home">
+                    <img src="http://localhost/ClassConnectURSB/icons/backup_n_restore.png" alt="Home">
                 </div>
             </a>
-            <div style="margin-top: 160px; padding: 0px 0 0 0;">
-    <div style="display: flex; flex-direction: column; font-style: italic; font-size: 0.95rem;">
-    <a href="https://www.facebook.com" style="color: white; margin-bottom: 5px; display: flex; align-items: center; gap: 6px;">
-        <img src="http://localhost/ClassConnectURSB/icons/facebook.png" alt="Facebook" style="width: 16px; height: 16px;">
-        CC Facebook Page
-    </a>
-    <a href="https://mail.google.com" style="color: white; margin-bottom: 5px; display: flex; align-items: center; gap: 6px;">
-        <img src="http://localhost/ClassConnectURSB/icons/gmail.png" alt="Gmail" style="width: 16px; height: 16px;">
-        CC Gmail
-    </a>
-    <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" style="color: white; display: flex; align-items: center; gap: 6px;">
-        <img src="http://localhost/ClassConnectURSB/icons/youtube.png" alt="YouTube" style="width: 16px; height: 16px;">
-        CC Development Team
-    </a>
-    </div>
-</div>
+
+            <div class="iconlink">
+                <div class="iconcont">
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img class="iconss" src="http://localhost/ClassConnectURSB/icons/facebook.png" alt="Facebook">
+
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&to=ursbclassconnect@gmail.com" target="_blank">
+                        <img class="iconss" src="http://localhost/ClassConnectURSB/icons/gmail.png" alt="Gmail">
+
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">
+                        <img class="iconss" src="http://localhost/ClassConnectURSB/icons/youtube.png" alt="YouTube">
+
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

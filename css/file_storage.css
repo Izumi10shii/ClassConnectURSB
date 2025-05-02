@@ -17,6 +17,17 @@ body {
   animation: fadeIn 1s ease;
 }
 
+.leftSidebar {
+  position: sticky;
+  top: 0;
+  width: 350px;
+  height: 100vh;
+  background-color: #1c1b24;
+  color: white;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
 /* Content area */
 .content {
   padding: 20px;

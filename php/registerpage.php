@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="../css/registerpage.css">
+    <link rel="icon" href="../icons/cc_logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -111,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="label-group">
                     <label for="password">Password:</label>
                     <div class="input-container">
-                        <input type="password" name="password" id="password" class="pass" placeholder="********" required>
+                        <input type="password" name="password" id="password" class="pass" placeholder="********" minlength="8" required>
                         <span class="toggle-icon" id="togglePassword">
                             <!-- Eye icon for "Show" -->
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
@@ -124,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="label-group">
                     <label for="confirmpassword">Confirm Password:</label>
                     <div class="input-container">
-                        <input type="password" id="confirmpassword" name="confirmpassword" class="pass" placeholder="********" required>
+                        <input type="password" id="confirmpassword" name="confirmpassword" class="pass" placeholder="********" minlength="8" required>
                         <span class="toggle-icon" id="toggleConfirmPassword">
                             <!-- Eye icon for "Show" -->
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">

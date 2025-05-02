@@ -20,7 +20,11 @@ if (session_status() == PHP_SESSION_NONE) {
 <body>
 
     <?php
-    $getPost = "SELECT * FROM post_tb ORDER BY post_id DESC";
+    $getPost = "SELECT p.*, a.username 
+        FROM post_tb p 
+        JOIN student_tb a ON p.account_id = a.account_id 
+        ORDER BY p.post_id DESC";
+
     $result = mysqli_query($conn, $getPost);
 
     if ($result && mysqli_num_rows($result) > 0) {
@@ -44,15 +48,15 @@ if (session_status() == PHP_SESSION_NONE) {
                 }
             }
 
-            // Handle username: fallback to 'Anonymous' if not logged in
-            $currentUser = isset($_SESSION['username']) ? $_SESSION['username'] : 'Anonymous';
-
             // Check if this user already liked the post
-            $checkLike = mysqli_query($conn, "SELECT * FROM post_likes_tb WHERE post_id = $post_id AND username = '$currentUser'");
+            $checkLike = mysqli_query($conn, "SELECT * FROM post_likes_tb WHERE post_id = $post_id AND account_id = '$account_id'");
             $userLiked = mysqli_num_rows($checkLike) > 0;
 
             // Fetch profile picture for the post creator
-            $sqlpfpPostOwner = "SELECT profile_pic FROM student_tb WHERE username = '$username'";
+            $sqlpfpPostOwner = "SELECT s.profile_pic 
+                    FROM post_tb p
+                    JOIN student_tb s ON p.account_id = s.account_id
+                    WHERE p.post_id = '$post_id'";
             $resultpfpPostOwner = mysqli_query($conn, $sqlpfpPostOwner);
             $rowpfpPostOwner = mysqli_fetch_assoc($resultpfpPostOwner);
 
@@ -60,7 +64,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
             // Fetch profile picture for the logged-in user
             $student_no = $_SESSION['student_no'];
-            $sqlpfpLoggedInUser = "SELECT profile_pic FROM student_tb WHERE student_no = '$student_no'";
+            $sqlpfpLoggedInUser = "SELECT profile_pic FROM student_tb WHERE account_id = '$account_id'";
             $resultpfpLoggedInUser = mysqli_query($conn, $sqlpfpLoggedInUser);
             $rowpfpLoggedInUser = mysqli_fetch_assoc($resultpfpLoggedInUser);
 
@@ -68,7 +72,7 @@ if (session_status() == PHP_SESSION_NONE) {
             ?>
 
             <div class="post"
-                onclick="window.location.href='/ClassConnectURSB/php/postPage.php?post_id=<?php echo ($post_id); ?>&user_id=<?php echo urlencode($username); ?>'">
+                onclick="window.location.href='/ClassConnectURSB/php/postPage.php?post_id=<?php echo ($post_id); ?>&account_id=<?php echo urlencode($username); ?>'">
                 <div class="postHeader">
                     <div class="pfp">
                         <!-- Post Owner's Profile Picture -->

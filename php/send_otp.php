@@ -5,7 +5,8 @@ include 'db_conn.php';
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 
-$sql = "SELECT email, password, is_admin, student_no, otp_enabled FROM student_tb WHERE username = '$username'";
+$sql = "SELECT account_id, email, password, is_admin, student_no, otp_enabled FROM student_tb WHERE username = '$username'";
+
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) == 0) {
@@ -26,7 +27,7 @@ if ($user['password'] != $password) {
 
 // Set session values
 $email = $user['email'];
-$_SESSION['account_id'] = $account_id;
+$_SESSION['account_id'] = $user['account_id'];
 $_SESSION['username'] = $username;
 $_SESSION['student_no'] = $user['student_no'];
 $_SESSION['otp_enabled'] = $user['otp_enabled'];

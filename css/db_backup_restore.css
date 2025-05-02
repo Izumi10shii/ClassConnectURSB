@@ -59,3 +59,10 @@ button:hover {
     font-weight: bold;
     border-left: 5px solid #00ffae;
 }
+
+.restore {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+}

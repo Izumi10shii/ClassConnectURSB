@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../css/adminDashboard.css">
+    <link rel="icon" href="../icons/cc_logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -13,9 +14,13 @@
     <?php include("nav1.php"); ?>
 
     <div class="HomeContainer">
-        <?php
-        include("adminSidebar.php");
-        ?>
+
+        <div class="leftsidebar">
+            <?php
+            include("adminSidebar.php");
+            ?>
+        </div>
+
         <div class="contentSection">
             <!-- Dynamic Content Section -->
             <?php

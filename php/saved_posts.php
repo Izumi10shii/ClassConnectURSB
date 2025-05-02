@@ -6,12 +6,13 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 $username = $_SESSION['username'] ?? null;
+$account_id = $_SESSION['account_id'] ?? null;
 
 // Handle UNSAVE if confirmed
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['confirm_unsave_post_id'])) {
     $unsavePostId = intval($_POST['confirm_unsave_post_id']);
 
-    $deleteBookmark = "DELETE FROM bookmarks_tb WHERE username = '$username' AND post_id = $unsavePostId";
+    $deleteBookmark = "DELETE FROM bookmarks_tb WHERE account_id = '$account_id' AND post_id = $unsavePostId";
     mysqli_query($conn, $deleteBookmark);
 
     header("Location: saved_posts.php");
@@ -19,10 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['confirm_unsave_post_id
 }
 
 // Fetch saved posts
-$bookmarkQuery = "SELECT post_tb.* FROM bookmarks_tb 
-                  JOIN post_tb ON bookmarks_tb.post_id = post_tb.post_id 
-                  WHERE bookmarks_tb.username = '$username'
-                  ORDER BY bookmarks_tb.bookmark_id DESC";
+$bookmarkQuery = "SELECT p.*, s.username, s.profile_pic
+FROM bookmarks_tb b
+JOIN post_tb p ON b.post_id = p.post_id
+JOIN student_tb s ON p.account_id = s.account_id
+WHERE b.account_id = '$account_id'
+ORDER BY b.bookmark_id DESC
+";
 
 $result = mysqli_query($conn, $bookmarkQuery);
 ?>
@@ -34,6 +38,7 @@ $result = mysqli_query($conn, $bookmarkQuery);
     <meta charset="UTF-8">
     <title>Saved Posts</title>
     <link rel="stylesheet" href="../css/saved_posts.css">
+    <link rel="icon" href="../icons/cc_logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -41,8 +46,12 @@ $result = mysqli_query($conn, $bookmarkQuery);
     <?php include("nav1.php"); ?>
 
     <div class="HomeContainer">
-        <?php include("userSidebar.php"); ?>
-        
+
+        <div class="leftsidebar">
+            <?php include("userSidebar.php"); ?>
+        </div>
+
+
 
         <!-- Content -->
         <div class="content">

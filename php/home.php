@@ -2,11 +2,10 @@
 include("db_conn.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-
-    if (!isset($_SESSION['student_no'])) {
-        header("Location: login.php");
-        exit;
-    }
+}
+if (!isset($_SESSION['account_id'])) {
+    header("Location: loginpage.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -17,14 +16,16 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="icon" href="../icons/cc_logo.png" type="image/x-icon">
 
 </head>
 
 <body>
     <nav class="homeHeader">
-    <a href="home.php" class="logo";>
-    <img src="http://localhost/ClassConnectURSB/icons/cc_logo.png" alt="Class Connect Logo"  style="height: 200px; margin-top: 20px; margin-left: -50px;">
-</a>
+        <a href="home.php" class="logo" ;>
+            <img src="http://localhost/ClassConnectURSB/icons/cc_logo.png" alt="Class Connect Logo"
+                style="height: 200px; margin-top: 20px; margin-left: -50px;">
+        </a>
 
 
 
@@ -35,14 +36,14 @@ if (session_status() === PHP_SESSION_NONE) {
             <a href="userPage.php">
                 <div class="pfp">
                     <?php
-                    $student_no = $_SESSION['student_no'];
-                    $sql = "SELECT profile_pic FROM student_tb WHERE student_no = '$student_no'";
+                    $account_id = $_SESSION['account_id'];
+                    $sql = "SELECT profile_pic FROM student_tb WHERE account_id = '$account_id'";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result);
 
                     $profile_picture = !empty($row['profile_pic']) ? $row['profile_pic'] : '../bg/sample10.png';
                     ?>
-                    <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" class="profile-img">
+                    <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" class="profile-imgs">
                 </div>
             </a>
         </div>
