@@ -37,6 +37,8 @@
                     include('adminReportsList.php');
                 } elseif ($page == 'backup_restore') {
                     include('db_backup_restore.php');
+                } elseif ($page == 'audit_trail') {
+                    include('audit_trail.php');
                 } else {
                 }
             } else {

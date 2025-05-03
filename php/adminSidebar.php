@@ -159,6 +159,13 @@
                 </div>
             </a>
 
+            <a href="adminDashboard.php?page=audit_trail">
+                <div class="popularbtn lsu"> Audit Trail
+
+                </div>
+            </a>
+            
+
             <div class="iconlink">
                 <div class="iconcont">
                     <a href="https://www.facebook.com" target="_blank">
@@ -175,6 +182,8 @@
                     </a>
                 </div>
             </div>
+
+            
         </div>
     </div>
 </body>

@@ -41,6 +41,14 @@ body {
   white-space: nowrap;
 }
 
+.searchForm{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  max-width: 600px;
+}
+
 .search {
   width: 110.2%;
   margin-right: 9.4%;
