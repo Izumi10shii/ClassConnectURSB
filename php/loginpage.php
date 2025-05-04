@@ -17,6 +17,7 @@
         <div class="content">
             <div class="title">Welcome Back!</div>
             <form class="loginbox" method="POST" action="send_otp.php">
+                
                 <?php
                     if (!empty($_SESSION['error_message'])) {
                     if ($_SESSION['error_message'] == 'User not found!') {

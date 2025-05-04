@@ -31,6 +31,8 @@ $result = mysqli_query($conn, $query);
 </head>
 
 <body>
+    <div class="tableContainer">
+
     <h2>All Posts</h2>
     <table>
         <tr>
@@ -83,7 +85,9 @@ $result = mysqli_query($conn, $query);
             </tr>
         <?php } ?>
     </table>
-    <div class="postComments">
+    </div>
+
+    <div class="tableContainer">
         <h2>All Comments</h2>
         <table>
             <tr>

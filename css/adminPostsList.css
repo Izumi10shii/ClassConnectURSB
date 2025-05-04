@@ -1,51 +1,81 @@
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: sans-serif;
-    color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  color: white;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: none;
+  box-shadow: 0 0 2px black;
+
+  
+}
+.tableContainer {
+  background-color: red;
+  width: 80%;
+  padding: 20px;
+  padding-bottom: 80px;
+  border-radius: 20px;
+  margin: 40px auto;
+  max-width: 1000px;
+  padding: 20px;
+  background: linear-gradient(to right, rgb(28, 28, 31), #282633);
+  border-radius: 20px;
+  box-shadow: 0 0 1px #ffffff;
+  
 }
 
 th,
 td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: left;
-    color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  color: white;
 }
 
 th {
-    background-color: #1c1b24;
+  background-color: #1c1b24;
 }
 
 .delete-btn {
-    color: rgb(255, 64, 64);
-    text-decoration: none;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background-color: rgb(155, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px #2727357e;
+}
+.delete-btn:hover{
+    background-color: rgb(255, 48, 48);
 }
 
-.postComments
-{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 50px;
-    margin-bottom: 100px;
+.postComments {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
-.postComments table{
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    margin-bottom: 100px;
+.postComments table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 100px;
 }
-

@@ -19,14 +19,14 @@
             font-family: Arial, sans-serif;
         }
 
-        nav {
-            border-radius: 10px;
-            background-color: #1e1e1e;
+        .nav {
+            border-radius: 100px;
+            background-color: #272735;
             padding: 15px 20px;
             text-align: center;
         }
 
-        nav a {
+        .nav a {
             margin: 0 15px;
             color: #ffffff;
             text-decoration: none;
@@ -34,7 +34,7 @@
             transition: color 0.2s;
         }
 
-        nav a:hover {
+        .nav a:hover {
             color: #00bfff;
         }
 
@@ -44,21 +44,22 @@
             margin: 40px auto;
             max-width: 1000px;
             padding: 20px;
-            background-color: #1e1e1e;
-            border-radius: 10px;
+            background: linear-gradient(to right,rgb(28, 28, 31), #282633);
+            border-radius: 20px;
+            box-shadow: 0 0 1px #ffffff;
         }
-
+        
         h2 {
             margin-bottom: 15px;
         }
-
+        
         table {
             width: 100%;
             border-collapse: collapse;
             background-color: #2a2a2a;
             color: #f1f1f1;
         }
-
+        
         th,
         td {
             padding: 12px;
@@ -71,17 +72,30 @@
         }
 
         button {
-            margin-top: 10px;
-            padding: 8px 16px;
-            border: none;
-            background-color: #00bfff;
-            color: white;
-            border-radius: 4px;
-            cursor: pointer;
+            display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #272735;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px #2727357e;
         }
 
         button:hover {
-            background-color: #009fd8;
+            background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
+  background-size: 300% 300%;
+  animation: rainbowMove 3s linear infinite;
+  color: white;
+  transform: scale(1.05);
+  opacity: 0.9;
+  border-radius: 20px;
+  border: none;
         }
     </style>
     <script>
@@ -101,12 +115,16 @@
 
 <body>
 
-    <nav>
+    <nav class="nav">
+        <?php
+        /*
         <a href="javascript:void(0)" onclick="showSection('login')">Login Logs</a>
-        <a href="javascript:void(0)" onclick="showSection('post')">Post Logs</a>
         <a href="javascript:void(0)" onclick="showSection('delete-post')">Delete Post Logs</a>
-        <a href="javascript:void(0)" onclick="showSection('comment')">Comment Logs</a>
         <a href="javascript:void(0)" onclick="showSection('delete-comment')">Delete Comment Logs</a>
+        */?>
+
+        <a href="javascript:void(0)" onclick="showSection('post')">Post Logs</a>
+        <a href="javascript:void(0)" onclick="showSection('comment')">Comment Logs</a>
     </nav>
 
     <section id="login">

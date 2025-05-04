@@ -1,56 +1,83 @@
 /* General body styling */
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
 /* Table styling */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.tableContainer {
+  width: 80%;
+  padding: 20px;
+  padding-bottom: 80px;
+  border-radius: 20px;
+  margin: 40px auto;
+  max-width: 1000px;
+  padding: 20px;
+  background: linear-gradient(to right, rgb(28, 28, 31), #282633);
+  border-radius: 20px;
+  box-shadow: 0 0 1px #ffffff;
 }
 
 th,
 td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: left;
-    color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  color: white;
 }
 
 th {
-    background-color: #1c1b24;
+  background-color: #1c1b24;
 }
 
 /* Button styling */
 .review-btn,
 .delete-btn {
-    color: white;
-    background-color: red;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 14px;
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+
+  gap: 10px;
+  margin: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background-color: rgb(155, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px #2727357e;
 }
 
 .review-btn {
-    background-color: #28a745; /* Green for "Mark as Reviewed" */
+  background-color: #28a745; /* Green for "Mark as Reviewed" */
 }
 
 .review-btn:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
 .delete-btn:hover {
-    background-color: darkred;
+  background-color: darkred;
 }

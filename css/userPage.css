@@ -61,7 +61,7 @@ a {
 
 .scrollContainer {
   padding: 20px;
-  width: 70%;
+  width: 80%;
   display:flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -78,7 +78,7 @@ a {
 
 .post,
 .displayUserContent {
-  width: 100%;
+  width: 90%;
 }
 
 .communityRow {
@@ -119,7 +119,7 @@ a {
   align-items: flex-start;
   /* Align all content to the left */
   gap: 10px;
-  width: 100%;
+  width: 95%;
 }
 
 .followersRow {
@@ -199,6 +199,17 @@ a {
   align-items: center;
   gap: 20px;
 }
+.post {
+  background-color: #1c1b24;
+  padding: 20px;
+  border-radius: 20px;
+  width: 100%;
+  margin: 30px 0px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #0d0b0f;
+  animation: fadeIn 0.6s ease;
+}
+
 
 .postHeader .postHeaderPoster {
   display: flex;
@@ -221,6 +232,10 @@ a {
   background-color: #272735;
   color: white;
   border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .commentSection {
@@ -417,7 +432,7 @@ form button:hover {
   margin-top: 20px;
   background-color: #1c1b24;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 15px;
   width: 100%;
   gap: 20px;
   height: 100px;
@@ -434,7 +449,7 @@ form button:hover {
   margin-top: 20px;
   background-color: #1c1b24;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 15px;
   width: 100%;
   gap: 20px;
   flex-direction: row;

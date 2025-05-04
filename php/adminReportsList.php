@@ -29,7 +29,7 @@ $result = mysqli_query($conn, $query);
 </head>
 <body>
 
-    <div class="container">
+    <div class="tableContainer">
         <h2>Reported Posts</h2>
 
         <?php if (mysqli_num_rows($result) > 0): ?>
