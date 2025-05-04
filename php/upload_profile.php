@@ -8,6 +8,7 @@ if (!isset($_SESSION['student_no'])) {
 }
 
 $student_no = $_SESSION['student_no'];
+$account_id = $_SESSION['account_id'];
 $upload_dir = "../uploads/profile_pics/";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['profile_pic'])) {
@@ -35,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['profile_pic'])) {
         exit();
     }
 
-    $filename = $student_no . "_" . basename($file['name']);
+    $filename = $account_id . "_" . basename($file['name']);
     $target_file = $upload_dir . $filename;
 
     // Move the file to the target directory
