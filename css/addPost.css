@@ -1,230 +1,244 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
 }
 
 html {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 body {
-    background-color: #121212;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  background-color: #121212;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #bodyInput {
-    width: 100%;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #C2C2C2;
-    height: 300px;
-    resize: none;
-    font-family: inherit;
-    font-size: 1rem;
-    text-align: left;
-    vertical-align: top;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #c2c2c2;
+  height: 300px;
+  resize: none;
+  font-family: inherit;
+  font-size: 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+.selectTag {
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: none;
+  font-size: 1rem;
+  width: 95%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 2px black;
+  color: white;
+  background-color: #272735;
+}
+.selectTag select {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+  background-color: #272735;
 }
 
 .homeHeader {
-    background: linear-gradient(to right, #002766, #0051ff);
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 80px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    gap: 40px;
-    padding: 0 20px;
-    animation: fadeSlide 0.8s ease-out;
-    position: relative;
-    z-index: 10;
+  background: linear-gradient(to right, #002766, #0051ff);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 40px;
+  padding: 0 20px;
+  animation: fadeSlide 0.8s ease-out;
+  position: relative;
+  z-index: 10;
 }
 
 .homeHeader h1 {
-    padding-left: 20px;
-    font-size: 40px;
-    color: white;
+  padding-left: 20px;
+  font-size: 40px;
+  color: white;
 }
 
 .homeHeader .search {
-    padding: 10px 20px;
-    border-radius: 50px;
-    border: none;
-    font-size: 1rem;
-    width: 60vw;
-    max-width: 800px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1rem;
+  width: 60vw;
+  max-width: 800px;
 }
 
 .homeHeader a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .addPostBtn {
-    background-color: white;
-    color: #272735;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 20px;
-    border: 1px solid white;
-    transition: 0.3s ease;
+  background-color: white;
+  color: #272735;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1px solid white;
+  transition: 0.3s ease;
 }
 
 .addPostBtn:hover {
-    background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
-    color: white;
-    transform: scale(1.05);
-    border: 1px solid white;
-    background-size: 200% 200%;
-    animation: rainbowMove 3s linear infinite;
+  background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
+  color: white;
+  transform: scale(1.05);
+  border: 1px solid white;
+  background-size: 200% 200%;
+  animation: rainbowMove 3s linear infinite;
 }
 
 .HomeContainer {
-    display: flex;
-    width: 100%;
-    animation: fadeIn 1s ease;
+  display: flex;
+  width: 100%;
+  animation: fadeIn 1s ease;
 }
 
-
 .post {
-    display: flex;
-    justify-self: start;
-    align-items: start;
-    flex-direction: column;
-    text-align: justify;
-    background-color: #121212;
-    padding: 20px;
-    gap: 20px;
-    width: 75%;
-    margin: 20px;
+  display: flex;
+  justify-self: start;
+  align-items: start;
+  flex-direction: column;
+  text-align: justify;
+  background-color: #121212;
+  padding: 20px;
+  gap: 20px;
+  width: 75%;
+  margin: 20px;
 }
 
 .post form {
-    width: 100%;
+  width: 100%;
 }
 
 .post form input {
-    margin: 20px 0;
-    background-color: #272735;
-    color: white;
+  margin: 20px 0;
+  background-color: #272735;
+  color: white;
 }
 
 .post button,
 .postBTN {
-    padding: 10px;
-    border: none;
-    background-color: #1c1b24;
-    padding: 8px 30px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: white;
-    border-radius: 99px;
+  padding: 10px;
+  border: none;
+  background-color: #1c1b24;
+  padding: 8px 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  border-radius: 99px;
 }
 
 .post #titleInput {
-    width: 95%;
-    padding: 10px 15px;
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 0 2px #C2C2C2;
-    height: 50px;
-    font-size: 16px;
+  width: 95%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 0 2px #c2c2c2;
+  height: 50px;
+  font-size: 16px;
 }
 
 .post #bodyInput {
-    font-size: 16px;
-    width: 95%;
-    padding: 10px 15px;
-    border-radius: 15px;
-    height: 300px;
-    border: none;
-    box-shadow: 0 0 2px #C2C2C2;
-    background-color: #272735;
-    color: white;
+  font-size: 16px;
+  width: 95%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  height: 300px;
+  border: none;
+  box-shadow: 0 0 2px #c2c2c2;
+  background-color: #272735;
+  color: white;
 }
 
 .pfp {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ccc;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc;
 }
 
-button{
-    background-color: #272735;
-    color: white;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 20px;
-    border: none;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+button {
+  background-color: #272735;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 .postBTN:hover,
 .chooseFiles:hover,
 button:hover {
-    background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
-    background-size: 200% 200%;
-    color: white;
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    animation: rainbowMove 3s linear infinite;
+  background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
+  background-size: 200% 200%;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  animation: rainbowMove 3s linear infinite;
 }
 
-
 .pfp {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-image: url('../bg/sample10.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-image: url("../bg/sample10.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @keyframes rainbowMove {
-    0% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
 
-    50% {
-        background-position: 100% 50%;
-    }
+  50% {
+    background-position: 100% 50%;
+  }
 
-    100% {
-        background-position: 0% 50%;
-    }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 .chooseFiles {
-    background: #272735;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 99px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    border: none;
-    font-weight: bold;
-    transition: all 0.4s ease;
-    background-size: 200%;
-    background-position: left;
-
+  background: #272735;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 99px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  border: none;
+  font-weight: bold;
+  transition: all 0.4s ease;
+  background-size: 200%;
+  background-position: left;
 }
 
 .chooseFiles:hover {
-    background-position: right;
-    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
-    transform: scale(1.05);
+  background-position: right;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+  transform: scale(1.05);
 }
-
-
