@@ -8,19 +8,23 @@ $account_id = $_SESSION['account_id'] ?? null;
 $student_no = $_SESSION['student_no'] ?? null;
 
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+$tag = isset($_GET['tag']) ? mysqli_real_escape_string($conn, $_GET['tag']) : '';
 
+// Base query
+$getPost = "SELECT p.*, a.username 
+            FROM post_tb p 
+            JOIN student_tb a ON p.account_id = a.account_id 
+            WHERE 1";
+
+// Append conditions
 if (!empty($search)) {
-    $getPost = "SELECT p.*, a.username 
-                FROM post_tb p 
-                JOIN student_tb a ON p.account_id = a.account_id 
-                WHERE p.title LIKE '%$search%' 
-                ORDER BY p.post_id DESC";
-} else {
-    $getPost = "SELECT p.*, a.username 
-                FROM post_tb p 
-                JOIN student_tb a ON p.account_id = a.account_id 
-                ORDER BY p.post_id DESC";
+    $getPost .= " AND p.title LIKE '%$search%'";
 }
+if (!empty($tag)) {
+    $getPost .= " AND p.tag = '$tag'";
+}
+
+$getPost .= " ORDER BY p.post_id DESC";
 
 $result = mysqli_query($conn, $getPost);
 
@@ -33,6 +37,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         $created_at = $row['created_at'];
         $comments_count = $row['comments_count'];
         $like_count = $row['likes_count'];
+        $tag = $row['tag'];
 
         // Fetch files
         $getFiles = "SELECT file_url FROM post_files_tb WHERE post_id = $post_id";
@@ -79,6 +84,13 @@ if ($result && mysqli_num_rows($result) > 0) {
             </div>
 
             <h2><?php echo htmlspecialchars($title); ?></h2>
+
+            <?php if (!empty($tag)): ?>
+                <div class="tag" style="font-size: 14px; color: #666; margin-bottom: 8px;">
+                    🏷️ Tag: <?php echo htmlspecialchars($tag); ?>
+                </div>
+            <?php endif; ?>
+
             <div>
                 <p><?php echo htmlspecialchars($description); ?></p>
             </div>
@@ -115,6 +127,6 @@ if ($result && mysqli_num_rows($result) > 0) {
 <?php
     }
 } else {
-    echo "<p style='text-align:center; margin-top:50px;'>No posts found with that title 😢</p>";
+    echo "<p style='text-align:center; margin-top:50px;'>No posts found 😢</p>";
 }
 ?>

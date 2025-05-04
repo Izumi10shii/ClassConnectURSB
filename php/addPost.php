@@ -23,16 +23,16 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="HomeContainer">
 
         <?php
-
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_post'])) {
             $title = $_POST['titleInput'] ?? '';
             $description = $_POST['bodyInput'] ?? '';
             $account_id = $_SESSION['account_id'];
+            $dropdown_value = $_POST['dropdown'] ?? 'None'; // Capture the dropdown value (if not selected, use 'None')
 
             if (!empty($title) && !empty($description)) {
                 // Insert the post into the post_tb table
-                $newPost = "INSERT INTO post_tb(account_id, title, description) VALUES($account_id, '$title', '$description')";
+                $newPost = "INSERT INTO post_tb(account_id, title, description, tag) 
+                            VALUES($account_id, '$title', '$description', '$dropdown_value')";
 
                 if (mysqli_query($conn, $newPost)) {
                     $post_id = mysqli_insert_id($conn); // Get the ID of the newly inserted post
@@ -78,60 +78,47 @@ if (session_status() === PHP_SESSION_NONE) {
 
                     <label for="dropdown">Choose Topics:</label>
                     <select id="dropdown" name="dropdown">
-                        <option value="option1">Ethics</option>
-                        <option value="option2">ITE 7</option>
-                        <option value="option3">IT 4</option>
-                        <option value="option3">IT 5</option>
-                        <option value="option3">IT 6</option>
-                        <option value="option3">OOP</option>
-                        <option value="option3">IT 7</option>
-                        <option value="option3">PE 4</option>
+                        <option value="Ethics">Ethics</option>
+                        <option value="ITE 7">ITE 7</option>
+                        <option value="IT 4">IT 4</option>
+                        <option value="IT 5">IT 5</option>
+                        <option value="IT 6">IT 6</option>
+                        <option value="OOP">OOP</option>
+                        <option value="IT 7">IT 7</option>
+                        <option value="PE 4">PE 4</option>
                     </select>
                 </div>
 
                 <input type="text" name="titleInput" id="titleInput" placeholder="Title">
                 <textarea id="bodyInput" name="bodyInput" placeholder="Body"></textarea>
 
-                <!-- Inline CSS since my browser can't see -->
                 <div class="file-upload-wrapper" style="display: flex; align-items: center; margin-top: 10px;">
-                    <!-- Hidden file input (multiple files allowed) -->
-                    <input type="file" id="fileInput" name="files[]" multiple style="display: none;"
-                        onchange="updateFileLabel()">
-
-                    <!-- Label with inline styles for the custom file upload button -->
-                    <label for="fileInput" class="chooseFiles">
-                        Choose Files
-                    </label>
-
-
-                    <!-- File name text -->
-                    <span id="file-upload-text" style="font-size: 16px; color: #555; margin-left: 10px;">No files
-                        chosen</span>
+                    <input type="file" id="fileInput" name="files[]" multiple style="display: none;" onchange="updateFileLabel()">
+                    <label for="fileInput" class="chooseFiles">Choose Files</label>
+                    <span id="file-upload-text" style="font-size: 16px; color: #555; margin-left: 10px;">No files chosen</span>
                 </div>
 
                 <input type="submit" name="add_post" class="postBTN" value="Post">
             </form>
 
-
         </div>
-
 
         <script>
             function updateFileLabel() {
                 const fileInput = document.getElementById('fileInput');
                 const fileUploadText = document.getElementById('file-upload-text');
-
                 const files = fileInput.files;
                 if (files.length > 0) {
                     const fileNames = Array.from(files).map(file => file.name).join(', ');
                     fileUploadText.textContent = fileNames;
-                    fileUploadText.style.color = '#333'; // Change text color when files are chosen
+                    fileUploadText.style.color = '#333';
                 } else {
                     fileUploadText.textContent = 'No files chosen';
-                    fileUploadText.style.color = '#aaa'; // Color when no files are selected
+                    fileUploadText.style.color = '#aaa';
                 }
             }
         </script>
+
 </body>
 
 </html>

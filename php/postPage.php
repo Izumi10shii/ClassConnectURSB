@@ -68,10 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_desc'])) {
     <div class="scrollContainer">
       <?php
       $post_id = $_GET['post_id'] ?? null; // Get post_id from URL parameter
-      
+
       if ($post_id && is_numeric($post_id)) { // Validate post_id
         $post_id = intval($post_id); // Sanitize post_id
-      
+
         $getPostID = "SELECT p.*, a.username 
         FROM post_tb p 
         JOIN student_tb a ON p.account_id = a.account_id 
@@ -84,11 +84,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_desc'])) {
           while ($row = mysqli_fetch_assoc($result)) {
             $username = $row['username'];
             $title = $row['title'];
+            $tag = $row['tag'];
             $description = $row['description'];
             $created_at = $row['created_at'];
             $like_count = $row['likes_count']; // Use the likes_count field directly
             $comments_count = $row['comments_count']; // Use the comments_count field directly
-      
+
             // Fetch images for the post
             $getImages = "SELECT file_url FROM post_files_tb WHERE post_id = $post_id";
             $imagesResult = mysqli_query($conn, $getImages);
@@ -345,7 +346,7 @@ ORDER BY cr.created_at ASC;
 
               if ($repliesResult && mysqli_num_rows($repliesResult) > 0) {
                 while ($reply = mysqli_fetch_assoc($repliesResult)) {
-                  ?>
+              ?>
                   <div class="comment-reply">
                     <div class="reply-text-content">
                       <span class="reply-username"><?= htmlspecialchars($reply['username']) ?>:</span>
@@ -362,7 +363,7 @@ ORDER BY cr.created_at ASC;
                       </a>
                     <?php endif; ?>
                   </div>
-                  <?php
+              <?php
                 }
               }
 

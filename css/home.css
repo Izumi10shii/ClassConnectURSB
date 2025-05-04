@@ -17,7 +17,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   transition: all 0.3s ease;
 }
 
@@ -41,7 +41,7 @@ body {
   white-space: nowrap;
 }
 
-.searchForm{
+.searchForm {
   display: flex;
   align-items: center;
   justify-content: end;
@@ -93,7 +93,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-image: url('../bg/sample10.png');
+  background-image: url("../bg/sample10.png");
   background-size: cover;
   background-position: center;
   cursor: pointer;
@@ -155,7 +155,12 @@ body {
   border-radius: 20px;
   gap: 10px;
 }
-
+.tag {
+  background-color: #272735;
+  padding: 5px 15px;
+  border-radius: 20px;
+  width: max-content;
+}
 .selectTag {
   margin-top: 20px;
 
@@ -196,12 +201,11 @@ a {
   margin: 15px 0;
 }
 
-.post>div {
+.post > div {
   font-size: 1rem;
   line-height: 1.6;
   margin-top: 10px;
 }
-
 
 .scrollContainer a {
   text-decoration: none;
