@@ -52,7 +52,7 @@ body {
   margin-bottom: 20px;
 }
 .addUserBTN:hover {
-  background-color: #003bb5;
+  background-color: #2e3744;
 }
 .col {
   background-color: #fefefe;
@@ -227,7 +227,7 @@ body {
 }
 
 .editUserBTN {
-    background-color: #4CAF50;
+    background-color: #2b2b2b;
     color: white;
     border: none;
     padding: 5px;
@@ -235,9 +235,15 @@ body {
     cursor: pointer;
 }
 
+.editUserBTN:hover
+{
+  background-color: #ffffff;
+  color: #000000;
+}
+
 .cancelBtn {
-    background-color: #f44336;
-    color: white;
+    background-color: #252525;
+    color: rgb(243, 243, 243);
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -328,4 +334,16 @@ td {
 
 th {
     background-color: #eee;
+}
+
+#deleteBTN
+{
+  color: #000000;
+  background-color: #b3b3b3;
+}
+
+#deleteBTN:hover
+{
+  color: #ffffff;
+  background-color: #000000;
 }

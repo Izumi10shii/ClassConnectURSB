@@ -1,14 +1,14 @@
 {
-    "name": "pookiewookie/class-connect-ursb",
+    "name": "pc/class-connect-ursb",
     "autoload": {
         "psr-4": {
-            "Pookiewookie\\ClassConnectUrsb\\": "src/"
+            "Pc\\ClassConnectUrsb\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "tnek1",
-            "email": "tnek1769@gmail.com"
+            "name": "Zephyr0000th",
+            "email": "ponyglyph@gmail.com"
         }
     ],
     "require": {
