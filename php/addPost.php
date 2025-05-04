@@ -36,7 +36,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
                 if (mysqli_query($conn, $newPost)) {
                     $post_id = mysqli_insert_id($conn); // Get the ID of the newly inserted post
-        
+
                     // Handle the file uploads
                     if (isset($_FILES['files']) && count($_FILES['files']['name']) > 0) {
                         for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
@@ -58,7 +58,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             }
                         }
                     }
-                    
+
                     header('Location: home.php');
                     exit();
                 } else {
@@ -73,6 +73,22 @@ if (session_status() === PHP_SESSION_NONE) {
             <h1>Create New Post</h1>
 
             <form action="" method="post" enctype="multipart/form-data">
+
+                <div class="selectTag">
+
+                    <label for="dropdown">Choose Topics:</label>
+                    <select id="dropdown" name="dropdown">
+                        <option value="option1">Ethics</option>
+                        <option value="option2">ITE 7</option>
+                        <option value="option3">IT 4</option>
+                        <option value="option3">IT 5</option>
+                        <option value="option3">IT 6</option>
+                        <option value="option3">OOP</option>
+                        <option value="option3">IT 7</option>
+                        <option value="option3">PE 4</option>
+                    </select>
+                </div>
+
                 <input type="text" name="titleInput" id="titleInput" placeholder="Title">
                 <textarea id="bodyInput" name="bodyInput" placeholder="Body"></textarea>
 
@@ -109,10 +125,10 @@ if (session_status() === PHP_SESSION_NONE) {
                 if (files.length > 0) {
                     const fileNames = Array.from(files).map(file => file.name).join(', ');
                     fileUploadText.textContent = fileNames;
-                    fileUploadText.style.color = '#333';  // Change text color when files are chosen
+                    fileUploadText.style.color = '#333'; // Change text color when files are chosen
                 } else {
                     fileUploadText.textContent = 'No files chosen';
-                    fileUploadText.style.color = '#aaa';  // Color when no files are selected
+                    fileUploadText.style.color = '#aaa'; // Color when no files are selected
                 }
             }
         </script>

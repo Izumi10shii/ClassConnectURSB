@@ -1,16 +1,14 @@
 <?php
+include("../../php/db_conn.php"); 
+
 require('fpdf/fpdf.php');
 $pdf = new FPDF();
 $pdf->AddPage();
 
-$Timestamp = date("Y-m-d H:i:s");
-$User = "Username";
-$PostID = "89";
-$CommentID = "123";
-$Status = "Deleted";
-$CommentDescription = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+// Static values for the admin, modify these based on your system
 $Admin = "Admin";
-$Email = "Admin@gmail.com";
+$Email = "admin@example.com";  // Replace with dynamic logic if needed
+$Timestamp = date("Y-m-d H:i:s");
 
 // Document Header
 $pdf->SetFont('Arial', 'B', 20);
@@ -39,32 +37,60 @@ $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(189, 10, 'Logs', 0, 1, 'L', true);
 $pdf->Cell(189, 5, '', 0, 1, 'L');
 
-// Table Header
+// Table Header (Reduced width for Post ID and Account ID)
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(50, 10, 'Timestamp', 1, 0, 'C', true);
-$pdf->Cell(30, 10, 'User', 1, 0, 'C', true);
-$pdf->Cell(25, 10, 'Post ID', 1, 0, 'C', true);
+$pdf->Cell(40, 10, 'Timestamp', 1, 0, 'C', true);
+$pdf->Cell(30, 10, 'Post ID', 1, 0, 'C', true);
+$pdf->Cell(30, 10, 'Account ID', 1, 0, 'C', true);
 $pdf->Cell(30, 10, 'Comment ID', 1, 0, 'C', true);
-$pdf->Cell(54, 10, 'Comment Description', 1, 1, 'C', true);
+$pdf->Cell(59, 10, 'Comment Description', 1, 1, 'C', true);
 
-// Row Data
+// Row Data (Fetching from your query result)
+$getCommentsAudit = "
+    SELECT 
+        comment_tb.created_at, 
+        comment_tb.post_id, 
+        comment_tb.account_id, 
+        comment_tb.comment_id, 
+        comment_tb.comment_desc
+    FROM comment_tb
+    ORDER BY comment_tb.created_at DESC
+";
+
+$result = mysqli_query($conn, $getCommentsAudit);
+
 $pdf->SetFont('Arial', '', 12);
-$x = $pdf->GetX();
-$y = $pdf->GetY();
 $lineHeight = 6;
 
-// Print MultiCell first to get height
-$pdf->SetXY($x + 50 + 30 + 25 + 30, $y);
-$pdf->MultiCell(54, $lineHeight, $CommentDescription, 1, 'J');
-$descHeight = $pdf->GetY() - $y;
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $timestamp = $row['created_at'];
+        $postId = $row['post_id'];
+        $accountId = $row['account_id'];
+        $commentId = $row['comment_id'];
+        $description = $row['comment_desc'];
 
-// Draw other cells with same height
-$pdf->SetXY($x, $y);
-$pdf->Cell(50, $descHeight, $Timestamp, 1, 0, 'C');
-$pdf->Cell(30, $descHeight, $User, 1, 0, 'C');
-$pdf->Cell(25, $descHeight, $PostID, 1, 0, 'C');
-$pdf->Cell(30, $descHeight, $CommentID, 1, 0, 'C');
-// Description already drawn
+        // Save current X and Y for reference
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        // Print regular cells first (Timestamp, Post ID, Account ID, Comment ID)
+        $pdf->Cell(40, $lineHeight, $timestamp, 1, 0, 'C');
+        $pdf->Cell(30, $lineHeight, $postId, 1, 0, 'C');
+        $pdf->Cell(30, $lineHeight, $accountId, 1, 0, 'C');
+        $pdf->Cell(30, $lineHeight, $commentId, 1, 0, 'C');
+
+        // Print MultiCell for description
+        $pdf->SetXY($x + 40 + 30 + 30 + 30, $y); // Adjusted X position for description column
+        $pdf->MultiCell(59, $lineHeight, $description, 1, 'J');
+        
+        // Update the Y-position after MultiCell to account for varying row heights
+        $descHeight = $pdf->GetY() - $y;
+        $pdf->SetXY($x, $y + $descHeight); // Adjust Y for the next row
+    }
+} else {
+    $pdf->Cell(189, 10, 'No comment logs available.', 1, 1, 'C');
+}
 
 $pdf->Output();
 ?>

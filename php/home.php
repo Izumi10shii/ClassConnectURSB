@@ -56,17 +56,20 @@ $search = isset($_GET['search']) ? $_GET['search'] : '';
     <div class="HomeContainer">
         <?php include("userSidebar.php"); ?>
         <div class="scrollContainer">
-            <div class="exploreContainer">
-                <div class="collegeDepartment"></div>
-                <label for="dropdown">
-                    <h2>Select Discussions</h2>
-                </label>
-                <select name="CCSdropdown" id="CCSdropdown">
-                    <option value="">ITE 7</option>
-                    <option value="">ITE 5</option>
-                    <option value="">Software Engineering</option>
-                </select>
-            </div>
+        <div class="selectTag">
+
+<label for="dropdown">Choose Topics:</label>
+<select id="dropdown" name="dropdown">
+    <option value="option1">Ethics</option>
+    <option value="option2">ITE 7</option>
+    <option value="option3">IT 4</option>
+    <option value="option3">IT 5</option>
+    <option value="option3">IT 6</option>
+    <option value="option3">OOP</option>
+    <option value="option3">IT 7</option>
+    <option value="option3">PE 4</option>
+</select>
+</div>                
 
             <?php
             // Inject search into included file
