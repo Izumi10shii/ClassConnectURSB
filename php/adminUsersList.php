@@ -126,7 +126,7 @@ $result = mysqli_query($conn, $query);
 
         <div class="header">
 
-            <h2>Registered users</h2>
+            <h2>Registered Users</h2>
             <button type="button" class="addUserBTN" onclick="showAddUserForm()">Add</button>
         </div>
 
