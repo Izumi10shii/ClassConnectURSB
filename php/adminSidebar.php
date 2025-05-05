@@ -80,10 +80,6 @@
             z-index: 20px;
         }
 
-        .leftSideUp {
-            margin-top: 100px;
-        }
-
         .titleCC {
             color: white;
             font-weight: bold;

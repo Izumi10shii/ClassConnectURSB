@@ -123,12 +123,6 @@ $account_id = $_SESSION['account_id'];
         style="height: 200px; margin-top: 20px; margin-left: -50px;">
     </a>
 
-
-<<<<<<< HEAD
-=======
-    
-
->>>>>>> 6baa9370fa4bb7223d27bce4726da1c957dd34b3
     <div class="actions">
       <a href="addPost.php" class="addPostBtn">Create Post</a>
       <a href="userPage.php">

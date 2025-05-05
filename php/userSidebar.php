@@ -80,7 +80,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
         .sticky-buttons {
             position: fixed;
-            top: 200px;
             z-index: 20;
         }
 
@@ -90,7 +89,7 @@ if (session_status() === PHP_SESSION_NONE) {
         }
 
         .iconlink {
-            margin: 465px auto;
+            margin: 400px auto;
             padding: 0px 0 0 0;
 
         }
