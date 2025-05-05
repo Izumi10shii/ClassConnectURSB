@@ -50,6 +50,7 @@ $tagFilter = isset($_GET['tag']) ? $_GET['tag'] : '';
                     ?>
                     <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" class="profile-imgs">
                 </div>
+                
             </a>
         </div>
     </nav>

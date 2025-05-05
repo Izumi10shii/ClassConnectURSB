@@ -160,8 +160,9 @@
             </a>
 
             <a href="adminDashboard.php?page=audit_trail">
+            
                 <div class="popularbtn lsu"> Audit Trail
-
+                <img src="http://localhost/ClassConnectURSB/icons/audit_trail.png" alt="Home">
                 </div>
             </a>
             
