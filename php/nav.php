@@ -124,8 +124,6 @@ $account_id = $_SESSION['account_id'];
     </a>
 
 
-    <input class="search" type="text" placeholder="Search...">
-
     <div class="actions">
       <a href="addPost.php" class="addPostBtn">Create Post</a>
       <a href="userPage.php">
