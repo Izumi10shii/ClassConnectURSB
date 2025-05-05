@@ -5,6 +5,7 @@ include 'db_conn.php';
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 
+
 $sql = "SELECT account_id, email, password, is_admin, student_no, otp_enabled FROM student_tb WHERE username = '$username'";
 
 $result = mysqli_query($conn, $sql);
@@ -27,6 +28,8 @@ if ($user['password'] != $password) {
 
 // Set session values
 $email = $user['email'];
+$_SESSION['email'] = $email['email'];
+
 $_SESSION['account_id'] = $user['account_id'];
 $_SESSION['username'] = $username;
 $_SESSION['student_no'] = $user['student_no'];
@@ -52,9 +55,6 @@ if ($user['otp_enabled']) {
                    <p>Use this OTP to log in to your account.</p>
                </body>
              </html>";
-
-
-
     try {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';

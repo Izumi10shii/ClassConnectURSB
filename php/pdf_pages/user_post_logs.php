@@ -1,5 +1,19 @@
 <?php
+session_start();
 include("../../php/db_conn.php"); 
+
+$account_id = $_SESSION['account_id'];
+$email = "No email";
+
+if ($account_id) {
+    $sql = "SELECT email from student_tb WHERE account_id = '$account_id'";
+    $emailResult = mysqli_query($conn, $sql);
+
+    if ($emailResult && mysqli_num_rows($emailResult) > 0) {
+        $row = mysqli_fetch_assoc($emailResult);
+        $email = $row['email'];
+    }
+}
 
 // SQL query to fetch post logs
 $getPostAudit = "
@@ -16,14 +30,15 @@ $getPostAudit = "
 
 $result = mysqli_query($conn, $getPostAudit);
 
+
 require('fpdf/fpdf.php');
 $pdf = new FPDF();
 $pdf->AddPage();
 
 // Report metadata
 $Timestamp = date("Y-m-d H:i:s");
-$GeneratedBy = "CurrentUser";
-$Email = "CurrentEmail@gmail.com";
+$GeneratedBy = $_SESSION['username'];
+$Email = $email;
 
 // Title
 $pdf->SetFont('Arial', 'B', 20);

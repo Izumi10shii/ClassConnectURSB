@@ -1,4 +1,6 @@
-<?php include("..\php\db_conn.php"); ?>
+<?php include("..\php\db_conn.php"); 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,22 +46,22 @@
             margin: 40px auto;
             max-width: 1000px;
             padding: 20px;
-            background: linear-gradient(to right,rgb(28, 28, 31), #282633);
+            background: linear-gradient(to right, rgb(28, 28, 31), #282633);
             border-radius: 20px;
             box-shadow: 0 0 1px #ffffff;
         }
-        
+
         h2 {
             margin-bottom: 15px;
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
             background-color: #2a2a2a;
             color: #f1f1f1;
         }
-        
+
         th,
         td {
             padding: 12px;
@@ -73,29 +75,29 @@
 
         button {
             display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #272735;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px #2727357e;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #272735;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px #2727357e;
         }
 
         button:hover {
             background: linear-gradient(45deg, #fffb00, #dd2a7b, #8134af, #515bd4);
-  background-size: 300% 300%;
-  animation: rainbowMove 3s linear infinite;
-  color: white;
-  transform: scale(1.05);
-  opacity: 0.9;
-  border-radius: 20px;
-  border: none;
+            background-size: 300% 300%;
+            animation: rainbowMove 3s linear infinite;
+            color: white;
+            transform: scale(1.05);
+            opacity: 0.9;
+            border-radius: 20px;
+            border: none;
         }
     </style>
     <script>
@@ -121,7 +123,7 @@
         <a href="javascript:void(0)" onclick="showSection('login')">Login Logs</a>
         <a href="javascript:void(0)" onclick="showSection('delete-post')">Delete Post Logs</a>
         <a href="javascript:void(0)" onclick="showSection('delete-comment')">Delete Comment Logs</a>
-        */?>
+        */ ?>
 
         <a href="javascript:void(0)" onclick="showSection('post')">Post Logs</a>
         <a href="javascript:void(0)" onclick="showSection('comment')">Comment Logs</a>
@@ -129,6 +131,7 @@
 
     <section id="login">
         <h2>User Login Logs</h2>
+        
         <table>
             <thead>
                 <tr>
@@ -154,7 +157,7 @@
 
     <?php
 
-$getPostAudit = "
+    $getPostAudit = "
     SELECT 
         created_at, 
         account_id, 
@@ -165,44 +168,44 @@ $getPostAudit = "
     ORDER BY post_tb.created_at DESC
 ";
 
-$result = mysqli_query($conn, $getPostAudit);
+    $result = mysqli_query($conn, $getPostAudit);
 
-?>
+    ?>
 
-<section id="post">
-    <h2>User Post Logs</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Timestamp</th>
-                <th>Username</th>
-                <th>Post ID</th>
-                <th>Title</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            if ($result && mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['account_id']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['post_id']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['title']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['description']) . "</td>";
-                    echo "</tr>";
+    <section id="post">
+        <h2>User Post Logs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Username</th>
+                    <th>Post ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['account_id']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['post_id']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['title']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['description']) . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5'>No records found.</td></tr>";
                 }
-            } else {
-                echo "<tr><td colspan='5'>No records found.</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
-    <a href="pdf_pages/user_post_logs.php" target="_blank">
-        <button>Generate Log</button>
-    </a>
-</section>
+                ?>
+            </tbody>
+        </table>
+        <a href="pdf_pages/user_post_logs.php" target="_blank">
+            <button>Generate Log</button>
+        </a>
+    </section>
 
 
 
@@ -234,7 +237,7 @@ $result = mysqli_query($conn, $getPostAudit);
     </section>
     <?php
 
-$getCommentsAudit = "
+    $getCommentsAudit = "
     SELECT 
         comment_tb.created_at, 
         comment_tb.account_id, 
@@ -245,42 +248,42 @@ $getCommentsAudit = "
     ORDER BY comment_tb.created_at DESC
 ";
 
-$result = mysqli_query($conn, $getCommentsAudit);
-?>
-<section id="comment">
-    <h2>User Comment Logs</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Timestamp</th>
-                <th>Username</th> <!-- Will show account_id unless you join with user table -->
-                <th>Post ID</th>
-                <th>Comment ID</th>
-                <th>Comment Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            if ($result && mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['account_id']) . "</td>"; // Change to 'username' if joining
-                    echo "<td>" . htmlspecialchars($row['post_id']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['comment_id']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['comment_desc']) . "</td>";
-                    echo "</tr>";
+    $result = mysqli_query($conn, $getCommentsAudit);
+    ?>
+    <section id="comment">
+        <h2>User Comment Logs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Username</th> <!-- Will show account_id unless you join with user table -->
+                    <th>Post ID</th>
+                    <th>Comment ID</th>
+                    <th>Comment Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['account_id']) . "</td>"; // Change to 'username' if joining
+                        echo "<td>" . htmlspecialchars($row['post_id']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['comment_id']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['comment_desc']) . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5'>No comment logs found.</td></tr>";
                 }
-            } else {
-                echo "<tr><td colspan='5'>No comment logs found.</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
-    <a href="pdf_pages/user_comment_logs.php" target="_blank">
-        <button>Generate Log</button>
-    </a>
-</section>
+                ?>
+            </tbody>
+        </table>
+        <a href="pdf_pages/user_comment_logs.php" target="_blank">
+            <button>Generate Log</button>
+        </a>
+    </section>
 
     <section id="delete-comment">
         <h2>User Delete Comment Logs</h2>

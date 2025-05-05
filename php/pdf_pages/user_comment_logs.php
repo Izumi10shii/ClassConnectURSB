@@ -1,13 +1,28 @@
 <?php
 include("../../php/db_conn.php"); 
+session_start();
 
 require('fpdf/fpdf.php');
 $pdf = new FPDF();
 $pdf->AddPage();
 
+
+$account_id = $_SESSION['account_id'];
+$email = "No email";
+
+if ($account_id) {
+    $sql = "SELECT email from student_tb WHERE account_id = '$account_id'";
+    $emailResult = mysqli_query($conn, $sql);
+
+    if ($emailResult && mysqli_num_rows($emailResult) > 0) {
+        $row = mysqli_fetch_assoc($emailResult);
+        $email = $row['email'];
+    }
+}
+
 // Static values for the admin, modify these based on your system
 $Admin = "Admin";
-$Email = "admin@example.com";  // Replace with dynamic logic if needed
+$Email = $email;  // Replace with dynamic logic if needed
 $Timestamp = date("Y-m-d H:i:s");
 
 // Document Header

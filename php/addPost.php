@@ -78,6 +78,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
                     <label for="dropdown">Choose Topics:</label>
                     <select id="dropdown" name="dropdown">
+                        <option value="General">General</option>
                         <option value="Ethics">Ethics</option>
                         <option value="ITE 7">ITE 7</option>
                         <option value="IT 4">IT 4</option>

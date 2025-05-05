@@ -61,6 +61,7 @@ $tagFilter = isset($_GET['tag']) ? $_GET['tag'] : '';
                 <label for="dropdown">Choose Topics:</label>
                 <select id="dropdown" name="tag" onchange="this.form.submit()">
                     <option value="">-- All Tags --</option>
+                    <option value="General" <?php if ($tagFilter === 'General') echo 'selected'; ?>>General</option>
                     <option value="Ethics" <?php if ($tagFilter === 'Ethics') echo 'selected'; ?>>Ethics</option>
                     <option value="ITE 7" <?php if ($tagFilter === 'ITE 7') echo 'selected'; ?>>ITE 7</option>
                     <option value="IT 4" <?php if ($tagFilter === 'IT 4') echo 'selected'; ?>>IT 4</option>

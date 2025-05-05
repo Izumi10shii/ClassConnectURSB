@@ -33,58 +33,58 @@ $result = mysqli_query($conn, $query);
 <body>
     <div class="tableContainer">
 
-    <h2>All Posts</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>User ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Media</th>
-            <th>Action</th>
-        </tr>
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+        <h2>All Posts</h2>
+        <table>
             <tr>
-                <td><?= $row['post_id'] ?></td>
-                <td><?= $row['username'] ?></td>
-                <td><?= htmlspecialchars($row['title']) ?></td>
-                <td><?= nl2br(htmlspecialchars($row['description'])) ?></td>
-
-                <?php            // Fetch images and files for the post
-                $getFiles = "SELECT file_url FROM post_files_tb WHERE post_id = $row[post_id]";
-                $filesResult = mysqli_query($conn, $getFiles);
-                $files = []; // Reset the files array for each post
-
-                if ($filesResult && mysqli_num_rows($filesResult) > 0) {
-                    while ($fileRow = mysqli_fetch_assoc($filesResult)) {
-                        $files[] = $fileRow['file_url'];
-                    }
-                }
-                ?>
-
-                <td class="files">
-                    <?php foreach ($files as $file): ?>
-                        <?php
-                        $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
-                        if (strtolower($fileExtension) === 'pdf'): ?>
-                            <!-- Display PDF -->
-                            <embed class="docs" src="<?php echo $file; ?>" type="application/pdf" style="width: 20px; height: 20px; overflow: hidden;">
-                        <?php else: ?>
-                            <!-- Display Image -->
-                            <img class="imgs" src="<?php echo $file; ?>" alt="Post File" style="width: 50px; height: 50px; overflow: hidden;">
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </td>
-
-                <td>
-                    <a href="adminPostsList.php?delete_id=<?= $row['post_id'] ?>" class="delete-btn"
-                        onclick="return confirm('Are you sure you want to delete this post?');">
-                        Delete
-                    </a>
-                </td>
+                <th>ID</th>
+                <th>User ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Media</th>
+                <th>Action</th>
             </tr>
-        <?php } ?>
-    </table>
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <tr>
+                    <td><?= $row['post_id'] ?></td>
+                    <td><?= $row['username'] ?></td>
+                    <td><?= htmlspecialchars($row['title']) ?></td>
+                    <td><?= nl2br(htmlspecialchars($row['description'])) ?></td>
+
+                    <?php            // Fetch images and files for the post
+                    $getFiles = "SELECT file_url FROM post_files_tb WHERE post_id = $row[post_id]";
+                    $filesResult = mysqli_query($conn, $getFiles);
+                    $files = []; // Reset the files array for each post
+
+                    if ($filesResult && mysqli_num_rows($filesResult) > 0) {
+                        while ($fileRow = mysqli_fetch_assoc($filesResult)) {
+                            $files[] = $fileRow['file_url'];
+                        }
+                    }
+                    ?>
+
+                    <td class="files">
+                        <?php foreach ($files as $file): ?>
+                            <?php
+                            $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
+                            if (strtolower($fileExtension) === 'pdf'): ?>
+                                <!-- Display PDF -->
+                                <embed class="docs" src="<?php echo $file; ?>" type="application/pdf" style="width: 20px; height: 20px; overflow: hidden;">
+                            <?php else: ?>
+                                <!-- Display Image -->
+                                <img class="imgs" src="<?php echo $file; ?>" alt="Post File" style="width: 50px; height: 50px; overflow: hidden;">
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </td>
+
+                    <td>
+                        <a href="adminPostsList.php?delete_id=<?= $row['post_id'] ?>" class="delete-btn"
+                            onclick="return confirm('Are you sure you want to delete this post?');">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
     </div>
 
     <div class="tableContainer">
@@ -114,7 +114,7 @@ ORDER BY c.created_at DESC
                         <td><?= htmlspecialchars($comment['created_at']); ?></td>
                         <td>
                             <a href="deleteComment.php?comment_id=<?= $comment['comment_id']; ?>" class="delete-btn"
-                               onclick="return confirm('Are you sure you want to delete this comment?');">
+                                onclick="return confirm('Are you sure you want to delete this comment?');">
                                 Delete
                             </a>
                         </td>
