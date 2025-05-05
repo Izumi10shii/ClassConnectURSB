@@ -17,7 +17,7 @@
             height: 1000px; /* Temp */
             min-height: 100vh;
             overflow-y: auto;
-            background-color: #1c1b24;
+            background: linear-gradient(to right, #0D1B2A, #023047);
             background-size: cover;
             background-attachment: fixed;
             backdrop-filter: blur(10px);
