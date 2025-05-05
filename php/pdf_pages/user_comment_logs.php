@@ -20,9 +20,8 @@ if ($account_id) {
     }
 }
 
-// Static values for the admin, modify these based on your system
-$Admin = "Admin";
-$Email = $email;  // Replace with dynamic logic if needed
+$Admin = $_SESSION['username'];
+$Email = $email;
 $Timestamp = date("Y-m-d H:i:s");
 
 // Document Header

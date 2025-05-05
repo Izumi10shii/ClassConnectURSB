@@ -9,12 +9,14 @@ $query = "SELECT
   r.status, 
   r.reported_at, 
   p.title, 
-  s.username AS poster
+  poster.username AS poster,
+  reporter.username AS reporter
 FROM post_reports_tb r
 INNER JOIN post_tb p ON r.post_id = p.post_id
-INNER JOIN student_tb s ON p.account_id = s.account_id
-ORDER BY r.reported_at DESC
-";
+INNER JOIN student_tb poster ON p.account_id = poster.account_id
+INNER JOIN student_tb reporter ON r.account_id = reporter.account_id
+ORDER BY r.reported_at DESC";
+
 
 $result = mysqli_query($conn, $query);
 ?>
@@ -55,7 +57,7 @@ $result = mysqli_query($conn, $query);
                             <td><?php echo $row['report_id']; ?></td>
                             <td><?php echo $row['post_id']; ?></td> <!-- New column -->
                             <td><?php echo htmlspecialchars($row['title']); ?></td>
-                            <td><?php echo htmlspecialchars($row['poster']); ?></td>
+                            <td><?php echo htmlspecialchars($row['reporter']); ?></td>
                             <td><?php echo htmlspecialchars($row['reason']); ?></td>
                             <td><?php echo htmlspecialchars($row['status']); ?></td>
                             <td><?php echo htmlspecialchars($row['reported_at']); ?></td>

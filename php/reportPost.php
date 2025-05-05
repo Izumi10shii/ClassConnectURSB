@@ -1,6 +1,6 @@
 <?php
 include("db_conn.php");
-//session_start();
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $post_id = mysqli_real_escape_string($conn, $_POST['post_id']);
