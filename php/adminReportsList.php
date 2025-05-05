@@ -21,12 +21,14 @@ $result = mysqli_query($conn, $query);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Reports</title>
     <link rel="stylesheet" href="../css/adminReportsList.css">
 </head>
+
 <body>
 
     <div class="tableContainer">
@@ -37,6 +39,7 @@ $result = mysqli_query($conn, $query);
                 <thead>
                     <tr>
                         <th>Report ID</th>
+                        <th>Post ID</th>
                         <th>Post Title</th>
                         <th>Reported By</th>
                         <th>Reason</th>
@@ -45,23 +48,26 @@ $result = mysqli_query($conn, $query);
                         <th>Actions</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php while ($row = mysqli_fetch_assoc($result)): ?>
                         <tr>
                             <td><?php echo $row['report_id']; ?></td>
+                            <td><?php echo $row['post_id']; ?></td> <!-- New column -->
                             <td><?php echo htmlspecialchars($row['title']); ?></td>
                             <td><?php echo htmlspecialchars($row['poster']); ?></td>
                             <td><?php echo htmlspecialchars($row['reason']); ?></td>
                             <td><?php echo htmlspecialchars($row['status']); ?></td>
                             <td><?php echo htmlspecialchars($row['reported_at']); ?></td>
                             <td>
-                                <!-- Button to mark as reviewed -->
-                                <form method="POST" action="reviewReport.php" style="display: inline;" onsubmit="location.href='adminDashboard.php';">
+                                <!-- Action buttons remain the same -->
+                                <form method="POST" action="reviewReport.php" style="display: inline;"
+                                    onsubmit="location.href='adminDashboard.php';">
                                     <input type="hidden" name="report_id" value="<?php echo $row['report_id']; ?>">
                                     <button type="submit" class="review-btn">Mark as Reviewed</button>
                                 </form>
-                                <!-- Button to delete the report -->
-                                <form method="POST" action="deleteReport.php" style="display: inline;" onsubmit="location.href='adminDashboard.php';">
+                                <form method="POST" action="deleteReport.php" style="display: inline;"
+                                    onsubmit="location.href='adminDashboard.php';">
                                     <input type="hidden" name="report_id" value="<?php echo $row['report_id']; ?>">
                                     <button type="submit" class="delete-btn">Delete</button>
                                 </form>
@@ -69,10 +75,12 @@ $result = mysqli_query($conn, $query);
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
+
             </table>
         <?php else: ?>
             <p>No reports available.</p>
         <?php endif; ?>
     </div>
 </body>
+
 </html>
