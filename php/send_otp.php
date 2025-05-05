@@ -28,7 +28,7 @@ if ($user['password'] != $password) {
 
 // Set session values
 $email = $user['email'];
-$_SESSION['email'] = $email['email'];
+
 
 $_SESSION['account_id'] = $user['account_id'];
 $_SESSION['username'] = $username;
