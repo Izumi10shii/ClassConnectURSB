@@ -256,18 +256,20 @@ $row = mysqli_fetch_assoc($result);
 
                 </div>
 
+                <!--
                 <div class="userRow">
                     <button>Posts</button>
                 </div>
                 <div class="displayUserContent">
 
-                    <?php
-                    $getPosts = "SELECT * FROM post_tb WHERE account_id = '$account_id'";
-                    $result = mysqli_query($conn, $getPosts);
+                   <?php
+                    //$getPosts = "SELECT * FROM post_tb WHERE account_id = '$account_id'";
+                    //$result = mysqli_query($conn, $getPosts);
 
-                    include("postComponent.php");
+                   // include("postComponent.php");
                     ?>
                 </div>
+            -->
             </div>
 
 

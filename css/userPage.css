@@ -37,8 +37,6 @@ a {
 
 .HomeContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   background-color: #121212;
 }
@@ -61,11 +59,11 @@ a {
 
 .scrollContainer {
   padding: 20px;
-  width: 80%;
-  display:flex;
+  width: 75%;
+  display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  
+  padding-top: 50px;
 }
 
 .communityPageInfo {
