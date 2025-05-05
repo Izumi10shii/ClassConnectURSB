@@ -26,20 +26,18 @@ body {
 }
 .header {
   display: flex;
-
+  align-items: center;
   justify-content: space-between;
   margin: 20px 0;
+  height: 300px;
+  width: 100%;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow-y: hidden;
 }
 .header h2 {
   font-size: 40px;
-}
-.userListContainer .table {
-  justify-content: start;
-  background-color: #f3f3f3;
-  display: flex;
-  border-radius: 20px;
-  box-shadow: 0 0 2px black;
-  padding: 0px 20px;
 }
 .addUserBTN {
   padding: 10px 20px;
@@ -115,21 +113,12 @@ body {
 
 /* Table container */
 .table-container {
-  width: 100%;
-  overflow-x: auto;
+  width: calc(100% + 40px); /* Adjusted width to fit within the container */
   margin-top: 20px;
-  
-  background-color: red;
-  width: 100%;
-  padding: 20px;
-  padding-bottom: 80px;
-  border-radius: 20px;
-  margin: 40px auto;
-  max-width: 1000px;
-  padding: 20px;
   background: linear-gradient(to right, rgb(28, 28, 31), #282633);
   border-radius: 20px;
   box-shadow: 0 0 1px #ffffff;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* User table */
@@ -137,27 +126,32 @@ body {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  box-shadow: 0 0 2px black;
-  overflow: hidden;
   font-size: 14px;
   color: white;
+  table-layout: fixed; /* Ensures columns are evenly distributed */
 }
 
 .user-table th,
 .user-table td {
   border: 1px solid #08080a;
+  word-wrap: break-word; /* Breaks long text into multiple lines */
+  text-align: center;
 }
 
 .user-table th {
   background-color: #1c1b24;
   font-weight: bold;
-  text-align: center;
-  font-size: 14px; /* Reduced font size */
+  font-size: 14px;
 }
 
 .user-table td {
-  text-align: center;
-  font-size: 13px; /* Reduced font size */
+  font-size: 13px;
+}
+
+/* Adjust padding for better fit */
+.user-table th,
+.user-table td {
+  padding: 8px;
 }
 
 /* Action buttons */
@@ -245,6 +239,7 @@ body {
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 10px;
 }
 
 .editUserBTN:hover {
@@ -333,7 +328,6 @@ input {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
 }
 
 th,
@@ -350,6 +344,7 @@ th {
 #deleteBTN {
   color: white;
   background-color: darkred;
+  font-size: 10px;
 
 }
 

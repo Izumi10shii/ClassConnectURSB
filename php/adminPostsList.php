@@ -37,10 +37,11 @@ $result = mysqli_query($conn, $query);
         <table>
             <tr>
                 <th>ID</th>
-                <th>User ID</th>
+                <th>Username</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Media</th>
+                <th>Created At</th> <!-- Added -->
                 <th>Action</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -50,10 +51,11 @@ $result = mysqli_query($conn, $query);
                     <td><?= htmlspecialchars($row['title']) ?></td>
                     <td><?= nl2br(htmlspecialchars($row['description'])) ?></td>
 
-                    <?php            // Fetch images and files for the post
-                    $getFiles = "SELECT file_url FROM post_files_tb WHERE post_id = $row[post_id]";
+                    <?php
+                    // Fetch images and files for the post
+                    $getFiles = "SELECT file_url FROM post_files_tb WHERE post_id = {$row['post_id']}";
                     $filesResult = mysqli_query($conn, $getFiles);
-                    $files = []; // Reset the files array for each post
+                    $files = [];
 
                     if ($filesResult && mysqli_num_rows($filesResult) > 0) {
                         while ($fileRow = mysqli_fetch_assoc($filesResult)) {
@@ -68,13 +70,17 @@ $result = mysqli_query($conn, $query);
                             $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
                             if (strtolower($fileExtension) === 'pdf'): ?>
                                 <!-- Display PDF -->
-                                <embed class="docs" src="<?php echo $file; ?>" type="application/pdf" style="width: 20px; height: 20px; overflow: hidden;">
+                                <embed class="docs" src="<?= $file ?>" type="application/pdf"
+                                    style="width: 20px; height: 20px; overflow: hidden;">
                             <?php else: ?>
                                 <!-- Display Image -->
-                                <img class="imgs" src="<?php echo $file; ?>" alt="Post File" style="width: 50px; height: 50px; overflow: hidden;">
+                                <img class="imgs" src="<?= $file ?>" alt="Post File"
+                                    style="width: 50px; height: 50px; overflow: hidden;">
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </td>
+
+                    <td><?= date('Y-m-d H:i', strtotime($row['created_at'])) ?></td> <!-- Added -->
 
                     <td>
                         <a href="adminPostsList.php?delete_id=<?= $row['post_id'] ?>" class="delete-btn"
@@ -85,6 +91,7 @@ $result = mysqli_query($conn, $query);
                 </tr>
             <?php } ?>
         </table>
+
     </div>
 
     <div class="tableContainer">
