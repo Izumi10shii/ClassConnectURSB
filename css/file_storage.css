@@ -11,10 +11,9 @@ body {
 
 .HomeContainer {
   display: flex;
-  justify-content: flex-start;
-  flex: 1;
   width: 100%;
-  animation: fadeIn 1s ease;
+  min-height: 100vh;
+  background-color: #121212;
 }
 
 .leftSidebar {

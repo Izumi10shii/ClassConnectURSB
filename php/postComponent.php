@@ -67,7 +67,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         $resultpfpLoggedInUser = mysqli_query($conn, $sqlpfpLoggedInUser);
         $rowpfpLoggedInUser = mysqli_fetch_assoc($resultpfpLoggedInUser);
         $profile_picture_logged_in_user = !empty($rowpfpLoggedInUser['profile_pic']) ? $rowpfpLoggedInUser['profile_pic'] : '../bg/sample10.png';
-?>
+        ?>
 
         <div class="post"
             onclick="window.location.href='/ClassConnectURSB/php/postPage.php?post_id=<?php echo ($post_id); ?>&account_id=<?php echo urlencode($username); ?>'">
@@ -79,7 +79,11 @@ if ($result && mysqli_num_rows($result) > 0) {
                     <div class="postHeaderCol">
                         <div><strong><?php echo htmlspecialchars($username); ?></strong></div>
                     </div>
-                    <div class="datetime"><?php echo htmlspecialchars($created_at); ?></div>
+                    <?php
+                    $formattedDate = date("F j, Y \a\\t g:i A", strtotime($created_at));
+                    ?>
+                    <div class="datetime"><?php echo $formattedDate; ?></div>
+
                 </div>
             </div>
 
@@ -124,7 +128,7 @@ if ($result && mysqli_num_rows($result) > 0) {
             </div>
         </div>
 
-<?php
+        <?php
     }
 } else {
     echo "<p style='text-align:center; margin-top:50px;'>No posts found 😢</p>";

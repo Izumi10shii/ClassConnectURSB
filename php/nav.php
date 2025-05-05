@@ -124,8 +124,11 @@ $account_id = $_SESSION['account_id'];
     </a>
 
 
+<<<<<<< HEAD
+=======
     
 
+>>>>>>> 6baa9370fa4bb7223d27bce4726da1c957dd34b3
     <div class="actions">
       <a href="addPost.php" class="addPostBtn">Create Post</a>
       <a href="userPage.php">

@@ -257,20 +257,94 @@ $row = mysqli_fetch_assoc($result);
 
                 </div>
 
-                <!--
                 <div class="userRow">
                     <button>Posts</button>
                 </div>
-                <div class="displayUserContent">
 
-                   <?php
-                    //$getPosts = "SELECT * FROM post_tb WHERE account_id = '$account_id'";
-                    //$result = mysqli_query($conn, $getPosts);
+                <?php
+                $account_id = $_SESSION['account_id'] ?? null;
 
-                   // include("postComponent.php");
-                    ?>
-                </div>
-            -->
+                if (!$account_id) {
+                    echo "<p style='text-align:center;'>User not logged in.</p>";
+                    exit();
+                }
+
+                $getPosts = "SELECT p.*, s.username 
+             FROM post_tb p 
+             JOIN student_tb s ON p.account_id = s.account_id 
+             WHERE p.account_id = '$account_id' 
+             ORDER BY p.post_id DESC";
+
+                $result = mysqli_query($conn, $getPosts);
+
+                if ($result && mysqli_num_rows($result) > 0):
+                    while ($row = mysqli_fetch_assoc($result)):
+                        $post_id = $row['post_id'];
+                        $username = $row['username'];
+                        $title = $row['title'];
+                        $description = $row['description'];
+                        $created_at = $row['created_at'];
+                        $tag = $row['tag'];
+
+                        // Fetch user's profile pic
+                        $pfpResult = mysqli_query($conn, "SELECT profile_pic FROM student_tb WHERE account_id = '$account_id'");
+                        $pfpRow = mysqli_fetch_assoc($pfpResult);
+                        $profile_pic = !empty($pfpRow['profile_pic']) ? $pfpRow['profile_pic'] : '../bg/sample10.png';
+
+                        // Fetch attached files
+                        $filesResult = mysqli_query($conn, "SELECT file_url FROM post_files_tb WHERE post_id = $post_id");
+                        $files = [];
+                        while ($fileRow = mysqli_fetch_assoc($filesResult)) {
+                            $files[] = $fileRow['file_url'];
+                        }
+                        ?>
+                        <div class="post"
+                            onclick="window.location.href='postPage.php?post_id=<?php echo $post_id; ?>&account_id=<?php echo urlencode($username); ?>'">
+                            <div class="postHeader">
+                                <div class="pfp">
+                                    <img src="<?php echo $profile_pic; ?>" alt="Profile Picture" class="profile-img">
+                                </div>
+                                <div class="postHeaderPoster">
+                                    <div><strong><?php echo htmlspecialchars($username); ?></strong></div>
+                                    <?php
+                                    $formattedDate = date("F j, Y \a\\t g:i A", strtotime($created_at));
+                                    ?>
+                                    <div class="datetime"><?php echo $formattedDate; ?></div>
+
+                                </div>
+                            </div>
+
+                            <h2><?php echo htmlspecialchars($title); ?></h2>
+
+                            <?php if (!empty($tag)): ?>
+                                <div class="tag" style="font-size: 14px; color: #666; margin-bottom: 8px; padding: 5px;">
+                                    🏷️ Tag: <?php echo htmlspecialchars($tag); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <div>
+                                <p><?php echo htmlspecialchars($description); ?></p>
+                            </div>
+
+                            <div class="files">
+                                <?php foreach ($files as $file): ?>
+                                    <?php $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION)); ?>
+                                    <?php if ($ext === 'pdf'): ?>
+                                        <embed class="docs" src="<?php echo $file; ?>" type="application/pdf">
+                                    <?php else: ?>
+                                        <img class="imgs" src="<?php echo $file; ?>" alt="Post File">
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <?php
+                    endwhile;
+                else:
+                    echo "<p style='text-align:center; margin-top:50px;'>You haven't posted anything yet 😢</p>";
+                endif;
+                ?>
+
+
             </div>
 
 
