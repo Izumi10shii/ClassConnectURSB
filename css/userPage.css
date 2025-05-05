@@ -458,6 +458,10 @@ form select {
   color: #1c1b24;
 }
 
+form option {
+  color: black;
+}
+
 form button {
   background-color: #272735;
   color: #fff;
