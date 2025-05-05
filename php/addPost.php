@@ -23,49 +23,51 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="HomeContainer">
 
         <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_post'])) {
-            $title = $_POST['titleInput'] ?? '';
-            $description = $_POST['bodyInput'] ?? '';
-            $account_id = $_SESSION['account_id'];
-            $dropdown_value = $_POST['dropdown'] ?? 'None'; // Capture the dropdown value (if not selected, use 'None')
-
-            if (!empty($title) && !empty($description)) {
-                // Insert the post into the post_tb table
-                $newPost = "INSERT INTO post_tb(account_id, title, description, tag) 
-                            VALUES($account_id, '$title', '$description', '$dropdown_value')";
-
-                if (mysqli_query($conn, $newPost)) {
-                    $post_id = mysqli_insert_id($conn); // Get the ID of the newly inserted post
-
-                    // Handle the file uploads
-                    if (isset($_FILES['files']) && count($_FILES['files']['name']) > 0) {
-                        for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
-                            $file_name = $_FILES['files']['name'][$i];
-                            $file_tmp_name = $_FILES['files']['tmp_name'][$i];
-                            $file_size = $_FILES['files']['size'][$i];
-                            $file_error = $_FILES['files']['error'][$i];
-
-                            if ($file_error === 0) {
-                                $upload_dir = '../uploads/';
-                                $file_path = $upload_dir . basename($file_name);
-
-                                if (move_uploaded_file($file_tmp_name, $file_path)) {
-                                    // Insert the file info into the post_files_tb table
-                                    $insertFile = "INSERT INTO post_files_tb(post_id, file_name, file_url) 
-                                                   VALUES($post_id, '$file_name', '$file_path')";
-                                    mysqli_query($conn, $insertFile);
-                                }
+       if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_post'])) {
+        $title = mysqli_real_escape_string($conn, $_POST['titleInput'] ?? '');
+        $description = mysqli_real_escape_string($conn, $_POST['bodyInput'] ?? '');
+        $account_id = $_SESSION['account_id'];
+        $dropdown_value = mysqli_real_escape_string($conn, $_POST['dropdown'] ?? 'None');
+    
+        if (!empty($title) && !empty($description)) {
+            // Insert the post into the post_tb table
+            $newPost = "INSERT INTO post_tb(account_id, title, description, tag) 
+                        VALUES($account_id, '$title', '$description', '$dropdown_value')";
+    
+            if (mysqli_query($conn, $newPost)) {
+                $post_id = mysqli_insert_id($conn); // Get the ID of the newly inserted post
+    
+                // Handle the file uploads
+                if (isset($_FILES['files']) && count($_FILES['files']['name']) > 0) {
+                    for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
+                        $file_name = mysqli_real_escape_string($conn, $_FILES['files']['name'][$i]);
+                        $file_tmp_name = $_FILES['files']['tmp_name'][$i];
+                        $file_size = $_FILES['files']['size'][$i];
+                        $file_error = $_FILES['files']['error'][$i];
+    
+                        if ($file_error === 0) {
+                            $upload_dir = '../uploads/';
+                            $file_path = $upload_dir . basename($file_name);
+                            $file_path_escaped = mysqli_real_escape_string($conn, $file_path);
+    
+                            if (move_uploaded_file($file_tmp_name, $file_path)) {
+                                // Insert the file info into the post_files_tb table
+                                $insertFile = "INSERT INTO post_files_tb(post_id, file_name, file_url) 
+                                               VALUES($post_id, '$file_name', '$file_path_escaped')";
+                                mysqli_query($conn, $insertFile);
                             }
                         }
                     }
-
-                    header('Location: home.php');
-                    exit();
-                } else {
-                    error_log("Database Error: " . mysqli_error($conn));
                 }
+    
+                header('Location: home.php');
+                exit();
+            } else {
+                error_log("Database Error: " . mysqli_error($conn));
             }
         }
+    }
+    
         include("userSidebar.php");
         ?>
 
