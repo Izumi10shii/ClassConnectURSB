@@ -1,3 +1,4 @@
+/* General Styles */
 html {
   overflow-x: hidden;
 }
@@ -12,7 +13,7 @@ body {
   min-height: 100vh;
 }
 
-/* Custom Nav since nav.php doesn't reflect */
+/* Reset and Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -21,12 +22,12 @@ body {
   transition: all 0.3s ease;
 }
 
+/* Header Section */
 .homeHeader {
   background: linear-gradient(to right, #112336, #3787a7);
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
   height: 80px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -41,6 +42,7 @@ body {
   white-space: nowrap;
 }
 
+/* Search Form */
 .searchForm {
   display: flex;
   align-items: center;
@@ -60,15 +62,12 @@ body {
   background-color: #272735;
 }
 
+/* Action Buttons */
 .actions {
   display: flex;
   align-items: center;
   gap: 20px;
-<<<<<<< HEAD
   padding-right: 20px;
-=======
-  padding-right:20px;
->>>>>>> 9be11a807a7b00b3f07747431f72f8a54ce37e9c
 }
 
 .addPostBtn {
@@ -93,6 +92,7 @@ body {
   animation: rainbowMove 3s linear infinite;
 }
 
+/* Profile Picture */
 .pfp {
   width: 50px;
   height: 50px;
@@ -111,15 +111,14 @@ body {
   border: 2px solid #ccc;
 }
 
+/* Keyframes */
 @keyframes rainbowMove {
   0% {
     background-position: 0% 50%;
   }
-
   50% {
     background-position: 100% 50%;
   }
-
   100% {
     background-position: 0% 50%;
   }
@@ -159,15 +158,16 @@ body {
   border-radius: 20px;
   gap: 10px;
 }
+
 .tag {
   background-color: #272735;
   padding: 5px 15px;
   border-radius: 20px;
   width: max-content;
 }
+
 .selectTag {
   margin-top: 20px;
-
   padding: 10px 20px;
   border-radius: 40px;
   border: none;
@@ -177,6 +177,7 @@ body {
   color: white;
   background-color: #272735;
 }
+
 .selectTag select {
   margin-left: 10px;
   padding: 10px;
@@ -185,6 +186,7 @@ body {
   background-color: #272735;
 }
 
+/* Individual Post */
 .post {
   background-color: #1c1b24;
   padding: 20px;
@@ -194,10 +196,6 @@ body {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid #0d0b0f;
   animation: fadeIn 0.6s ease;
-}
-
-a {
-  width: 95%;
 }
 
 .post h2 {
@@ -211,27 +209,14 @@ a {
   margin-top: 10px;
 }
 
+/* Links */
 .scrollContainer a {
   text-decoration: none;
   color: black;
 }
 
-/* Profile Picture */
-.pfp {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ccc;
-}
-
-.pfp img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+a {
+  width: 95%;
 }
 
 /* Post Header */
@@ -247,6 +232,7 @@ a {
   gap: 5px;
 }
 
+/* File Attachments */
 .files {
   display: flex;
   gap: 10px;
@@ -323,20 +309,7 @@ a {
   text-align: center;
 }
 
-@keyframes rainbowMove {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
+/* Responsive Design */
 @media (min-width: 601px) and (max-width: 1024px) {
   .container {
     padding: 1rem;

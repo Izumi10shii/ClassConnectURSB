@@ -1,14 +1,19 @@
 <?php
+// Include database connection
 include("db_conn.php");
+
+// Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Redirect to login page if user is not logged in
 if (!isset($_SESSION['account_id'])) {
     header("Location: loginpage.php");
     exit;
 }
 
-// Grab the search term and tag if any
+// Grab the search term and tag from the GET request, if any
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $tagFilter = isset($_GET['tag']) ? $_GET['tag'] : '';
 ?>
@@ -24,7 +29,9 @@ $tagFilter = isset($_GET['tag']) ? $_GET['tag'] : '';
 </head>
 
 <body>
+    <!-- Navigation bar -->
     <nav class="homeHeader">
+        <!-- Logo -->
         <a href="home.php" class="logo">
             <img src="http://localhost/ClassConnectURSB/icons/cc_logo.png" alt="Class Connect Logo"
                 style="height: 200px; margin-top: 20px; margin-left: -30px;">
@@ -37,11 +44,15 @@ $tagFilter = isset($_GET['tag']) ? $_GET['tag'] : '';
             <input type="hidden" name="tag" value="<?php echo htmlspecialchars($tagFilter); ?>">
         </form>
 
+        <!-- Action buttons -->
         <div class="actions">
+            <!-- Link to create a new post -->
             <a href="addPost.php" class="addPostBtn">Create Post</a>
+            <!-- Link to user profile page -->
             <a href="userPage.php">
                 <div class="pfp">
                     <?php
+                    // Fetch the profile picture of the logged-in user
                     $account_id = $_SESSION['account_id'];
                     $sql = "SELECT profile_pic FROM student_tb WHERE account_id = '$account_id'";
                     $result = mysqli_query($conn, $sql);
@@ -50,14 +61,18 @@ $tagFilter = isset($_GET['tag']) ? $_GET['tag'] : '';
                     ?>
                     <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" class="profile-imgs">
                 </div>
-                
             </a>
         </div>
     </nav>
 
+    <!-- Main content container -->
     <div class="HomeContainer">
+        <!-- Include the user sidebar -->
         <?php include("userSidebar.php"); ?>
+
+        <!-- Scrollable container for posts -->
         <div class="scrollContainer">
+            <!-- Dropdown for filtering posts by tag -->
             <form method="GET" action="" class="selectTag" style="margin-left: 20px; margin-bottom: 20px;">
                 <label for="dropdown">Choose Topics:</label>
                 <select id="dropdown" name="tag" onchange="this.form.submit()">
@@ -75,6 +90,7 @@ $tagFilter = isset($_GET['tag']) ? $_GET['tag'] : '';
                 <input type="hidden" name="search" value="<?php echo htmlspecialchars($search); ?>">
             </form>
 
+            <!-- Include the post component to display posts -->
             <?php
             $_GET['search'] = $search;
             $_GET['tag'] = $tagFilter;
