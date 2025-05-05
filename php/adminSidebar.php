@@ -14,7 +14,7 @@
             position: sticky;
             top: 0;
             align-self: flex-start;
-            height: 1000px; /* Temp */
+            height: 3000px; /* Temp */
             min-height: 100vh;
             overflow-y: auto;
             background: linear-gradient(to right, #0D1B2A, #023047);

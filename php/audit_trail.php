@@ -174,6 +174,9 @@
 
     <section id="post">
         <h2>User Post Logs</h2>
+        <a href="pdf_pages/user_post_logs.php" target="_blank">
+            <button>Generate Log</button>
+        </a>
         <table>
             <thead>
                 <tr>
@@ -202,9 +205,6 @@
                 ?>
             </tbody>
         </table>
-        <a href="pdf_pages/user_post_logs.php" target="_blank">
-            <button>Generate Log</button>
-        </a>
     </section>
 
 
@@ -252,6 +252,9 @@
     ?>
     <section id="comment">
         <h2>User Comment Logs</h2>
+        <a href="pdf_pages/user_comment_logs.php" target="_blank">
+            <button>Generate Log</button>
+        </a>
         <table>
             <thead>
                 <tr>
@@ -280,9 +283,7 @@
                 ?>
             </tbody>
         </table>
-        <a href="pdf_pages/user_comment_logs.php" target="_blank">
-            <button>Generate Log</button>
-        </a>
+
     </section>
 
     <section id="delete-comment">

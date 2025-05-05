@@ -78,24 +78,44 @@ $pdf->Cell(50, 10, 'Description', 1, 1, 'C', true);
 // Table Rows
 $pdf->SetFont('Arial', '', 12);
 while ($row = mysqli_fetch_assoc($result)) {
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
     $lineHeight = 6;
 
-    // Calculate height of the Description cell
-    $pdf->SetXY($x + 45 + 35 + 40 + 20, $y);
-    $pdf->MultiCell(50, $lineHeight, $row['description'], 1, 'J');
+    // Save current position
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+
+    // Calculate height needed for each multicell field
+    $pdf->SetXY($x + 45 + 35, $y); // title position
+    $pdf->MultiCell(40, $lineHeight, $row['title'], 0, 'L');
+    $titleHeight = $pdf->GetY() - $y;
+
+    $pdf->SetXY($x + 45 + 35 + 40 + 20, $y); // description position
+    $pdf->MultiCell(50, $lineHeight, $row['description'], 0, 'L');
     $descHeight = $pdf->GetY() - $y;
 
-    // Reset Y position back to the start of the row for other cells
+    // Get max height for the row
+    $rowHeight = max($titleHeight, $descHeight, $lineHeight);
+
+    // Reset position and draw cells
     $pdf->SetXY($x, $y);
-    $pdf->Cell(45, $descHeight, $row['created_at'], 1, 0, 'C');
-    $pdf->Cell(35, $descHeight, $row['username'], 1, 0, 'C');
-    $pdf->Cell(40, $descHeight, $row['title'], 1, 0, 'C');
-    $pdf->Cell(20, $descHeight, $row['post_id'], 1, 0, 'C');
-    // Description cell is already printed
-    $pdf->Ln();
+    $pdf->Cell(45, $rowHeight, $row['created_at'], 1, 0, 'C');
+    $pdf->Cell(35, $rowHeight, $row['username'], 1, 0, 'C');
+
+    // Re-draw Title MultiCell with border
+    $pdf->SetXY($x + 45 + 35, $y);
+    $pdf->MultiCell(40, $lineHeight, $row['title'], 1, 'L');
+
+    // Because MultiCell moves cursor, reset X and Y again
+    $pdf->SetXY($x + 45 + 35 + 40, $y);
+    $pdf->Cell(20, $rowHeight, $row['post_id'], 1, 0, 'C');
+
+    $pdf->SetXY($x + 45 + 35 + 40 + 20, $y);
+    $pdf->MultiCell(50, $lineHeight, $row['description'], 1, 'L');
+
+    // Move to the next line (below the tallest cell)
+    $pdf->SetY($y + $rowHeight);
 }
+
 
 $pdf->Output();
 ?>

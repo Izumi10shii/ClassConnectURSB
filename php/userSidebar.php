@@ -112,6 +112,63 @@ if (session_status() === PHP_SESSION_NONE) {
             text-align: center;
             margin-left: 7.5px;
         }
+
+        @media screen and (max-width: 768px) {
+    .leftSidebar {
+        position: relative;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        min-height: auto;
+        padding: 10px;
+        box-shadow: none;
+    }
+
+    .titleCC {
+        text-align: left;
+        font-size: 24px;
+        margin-bottom: 10px;
+        width: 100%;
+        margin-left: 10px;
+    }
+
+    .sticky-buttons {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .lsu {
+        flex: 1 1 calc(50% - 20px);
+        margin: 5px;
+        font-size: 0.95rem;
+        padding: 8px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .lsu img {
+        margin-left: 8px;
+    }
+
+    .iconlink {
+        margin: 20px auto;
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .iconcont {
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
+
     </style>
 </head>
 
