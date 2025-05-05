@@ -32,7 +32,7 @@ $account_id = $_SESSION['account_id'];
     }
 
     .homeHeader {
-      background: linear-gradient(to right, #14131a, #282633);
+      background: linear-gradient(to right, #112336, #3787a7);
       display: flex;
       align-items: center;
       justify-content: space-between;
